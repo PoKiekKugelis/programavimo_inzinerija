@@ -33,6 +33,7 @@ tile_set = ExtResource("2_stco2")
 light_mask = 2
 visibility_layer = 2
 material = SubResource("CanvasItemMaterial_wuyya")
+layout_mode = 0
 offset_left = 476.0
 offset_top = 199.0
 offset_right = 715.0
@@ -58,6 +59,7 @@ color = Color(0.859332, 0.685999, 1.54018e-06, 1)
 
 [node name="Title" type="Label" parent="."]
 material = SubResource("CanvasItemMaterial_c1yts")
+layout_mode = 0
 offset_left = 436.0
 offset_top = 28.0
 offset_right = 742.0
