@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_kai7x"]
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="2_stco2"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c1yts"]
-light_mode = 1
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wuyya"]
 light_mode = 1
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6lnei"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c1yts"]
 light_mode = 1
 
 [node name="Control" type="Control"]
@@ -17,8 +17,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2.0
-offset_bottom = 1.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kai7x")
@@ -58,38 +60,15 @@ color = Color(0.859332, 0.685999, 1.54018e-06, 1)
 [node name="Title" type="Label" parent="."]
 material = SubResource("CanvasItemMaterial_c1yts")
 layout_mode = 0
-
-offset_left = 384.0
-offset_top = 48.0
-offset_right = 768.0
-offset_bottom = 172.0
-
+offset_left = 436.0
+offset_top = 28.0
+offset_right = 742.0
+offset_bottom = 152.0
 theme_override_font_sizes/font_size = 90
-text = "GremEx"
+text = "GregEx"
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 227
 
-[node name="ButtonContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 227.0
-offset_right = 704.0
-offset_bottom = 293.0
-
-[node name="Start" type="Button" parent="ButtonContainer"]
-material = SubResource("CanvasItemMaterial_wuyya")
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Start Game"
-
-[node name="Quit" type="Button" parent="ButtonContainer"]
-light_mask = 2
-material = SubResource("CanvasItemMaterial_6lnei")
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Quit"
-
-[connection signal="pressed" from="ButtonContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="ButtonContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
