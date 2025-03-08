@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="1_oqkxf"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_sse7a"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="2_lenpy"]
-[ext_resource type="PackedScene" uid="uid://bharai6idfiis" path="res://scenes/inventory_ui.tscn" id="2_tnlpe"]
+[ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://scenes/inventory_ui.tscn" id="2_tnlpe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceyrs"]
 size = Vector2(36, 35)
