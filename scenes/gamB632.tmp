@@ -36,7 +36,6 @@ visible = false
 position = Vector2(202, -2)
 
 [node name="Mob" parent="." instance=ExtResource("7_lph38")]
-position = Vector2(94, -117)
-scale = Vector2(2, 2)
+position = Vector2(46, 18)
 
 [connection signal="body_entered" from="Finish" to="Player" method="_on_finish_body_entered"]

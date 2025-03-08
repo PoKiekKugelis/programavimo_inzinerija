@@ -1,7 +1,7 @@
 ##Global script
 extends Node
 
-var inventory = []#Sreates item array
+var inventory = []#Creates item array
 signal inventory_updated#A signal for recognizing when inventory was updated
 var player_node: Node = null#Player node for ease of access
 @onready var inventory_slot_scene = preload("res://scenes/inventory_slot.tscn")#Since it's a global script added a variable so all scripts can access it
