@@ -27,6 +27,10 @@ project/assembly_name="programavimo_inzinerija_project"
 
 enabled=PackedStringArray()
 
+[global_group]
+
+UnpausableUserInterfaces="UIs during which, the game should not be able to be paused"
+
 [input]
 
 ui_accept={

@@ -19,7 +19,7 @@ texture = ExtResource("2_lenpy")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ceyrs")
 
-[node name="Inventory_UI" type="CanvasLayer" parent="."]
+[node name="Inventory_UI" type="CanvasLayer" parent="." groups=["UnpausableUserInterfaces"]]
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Inventory_UI"]

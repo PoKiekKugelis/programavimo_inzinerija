@@ -1,5 +1,7 @@
 extends Node
 
+## Gets all UIs, during which game should not be able to be paused
+@onready var UnpauseableUIs = get_tree().get_nodes_in_group("UnpausableUserInterfaces")
 
 func _pause():
 	$VBoxContainer/Resume.grab_focus()
@@ -18,11 +20,15 @@ func _ready() -> void:
 	pass 
 
 func _process(delta: float) -> void:
-	
-	if(Input.is_action_just_pressed("ui_pause", true) and !get_tree().paused ):
-		_pause()
-	elif (Input.is_action_just_pressed("ui_unpause", true) and get_tree().paused):
-		_resume()
+	#Checks if any node in group "UnpauseableUIs" is visible
+	for i in range(len(UnpauseableUIs)):
+		if UnpauseableUIs[i].visible == true: 	#if atleast one is visible it _process returns
+			return 								#without other chekcs
+		else:									#if no node is visible, it continues as before
+			if(Input.is_action_just_pressed("ui_pause", true) and !get_tree().paused ):
+				_pause()
+			elif (Input.is_action_just_pressed("ui_unpause", true) and get_tree().paused):
+				_resume()
 		
 	#Pauzes metu, kai fokusuojama ant Resume, dabar paspaudus "left" fokusavimas
 	# bus perduodamas "Quit to Menu" mygtukui
