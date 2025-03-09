@@ -1,22 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccrgslptfvujl"]
+[gd_scene load_steps=10 format=3 uid="uid://ccrgslptfvujl"]
 
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="1_oqkxf"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_sse7a"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="2_lenpy"]
 [ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://scenes/inventory_ui.tscn" id="2_tnlpe"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="5_cmeds"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="6_lsjhy"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="7_dmkbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceyrs"]
-size = Vector2(36, 35)
+size = Vector2(39, 38.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoc62"]
+size = Vector2(42, 42)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_sse7a")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("7_dmkbe")
+max_health = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_lenpy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_ceyrs")
 
 [node name="Inventory_UI" type="CanvasLayer" parent="." groups=["UnpausableUserInterfaces"]]
@@ -49,3 +59,20 @@ text = "Inventory"
 
 [node name="Inventory_UI" parent="Inventory_UI/ColorRect" instance=ExtResource("2_tnlpe")]
 layout_mode = 1
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("5_cmeds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_yoc62")
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_lsjhy")
+health = NodePath("../Health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_yoc62")

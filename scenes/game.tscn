@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtkw7x4hdoyt2"]
+[gd_scene load_steps=10 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
 [ext_resource type="PackedScene" uid="uid://ccrgslptfvujl" path="res://scenes/player.tscn" id="2_dspdp"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="4_j6hfo"]
 [ext_resource type="PackedScene" uid="uid://bhod10c0fj1bp" path="res://scenes/finish.tscn" id="6_twexu"]
 [ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://scenes/enemy.tscn" id="7_lph38"]
+[ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/health_bar.tscn" id="8_khsen"]
+[ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/spike.tscn" id="9_k0taf"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(573, 354)
@@ -38,5 +40,20 @@ position = Vector2(202, -2)
 [node name="Mob" parent="." instance=ExtResource("7_lph38")]
 position = Vector2(94, -117)
 scale = Vector2(2, 2)
+
+[node name="SpikeEnemy" parent="." instance=ExtResource("9_k0taf")]
+position = Vector2(-17, 25)
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("character") instance=ExtResource("8_khsen")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -329.0
+offset_top = -185.0
+offset_right = -257.0
+offset_bottom = -161.0
+grow_horizontal = 1
+grow_vertical = 1
+character = NodePath("../Player")
 
 [connection signal="body_entered" from="Finish" to="Player" method="_on_finish_body_entered"]
