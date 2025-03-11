@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtkw7x4hdoyt2"]
+[gd_scene load_steps=11 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
 [ext_resource type="PackedScene" uid="uid://ccrgslptfvujl" path="res://scenes/player.tscn" id="2_dspdp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://scenes/enemy.tscn" id="7_lph38"]
 [ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/health_bar.tscn" id="8_khsen"]
 [ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/spike.tscn" id="9_k0taf"]
+[ext_resource type="PackedScene" uid="uid://v37iwosey6gf" path="res://scenes/stamina_bar.tscn" id="10_rq0lr"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(573, 354)
@@ -52,6 +53,18 @@ offset_left = -329.0
 offset_top = -185.0
 offset_right = -257.0
 offset_bottom = -161.0
+grow_horizontal = 1
+grow_vertical = 1
+character = NodePath("../Player")
+
+[node name="StaminaBar" parent="." node_paths=PackedStringArray("character") instance=ExtResource("10_rq0lr")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -329.0
+offset_top = -160.0
+offset_right = -257.0
+offset_bottom = -136.0
 grow_horizontal = 1
 grow_vertical = 1
 character = NodePath("../Player")

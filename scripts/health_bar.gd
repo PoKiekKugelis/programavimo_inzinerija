@@ -1,10 +1,8 @@
 extends TextureProgressBar
 
-
 @export var character: CharacterBody2D
 
-
-@onready var health: Health = character.find_children("*", "Health")[0]
+@onready var health: Health = character.find_child("Health")
 
 
 func _ready() -> void:

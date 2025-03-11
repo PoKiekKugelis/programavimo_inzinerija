@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccrgslptfvujl"]
+[gd_scene load_steps=11 format=3 uid="uid://ccrgslptfvujl"]
 
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="1_oqkxf"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_sse7a"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="2_lenpy"]
 [ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://scenes/inventory_ui.tscn" id="2_tnlpe"]
+[ext_resource type="Script" path="res://scripts/stamina.gd" id="3_xxutp"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="5_cmeds"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="6_lsjhy"]
 [ext_resource type="Script" path="res://scripts/health.gd" id="7_dmkbe"]
@@ -20,6 +21,9 @@ script = ExtResource("1_sse7a")
 [node name="Health" type="Node" parent="."]
 script = ExtResource("7_dmkbe")
 max_health = 5
+
+[node name="Stamina" type="Node" parent="."]
+script = ExtResource("3_xxutp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)

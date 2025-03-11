@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://v37iwosey6gf"]
+
+[ext_resource type="Texture2D" uid="uid://trw2ihrtdmmw" path="res://assets/sprites/stamina_bar.png" id="1_3mn4a"]
+[ext_resource type="Script" path="res://scripts/stamina_bar.gd" id="2_jjbof"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qw8so"]
+atlas = ExtResource("1_3mn4a")
+region = Rect2(0, 24, 72, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5ufv"]
+atlas = ExtResource("1_3mn4a")
+region = Rect2(0, 0, 0, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_seak2"]
+atlas = ExtResource("1_3mn4a")
+region = Rect2(0, 48, 0, 24)
+
+[node name="StaminaBar" type="TextureProgressBar"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_under = SubResource("AtlasTexture_qw8so")
+texture_over = SubResource("AtlasTexture_w5ufv")
+texture_progress = SubResource("AtlasTexture_seak2")
+script = ExtResource("2_jjbof")
