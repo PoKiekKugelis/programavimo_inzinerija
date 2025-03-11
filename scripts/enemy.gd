@@ -6,10 +6,6 @@ const speed = 20 # movement speed
 var is_enemy_chase: bool = false  # for later inplementation
 # probably wont need this but ok
 
-var health = 20 #For later inplementation
-var health_max = 20 #For later inplementation
-var health_min = 0 #For later inplementation
-
 var dead: bool = false #For later inplementation
 var taking_damage: bool = false #For later inplementation
 var damage_to_deal = 20 
@@ -18,10 +14,10 @@ var is_dealing_damage: bool = false
 var dir: Vector2
 var dir_prev: Vector2
 const gravity = 900
-var knockback_force = 200
-var knockback_force_to_player = 200
 var is_roaming: bool = true #if true then moves around randomly. if false currently does nothing
 
+func _ready() -> void:
+	add_to_group("enemy")
 
 func _process(delta):
 	if !is_on_floor(): #check is enemy is in the air

@@ -2,13 +2,27 @@ extends CharacterBody2D
 
 @onready var inventory_ui = $Inventory_UI
 @onready var stamina: Stamina = $Stamina
+@onready var movement_timer: Timer = $MovementTimer
 
-const RUNNING_SPEED = 80.0
-const SPEED = 40.0
+const RUNNING_SPEED = 160.0
+const SPEED = 80.0
 const JUMP_VELOCITY = -400.0
+const KNOCKBACK = 300.0
+var CAN_MOVE: bool = true
 
 func _ready() -> void:
 	Inventory.set_player_reference(self)#set this node as player node also no delete pls
+
+#deals knockback to the player when hit
+func _on_hurt_box_received_damage(damage: int) -> void:
+	CAN_MOVE = false
+	var knockback_dir = Vector2.UP * KNOCKBACK
+	velocity = knockback_dir
+	movement_timer.start()
+
+#tunrs back on the movement
+func _on_movement_timer_timeout() -> void:
+	CAN_MOVE = true
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -16,13 +30,12 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_jump") and is_on_floor():
+	if Input.is_action_just_pressed("ui_jump") and is_on_floor() and CAN_MOVE == true:
 		velocity.y = JUMP_VELOCITY
 
-	
-	
+
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction != 0:
+	if direction != 0 and CAN_MOVE == true:
 		stamina.set_is_moving(true)  
 		if Input.is_action_pressed("ui_sprint") && stamina.stamina > 0:
 			velocity.x = direction * RUNNING_SPEED  

@@ -1,7 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://befh57cg3tm24"]
+[gd_scene load_steps=18 format=3 uid="uid://befh57cg3tm24"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_6cc7r"]
 [ext_resource type="Texture2D" uid="uid://ci6oaqoi4u4xy" path="res://assets/sprites/animation_test.png" id="1_evtl2"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="2_7qkrd"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_ec5fr"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="3_fjv6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17fi2"]
 size = Vector2(20, 30.0752)
@@ -75,9 +78,18 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Mob" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mtvt"]
+size = Vector2(12, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gm37"]
+size = Vector2(12, 22)
+
+[node name="TestEnemy" type="CharacterBody2D"]
 script = ExtResource("1_6cc7r")
 metadata/_edit_group_ = true
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_7qkrd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.485, 0.665)
@@ -92,5 +104,21 @@ frame_progress = 0.478314
 
 [node name="DirectionTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_ec5fr")
+damage = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_5mtvt")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("3_fjv6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("RectangleShape2D_5gm37")
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

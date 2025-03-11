@@ -80,3 +80,9 @@ health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_yoc62")
+
+[node name="MovementTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="received_damage" from="HurtBox" to="." method="_on_hurt_box_received_damage"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

@@ -38,8 +38,8 @@ visible = false
 [node name="Finish" parent="." instance=ExtResource("6_twexu")]
 position = Vector2(202, -2)
 
-[node name="Mob" parent="." instance=ExtResource("7_lph38")]
-position = Vector2(94, -117)
+[node name="TestEnemy" parent="." instance=ExtResource("7_lph38")]
+position = Vector2(86, -61)
 scale = Vector2(2, 2)
 
 [node name="SpikeEnemy" parent="." instance=ExtResource("9_k0taf")]
@@ -51,8 +51,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = -329.0
 offset_top = -185.0
-offset_right = -257.0
-offset_bottom = -161.0
+offset_right = -234.0
+offset_bottom = -172.0
 grow_horizontal = 1
 grow_vertical = 1
 character = NodePath("../Player")
@@ -62,9 +62,9 @@ anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = -329.0
-offset_top = -160.0
-offset_right = -257.0
-offset_bottom = -136.0
+offset_top = -170.0
+offset_right = -234.0
+offset_bottom = -157.0
 grow_horizontal = 1
 grow_vertical = 1
 character = NodePath("../Player")
