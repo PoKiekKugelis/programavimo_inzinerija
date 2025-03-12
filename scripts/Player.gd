@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var stamina: Stamina = $Stamina
 @onready var movement_timer: Timer = $MovementTimer
 
+
 const RUNNING_SPEED = 160.0
 const SPEED = 80.0
 const JUMP_VELOCITY = -400.0
@@ -32,10 +33,8 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_jump") and is_on_floor() and CAN_MOVE == true:
 		velocity.y = JUMP_VELOCITY
-
-
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction != 0 and CAN_MOVE == true:
+	var direction := Input.get_axis("left", "right")
+	if direction != 0:
 		stamina.set_is_moving(true)  
 		if Input.is_action_pressed("ui_sprint") && stamina.stamina > 0:
 			velocity.x = direction * RUNNING_SPEED  

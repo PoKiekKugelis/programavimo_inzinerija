@@ -32,8 +32,12 @@ item_name = "test2"
 item_texture = ExtResource("4_j6hfo")
 item_effect = "test3"
 
-[node name="PauseScreen" parent="." instance=ExtResource("3_psmk7")]
-visible = false
+[node name="Inventory_Item2" parent="." instance=ExtResource("3_b0nof")]
+position = Vector2(-207, -16)
+item_type = "test1"
+item_name = "a"
+item_texture = ExtResource("4_j6hfo")
+item_effect = "test3"
 
 [node name="Finish" parent="." instance=ExtResource("6_twexu")]
 position = Vector2(202, -2)
@@ -68,5 +72,8 @@ offset_bottom = -157.0
 grow_horizontal = 1
 grow_vertical = 1
 character = NodePath("../Player")
+
+[node name="PauseScreen" parent="." instance=ExtResource("3_psmk7")]
+visible = false
 
 [connection signal="body_entered" from="Finish" to="Player" method="_on_finish_body_entered"]

@@ -11,15 +11,15 @@ func _ready():
 
 func add_item(item):#Adds an item to the array
 	for i in range(inventory.size()):#Loops through the whole inventory to check if item exists and where is the free space
-		if inventory[i] != null and inventory[i]["type"] == item[i]["type"] and inventory[i]["effect"] == item[i]["effect"]:
-			inventory[i]["quantity"] += item[i]["quantity"]#If same item is already added it only adds +1
-			inventory_updated.emit()#Emits the signal that the inventory was updated
-			return true
-		elif inventory[i] == null:
+		if inventory[i] == null:
 			inventory[i] = item#If there are no such items in the inventory adds it.
 			inventory_updated.emit()
 			return true
-		return false
+		elif inventory[i] != null and inventory[i]["type"] == item["type"] and inventory[i]["effect"] == item["effect"]:
+			inventory[i]["quantity"] += item["quantity"]#If same item is already added it only adds +1
+			inventory_updated.emit()#Emits the signal that the inventory was updated
+			return true
+	return false
 
 func remove_item():
 	inventory_updated.emit()#TODO later
