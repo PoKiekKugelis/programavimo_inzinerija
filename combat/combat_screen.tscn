@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu2vdqgi3rdj3"]
+
+[ext_resource type="Script" uid="uid://dw7any0ncdcql" path="res://combat/combat_screen.gd" id="1_4dh1p"]
+[ext_resource type="Shader" uid="uid://dn521yloucwqc" path="res://combat/transition.gdshader" id="2_nfwd6"]
+[ext_resource type="Texture2D" uid="uid://py2u3rw43m37" path="res://combat/assets/transistion_1.png" id="3_ajnlu"]
+[ext_resource type="Texture2D" uid="uid://bdo6vka1dwfy4" path="res://combat/assets/Background.jpg" id="5_77608"]
+[ext_resource type="Script" uid="uid://dt5jcaofsgi4n" path="res://combat/transition.gd" id="5_igm7u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77608"]
+shader = ExtResource("2_nfwd6")
+shader_parameter/fill = -0.1
+
+[node name="CombatScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4dh1p")
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("5_77608")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Transition" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_77608")
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_ajnlu")
+script = ExtResource("5_igm7u")

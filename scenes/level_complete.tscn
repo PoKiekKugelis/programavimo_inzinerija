@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://dcdwepyn36yoq"]
 
-[ext_resource type="Script" path="res://level_complete.gd" id="1_h65wq"]
+[ext_resource type="Script" uid="uid://24ei02ofnv3i" path="res://level_complete.gd" id="1_h65wq"]
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="2_xvcb8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6skyk"]
