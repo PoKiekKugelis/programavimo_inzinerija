@@ -11,6 +11,9 @@ const JUMP_VELOCITY = -400.0
 const KNOCKBACK = 300.0
 var CAN_MOVE: bool = true
 
+signal enter_combat(enemy: CharacterBody2D)
+
+
 func _ready() -> void:
 	Inventory.set_player_reference(self)#set this node as player node also no delete pls
 
@@ -45,9 +48,17 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)  
 
 	move_and_slide()
+	
+	#signalas gautas is zaidejo hurtbox, ir siunciamas per pati player i pagrindine scena
+	#signalas su savim nesasi prieso node, kad zinotu pries ka kovoja
+func _on_hurt_box_enemy_touched(enemy: CharacterBody2D) -> void:
+	enter_combat.emit(enemy)
+	
+	
 ## ALL BELOW IS INVENTORY DO NOT DELETE. ABOVE IS AUTO GENERATED CODE FOR PLAYER MOVEMENT CAN DELETE/CHANGE
 #inventory UI opens by pressing "I"
 func _input(event):
 	if event.is_action_pressed("ui_inventory"):
 		inventory_ui.visible = !inventory_ui.visible
+		
 		

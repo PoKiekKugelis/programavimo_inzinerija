@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://l4el3myevg40"]
 
-[ext_resource type="Script" path="res://scripts/inventory_slot.gd" id="1_821hk"]
+[ext_resource type="Script" uid="uid://bt58qpychq1qf" path="res://scripts/inventory_slot.gd" id="1_821hk"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="2_k0bbw"]
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="3_mstk4"]
 
