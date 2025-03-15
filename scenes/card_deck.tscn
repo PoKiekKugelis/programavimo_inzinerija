@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4cycf46t3wmq"]
+
+[ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="1_84cj3"]
+[ext_resource type="Script" uid="uid://cx0b8ejv5nm2g" path="res://scripts/card_deck_view.gd" id="2_8eror"]
+[ext_resource type="PackedScene" uid="uid://cq3w6suapqurq" path="res://scenes/card_menu_ui.tscn" id="2_yiwll"]
+[ext_resource type="PackedScene" uid="uid://csf7ojdyntayr" path="res://scenes/card_tooltip_popup.tscn" id="3_6b8oj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kbtr0"]
+font_size = 48
+
+[node name="CardDeck" type="Control" groups=["UnpausableUserInterfaces"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_84cj3")
+script = ExtResource("2_8eror")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.713726)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_84cj3")
+text = "Player deck"
+label_settings = SubResource("LabelSettings_kbtr0")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 2
+
+[node name="Cards" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/v_separation = -100
+columns = 5
+
+[node name="CardMenuUi" parent="MarginContainer/VBoxContainer/ScrollContainer/Cards" instance=ExtResource("2_yiwll")]
+layout_mode = 2
+
+[node name="CardMenuUi7" parent="MarginContainer/VBoxContainer/ScrollContainer/Cards" instance=ExtResource("2_yiwll")]
+layout_mode = 2
+
+[node name="CardMenuUi8" parent="MarginContainer/VBoxContainer/ScrollContainer/Cards" instance=ExtResource("2_yiwll")]
+layout_mode = 2
+
+[node name="CardMenuUi9" parent="MarginContainer/VBoxContainer/ScrollContainer/Cards" instance=ExtResource("2_yiwll")]
+layout_mode = 2
+
+[node name="CardMenuUi10" parent="MarginContainer/VBoxContainer/ScrollContainer/Cards" instance=ExtResource("2_yiwll")]
+layout_mode = 2
+
+[node name="CardMenuUi2" parent="MarginContainer/VBoxContainer/ScrollContainer/Cards" instance=ExtResource("2_yiwll")]
+layout_mode = 2
+
+[node name="CardMenuUi3" parent="MarginContainer/VBoxContainer/ScrollContainer/Cards" instance=ExtResource("2_yiwll")]
+layout_mode = 2
+
+[node name="CardMenuUi4" parent="MarginContainer/VBoxContainer/ScrollContainer/Cards" instance=ExtResource("2_yiwll")]
+layout_mode = 2
+
+[node name="CardMenuUi5" parent="MarginContainer/VBoxContainer/ScrollContainer/Cards" instance=ExtResource("2_yiwll")]
+layout_mode = 2
+
+[node name="CardMenuUi6" parent="MarginContainer/VBoxContainer/ScrollContainer/Cards" instance=ExtResource("2_yiwll")]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -245.0
+offset_top = 35.0
+offset_right = -85.0
+offset_bottom = 94.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[node name="CardTooltipPopup" parent="." instance=ExtResource("3_6b8oj")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

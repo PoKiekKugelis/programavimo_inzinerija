@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://dgojdeqf83ed2"]
+
+[ext_resource type="Script" uid="uid://d1ramoosw62pd" path="res://scripts/resources/card.gd" id="1_byqbp"]
+[ext_resource type="Texture2D" uid="uid://32ixlvv01yja" path="res://assets/Cards/CardTemplateColor.png" id="1_dxpmw"]
+
+[resource]
+script = ExtResource("1_byqbp")
+id = "defend"
+type = 1
+target = 0
+cost = 1
+icon = ExtResource("1_dxpmw")
+tooltip_text = "STRONG ASS CARD"

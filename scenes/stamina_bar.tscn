@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://v37iwosey6gf"]
 
 [ext_resource type="Texture2D" uid="uid://bkuvi2knbrfo3" path="res://assets/sprites/StaminaBar_Empty.png" id="1_d3x75"]
-[ext_resource type="Script" path="res://scripts/stamina_bar.gd" id="2_jjbof"]
+[ext_resource type="Script" uid="uid://dlfoqwsto0nmd" path="res://scripts/stamina_bar.gd" id="2_jjbof"]
 [ext_resource type="Texture2D" uid="uid://d0br0gtt7djsy" path="res://assets/sprites/StaminaBar_Outline.png" id="2_pyo4u"]
 [ext_resource type="Texture2D" uid="uid://dr12pcxxm6xsl" path="res://assets/sprites/StaminaBar_Fill.png" id="3_myofw"]
 

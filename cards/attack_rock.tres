@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://csofjnrpt3fa8"]
+
+[ext_resource type="Script" uid="uid://d1ramoosw62pd" path="res://scripts/resources/card.gd" id="1_1ekmy"]
+[ext_resource type="Texture2D" uid="uid://veel70mhljxe" path="res://assets/Cards/CardTemplateRock.png" id="1_bl2ge"]
+
+[resource]
+script = ExtResource("1_1ekmy")
+id = "attack_rock"
+type = 0
+target = 1
+cost = 1
+icon = ExtResource("1_bl2ge")
+tooltip_text = "get rocked"
+metadata/_custom_type_script = "uid://d1ramoosw62pd"

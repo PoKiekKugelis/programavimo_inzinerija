@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://cy7n1mny6vxbj"]
+
+[ext_resource type="Script" uid="uid://d1ramoosw62pd" path="res://scripts/resources/card.gd" id="1_7acyd"]
+[ext_resource type="Texture2D" uid="uid://32ixlvv01yja" path="res://assets/Cards/CardTemplateColor.png" id="1_encum"]
+
+[resource]
+script = ExtResource("1_7acyd")
+id = "attack"
+type = 0
+target = 1
+cost = 2
+icon = ExtResource("1_encum")
+tooltip_text = "strong ass card"

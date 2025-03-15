@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhucwpx8dw1e6"]
+
+[ext_resource type="Texture2D" uid="uid://32ixlvv01yja" path="res://assets/Cards/CardTemplateColor.png" id="1_2w8kj"]
+[ext_resource type="Script" uid="uid://wv12fkfwc4kq" path="res://scripts/card_deck_open.gd" id="1_h3ybo"]
+
+[node name="CardDeckOpen" type="TextureButton"]
+offset_right = 50.0
+offset_bottom = 100.0
+texture_normal = ExtResource("1_2w8kj")
+stretch_mode = 5
+script = ExtResource("1_h3ybo")

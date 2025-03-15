@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccrgslptfvujl"]
+[gd_scene load_steps=9 format=3 uid="uid://ccrgslptfvujl"]
 
-[ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="1_oqkxf"]
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_sse7a"]
+[ext_resource type="Script" uid="uid://dmfk2y87ehpk0" path="res://scripts/Player.gd" id="1_sse7a"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="2_lenpy"]
-[ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://scenes/inventory_ui.tscn" id="2_tnlpe"]
-[ext_resource type="Script" path="res://scripts/stamina.gd" id="3_xxutp"]
-[ext_resource type="Script" path="res://scripts/hitbox.gd" id="5_cmeds"]
-[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="6_lsjhy"]
-[ext_resource type="Script" path="res://scripts/health.gd" id="7_dmkbe"]
+[ext_resource type="Script" uid="uid://blpiq2qfwwrbl" path="res://scripts/stamina.gd" id="3_xxutp"]
+[ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="5_cmeds"]
+[ext_resource type="Script" uid="uid://b25ntns06y3kc" path="res://scripts/hurtbox.gd" id="6_lsjhy"]
+[ext_resource type="Script" uid="uid://ct28a5ovxts7" path="res://scripts/health.gd" id="7_dmkbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceyrs"]
 size = Vector2(39, 38.5)
@@ -33,37 +31,6 @@ texture = ExtResource("2_lenpy")
 position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_ceyrs")
 
-[node name="Inventory_UI" type="CanvasLayer" parent="." groups=["UnpausableUserInterfaces"]]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="Inventory_UI"]
-anchors_preset = -1
-anchor_left = 0.0659722
-anchor_top = 0.114198
-anchor_right = 0.934028
-anchor_bottom = 0.885802
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0705882, 0.203922, 0.337255, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="Inventory_UI/ColorRect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -148.5
-offset_top = 40.0
-offset_right = 148.5
-offset_bottom = 101.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_oqkxf")
-theme_override_font_sizes/font_size = 60
-text = "Inventory"
-
-[node name="Inventory_UI" parent="Inventory_UI/ColorRect" instance=ExtResource("2_tnlpe")]
-layout_mode = 1
-
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
@@ -84,5 +51,6 @@ shape = SubResource("RectangleShape2D_yoc62")
 [node name="MovementTimer" type="Timer" parent="."]
 wait_time = 0.1
 
+[connection signal="enemy_touched" from="HurtBox" to="." method="_on_hurt_box_enemy_touched"]
 [connection signal="received_damage" from="HurtBox" to="." method="_on_hurt_box_received_damage"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

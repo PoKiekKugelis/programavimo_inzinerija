@@ -18,7 +18,7 @@ var is_roaming: bool = true #if true then moves around randomly. if false curren
 
 func _ready() -> void:
 	add_to_group("enemy")
-
+	
 func _process(delta):
 	if !is_on_floor(): #check is enemy is in the air
 		velocity.y += gravity * delta
@@ -26,6 +26,7 @@ func _process(delta):
 	move(delta)
 	handle_animation()
 	move_and_slide()
+	
 
 func move(delta):
 	if !dead:

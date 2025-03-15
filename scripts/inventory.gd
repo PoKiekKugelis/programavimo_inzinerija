@@ -7,7 +7,7 @@ var player_node: Node = null#Player node for ease of access
 @onready var inventory_slot_scene = preload("res://scenes/inventory_slot.tscn")#Since it's a global script added a variable so all scripts can access it
 
 func _ready():
-	inventory.resize(18)#Sets the inventory size
+	inventory.resize(21)#Sets the inventory size
 
 func add_item(item):#Adds an item to the array
 	for i in range(inventory.size()):#Loops through the whole inventory to check if item exists and where is the free space
