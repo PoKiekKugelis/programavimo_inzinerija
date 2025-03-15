@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=3 uid="uid://ccrgslptfvujl"]
 
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="1_oqkxf"]
-[ext_resource type="Script" uid="uid://dmfk2y87ehpk0" path="res://scripts/Player.gd" id="1_sse7a"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_sse7a"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="2_lenpy"]
 [ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://scenes/inventory_ui.tscn" id="2_tnlpe"]
-[ext_resource type="Script" uid="uid://blpiq2qfwwrbl" path="res://scripts/stamina.gd" id="3_xxutp"]
-[ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="5_cmeds"]
-[ext_resource type="Script" uid="uid://b25ntns06y3kc" path="res://scripts/hurtbox.gd" id="6_lsjhy"]
-[ext_resource type="Script" uid="uid://ct28a5ovxts7" path="res://scripts/health.gd" id="7_dmkbe"]
+[ext_resource type="Script" path="res://scripts/stamina.gd" id="3_xxutp"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="5_cmeds"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="6_lsjhy"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="7_dmkbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceyrs"]
 size = Vector2(39, 38.5)
@@ -84,6 +84,5 @@ shape = SubResource("RectangleShape2D_yoc62")
 [node name="MovementTimer" type="Timer" parent="."]
 wait_time = 0.1
 
-[connection signal="enemy_touched" from="HurtBox" to="." method="_on_hurt_box_enemy_touched"]
 [connection signal="received_damage" from="HurtBox" to="." method="_on_hurt_box_received_damage"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]

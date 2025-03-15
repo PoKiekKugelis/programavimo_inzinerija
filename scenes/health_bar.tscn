@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dhemlqk7btb7k" path="res://assets/sprites/HealthBar_Empty.png" id="1_oor01"]
 [ext_resource type="Texture2D" uid="uid://c07pdqbfxhauk" path="res://assets/sprites/HealthBar_Outline.png" id="2_q6xxe"]
-[ext_resource type="Script" uid="uid://d28xhb1w0owss" path="res://scripts/health_bar.gd" id="2_v86s0"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="2_v86s0"]
 [ext_resource type="Texture2D" uid="uid://b5tknsket7dil" path="res://assets/sprites/HealthBar_Fill.png" id="3_e8xyq"]
 
 [node name="HealthBar" type="TextureProgressBar"]
