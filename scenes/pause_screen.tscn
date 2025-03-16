@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://duelb2q8ha7hp"]
 
-[ext_resource type="Script" uid="uid://boon2cv8not4t" path="res://scripts/pause.gd" id="1_te3bn"]
+[ext_resource type="Script" path="res://scripts/pause.gd" id="1_te3bn"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uu56n"]
 blend_mode = 1

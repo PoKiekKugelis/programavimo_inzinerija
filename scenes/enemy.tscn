@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://befh57cg3tm24"]
 
-[ext_resource type="Script" uid="uid://qw3n3dhsjip2" path="res://scripts/enemy.gd" id="1_6cc7r"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_6cc7r"]
 [ext_resource type="Texture2D" uid="uid://ci6oaqoi4u4xy" path="res://assets/sprites/animation_test.png" id="1_evtl2"]
-[ext_resource type="Script" uid="uid://ct28a5ovxts7" path="res://scripts/health.gd" id="2_7qkrd"]
-[ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="3_ec5fr"]
-[ext_resource type="Script" uid="uid://b25ntns06y3kc" path="res://scripts/hurtbox.gd" id="3_fjv6h"]
+[ext_resource type="Script" uid="uid://drbwco1n34ge" path="res://scripts/health.gd" id="2_7qkrd"]
+[ext_resource type="Script" uid="uid://64yhhvlf0imb" path="res://scripts/hitbox.gd" id="3_ec5fr"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="3_fjv6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17fi2"]
 size = Vector2(20, 30.0752)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dwocfaxnwkosl"]
 
-[ext_resource type="Script" uid="uid://b25ntns06y3kc" path="res://scripts/hurtbox.gd" id="2_gmcir"]
-[ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="3_o75mu"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="2_gmcir"]
+[ext_resource type="Script" uid="uid://64yhhvlf0imb" path="res://scripts/hitbox.gd" id="3_o75mu"]
 [ext_resource type="Texture2D" uid="uid://h6s8cgkk7ere" path="res://assets/sprites/spike monster B.png" id="4_hl3n1"]
-[ext_resource type="Script" uid="uid://ct28a5ovxts7" path="res://scripts/health.gd" id="4_riqwt"]
+[ext_resource type="Script" uid="uid://drbwco1n34ge" path="res://scripts/health.gd" id="4_riqwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra7oa"]
 size = Vector2(36, 22)

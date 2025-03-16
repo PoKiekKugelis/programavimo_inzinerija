@@ -3,6 +3,7 @@ extends Control
 @export var player: Sprite2D
 @export var enemy: AnimatedSprite2D
 
+
 func _ready() -> void:
 	#viska pradeda daryt uz sekundes, nes pirma animacijos dalis trunka sekunde
 	await get_tree().create_timer(1).timeout
