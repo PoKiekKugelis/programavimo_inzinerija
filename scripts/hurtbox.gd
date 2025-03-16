@@ -21,5 +21,6 @@ func _on_area_entered(hitbox: HitBox) -> void:
 		#Jeigu buvo priliestas entity is "enemy" grupes, pereinama i combat
 		if hitbox.owner.is_in_group("enemy"):
 			enemy_touched.emit(hitbox.owner)
+			hitbox.owner.free()
 		
 	
