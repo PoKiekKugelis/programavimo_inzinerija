@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu2vdqgi3rdj3"]
+[gd_scene load_steps=11 format=3 uid="uid://bu2vdqgi3rdj3"]
 
 [ext_resource type="Script" uid="uid://dw7any0ncdcql" path="res://combat/combat_screen.gd" id="1_4dh1p"]
 [ext_resource type="Shader" uid="uid://dn521yloucwqc" path="res://combat/transition.gdshader" id="2_nfwd6"]
 [ext_resource type="Texture2D" uid="uid://py2u3rw43m37" path="res://combat/assets/transistion_1.png" id="3_ajnlu"]
 [ext_resource type="Texture2D" uid="uid://bdo6vka1dwfy4" path="res://combat/assets/Background.jpg" id="5_77608"]
 [ext_resource type="Script" uid="uid://dt5jcaofsgi4n" path="res://combat/transition.gd" id="5_igm7u"]
+[ext_resource type="PackedScene" uid="uid://fa7nmgjpv5l6" path="res://scenes/card_ui.tscn" id="6_igm7u"]
+[ext_resource type="Resource" uid="uid://dop1brqbdoh5o" path="res://cards/attack_scissors.tres" id="7_6k3sb"]
+[ext_resource type="Resource" uid="uid://csofjnrpt3fa8" path="res://cards/attack_rock.tres" id="8_e1th0"]
+[ext_resource type="Resource" uid="uid://brp7nucfo0vkj" path="res://cards/attack_paper.tres" id="9_2q5ba"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_77608"]
 shader = ExtResource("2_nfwd6")
@@ -27,6 +31,34 @@ offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("5_77608")
 expand_mode = 1
+
+[node name="BattleUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Hand" type="HBoxContainer" parent="BattleUI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -230.0
+offset_right = 300.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="CardUI1" parent="BattleUI/Hand" instance=ExtResource("6_igm7u")]
+layout_mode = 2
+card = ExtResource("7_6k3sb")
+
+[node name="CardUI2" parent="BattleUI/Hand" instance=ExtResource("6_igm7u")]
+layout_mode = 2
+card = ExtResource("8_e1th0")
+
+[node name="CardUI3" parent="BattleUI/Hand" instance=ExtResource("6_igm7u")]
+layout_mode = 2
+card = ExtResource("9_2q5ba")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -13,5 +13,3 @@ func _transition():
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS) #kad pauzes metu butu animacija
 	tween.tween_property(self, "material:shader_parameter/fill", 1, 1.0).set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(self, "material:shader_parameter/fill", -0.1, 1.0).set_delay(0.5).set_trans(Tween.TRANS_EXPO)
-	
-	pass

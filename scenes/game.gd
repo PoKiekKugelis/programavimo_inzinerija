@@ -10,7 +10,7 @@ extends Node2D
 #krc nezinau kas cia vyksta
 # skull emoji 💀
 func _ready() -> void:
-	connect_deck()#iškviečia, kad prijungtų on ready
+	connect_deck()#iškviečia, kad prijungtų on ready decką
 
 func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	var combat_scene: PackedScene = preload("res://combat/combat_screen.tscn")
@@ -32,7 +32,7 @@ func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	#kad on_victory and on_defeat tam tikrus dalykus padaryt
 	await get_tree().create_timer(5).timeout
 	combat_instance.free()
-	enemy.free()
+	#enemy.free()
 	get_tree().paused = false
 
 func connect_deck():

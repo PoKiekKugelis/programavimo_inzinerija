@@ -7,11 +7,13 @@ func _ready() -> void:
 	#viska pradeda daryt uz sekundes, nes pirma animacijos dalis trunka sekunde
 	await get_tree().create_timer(1).timeout
 	load_entities()
+	pass
 
 #panasu kad nebereikalingas metodas, bet gal prireiks ateity
 func load_entities():
 	player.visible = true
 	enemy.visible = true
+	$BattleUI.visible = true
 	set_transformations()
 	
 #padidina sprites ir padeda i pakankamai gera vieta
