@@ -143,6 +143,11 @@ visible = false
 
 [node name="PauseScreen" parent="PauseScreenView" instance=ExtResource("3_psmk7")]
 visible = false
+clip_children = 1
+z_index = 20
+y_sort_enabled = true
 
+[connection signal="in_combat_status_changed" from="." to="PauseScreenView/PauseScreen" method="_on_game_in_combat_status_changed"]
 [connection signal="enter_combat" from="Player" to="." method="_on_player_enter_combat"]
 [connection signal="body_entered" from="Finish" to="Player" method="_on_finish_body_entered"]
+[connection signal="quit_while_in_combat" from="PauseScreenView/PauseScreen" to="." method="_on_pause_screen_quit_while_in_combat"]
