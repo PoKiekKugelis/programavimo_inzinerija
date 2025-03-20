@@ -18,7 +18,7 @@ func _quit_to_menu():
 func _ready() -> void:
 	pass 
 
-func _input(event: InputEvent) -> void:
+func _input(event) -> void:
 	if(Input.is_action_just_pressed("ui_pause") and !get_tree().paused and !checkUI()):
 		_pause()
 	elif (Input.is_action_just_pressed("ui_unpause") and get_tree().paused and !checkUI()):

@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var deck_button: CardDeckOpen = %DeckButton
 @onready var deck_view: CardDeckView = $CardDeckView/DeckView
+@onready var camera: Camera2D = $Player/Camera2D
 
 #vietoj to kad pilnai pakeist scena, tiesiog instantiate naudojuj, nes change_scene
 #neissaugotu dabartines map state, tai todel tiesiog pauze padarau
@@ -33,6 +34,7 @@ func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	await get_tree().create_timer(5).timeout
 	combat_instance.free()
 	#enemy.free()
+	$Player/Camera2D.make_current()
 	get_tree().paused = false
 
 func connect_deck():

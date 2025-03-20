@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
-[ext_resource type="Script" uid="uid://cao01gpotabl2" path="res://scenes/game.gd" id="1_kvpfn"]
+[ext_resource type="Script" uid="uid://cao01gpotabl2" path="res://scripts/game.gd" id="1_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://ccrgslptfvujl" path="res://scenes/player.tscn" id="2_dspdp"]
 [ext_resource type="PackedScene" uid="uid://bsdelvdiesf0o" path="res://scenes/inventory_item.tscn" id="3_b0nof"]
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/pause_screen.tscn" id="3_psmk7"]
@@ -32,6 +32,53 @@ layer_1/tile_data = PackedInt32Array(262136, 196608, 1, 262137, 262144, 2, 26213
 [node name="Player" parent="." instance=ExtResource("2_dspdp")]
 position = Vector2(-86, -89)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2.5, 2.5)
+
+[node name="HealthBar" parent="Player" node_paths=PackedStringArray("character") instance=ExtResource("8_khsen")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -217.0
+offset_top = -107.0
+offset_right = -122.0
+offset_bottom = -94.0
+grow_horizontal = 1
+grow_vertical = 1
+character = NodePath("..")
+
+[node name="StaminaBar" parent="Player" node_paths=PackedStringArray("character") instance=ExtResource("10_rq0lr")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -217.0
+offset_top = -92.0
+offset_right = -122.0
+offset_bottom = -79.0
+grow_horizontal = 1
+grow_vertical = 1
+character = NodePath("..")
+
+[node name="DeckButton" parent="Player" node_paths=PackedStringArray("counter") instance=ExtResource("14_ir15t")]
+unique_name_in_owner = true
+offset_left = 181.0
+offset_top = -123.0
+offset_right = 231.0
+offset_bottom = -23.0
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("15_ca42v")
+counter = NodePath("Counter")
+
+[node name="Counter" type="Label" parent="Player/DeckButton"]
+layout_mode = 0
+offset_left = -14.2857
+offset_top = 55.7143
+offset_right = 25.7143
+offset_bottom = 88.7143
+theme_override_font_sizes/font_size = 32
+text = "99"
+metadata/_edit_use_anchors_ = true
+
 [node name="Inventory_Item" parent="." instance=ExtResource("3_b0nof")]
 position = Vector2(-146, 11)
 item_type = "test type"
@@ -56,32 +103,6 @@ scale = Vector2(2, 2)
 [node name="SpikeEnemy" parent="." instance=ExtResource("9_k0taf")]
 position = Vector2(-17, 25)
 
-[node name="HealthBar" parent="." node_paths=PackedStringArray("character") instance=ExtResource("8_khsen")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -329.0
-offset_top = -185.0
-offset_right = -234.0
-offset_bottom = -172.0
-grow_horizontal = 1
-grow_vertical = 1
-character = NodePath("../Player")
-metadata/_edit_use_anchors_ = true
-
-[node name="StaminaBar" parent="." node_paths=PackedStringArray("character") instance=ExtResource("10_rq0lr")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -329.0
-offset_top = -170.0
-offset_right = -234.0
-offset_bottom = -157.0
-grow_horizontal = 1
-grow_vertical = 1
-character = NodePath("../Player")
-metadata/_edit_use_anchors_ = true
-
 [node name="Inventory_UI" type="CanvasLayer" parent="." groups=["UnpausableUserInterfaces"]]
 process_mode = 3
 visible = false
@@ -95,7 +116,6 @@ anchor_bottom = 0.885802
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0705882, 0.203922, 0.337255, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Inventory_UI/ColorRect"]
 layout_mode = 1
@@ -114,34 +134,14 @@ text = "Inventory"
 [node name="Inventory_UI" parent="Inventory_UI/ColorRect" instance=ExtResource("13_trtic")]
 layout_mode = 1
 
-[node name="DeckButton" parent="." node_paths=PackedStringArray("counter") instance=ExtResource("14_ir15t")]
-unique_name_in_owner = true
-offset_left = 279.0
-offset_top = -191.0
-offset_right = 329.0
-offset_bottom = -91.0
-grow_vertical = 2
-scale = Vector2(0.7, 0.7)
-theme = ExtResource("15_ca42v")
-counter = NodePath("Counter")
-metadata/_edit_use_anchors_ = true
-
-[node name="Counter" type="Label" parent="DeckButton"]
-layout_mode = 0
-offset_left = -14.2857
-offset_top = 55.7143
-offset_right = 25.7143
-offset_bottom = 88.7143
-theme_override_font_sizes/font_size = 32
-text = "99"
-metadata/_edit_use_anchors_ = true
-
 [node name="CardDeckView" type="CanvasLayer" parent="."]
 
 [node name="DeckView" parent="CardDeckView" instance=ExtResource("16_ca42v")]
 visible = false
 
-[node name="PauseScreen" parent="." instance=ExtResource("3_psmk7")]
+[node name="PauseScreenView" type="CanvasLayer" parent="."]
+
+[node name="PauseScreen" parent="PauseScreenView" instance=ExtResource("3_psmk7")]
 visible = false
 
 [connection signal="enter_combat" from="Player" to="." method="_on_player_enter_combat"]

@@ -14,7 +14,7 @@ signal enter_combat(enemy: CharacterBody2D)
 
 
 func _ready() -> void:
-	Inventory.set_player_reference(self)#set this node as player node also no delete pls
+	Inventory.set_player_reference(self)#set this node as player node so inventory knows
 
 #deals knockback to the player when hit
 func _on_hurt_box_received_damage(damage: int) -> void:

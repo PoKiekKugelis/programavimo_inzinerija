@@ -7,8 +7,8 @@ extends Control
 func _ready() -> void:
 	#viska pradeda daryt uz sekundes, nes pirma animacijos dalis trunka sekunde
 	await get_tree().create_timer(1).timeout
+	$Camera2D.make_current()
 	load_entities()
-	pass
 
 #panasu kad nebereikalingas metodas, bet gal prireiks ateity
 func load_entities():
