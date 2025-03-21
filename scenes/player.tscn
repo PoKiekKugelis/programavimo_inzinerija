@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dmfk2y87ehpk0" path="res://scripts/Player.gd" id="1_sse7a"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="2_lenpy"]
-[ext_resource type="Script" uid="uid://baey53v5y4f0i" path="res://scripts/stamina.gd" id="3_xxutp"]
-[ext_resource type="Script" uid="uid://64yhhvlf0imb" path="res://scripts/hitbox.gd" id="5_cmeds"]
-[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="6_lsjhy"]
-[ext_resource type="Script" uid="uid://drbwco1n34ge" path="res://scripts/health.gd" id="7_dmkbe"]
+[ext_resource type="Script" uid="uid://blpiq2qfwwrbl" path="res://scripts/stamina.gd" id="3_xxutp"]
+[ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="5_cmeds"]
+[ext_resource type="Script" uid="uid://b25ntns06y3kc" path="res://scripts/hurtbox.gd" id="6_lsjhy"]
+[ext_resource type="Script" uid="uid://ct28a5ovxts7" path="res://scripts/health.gd" id="7_dmkbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceyrs"]
 size = Vector2(39, 38.5)
