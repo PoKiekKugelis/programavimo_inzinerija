@@ -14,22 +14,24 @@ signal enter_combat(enemy: CharacterBody2D)
 
 
 func _ready() -> void:
-	Inventory.set_player_reference(self)#set this node as player node also no delete pls
+	Inventory.set_player_reference(self)#set this node as player node so inventory knows
 
 #deals knockback to the player when hit
 func _on_hurt_box_received_damage(damage: int) -> void:
-	CAN_MOVE = false
-	if velocity.x == 0:
-		var LorR = [-1,1]
-		LorR.shuffle()
-		velocity.x = 800 * LorR.front()
-	elif velocity.x < 0:
-		velocity.x = 600
-	else:
-		velocity.x = -600
-	velocity.y = -200
-	
-	movement_timer.start()
+	#Jeigu nepadare 0 damage, reiskia enemy, reiskia nereikia knockback
+	#Veliau galbut items duos trap immunnity, tai turbut reikes pakeist
+	if damage > 0:
+		CAN_MOVE = false
+		if velocity.x == 0:
+			var LorR = [-1,1]
+			LorR.shuffle()
+			velocity.x = 800 * LorR.front()
+		elif velocity.x < 0:
+			velocity.x = 600
+		else:
+			velocity.x = -600
+		velocity.y = -200	
+		movement_timer.start()
 
 #tunrs back on the movement
 func _on_movement_timer_timeout() -> void:

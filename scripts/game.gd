@@ -2,6 +2,12 @@ extends Node2D
 
 @onready var deck_button: CardDeckOpen = %DeckButton
 @onready var deck_view: CardDeckView = $CardDeckView/DeckView
+@onready var camera: Camera2D = $Player/Camera2D
+
+#naudojamas pause screen, kad neisjungtu pauzes esant in combat
+signal in_combat_status_changed()
+
+@export var instance = null
 
 #vietoj to kad pilnai pakeist scena, tiesiog instantiate naudojuj, nes change_scene
 #neissaugotu dabartines map state, tai todel tiesiog pauze padarau
@@ -13,6 +19,15 @@ func _ready() -> void:
 	connect_deck()#iškviečia, kad prijungtų on ready decką
 
 func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
+	emit_signal("in_combat_status_changed")
+	$PauseScreenView/PauseScreen.z_index = 10
+	#pauze dabar bus virs combat scenos (tik vizualiai, migtukus galima su keyboard valdyt)
+	#taciau siuo metu kai pauze ijungta combat vistiek gali bagitis (kas ir ivyksta po 5 sekundziu) 
+	#ir tai isjungia pauze esant pauzes scenai aktyviai,
+	#cia nedidele problema, nes tikro zaidimo metu, kova nelabai gales 
+	#baigtis esant pauzej, nebent ijungi pauze viduri final hit atakos animacijos, tada turbut reiketu
+	#patikrint ar pauze ijungta ir priklausomai isjungti tree pauze
+	#arba tiesiog padaryt, kad combat reward popup langas pratestu pauze (vyktu pauzes metu)
 	var combat_scene: PackedScene = preload("res://combat/combat_screen.tscn")
 	var combat_instance = combat_scene.instantiate()
 	var player = $Player/Sprite2D.duplicate()
@@ -25,6 +40,7 @@ func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	combat_instance.player.visible = false
 	combat_instance.enemy = enemySprite
 	combat_instance.enemy.visible = true 
+	instance = combat_instance
 	get_tree().paused = true
 	get_tree().root.add_child(combat_instance)
 	#dabar po penkiu sekundziu tiesiog panaikinu combat scena ir priesa ir atminties
@@ -32,11 +48,16 @@ func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	#kad on_victory and on_defeat tam tikrus dalykus padaryt
 	await get_tree().create_timer(5).timeout
 	combat_instance.free()
-	#enemy.free()
+	$Player/Camera2D.make_current()
 	get_tree().paused = false
+	emit_signal("in_combat_status_changed")
 
 func connect_deck():
 	deck_button.card_deck = preload("res://cards/starting_deck.tres")#prijungia pradinę kaladę, kad žinotu kiek kortų turi
 	deck_view.card_deck = preload("res://cards/starting_deck.tres")#prijungia kaladę, kad žinotų, kokias kortas rodyti
 	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))#prijungia kaip mygtuką, bet reikės
 	#pridėti, kad hover pakeistų spalvą truputį ar kažką, kad aiškiau būtų
+
+func _on_pause_screen_quit_while_in_combat() -> void:
+	instance.free()
+	get_tree().paused = false

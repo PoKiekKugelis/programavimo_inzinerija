@@ -70,5 +70,4 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetect"]
 position = Vector2(70.2857, 138.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5x102")

@@ -51,14 +51,6 @@ shape = SubResource("RectangleShape2D_yoc62")
 [node name="MovementTimer" type="Timer" parent="."]
 wait_time = 0.1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
-limit_left = 0
-limit_top = 0
-limit_right = 688
-limit_bottom = 336
-position_smoothing_enabled = true
-
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="enemy_touched" from="HurtBox" to="." method="_on_hurt_box_enemy_touched"]
 [connection signal="received_damage" from="HurtBox" to="." method="_on_hurt_box_received_damage"]

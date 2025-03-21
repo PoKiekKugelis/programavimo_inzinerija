@@ -68,3 +68,6 @@ offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("3_ajnlu")
 script = ExtResource("5_igm7u")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(576, 324)

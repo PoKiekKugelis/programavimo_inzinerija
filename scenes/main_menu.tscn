@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://cvfspdpp6bvr5"]
+[gd_scene load_steps=7 format=4 uid="uid://cvfspdpp6bvr5"]
 
 [ext_resource type="Script" uid="uid://26ospjdedkr5" path="res://scripts/main_menu.gd" id="1_kai7x"]
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="2_stco2"]
+[ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="3_bqqt6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c1yts"]
 light_mode = 1
@@ -34,35 +35,41 @@ color = Color(0.859332, 0.685999, 1.54018e-06, 1)
 [node name="Title" type="Label" parent="."]
 material = SubResource("CanvasItemMaterial_c1yts")
 layout_mode = 0
-offset_left = 436.0
-offset_top = 28.0
-offset_right = 742.0
-offset_bottom = 152.0
+offset_left = 384.0
+offset_top = 40.0
+offset_right = 768.0
+offset_bottom = 176.0
 theme_override_font_sizes/font_size = 90
 text = "GremEx"
 horizontal_alignment = 1
 vertical_alignment = 1
-justification_flags = 227
+justification_flags = 99
 
 [node name="ButtonContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 227.0
-offset_right = 704.0
-offset_bottom = 293.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -116.5
+offset_right = 73.0
+offset_bottom = -28.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Start" type="Button" parent="ButtonContainer"]
 material = SubResource("CanvasItemMaterial_wuyya")
 layout_mode = 2
-size_flags_horizontal = 4
+theme = ExtResource("3_bqqt6")
 text = "Start Game"
 
 [node name="Quit" type="Button" parent="ButtonContainer"]
 light_mask = 2
 material = SubResource("CanvasItemMaterial_6lnei")
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+theme = ExtResource("3_bqqt6")
 text = "Quit"
 
 [connection signal="pressed" from="ButtonContainer/Start" to="." method="_on_start_pressed"]

@@ -25,7 +25,8 @@ func clear_grid_container():#Clears the grid so the game starts with it empty
 		child.queue_free()
 
 func _input(event):#inventory UI opens by pressing "I"
-	if event.is_action_pressed("ui_inventory"):
+	#Buvau vel grazines konfliktavima su pause_screen, tai pridejau 2 papildomus checks
+	if event.is_action_pressed("ui_inventory") and (!get_tree().paused or inventory_ui.visible):
 		inventory_ui.visible = !inventory_ui.visible
 		get_tree().paused = !get_tree().paused
 	if event.is_action_pressed("ui_cancel") and inventory_ui.visible:
