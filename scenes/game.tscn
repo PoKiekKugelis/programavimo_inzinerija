@@ -47,6 +47,7 @@ offset_bottom = -94.0
 grow_horizontal = 1
 grow_vertical = 1
 character = NodePath("..")
+metadata/_edit_use_anchors_ = true
 
 [node name="StaminaBar" parent="Player" node_paths=PackedStringArray("character") instance=ExtResource("10_rq0lr")]
 anchors_preset = 0
@@ -59,6 +60,7 @@ offset_bottom = -79.0
 grow_horizontal = 1
 grow_vertical = 1
 character = NodePath("..")
+metadata/_edit_use_anchors_ = true
 
 [node name="DeckButton" parent="Player" node_paths=PackedStringArray("counter") instance=ExtResource("14_ir15t")]
 unique_name_in_owner = true
@@ -69,6 +71,7 @@ offset_bottom = -23.0
 scale = Vector2(0.7, 0.7)
 theme = ExtResource("15_ca42v")
 counter = NodePath("Counter")
+metadata/_edit_use_anchors_ = true
 
 [node name="Counter" type="Label" parent="Player/DeckButton"]
 layout_mode = 0
@@ -103,7 +106,7 @@ position = Vector2(84, -4)
 scale = Vector2(2, 2)
 
 [node name="SpikeEnemy" parent="." instance=ExtResource("9_k0taf")]
-position = Vector2(-4, 24)
+position = Vector2(-15, 26)
 
 [node name="Inventory_UI" type="CanvasLayer" parent="." groups=["UnpausableUserInterfaces"]]
 process_mode = 3
