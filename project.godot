@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Inventory="*res://scripts/inventory.gd"
+SaveFiles="*res://saves/save_files.gd"
+SaveSystem="*res://saves/save_system.gd"
 
 [dotnet]
 
@@ -30,7 +32,8 @@ enabled=PackedStringArray()
 [file_customization]
 
 folder_colors={
-"res://combat/": "red"
+"res://combat/": "red",
+"res://saves/": "yellow"
 }
 
 [global_group]

@@ -8,7 +8,6 @@ extends Node2D
 signal in_combat_status_changed()
 
 @export var instance = null
-
 #vietoj to kad pilnai pakeist scena, tiesiog instantiate naudojuj, nes change_scene
 #neissaugotu dabartines map state, tai todel tiesiog pauze padarau
 #(teoriskai turbut butu galima combat scena kaip child pridet, bet idk, kolkas veikia)
@@ -16,8 +15,17 @@ signal in_combat_status_changed()
 #krc nezinau kas cia vyksta
 # skull emoji 💀
 func _ready() -> void:
+	load_data()
 	connect_deck()#iškviečia, kad prijungtų on ready decką
 
+#idk su _ready tik 1 pirma karta suveikia
+func _enter_tree() -> void:
+	load_data()
+
+#tikisuo sita 1 eilute yra visiem suprantama
+func load_data():
+	get_child(1).get_child(0).health = SaveSystem.load_game().get("Health", get_child(1).get_child(0).max_health)
+	
 func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	emit_signal("in_combat_status_changed")
 	$PauseScreenView/PauseScreen.z_index = 10

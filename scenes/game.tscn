@@ -145,6 +145,7 @@ layout_mode = 1
 visible = false
 
 [node name="PauseScreenView" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="PauseScreen" parent="PauseScreenView" instance=ExtResource("3_psmk7")]
 visible = false
