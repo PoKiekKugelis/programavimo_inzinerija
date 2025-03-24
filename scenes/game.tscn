@@ -106,7 +106,7 @@ position = Vector2(84, -4)
 scale = Vector2(2, 2)
 
 [node name="SpikeEnemy" parent="." instance=ExtResource("9_k0taf")]
-position = Vector2(-15, 41)
+position = Vector2(-15, 31)
 
 [node name="Inventory_UI" type="CanvasLayer" parent="." groups=["UnpausableUserInterfaces"]]
 process_mode = 3
