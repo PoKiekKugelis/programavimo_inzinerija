@@ -1,10 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://b18lmeyce53di"]
+[gd_scene load_steps=21 format=3 uid="uid://b18lmeyce53di"]
 
+[ext_resource type="Texture2D" uid="uid://b2ikfhtbpx04w" path="res://assets/sprites/version A/Layers/parallax-demon-woods-far-trees.png" id="1_14jow"]
+[ext_resource type="Script" uid="uid://cxfn3gy46q7mc" path="res://scripts/level_1.gd" id="1_mvsps"]
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ru4tf"]
 [ext_resource type="PackedScene" uid="uid://bhod10c0fj1bp" path="res://scenes/finish.tscn" id="2_6sh32"]
+[ext_resource type="Texture2D" uid="uid://b80fq4us4006d" path="res://assets/sprites/version A/Layers/parallax-demon-woods-mid-trees.png" id="3_3w4mx"]
 [ext_resource type="PackedScene" uid="uid://dcdwepyn36yoq" path="res://scenes/level_complete.tscn" id="3_dxn3v"]
 [ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://scenes/enemy.tscn" id="3_ejswk"]
 [ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/spike.tscn" id="4_bbk5w"]
+[ext_resource type="Texture2D" uid="uid://ce1f3ikpaavfk" path="res://assets/sprites/version A/Layers/parallax-demon-woods-close-trees.png" id="4_u068y"]
 [ext_resource type="PackedScene" uid="uid://ccrgslptfvujl" path="res://scenes/player.tscn" id="5_ru4tf"]
 [ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/health_bar.tscn" id="6_i8kv5"]
 [ext_resource type="PackedScene" uid="uid://v37iwosey6gf" path="res://scenes/stamina_bar.tscn" id="7_dxn3v"]
@@ -18,6 +22,27 @@
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/pause_screen.tscn" id="15_phfsf"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_mvsps")
+
+[node name="Background" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0)
+repeat_size = Vector2(500, 0)
+repeat_times = 3
+
+[node name="Far" type="Sprite2D" parent="Background"]
+position = Vector2(500, 190)
+texture = ExtResource("1_14jow")
+centered = false
+
+[node name="Mid" type="Sprite2D" parent="Background"]
+position = Vector2(500, 190)
+texture = ExtResource("3_3w4mx")
+centered = false
+
+[node name="Close" type="Sprite2D" parent="Background"]
+position = Vector2(500, 190)
+texture = ExtResource("4_u068y")
+centered = false
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_ru4tf")
@@ -47,7 +72,7 @@ position = Vector2(824, 127)
 position = Vector2(28, 133)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(1, -4)
+position = Vector2(0, -30)
 zoom = Vector2(2.5, 2.5)
 
 [node name="HealthBar" parent="Player" node_paths=PackedStringArray("character") instance=ExtResource("6_i8kv5")]
@@ -55,9 +80,9 @@ anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = -217.0
-offset_top = -107.0
+offset_top = -132.0
 offset_right = -122.0
-offset_bottom = -94.0
+offset_bottom = -119.0
 grow_horizontal = 1
 grow_vertical = 1
 character = NodePath("..")
@@ -68,9 +93,9 @@ anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = -217.0
-offset_top = -92.0
+offset_top = -117.0
 offset_right = -122.0
-offset_bottom = -79.0
+offset_bottom = -104.0
 grow_horizontal = 1
 grow_vertical = 1
 character = NodePath("..")
