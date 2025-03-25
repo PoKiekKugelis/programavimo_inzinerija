@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu2vdqgi3rdj3"]
+[gd_scene load_steps=17 format=3 uid="uid://bu2vdqgi3rdj3"]
 
 [ext_resource type="Script" uid="uid://dw7any0ncdcql" path="res://combat/combat_screen.gd" id="1_4dh1p"]
 [ext_resource type="Shader" uid="uid://dn521yloucwqc" path="res://combat/transition.gdshader" id="2_nfwd6"]
@@ -7,8 +7,14 @@
 [ext_resource type="Script" uid="uid://dt5jcaofsgi4n" path="res://combat/transition.gd" id="5_igm7u"]
 [ext_resource type="PackedScene" uid="uid://fa7nmgjpv5l6" path="res://scenes/card_ui.tscn" id="6_igm7u"]
 [ext_resource type="Resource" uid="uid://dop1brqbdoh5o" path="res://cards/attack_scissors.tres" id="7_6k3sb"]
+[ext_resource type="Script" uid="uid://badv18ilm0wy5" path="res://combat/damage_button_1.gd" id="7_gpw7s"]
 [ext_resource type="Resource" uid="uid://csofjnrpt3fa8" path="res://cards/attack_rock.tres" id="8_e1th0"]
+[ext_resource type="Script" uid="uid://lbjgnn6pa3sm" path="res://combat/heal_button.gd" id="8_m5f5v"]
 [ext_resource type="Resource" uid="uid://brp7nucfo0vkj" path="res://cards/attack_paper.tres" id="9_2q5ba"]
+[ext_resource type="Script" uid="uid://1pwfq2ubqg3q" path="res://combat/damage_button_2.gd" id="9_ykk7u"]
+[ext_resource type="Script" uid="uid://eaq6dcmsf2pp" path="res://combat/action_tooltip.gd" id="10_lnpg4"]
+[ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/health_bar.tscn" id="11_frkk8"]
+[ext_resource type="Script" uid="uid://c118vejxqqnw2" path="res://scripts/enemy_health_bar.gd" id="12_ay8fu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_77608"]
 shader = ExtResource("2_nfwd6")
@@ -25,7 +31,6 @@ grow_vertical = 2
 script = ExtResource("1_4dh1p")
 
 [node name="Background" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -33,7 +38,6 @@ texture = ExtResource("5_77608")
 expand_mode = 1
 
 [node name="BattleUI" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
@@ -60,6 +64,74 @@ card = ExtResource("8_e1th0")
 layout_mode = 2
 card = ExtResource("9_2q5ba")
 
+[node name="ActionText" type="Label" parent="BattleUI"]
+offset_left = 307.0
+offset_top = 78.0
+offset_right = 846.0
+offset_bottom = 248.0
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionTooltip" type="Label" parent="BattleUI"]
+offset_left = 363.0
+offset_top = 403.0
+offset_right = 798.0
+offset_bottom = 474.0
+script = ExtResource("10_lnpg4")
+
+[node name="TurnIndicator" type="Label" parent="BattleUI"]
+offset_left = 86.0
+offset_top = 571.0
+offset_right = 365.0
+offset_bottom = 660.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerHealth" parent="BattleUI" instance=ExtResource("11_frkk8")]
+offset_left = 10.0
+offset_top = 14.0
+offset_right = 10.0
+offset_bottom = 14.0
+scale = Vector2(2, 2)
+
+[node name="EnemyHealth" parent="BattleUI" instance=ExtResource("11_frkk8")]
+offset_left = 949.0
+offset_top = 14.0
+offset_right = 949.0
+offset_bottom = 14.0
+scale = Vector2(2, 2)
+script = ExtResource("12_ay8fu")
+
+[node name="DamageButton1" type="Button" parent="BattleUI"]
+offset_left = 374.0
+offset_top = 470.0
+offset_right = 491.0
+offset_bottom = 643.0
+script = ExtResource("7_gpw7s")
+
+[node name="DamageButton2" type="Button" parent="BattleUI"]
+offset_left = 663.0
+offset_top = 471.0
+offset_right = 779.0
+offset_bottom = 645.0
+script = ExtResource("9_ykk7u")
+
+[node name="HealButton" type="Button" parent="BattleUI"]
+offset_left = 516.0
+offset_top = 470.0
+offset_right = 641.0
+offset_bottom = 645.0
+script = ExtResource("8_m5f5v")
+
+[node name="EndTurnButton" type="Button" parent="BattleUI"]
+offset_left = 1.0
+offset_top = 573.0
+offset_right = 81.0
+offset_bottom = 648.0
+text = "End turn"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Transition" type="TextureRect" parent="CanvasLayer"]
@@ -71,3 +143,7 @@ script = ExtResource("5_igm7u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
+
+[connection signal="pressed" from="BattleUI/DamageButton1" to="BattleUI/DamageButton1" method="_on_pressed"]
+[connection signal="pressed" from="BattleUI/DamageButton2" to="BattleUI/DamageButton2" method="_on_pressed"]
+[connection signal="pressed" from="BattleUI/HealButton" to="BattleUI/HealButton" method="_on_pressed"]

@@ -5,6 +5,7 @@ class_name TestEnemy
 const speed = 20 # movement speed
 var is_enemy_chase: bool = false  # for later inplementation
 # probably wont need this but ok
+@onready var health: Health = $Health
 
 var dead: bool = false #For later inplementation
 var taking_damage: bool = false #For later inplementation
@@ -18,6 +19,7 @@ var is_roaming: bool = true #if true then moves around randomly. if false curren
 
 func _ready() -> void:
 	add_to_group("enemy")
+	health = $Health
 	
 func _process(delta):
 	if !is_on_floor(): #check is enemy is in the air
