@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://b18lmeyce53di"]
+[gd_scene load_steps=22 format=3 uid="uid://b18lmeyce53di"]
 
 [ext_resource type="Texture2D" uid="uid://b2ikfhtbpx04w" path="res://assets/sprites/version A/Layers/parallax-demon-woods-far-trees.png" id="1_14jow"]
 [ext_resource type="Script" uid="uid://cxfn3gy46q7mc" path="res://scripts/level_1.gd" id="1_mvsps"]
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ru4tf"]
 [ext_resource type="PackedScene" uid="uid://bhod10c0fj1bp" path="res://scenes/finish.tscn" id="2_6sh32"]
+[ext_resource type="Texture2D" uid="uid://cohccgn3wymj7" path="res://assets/sprites/version A/Layers/parallax-demon-woods-bg.png" id="2_u068y"]
 [ext_resource type="Texture2D" uid="uid://b80fq4us4006d" path="res://assets/sprites/version A/Layers/parallax-demon-woods-mid-trees.png" id="3_3w4mx"]
 [ext_resource type="PackedScene" uid="uid://dcdwepyn36yoq" path="res://scenes/level_complete.tscn" id="3_dxn3v"]
 [ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://scenes/enemy.tscn" id="3_ejswk"]
@@ -24,22 +25,39 @@
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_mvsps")
 
-[node name="Background" type="Parallax2D" parent="."]
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ForestDeeper" type="Parallax2D" parent="Background"]
 scroll_scale = Vector2(0.2, 0)
-repeat_size = Vector2(500, 0)
+repeat_size = Vector2(480, 0)
 repeat_times = 3
 
-[node name="Far" type="Sprite2D" parent="Background"]
+[node name="Far2" type="Sprite2D" parent="Background/ForestDeeper"]
+position = Vector2(500, 190)
+texture = ExtResource("2_u068y")
+centered = false
+
+[node name="Far" type="Sprite2D" parent="Background/ForestDeeper"]
 position = Vector2(500, 190)
 texture = ExtResource("1_14jow")
 centered = false
 
-[node name="Mid" type="Sprite2D" parent="Background"]
+[node name="Mid" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.4, 0)
+repeat_size = Vector2(500, 0)
+repeat_times = 3
+
+[node name="Mid" type="Sprite2D" parent="Background/Mid"]
 position = Vector2(500, 190)
 texture = ExtResource("3_3w4mx")
 centered = false
 
-[node name="Close" type="Sprite2D" parent="Background"]
+[node name="Close" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.5, 0)
+repeat_size = Vector2(500, 0)
+repeat_times = 3
+
+[node name="Close" type="Sprite2D" parent="Background/Close"]
 position = Vector2(500, 190)
 texture = ExtResource("4_u068y")
 centered = false
