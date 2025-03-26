@@ -164,7 +164,7 @@ func start_enemy_turn():
 	end_turn_button.disabled = true
 	turn_indicator.text = "ENEMY'S TURN"
 	turn_indicator.modulate = Color.RED
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	
 	# enemy performs 2 random actions
 	if choice == 0:
@@ -178,7 +178,7 @@ func start_enemy_turn():
 		enemy_health.set_health(min(enemy_health.health + 2, enemy_health.max_health))
 		show_action_text("Enemy healed 2 HP!", Color.GREEN)
 		
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(0.5).timeout
 	
 	# return to player's turn
 	start_player_turn()

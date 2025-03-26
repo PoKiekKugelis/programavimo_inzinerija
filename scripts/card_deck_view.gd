@@ -9,9 +9,11 @@ const CARD_MENU_UI_SCENE := preload("res://scenes/card_menu_ui.tscn")
 @onready var cards: GridContainer = %Cards
 @onready var back_button: Button = $BackButton
 @onready var card_tooltip_popup: CardToolPopup = %CardTooltipPopup
+@onready var card_deck_view: CardDeckView = $"."
 
 func _ready() -> void:
-	back_button.pressed.connect(hide)
+	back_button.pressed.connect(
+		func(): get_tree().paused = !get_tree().paused; hide())#Adomo inspired, geras kodas, man patinka. įvykdo funkciją
 	
 	for card: Node in cards.get_children():
 		card.queue_free()
@@ -21,7 +23,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if card_tooltip_popup.visible:
 			card_tooltip_popup.hide_tooltip()
-		else:
+		elif card_deck_view.visible:
+			get_tree().paused = false
 			hide()
 		
 func show_current_view(new_title: String, randomized: bool = false) -> void:
@@ -44,3 +47,4 @@ func _update_view(randomized: bool) -> void:
 		new_card.card = card
 		new_card.tooltip_requested.connect(card_tooltip_popup.show_tooltip)
 	show()
+	get_tree().paused = !get_tree().paused
