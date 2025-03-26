@@ -45,7 +45,7 @@ func _ready() -> void:
 	$BattleUI/EnemyHealth.setup_health_bar(enemy_health)
 	
 	# initial delay for combat start
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.5).timeout
 	$Camera2D.make_current()
 	
 	# prepare entities for combat
@@ -170,12 +170,12 @@ func start_enemy_turn():
 	if choice == 0:
 		# deal damage
 		var player_health = GlobalHealth.get_health_instance()
-		player_health.set_health(player_health.health - 1)
+		player_health.set_health(player_health.health - 2)
 		show_action_text("Enemy dealt 2 damage!", Color.RED)
 	elif choice == 1:
 		# heal self
 		var enemy_health = enemy.get_node("Health")
-		enemy_health.set_health(min(enemy_health.health + 1, enemy_health.max_health))
+		enemy_health.set_health(min(enemy_health.health + 2, enemy_health.max_health))
 		show_action_text("Enemy healed 2 HP!", Color.GREEN)
 		
 		await get_tree().create_timer(2.0).timeout

@@ -32,6 +32,7 @@ grow_vertical = 2
 script = ExtResource("1_4dh1p")
 
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -39,6 +40,7 @@ texture = ExtResource("5_77608")
 expand_mode = 1
 
 [node name="BattleUI" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
@@ -133,15 +135,6 @@ offset_right = 81.0
 offset_bottom = 648.0
 text = "End turn"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Transition" type="TextureRect" parent="CanvasLayer"]
-material = SubResource("ShaderMaterial_77608")
-offset_right = 1152.0
-offset_bottom = 648.0
-texture = ExtResource("3_ajnlu")
-script = ExtResource("5_igm7u")
-
 [node name="Choice" type="Label" parent="."]
 visible = false
 layout_mode = 0
@@ -152,6 +145,15 @@ offset_bottom = 488.0
 theme = ExtResource("16_m5f5v")
 theme_override_font_sizes/font_size = 50
 text = "test"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Transition" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_77608")
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_ajnlu")
+script = ExtResource("5_igm7u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
