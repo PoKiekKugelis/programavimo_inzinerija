@@ -93,7 +93,7 @@ position = Vector2(28, 133)
 position = Vector2(0, -30)
 zoom = Vector2(2.5, 2.5)
 
-[node name="HealthBar" parent="Player" node_paths=PackedStringArray("character") instance=ExtResource("6_i8kv5")]
+[node name="HealthBar" parent="Player" instance=ExtResource("6_i8kv5")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -103,7 +103,6 @@ offset_right = -122.0
 offset_bottom = -119.0
 grow_horizontal = 1
 grow_vertical = 1
-character = NodePath("..")
 metadata/_edit_use_anchors_ = true
 
 [node name="StaminaBar" parent="Player" node_paths=PackedStringArray("character") instance=ExtResource("7_dxn3v")]

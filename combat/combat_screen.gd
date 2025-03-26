@@ -19,11 +19,15 @@ enum TurnState { PLAYER_TURN, ENEMY_TURN }
 # current turn state
 var current_turn: TurnState = TurnState.PLAYER_TURN
 
+@onready var choice: int = randi() % 2
+
 signal player_action_performed(message: String, color: Color)
 
 func _ready() -> void:
 	# initialize combat screen setup
 	add_to_group("combat_screen")
+	
+	await get_tree().create_timer(1).timeout
 	
 	# connect button actions to text display
 	$BattleUI/DamageButton1.pressed.connect(
@@ -91,6 +95,7 @@ func _ready() -> void:
 	
 	# start with player's turn
 	start_player_turn()
+	
 
 # shows tooltip text above button
 func _show_tooltip(text: String, button: Button):
@@ -143,6 +148,11 @@ func set_transformations():
 
 # starts player's turn
 func start_player_turn():
+	#choose enemy action, so player can plan his actions
+	choice = randi() % 2
+	display_action() #displays enemy's action
+	
+	
 	current_turn = TurnState.PLAYER_TURN
 	end_turn_button.disabled = false
 	turn_indicator.text = "PLAYER'S TURN"
@@ -157,24 +167,33 @@ func start_enemy_turn():
 	await get_tree().create_timer(3.0).timeout
 	
 	# enemy performs 2 random actions
-	for i in range(2):
-		var choice = randi() % 2
-		
-		if choice == 0:
-			# deal damage
-			var player_health = GlobalHealth.get_health_instance()
-			player_health.set_health(player_health.health - 1)
-			show_action_text("Enemy dealt 1 damage!", Color.RED)
-		elif choice == 1:
-			# heal self
-			var enemy_health = enemy.get_node("Health")
-			enemy_health.set_health(min(enemy_health.health + 1, enemy_health.max_health))
-			show_action_text("Enemy healed 1 HP!", Color.GREEN)
+	if choice == 0:
+		# deal damage
+		var player_health = GlobalHealth.get_health_instance()
+		player_health.set_health(player_health.health - 1)
+		show_action_text("Enemy dealt 2 damage!", Color.RED)
+	elif choice == 1:
+		# heal self
+		var enemy_health = enemy.get_node("Health")
+		enemy_health.set_health(min(enemy_health.health + 1, enemy_health.max_health))
+		show_action_text("Enemy healed 2 HP!", Color.GREEN)
 		
 		await get_tree().create_timer(2.0).timeout
 	
 	# return to player's turn
 	start_player_turn()
+
+func display_action():
+	$Choice.visible = true
+	if choice == 0:
+		# deal damage
+		$Choice.text = "Attack: 2 HP"
+		$Choice.add_theme_color_override("font_color", Color(1,0,0,1))
+	elif choice == 1:
+		# heal self
+		$Choice.text = "Heal: 2 HP"
+		$Choice.add_theme_color_override("font_color", Color(0,1,0,1))
+
 
 # end turn button handler
 func _on_end_turn_button_pressed() -> void:
