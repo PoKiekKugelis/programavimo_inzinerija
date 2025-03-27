@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://ct28a5ovxts7" path="res://scripts/health.gd" id="4_riqwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra7oa"]
-size = Vector2(36, 22)
+size = Vector2(18, 12.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkike"]
-size = Vector2(34, 21)
+size = Vector2(18, 15.5)
 
 [node name="spike enemy" type="CharacterBody2D"]
 
@@ -21,7 +21,7 @@ script = ExtResource("2_gmcir")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(0, -3)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ra7oa")
 
 [node name="HitBox" type="Area2D" parent="."]
@@ -30,7 +30,7 @@ collision_mask = 0
 script = ExtResource("3_o75mu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, -3)
+position = Vector2(0, -1.75)
 shape = SubResource("RectangleShape2D_ra7oa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -39,7 +39,7 @@ scale = Vector2(0.107143, 0.133475)
 texture = ExtResource("4_hl3n1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_fkike")
 
 [connection signal="health_depleted" from="Health" to="Health" method="_on_health_health_depleted"]

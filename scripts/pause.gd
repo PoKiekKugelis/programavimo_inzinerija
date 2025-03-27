@@ -14,7 +14,7 @@ func _resume():
 	$".".visible = false
 	#esant kovoj, pauzes neisjungs
 	if !in_combat:
-		get_tree().paused = false	
+		get_tree().paused = false
 	
 func _quit_to_menu():
 	_resume()
@@ -25,9 +25,9 @@ func _quit_to_menu():
 	
 func _input(event: InputEvent) -> void:
 	#vel sulauziau pause su inventory
-	if(Input.is_action_just_pressed("ui_pause") and (!get_tree().paused or (in_combat and !$".".visible))):
+	if(Input.is_action_just_pressed("ui_pause") and (!get_tree().paused or (in_combat and !$".".visible) and !checkUI())):
 		_pause()
-	elif (Input.is_action_just_pressed("ui_pause") and get_tree().paused):
+	elif (Input.is_action_just_pressed("ui_pause") and get_tree().paused and !checkUI()):
 		_resume()
 		
 	#Pauzes metu, kai fokusuojama ant Resume, dabar paspaudus "left" fokusavimas

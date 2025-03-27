@@ -17,6 +17,8 @@ signal in_combat_status_changed()
 func _ready() -> void:
 	load_data()
 	connect_deck()#iškviečia, kad prijungtų on ready decką
+	var health_node = $Player/Health
+	GlobalHealth.set_health_instance(health_node) # connect the health, so the visual of the health bar is full and goes down when taking damage
 
 #idk su _ready tik 1 pirma karta suveikia
 func _enter_tree() -> void:
@@ -27,6 +29,8 @@ func load_data():
 	get_child(1).get_child(0).health = SaveSystem.load_game().get("Health", get_child(1).get_child(0).max_health)
 	
 func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
+	
+	
 	emit_signal("in_combat_status_changed")
 	$PauseScreenView/PauseScreen.z_index = 10
 	#pauze dabar bus virs combat scenos (tik vizualiai, migtukus galima su keyboard valdyt)
@@ -39,14 +43,18 @@ func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	var combat_scene: PackedScene = preload("res://combat/combat_screen.tscn")
 	var combat_instance = combat_scene.instantiate()
 	var player = $Player/Sprite2D.duplicate()
-	var enemySprite = enemy.get_child(2).duplicate() #pasiemu animated sprite
+	#var enemySprite = enemy.get_child(2).duplicate() #pasiemu animated sprite
+	var combat_enemy = enemy.duplicate() # the whole enemy is taken instead of the sprite
+	#combat_enemy.position = Vector2(900, 500) # Manually place enemy in combat scene
+	combat_instance.enemy = combat_enemy
 	#veliau turbut reiketu pati enemy pasiimt, bet kad nuo map nenukristu padaryt
 	#kai bus imamas pats enemy, tai tada turbut reikes jo direction uzrakint ir uzdet idle animation
-	combat_instance.add_child(player)
-	combat_instance.add_child(enemySprite)
+	combat_instance.add_child(player) # add player character to combat
+	#combat_instance.add_child(enemySprite)
+	combat_instance.add_child(combat_enemy) # add enemy instance to combat (using duplicated version)
 	combat_instance.player = player
-	combat_instance.player.visible = false
-	combat_instance.enemy = enemySprite
+	combat_instance.player.visible = false # hide player sprite initially (may be revealed later)
+	#combat_instance.enemy = enemySprite
 	combat_instance.enemy.visible = true 
 	instance = combat_instance
 	get_tree().paused = true
@@ -54,11 +62,11 @@ func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	#dabar po penkiu sekundziu tiesiog panaikinu combat scena ir priesa ir atminties
 	#poto kai bus combat, tai speju su signalais bus galima kazkaip padaryt 
 	#kad on_victory and on_defeat tam tikrus dalykus padaryt
-	await get_tree().create_timer(5).timeout
-	combat_instance.free()
-	$Player/Camera2D.make_current()
-	get_tree().paused = false
-	emit_signal("in_combat_status_changed")
+	#await get_tree().create_timer(5).timeout
+	#combat_instance.free()
+	#$Player/Camera2D.make_current()
+	#get_tree().paused = false
+	#emit_signal("in_combat_status_changed")
 
 func connect_deck():
 	deck_button.card_deck = preload("res://cards/starting_deck.tres")#prijungia pradinę kaladę, kad žinotu kiek kortų turi
