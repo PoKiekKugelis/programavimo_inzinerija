@@ -26,7 +26,7 @@ func _enter_tree() -> void:
 
 #tikisuo sita 1 eilute yra visiem suprantama
 func load_data():
-	get_child(1).get_child(0).health = SaveSystem.load_game().get("Health", get_child(1).get_child(0).max_health)
+	get_child(2).get_child(0).health = SaveSystem.load_game().get("Health", get_child(2).get_child(0).max_health)
 	
 func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	

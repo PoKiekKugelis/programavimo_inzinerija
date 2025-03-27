@@ -23,6 +23,8 @@ func _on_area_entered(hitbox: HitBox) -> void:
 			enemy_touched.emit(hitbox.owner)
 			#pasibaigus pirmai transition animacijos daliai, nuzudo enemy is atminties
 			await get_tree().create_timer(1).timeout
-			hitbox.owner.free()
+			
+			##NEATKOMENTUOTI KOLKAS
+			#hitbox.owner.free()
 		
 	
