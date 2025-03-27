@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var save_path: String
 @onready var inventory_ui = $Inventory_UI
 @onready var stamina: Stamina = $Stamina
 @onready var movement_timer: Timer = $MovementTimer

@@ -1,6 +1,8 @@
 extends Control
 
-var target_scene = "res://scenes/game.tscn" #path of main game scene
+#var target_scene = "res://scenes/game.tscn" #path of main game scene
+var target_scene = "res://saves/load_screen.tscn" #path of load screen
+
 
 func _ready() -> void:
 	$ButtonContainer/Start.grab_focus()

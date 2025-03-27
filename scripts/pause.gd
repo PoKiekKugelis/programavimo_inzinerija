@@ -51,6 +51,5 @@ func _on_quit_menu_pressed() -> void:
 	
 func _on_quit_desktop_pressed() -> void:
 	get_tree().quit()
-	
 func _on_game_in_combat_status_changed() -> void:
 	in_combat = !in_combat
