@@ -6,6 +6,8 @@ extends Node2D
 func _ready() -> void:
 	$Player/Camera2D.make_current()
 	connect_deck()
+	var health_node = $Player/Health
+	GlobalHealth.set_health_instance(health_node) # connect the health, so the visual of the health bar is full and goes down when taking damage
 
 func connect_deck():
 	deck_button.card_deck = preload("res://cards/starting_deck.tres")#prijungia pradinę kaladę, kad žinotu kiek kortų turi

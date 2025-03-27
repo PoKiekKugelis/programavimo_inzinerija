@@ -18,7 +18,7 @@ signal in_combat_status_changed()
 func _ready() -> void:
 	connect_deck()#iškviečia, kad prijungtų on ready decką
 	var health_node = $Player/Health
-	GlobalHealth.set_health_instance(health_node)
+	GlobalHealth.set_health_instance(health_node) # connect the health, so the visual of the health bar is full and goes down when taking damage
 
 func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	
