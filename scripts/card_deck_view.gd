@@ -47,4 +47,4 @@ func _update_view(randomized: bool) -> void:
 		new_card.card = card
 		new_card.tooltip_requested.connect(card_tooltip_popup.show_tooltip)
 	show()
-	get_tree().paused = !get_tree().paused
+	get_tree().paused = true

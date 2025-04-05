@@ -1,5 +1,4 @@
 extends Resource
-
 class_name CardDeck
 
 signal card_deck_size_changed(cards_amount)

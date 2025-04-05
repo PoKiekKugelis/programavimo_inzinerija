@@ -79,10 +79,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mtvt"]
-size = Vector2(12, 21)
+size = Vector2(10, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gm37"]
-size = Vector2(12, 22)
+size = Vector2(10, 20)
 
 [node name="TestEnemy" type="CharacterBody2D"]
 script = ExtResource("1_6cc7r")
@@ -111,7 +111,6 @@ script = ExtResource("3_ec5fr")
 damage = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_5mtvt")
 
 [node name="HurtBox" type="Area2D" parent="."]

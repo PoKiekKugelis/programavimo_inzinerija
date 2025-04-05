@@ -6,11 +6,15 @@ enum TurnState { PLAYER_TURN, ENEMY_TURN }
 # exported references for easy assignment in editor
 @export var player: Sprite2D
 @export var enemy: CharacterBody2D
+@export var char_stats: CharStats
 
-# ui element references
+# element references
 @onready var end_turn_button = $BattleUI/EndTurnButton
 @onready var action_text = $BattleUI/ActionText
 @onready var turn_indicator = $BattleUI/TurnIndicator
+@onready var player_handler: PlayerHandler = $PlayerHandler as PlayerHandler
+@onready var battle_ui: BattleUI = $BattleUI as BattleUI
+#@onready var player_stats: Player = %Player
 
 # animation helpers
 @onready var text_tween = create_tween()
@@ -93,6 +97,16 @@ func _ready() -> void:
 	turn_indicator.add_theme_color_override("font_outline_color", Color.BLACK)
 	turn_indicator.add_theme_constant_override("outline_size", 4)
 	
+	#add character stats such as energy, how many cards to draw and etc
+	var new_stats: CharStats = char_stats.create_instance()
+	battle_ui.char_stats = new_stats
+	#player_stats.stats = new_stats
+	
+	Events.player_turn_ended.connect(player_handler.end_turn)
+	Events.player_hand_discarded.connect(player_handler.start_turn)
+	await get_tree().create_timer(1.5).timeout
+	player_handler.start_battle(new_stats)
+	battle_ui.initialize_card_deck_ui()
 	# start with player's turn
 	start_player_turn()
 	
@@ -151,7 +165,6 @@ func start_player_turn():
 	#choose enemy action, so player can plan his actions
 	choice = randi() % 2
 	display_action() #displays enemy's action
-	
 	
 	current_turn = TurnState.PLAYER_TURN
 	end_turn_button.disabled = false

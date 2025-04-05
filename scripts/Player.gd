@@ -1,10 +1,11 @@
 extends CharacterBody2D
+class_name Player
 
 @export var save_path: String
+@export var stats: CharStats : set = set_character_stats
 @onready var inventory_ui = $Inventory_UI
 @onready var stamina: Stamina = $Stamina
 @onready var movement_timer: Timer = $MovementTimer
-
 
 const RUNNING_SPEED = 160.0
 const SPEED = 80.0
@@ -13,9 +14,12 @@ var CAN_MOVE: bool = true
 
 signal enter_combat(enemy: CharacterBody2D)
 
-
 func _ready() -> void:
 	Inventory.set_player_reference(self)#set this node as player node so inventory knows
+
+#Nustato energiją, kortų kiekį ir t.t.
+func set_character_stats(value: CharStats) -> void:
+	stats = value
 
 #deals knockback to the player when hit
 func _on_hurt_box_received_damage(damage: int) -> void:

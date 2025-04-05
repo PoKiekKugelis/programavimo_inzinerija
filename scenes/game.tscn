@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dtkw7x4hdoyt2"]
+[gd_scene load_steps=19 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
 [ext_resource type="Script" uid="uid://cao01gpotabl2" path="res://scripts/game.gd" id="1_kvpfn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bsdelvdiesf0o" path="res://scenes/inventory_item.tscn" id="3_b0nof"]
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/pause_screen.tscn" id="3_psmk7"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="4_j6hfo"]
+[ext_resource type="Resource" uid="uid://ddulsd2ddfhj0" path="res://cards/base_player.tres" id="6_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://bhod10c0fj1bp" path="res://scenes/finish.tscn" id="6_twexu"]
 [ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://scenes/enemy.tscn" id="7_lph38"]
 [ext_resource type="PackedScene" uid="uid://b18lmeyce53di" path="res://scenes/level1.tscn" id="7_rysoc"]
@@ -35,7 +36,9 @@ position = Vector2(202, -2)
 target_level = ExtResource("7_rysoc")
 
 [node name="Player" parent="." instance=ExtResource("2_dspdp")]
+unique_name_in_owner = true
 position = Vector2(-86, -89)
+stats = ExtResource("6_ssvqc")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2.5, 2.5)
