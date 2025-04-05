@@ -4,6 +4,7 @@ signal quit_while_in_combat
 ## Gets all UIs, during which game should not be able to be paused
 @onready var UnpauseableUIs = get_tree().get_nodes_in_group("UnpausableUserInterfaces")
 var in_combat = false
+var can_unpause = true
 
 func _pause():
 	$VBoxContainer/Resume.grab_focus()
@@ -24,7 +25,8 @@ func _quit_to_menu():
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 	
 func _input(event: InputEvent) -> void:
-	#vel sulauziau pause su inventory
+		
+		
 	if(Input.is_action_just_pressed("ui_pause") and (!get_tree().paused or (in_combat and !$".".visible) and !checkUI())):
 		_pause()
 	elif (Input.is_action_just_pressed("ui_pause") and get_tree().paused and !checkUI()):

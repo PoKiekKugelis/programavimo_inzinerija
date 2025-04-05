@@ -12,6 +12,9 @@ var is_moving: bool = false
 
 
 func _process(delta):
+	# Unlimited stamina in the hub
+	if (get_parent().get_parent().name == "Hub"):
+		return
 	
 	if Input.is_action_pressed("ui_sprint") && stamina > 0 && is_moving:
 		stamina -= drain_rate * delta  

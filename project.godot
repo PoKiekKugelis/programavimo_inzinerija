@@ -26,10 +26,6 @@ GlobalHealth="*res://scripts/global_health.gd"
 
 project/assembly_name="programavimo_inzinerija_project"
 
-[editor_plugins]
-
-enabled=PackedStringArray()
-
 [file_customization]
 
 folder_colors={
