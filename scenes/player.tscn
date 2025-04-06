@@ -84,10 +84,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceyrs"]
-size = Vector2(17, 29)
+size = Vector2(20, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yoc62"]
-size = Vector2(17, 29)
+size = Vector2(22.5, 34.5)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(-1, -16)
@@ -107,26 +107,28 @@ autoplay = "walk"
 frame_progress = 0.608765
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_ceyrs")
 
 [node name="HitBox" type="Area2D" parent="."]
+position = Vector2(19, 1)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("5_cmeds")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0.5, 0.5)
+position = Vector2(-19, 0)
 shape = SubResource("RectangleShape2D_yoc62")
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+position = Vector2(47, 4)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("6_lsjhy")
 health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(1, 0)
+position = Vector2(-47, -3)
 shape = SubResource("RectangleShape2D_yoc62")
 
 [node name="MovementTimer" type="Timer" parent="."]

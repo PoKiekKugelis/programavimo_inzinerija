@@ -42,7 +42,7 @@ func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	#arba tiesiog padaryt, kad combat reward popup langas pratestu pauze (vyktu pauzes metu)
 	var combat_scene: PackedScene = preload("res://combat/combat_screen.tscn")
 	var combat_instance = combat_scene.instantiate()
-	var player = $Player/Sprite2D.duplicate()
+	var player = $Player/AnimatedSprite2D.duplicate()
 	#var enemySprite = enemy.get_child(2).duplicate() #pasiemu animated sprite
 	var combat_enemy = enemy.duplicate() # the whole enemy is taken instead of the sprite
 	#combat_enemy.position = Vector2(900, 500) # Manually place enemy in combat scene

@@ -4,7 +4,7 @@ extends Control
 enum TurnState { PLAYER_TURN, ENEMY_TURN }
 
 # exported references for easy assignment in editor
-@export var player: Sprite2D
+@export var player: AnimatedSprite2D
 @export var enemy: CharacterBody2D
 @export var char_stats: CharStats
 
