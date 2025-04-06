@@ -1,6 +1,10 @@
 extends CharacterBody2D
 class_name Player
 
+
+@onready var animated_sprite = $AnimatedSprite2D
+
+
 @export var save_path: String
 @export var stats: CharStats : set = set_character_stats
 @onready var inventory_ui = $Inventory_UI
@@ -51,12 +55,24 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_jump") and is_on_floor() and CAN_MOVE == true:
 		velocity.y = JUMP_VELOCITY
 	var direction := Input.get_axis("left", "right")
+	
+	if direction > 0:
+		animated_sprite.flip_h = false
+	elif direction < 0:
+		animated_sprite.flip_h = true
+	
+	# animacijos:DDDDDDDDDDDDDDDDDDDDDDDDDDDD
+	if direction == 0:
+		animated_sprite.play("idle")
+	else:
+		animated_sprite.play("walk")
+	
 	if direction != 0 && CAN_MOVE == true:
 		stamina.set_is_moving(true)  
 		if Input.is_action_pressed("ui_sprint") && stamina.stamina > 0:
-			velocity.x = direction * RUNNING_SPEED  
+			velocity.x = direction * RUNNING_SPEED
 		else:
-			velocity.x = direction * SPEED  
+			velocity.x = direction * SPEED
 	else:
 		stamina.set_is_moving(false)  
 		velocity.x = move_toward(velocity.x, 0, SPEED)  
