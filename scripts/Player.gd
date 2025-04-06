@@ -64,15 +64,28 @@ func _physics_process(delta: float) -> void:
 	
 	# handle dashing
 	if is_dashing:
-		# check if we have reached the dash distance
-		if abs(position.x - dash_start_position.x) >= DASH_DISTANCE:
-			is_dashing = false
+		# check if we have reached the dash distance or have hit a wall
+		if abs(position.x - dash_start_position.x) >= DASH_DISTANCE or is_on_wall():
+			end_dash()
 		else:
 			velocity.x = DASH_SPEED * dash_direction
-			velocity.y = 0  # prevent gravity during dash
-			move_and_slide()
-			return  # skip the rest of the physics process during dash
+			#oOnly suspend gravity if on ground, or briefly when starting a dash
+			if is_on_floor() or abs(position.x - dash_start_position.x) < 20:
+				velocity.y = 0
+			else:
+				# apply reduced gravity during air dash
+				velocity.y += GRAVITY * delta * 0.5
+				
+			var collision = move_and_slide()
 			
+			# end dash if we hit a wall
+			if is_on_wall():
+				end_dash()
+				
+			if collision:
+				return  # still in dash, but handled collision
+			
+			return  # skip the rest of the physics process during dash
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -121,6 +134,14 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	
+
+# helper function to cleanly end the dash state
+func end_dash() -> void:
+	is_dashing = false
+	# if in air, restore gravity effects immediately
+	if not is_on_floor():
+		velocity.y += GRAVITY * 0.016  # apply a small gravity impulse
+
 # handle double-tap detection for dashing
 func handle_direction_tap(direction: int) -> void:
 	if !CAN_MOVE or is_dashing or !can_dash:
