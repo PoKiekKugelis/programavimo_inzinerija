@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dtkw7x4hdoyt2"]
+[gd_scene load_steps=21 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
 [ext_resource type="Script" uid="uid://cao01gpotabl2" path="res://scripts/game.gd" id="1_kvpfn"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/health_bar.tscn" id="8_khsen"]
 [ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/spike.tscn" id="9_k0taf"]
 [ext_resource type="PackedScene" uid="uid://v37iwosey6gf" path="res://scenes/stamina_bar.tscn" id="10_rq0lr"]
+[ext_resource type="Script" uid="uid://bbefa02tsh80b" path="res://scenes/money_label.gd" id="11_1kice"]
+[ext_resource type="Texture2D" uid="uid://dl4y168ylom78" path="res://assets/sprites/PlaceHolder.png" id="12_5newe"]
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="12_kvuet"]
 [ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://scenes/inventory_ui.tscn" id="13_trtic"]
 [ext_resource type="PackedScene" uid="uid://bhucwpx8dw1e6" path="res://scenes/card_deck_open.tscn" id="14_ir15t"]
@@ -88,6 +90,20 @@ offset_bottom = 88.7143
 theme_override_font_sizes/font_size = 32
 text = "99"
 metadata/_edit_use_anchors_ = true
+
+[node name="Money" type="Label" parent="Player"]
+offset_left = 186.0
+offset_top = -61.0
+offset_right = 226.0
+offset_bottom = -44.0
+theme = ExtResource("15_ca42v")
+text = "123"
+script = ExtResource("11_1kice")
+
+[node name="Coin" type="Sprite2D" parent="Player"]
+position = Vector2(170, -51)
+scale = Vector2(0.0468749, 0.0468749)
+texture = ExtResource("12_5newe")
 
 [node name="Inventory_Item" parent="." instance=ExtResource("3_b0nof")]
 position = Vector2(-146, 11)
