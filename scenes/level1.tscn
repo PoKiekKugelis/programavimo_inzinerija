@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b18lmeyce53di"]
+[gd_scene load_steps=37 format=3 uid="uid://b18lmeyce53di"]
 
 [ext_resource type="Texture2D" uid="uid://b2ikfhtbpx04w" path="res://assets/sprites/version A/Layers/parallax-demon-woods-far-trees.png" id="1_14jow"]
 [ext_resource type="Script" uid="uid://cxfn3gy46q7mc" path="res://scripts/level_1.gd" id="1_mvsps"]
@@ -23,6 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://dl4y168ylom78" path="res://assets/sprites/PlaceHolder.png" id="13_4niyd"]
 [ext_resource type="PackedScene" uid="uid://b4cycf46t3wmq" path="res://scenes/card_deck.tscn" id="14_ai3nx"]
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/pause_screen.tscn" id="15_phfsf"]
+[ext_resource type="Script" uid="uid://civwctchpf0ul" path="res://scripts/pressure_plate.gd" id="22_ai3nx"]
+[ext_resource type="Texture2D" uid="uid://rdqudv6rywss" path="res://assets/sprites/pressure_plate_2.png" id="23_phfsf"]
+[ext_resource type="Script" uid="uid://l7ifdvyhkw5p" path="res://scenes/boulder.gd" id="24_mq0oc"]
+[ext_resource type="Texture2D" uid="uid://ca2qgaxxfaavj" path="res://assets/sprites/boulder.png" id="24_phfsf"]
+[ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="26_msy1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3oqy1"]
 size = Vector2(8, 10)
