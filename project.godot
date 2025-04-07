@@ -22,6 +22,7 @@ SaveFiles="*res://saves/save_files.gd"
 SaveSystem="*res://saves/save_system.gd"
 GlobalHealth="*res://scripts/global_health.gd"
 Events="*res://scripts/events.gd"
+Money="*res://scripts/money.gd"
 
 [dotnet]
 
