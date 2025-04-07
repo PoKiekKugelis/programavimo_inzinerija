@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bu2vdqgi3rdj3"]
+[gd_scene load_steps=22 format=3 uid="uid://bu2vdqgi3rdj3"]
 
 [ext_resource type="Script" uid="uid://dw7any0ncdcql" path="res://combat/combat_screen.gd" id="1_4dh1p"]
 [ext_resource type="Script" uid="uid://c0t20rpm5gr0w" path="res://combat/player_handler.gd" id="2_f1bby"]
@@ -19,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://bhucwpx8dw1e6" path="res://scenes/card_deck_open.tscn" id="14_lnpg4"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="16_m5f5v"]
 [ext_resource type="PackedScene" uid="uid://b4cycf46t3wmq" path="res://scenes/card_deck.tscn" id="19_frkk8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frkk8"]
+size = Vector2(1152.5, 379.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_77608"]
 shader = ExtResource("2_nfwd6")
@@ -43,18 +46,17 @@ script = ExtResource("2_f1bby")
 hand = NodePath("../BattleUI/Hand")
 
 [node name="Background" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("5_77608")
 expand_mode = 1
 
-[node name="BattleUI" type="CanvasLayer" parent="."]
-visible = false
+[node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 script = ExtResource("3_ay8fu")
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
+process_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -109,6 +111,7 @@ scale = Vector2(2, 2)
 script = ExtResource("12_ay8fu")
 
 [node name="DamageButton1" type="Button" parent="BattleUI"]
+visible = false
 offset_left = 374.0
 offset_top = 470.0
 offset_right = 491.0
@@ -116,6 +119,7 @@ offset_bottom = 643.0
 script = ExtResource("7_gpw7s")
 
 [node name="DamageButton2" type="Button" parent="BattleUI"]
+visible = false
 offset_left = 663.0
 offset_top = 471.0
 offset_right = 779.0
@@ -123,6 +127,7 @@ offset_bottom = 645.0
 script = ExtResource("9_ykk7u")
 
 [node name="HealButton" type="Button" parent="BattleUI"]
+visible = false
 offset_left = 516.0
 offset_top = 470.0
 offset_right = 641.0
@@ -211,6 +216,15 @@ theme = ExtResource("16_m5f5v")
 theme_override_font_sizes/font_size = 50
 text = "test"
 
+[node name="CardDropArea" type="Area2D" parent="."]
+process_mode = 3
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
+process_mode = 3
+position = Vector2(575.75, 189.25)
+shape = SubResource("RectangleShape2D_frkk8")
+
 [node name="Transition" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -222,6 +236,7 @@ texture = ExtResource("3_ajnlu")
 script = ExtResource("5_igm7u")
 
 [node name="CardDeckViews" type="CanvasLayer" parent="."]
+process_mode = 3
 layer = 2
 
 [node name="DrawDeckView" parent="CardDeckViews" instance=ExtResource("19_frkk8")]

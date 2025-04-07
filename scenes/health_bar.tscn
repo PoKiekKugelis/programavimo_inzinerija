@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://b5tknsket7dil" path="res://assets/sprites/HealthBar_Fill.png" id="3_e8xyq"]
 
 [node name="HealthBar" type="TextureProgressBar"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 0.086
+anchor_bottom = 0.023
+offset_right = -0.0720062
+offset_bottom = 0.0959988
 grow_horizontal = 2
 grow_vertical = 2
 texture_under = ExtResource("1_oor01")

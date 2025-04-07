@@ -1,14 +1,14 @@
-[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://dop1brqbdoh5o"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dop1brqbdoh5o"]
 
 [ext_resource type="Texture2D" uid="uid://bb5o7pftdmjqu" path="res://assets/Cards/CardTemplateScissor.png" id="1_q2bh2"]
-[ext_resource type="Script" uid="uid://d1ramoosw62pd" path="res://scripts/resources/card.gd" id="1_tbu6w"]
+[ext_resource type="Script" uid="uid://cdx2o5ly4cbe0" path="res://cards/attack_scissors.gd" id="2_q2bh2"]
 
 [resource]
-script = ExtResource("1_tbu6w")
-id = "attack_scissors"
+script = ExtResource("2_q2bh2")
+id = ""
 type = 0
-target = 1
-cost = 1
+target = 0
+cost = 0
 icon = ExtResource("1_q2bh2")
-tooltip_text = "scissor"
+tooltip_text = ""
 metadata/_custom_type_script = "uid://d1ramoosw62pd"

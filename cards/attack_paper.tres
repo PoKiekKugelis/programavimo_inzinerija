@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://brp7nucfo0vkj"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://brp7nucfo0vkj"]
 
-[ext_resource type="Script" uid="uid://d1ramoosw62pd" path="res://scripts/resources/card.gd" id="1_43sk6"]
 [ext_resource type="Texture2D" uid="uid://5d71lefj5ebi" path="res://assets/Cards/CardTemplatePaper.png" id="1_finnp"]
+[ext_resource type="Script" uid="uid://qqlwrd6iwss8" path="res://cards/attack_paper.gd" id="2_finnp"]
 
 [resource]
-script = ExtResource("1_43sk6")
+script = ExtResource("2_finnp")
 id = "attack_paper"
 type = 0
 target = 1
