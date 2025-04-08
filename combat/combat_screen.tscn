@@ -41,11 +41,23 @@ char_stats = ExtResource("2_gil64")
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(576, 324)
 
+[node name="CardDropArea" type="Area2D" parent="."]
+process_mode = 3
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
+process_mode = 3
+light_mask = 1023
+visibility_layer = 1023
+position = Vector2(575.75, 189.25)
+shape = SubResource("RectangleShape2D_frkk8")
+
 [node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("2_f1bby")
 hand = NodePath("../BattleUI/Hand")
 
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -53,6 +65,8 @@ texture = ExtResource("5_77608")
 expand_mode = 1
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+process_mode = 3
+visible = false
 script = ExtResource("3_ay8fu")
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
@@ -215,15 +229,6 @@ offset_bottom = 488.0
 theme = ExtResource("16_m5f5v")
 theme_override_font_sizes/font_size = 50
 text = "test"
-
-[node name="CardDropArea" type="Area2D" parent="."]
-process_mode = 3
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
-process_mode = 3
-position = Vector2(575.75, 189.25)
-shape = SubResource("RectangleShape2D_frkk8")
 
 [node name="Transition" type="CanvasLayer" parent="."]
 layer = 2

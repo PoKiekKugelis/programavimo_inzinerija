@@ -21,7 +21,6 @@ func start_battle(char_stats: CharStats) -> void:
 func start_turn() -> void:
 	character.reset_energy()
 	draw_cards(character.cards_per_turn)
-	print("test2")
 
 func end_turn() -> void:
 	#hand.disable_hand()

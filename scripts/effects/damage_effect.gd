@@ -9,4 +9,5 @@ func execute(targets: Array[Node]) -> void:
 		if not target:
 			continue
 		if target is TestEnemy: #cia tikrai nesita reik rasyt bet as nezinau kaip cia pagal musu ta enemy padaryt :(
-			target.take_damage(amount)
+			var enemy_health = target.get_node("Health")
+			enemy_health.set_health(enemy_health.health - amount)
