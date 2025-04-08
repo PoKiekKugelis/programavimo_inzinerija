@@ -13,6 +13,8 @@ signal reparent_requested(which_card_ui: CardUI)
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var targets: Array[Node] = []
 
+var playable := true : set = set_playable
+
 func set_card(value: Card) -> void:
 	if not is_node_ready():
 		await ready
@@ -53,5 +55,14 @@ func play() -> void:
 	if not card:
 		return
 	
-	#card.play(targets, char_stats)
+	card.play(targets, char_stats)
 	queue_free()
+
+func set_playable(value: bool) -> void:
+	playable = value
+	if not playable:
+		cost.add_theme_color_override("font_color", Color.RED)
+		cost.modulate = Color(1, 1, 1, 0.5)
+	else:
+		cost.remove_theme_color_override("font_color")
+		cost.modulate = Color(1, 1, 1, 1)

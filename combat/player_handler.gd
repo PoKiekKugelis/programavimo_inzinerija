@@ -21,6 +21,7 @@ func start_battle(char_stats: CharStats) -> void:
 func start_turn() -> void:
 	character.reset_energy()
 	draw_cards(character.cards_per_turn)
+	print("test2")
 
 func end_turn() -> void:
 	#hand.disable_hand()
@@ -43,7 +44,12 @@ func draw_cards(amount: int) -> void:
 
 func discard_cards() -> void:
 	var tween := create_tween()
-	for card_ui in hand.get_children():
+	var reversed_hand = hand.get_children()
+	reversed_hand.reverse()
+	if reversed_hand.is_empty():
+		Events.player_hand_discarded.emit()
+		return
+	for card_ui in reversed_hand:
 		tween.tween_callback(character.discard.add_card.bind(card_ui.card))
 		tween.tween_callback(hand.discard_card.bind(card_ui))
 		tween.tween_interval(HAND_DISCARD_INTERVAL)
@@ -56,7 +62,6 @@ func reshuffle_deck_from_discard() -> void:
 		return
 	while not character.discard.empty():
 		character.draw_deck.add_card(character.discard.draw_card())
-	
 	character.draw_deck.shuffle()
 
 func on_card_played(card: Card) -> void:

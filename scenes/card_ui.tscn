@@ -102,7 +102,6 @@ initial_state = NodePath("CardBaseState")
 [node name="CardBaseState" type="Node" parent="CardStateMachine"]
 process_mode = 3
 script = ExtResource("4_xou0u")
-state = null
 
 [node name="CardClickedState" type="Node" parent="CardStateMachine"]
 process_mode = 3

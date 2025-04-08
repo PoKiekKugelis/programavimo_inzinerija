@@ -23,6 +23,7 @@ func disable_hand() -> void:
 func add_card(card: Card) -> void:
 	var new_card_ui := card_ui.instantiate() as CardUI
 	add_child(new_card_ui)
+	move_child(new_card_ui, 0)
 	new_card_ui.reparent_requested.connect(on_card_ui_reparent_requested)
 	new_card_ui.card = card
 	new_card_ui.reparent_requested.emit(self)
