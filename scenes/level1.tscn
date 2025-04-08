@@ -25,8 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/pause_screen.tscn" id="15_phfsf"]
 [ext_resource type="Script" uid="uid://civwctchpf0ul" path="res://scripts/pressure_plate.gd" id="22_ai3nx"]
 [ext_resource type="Texture2D" uid="uid://blxkpkxc4a7ew" path="res://assets/sprites/pressure_plate_2.png" id="23_phfsf"]
-[ext_resource type="Texture2D" uid="uid://cj6pvocr0xgfh" path="res://assets/sprites/boulder.png" id="24_phfsf"]
 [ext_resource type="Script" uid="uid://l7ifdvyhkw5p" path="res://scenes/boulder.gd" id="24_mq0oc"]
+[ext_resource type="Texture2D" uid="uid://cj6pvocr0xgfh" path="res://assets/sprites/boulder.png" id="24_phfsf"]
 [ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="26_msy1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3oqy1"]
