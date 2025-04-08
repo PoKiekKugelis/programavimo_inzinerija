@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/spike.tscn" id="9_k0taf"]
 [ext_resource type="PackedScene" uid="uid://v37iwosey6gf" path="res://scenes/stamina_bar.tscn" id="10_rq0lr"]
 [ext_resource type="Script" uid="uid://bbefa02tsh80b" path="res://scenes/money_label.gd" id="11_1kice"]
-[ext_resource type="Texture2D" uid="uid://d0v1j8efx35ct" path="res://assets/sprites/PlaceHolder.png" id="12_5newe"]
+[ext_resource type="Texture2D" uid="uid://bx5hejm1txwsy" path="res://assets/sprites/PlaceHolder.png" id="12_5newe"]
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="12_kvuet"]
 [ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://scenes/inventory_ui.tscn" id="13_trtic"]
 [ext_resource type="PackedScene" uid="uid://bhucwpx8dw1e6" path="res://scenes/card_deck_open.tscn" id="14_ir15t"]
