@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://32ixlvv01yja" path="res://assets/Cards/CardTemplateColor.png" id="1_5x102"]
 [ext_resource type="Script" uid="uid://ccs00bgac7fhv" path="res://scripts/card_ui.gd" id="1_e1hm3"]
-[ext_resource type="Script" uid="uid://cqqnfqih7s1a7" path="res://scenes/card_state_machine.gd" id="3_birkm"]
+[ext_resource type="Script" uid="uid://cqqnfqih7s1a7" path="res://scripts/card_state_machine.gd" id="3_birkm"]
 [ext_resource type="Script" uid="uid://ch0teiuvp4h1g" path="res://scripts/card states/card_base_state.gd" id="4_xou0u"]
 [ext_resource type="Script" uid="uid://62vsvsqaq674" path="res://scripts/card states/card_clicked_state.gd" id="5_2iqob"]
 [ext_resource type="Script" uid="uid://doffdfqqepprk" path="res://scripts/card states/card_dragging_state.gd" id="6_8creq"]
