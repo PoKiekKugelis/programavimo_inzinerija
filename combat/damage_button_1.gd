@@ -14,4 +14,3 @@ func _on_pressed() -> void:
 	if enemy:
 		var enemy_health = enemy.get_node("Health")
 		enemy_health.set_health(enemy_health.health - 1)
-		  

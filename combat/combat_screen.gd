@@ -8,6 +8,8 @@ enum TurnState { PLAYER_TURN, ENEMY_TURN }
 @export var enemy: CharacterBody2D
 @export var char_stats: CharStats
 
+var player_health = GlobalHealth.get_health_instance()
+
 # element references
 @onready var end_turn_button = $BattleUI/EndTurnButton
 @onready var action_text = $BattleUI/ActionText
@@ -109,7 +111,7 @@ func _ready() -> void:
 	battle_ui.initialize_card_deck_ui()
 	# start with player's turn
 	start_player_turn()
-	
+
 
 # shows tooltip text above button
 func _show_tooltip(text: String, button: Button):
@@ -122,13 +124,15 @@ func _hide_tooltip():
 	$BattleUI/ActionTooltip.visible = false
 
 # TODO: implement a working death screen when players dies
-func _on_player_death():
-	await get_tree().create_timer(2.0).timeout 
-	get_tree().paused = true
-	var death_screen = preload("res://scenes/death_screen.tscn").instantiate()
-	get_tree().root.add_child(death_screen)
-	$BattleUI.visible = false
-	
+func _on_player_death() -> void:
+	if player_health.get_health() < 0:
+		await get_tree().create_timer(2.0).timeout 
+		get_tree().paused = true
+		var death_screen = preload("res://scenes/death_screen.tscn").instantiate()
+		get_tree().root.add_child(death_screen)
+		$BattleUI.visible = false
+
+
 # TODO: needs to show a victory screen or something when the enemy is dead
 func _on_enemy_death():
 	pass

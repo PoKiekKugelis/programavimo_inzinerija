@@ -1,5 +1,12 @@
 extends TextureProgressBar
 
+func _ready() -> void:
+	
+	var enemy = get_tree().get_first_node_in_group("enemy")
+	var enemy_health = enemy.get_node("Health")
+	
+	setup_health_bar(enemy_health)
+
 # initializes the health bar with a health component
 func setup_health_bar(health: Health) -> void:
 	# prevent duplicate signal connections
@@ -16,5 +23,5 @@ func setup_health_bar(health: Health) -> void:
 # updates the health bar when health changes
 func _update_bar(diff: int) -> void:
 	value += diff
-	
+
    
