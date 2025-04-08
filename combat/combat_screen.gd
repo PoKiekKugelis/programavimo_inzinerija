@@ -32,6 +32,7 @@ signal player_action_performed(message: String, color: Color)
 func _ready() -> void:
 	# initialize combat screen setup
 	add_to_group("combat_screen")
+	enemy.add_to_group("enemies")
 	
 	await get_tree().create_timer(1).timeout
 	

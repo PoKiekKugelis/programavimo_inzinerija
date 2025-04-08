@@ -6,6 +6,9 @@ class_name Hand
 var cards_played_this_turn = 0
 func _ready() -> void:
 	Events.card_played.connect(on_card_played)
+	for child in get_children():
+		var card_ui := child as CardUI
+		card_ui.reparent_requested.connect(on_card_ui_reparent_requested)
 
 func on_card_played() -> void:
 	cards_played_this_turn += 1
@@ -20,14 +23,15 @@ func disable_hand() -> void:
 func add_card(card: Card) -> void:
 	var new_card_ui := card_ui.instantiate() as CardUI
 	add_child(new_card_ui)
+	move_child(new_card_ui, 0)
 	new_card_ui.reparent_requested.connect(on_card_ui_reparent_requested)
 	new_card_ui.card = card
 	new_card_ui.reparent_requested.emit(self)
 	new_card_ui.char_stats = char_stats
 
 func on_card_ui_reparent_requested(child: CardUI) -> void:
-	child.disabled = true
+	#child.disabled = true
 	child.reparent(self)
-	var new_index := clampi(child.original_index, 0, get_child_count())
-	move_child.call_deferred(child, new_index)
-	child.set_deferred("disabled", false)
+	#var new_index := clampi(child.original_index, 0, get_child_count())
+	#move_child.call_deferred(child, new_index)
+	#child.set_deferred("disabled", false)

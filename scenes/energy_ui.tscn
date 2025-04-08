@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://2a7p6gpyerqx"]
 
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="1_qfpx7"]
-[ext_resource type="Script" path="res://scripts/energy_ui.gd" id="2_exwys"]
+[ext_resource type="Script" uid="uid://n0l34q4mbnx3" path="res://scripts/energy_ui.gd" id="2_exwys"]
 
 [node name="EnergyUI" type="Panel"]
 anchors_preset = 2
