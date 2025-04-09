@@ -31,6 +31,8 @@ var current_turn: TurnState = TurnState.PLAYER_TURN
 signal player_action_performed(message: String, color: Color)
 
 func _ready() -> void:
+	#Parent scene yra paused, bet šitos scenos physics yra active. Ez vienos eilutės fixas
+	PhysicsServer2D.set_active(true)
 	# initialize combat screen setup
 	add_to_group("combat_screen")
 	enemy.add_to_group("enemies")
