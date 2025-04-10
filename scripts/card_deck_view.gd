@@ -13,7 +13,10 @@ const CARD_MENU_UI_SCENE := preload("res://scenes/card_menu_ui.tscn")
 
 func _ready() -> void:
 	back_button.pressed.connect(
-		func(): get_tree().paused = !get_tree().paused; hide())#Adomo inspired, geras kodas, man patinka. įvykdo funkciją
+		func(): if (get_parent().get_parent().name == "CombatScreen"): 
+			hide()
+			else: get_tree().paused = !get_tree().paused; hide()
+			)
 	
 	for card: Node in cards.get_children():
 		card.queue_free()
@@ -23,10 +26,12 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if card_tooltip_popup.visible:
 			card_tooltip_popup.hide_tooltip()
-		elif card_deck_view.visible:
+		elif card_deck_view.visible and get_parent().get_parent().name == "CombatScreen": 
+			hide()
+		elif card_deck_view.visible: 
 			get_tree().paused = false
 			hide()
-		
+
 func show_current_view(new_title: String, randomized: bool = false) -> void:
 	for card: Node in cards.get_children():
 		card.queue_free()

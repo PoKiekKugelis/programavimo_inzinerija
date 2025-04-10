@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ck134hita7gdt"]
 
-[ext_resource type="Script" uid="uid://dgxvopb4dale1" path="res://proceed_sign_screen.gd" id="1_u80lr"]
+[ext_resource type="Script" uid="uid://dgxvopb4dale1" path="res://scripts/proceed_sign_screen.gd" id="1_u80lr"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="2_rnal0"]
 
 [node name="proceed_sign_screen" type="Control" groups=["UnpausableUserInterfaces"]]

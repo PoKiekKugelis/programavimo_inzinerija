@@ -10,5 +10,5 @@ type = 0
 target = 2
 cost = 0
 icon = ExtResource("1_q2bh2")
-tooltip_text = ""
+tooltip_text = "Get scissored"
 metadata/_custom_type_script = "uid://d1ramoosw62pd"
