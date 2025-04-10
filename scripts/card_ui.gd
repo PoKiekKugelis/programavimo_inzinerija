@@ -13,7 +13,10 @@ signal reparent_requested(which_card_ui: CardUI)
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var targets: Array[Node] = []
 
+var original_index := 0
 var playable := true : set = set_playable
+var disabled := false
+var parent: Control
 
 func set_card(value: Card) -> void:
 	if not is_node_ready():

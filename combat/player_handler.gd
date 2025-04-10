@@ -23,7 +23,7 @@ func start_turn() -> void:
 	draw_cards(character.cards_per_turn)
 
 func end_turn() -> void:
-	#hand.disable_hand()
+	hand.disable_hand()
 	discard_cards()
 
 func draw_card() -> void:

@@ -16,7 +16,6 @@ enum TurnState { PLAYER_TURN, ENEMY_TURN }
 @onready var turn_indicator = $BattleUI/TurnIndicator
 @onready var player_handler: PlayerHandler = $PlayerHandler as PlayerHandler
 @onready var battle_ui: BattleUI = $BattleUI as BattleUI
-#@onready var player_stats: Player = %Player
 
 
 # animation helpers
@@ -38,17 +37,6 @@ func _ready() -> void:
 	enemy.add_to_group("enemies")
 	
 	await get_tree().create_timer(1).timeout
-	
-	# connect button actions to text display
-	$BattleUI/DamageButton1.pressed.connect(
-		func(): show_action_text("Player dealt 1 damage!", Color.RED)
-	)
-	$BattleUI/DamageButton2.pressed.connect(
-		func(): show_action_text("Player dealt 2 damage!", Color.RED)
-	)
-	$BattleUI/HealButton.pressed.connect(
-		func(): show_action_text("Player healed 1 HP!", Color.GREEN)
-	)
 	
 	# setup enemy health bar
 	var enemy_health = enemy.get_node("Health")
@@ -76,28 +64,6 @@ func _ready() -> void:
 	
 	# connect ui signals
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
-	
-	# make action buttons invisible
-	$BattleUI/DamageButton1.modulate.a = 0
-	$BattleUI/DamageButton2.modulate.a = 0
-	$BattleUI/HealButton.modulate.a = 0
-	
-	# setup tooltips
-	$BattleUI/ActionTooltip.visible = false
-	$BattleUI/DamageButton1.mouse_entered.connect(
-		func(): _show_tooltip("Deal 1 damage", $BattleUI/DamageButton1)
-	)
-	$BattleUI/DamageButton2.mouse_entered.connect(
-		func(): _show_tooltip("Deal 2 damage", $BattleUI/DamageButton2)
-	)
-	$BattleUI/HealButton.mouse_entered.connect(
-		func(): _show_tooltip("Heal 1 HP", $BattleUI/HealButton)
-	)
-	
-	# connect mouse exit signals
-	$BattleUI/DamageButton1.mouse_exited.connect(_hide_tooltip)
-	$BattleUI/DamageButton2.mouse_exited.connect(_hide_tooltip)
-	$BattleUI/HealButton.mouse_exited.connect(_hide_tooltip)
 	
 	# style turn indicator text
 	turn_indicator.add_theme_color_override("font_outline_color", Color.BLACK)
@@ -190,14 +156,12 @@ func start_player_turn():
 	display_action() #displays enemy's action
 	
 	current_turn = TurnState.PLAYER_TURN
-	end_turn_button.disabled = false
 	turn_indicator.text = "PLAYER'S TURN"
 	turn_indicator.modulate = Color.GREEN
 
 # handles enemy's turn with actions
 func start_enemy_turn():
 	current_turn = TurnState.ENEMY_TURN
-	end_turn_button.disabled = true
 	turn_indicator.text = "ENEMY'S TURN"
 	turn_indicator.modulate = Color.RED
 	await get_tree().create_timer(1.0).timeout
@@ -206,7 +170,7 @@ func start_enemy_turn():
 	if choice == 0:
 		# deal damage
 		var player_health = GlobalHealth.get_health_instance()
-		player_health.set_health(player_health.health - 2)
+		player_health.set_health(player_health.health - 0)
 		show_action_text("Enemy dealt 2 damage!", Color.RED)
 	elif choice == 1:
 		# heal self

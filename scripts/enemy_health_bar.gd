@@ -12,7 +12,6 @@ func setup_health_bar(health: Health) -> void:
 	# prevent duplicate signal connections
 	if health.health_changed.is_connected(_update_bar):
 		health.health_changed.disconnect(_update_bar)
-	
 	# connect to health changes
 	health.health_changed.connect(_update_bar)
 	

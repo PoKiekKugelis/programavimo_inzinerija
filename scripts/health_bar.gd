@@ -31,4 +31,3 @@ func _update_bar(_diff: int) -> void:
 	var health = GlobalHealth.get_health_instance()
 	if health:
 		value = health.get_health()
-		print("updating")
