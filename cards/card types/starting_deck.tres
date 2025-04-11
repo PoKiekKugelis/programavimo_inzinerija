@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardDeck" load_steps=6 format=3 uid="uid://y8vo4yx4yfl6"]
+
+[ext_resource type="Script" uid="uid://d1ramoosw62pd" path="res://scripts/resources/card.gd" id="1_pmpbs"]
+[ext_resource type="Script" uid="uid://bb1biwgcowbwg" path="res://scripts/resources/card_deck.gd" id="2_h5whe"]
+[ext_resource type="Resource" uid="uid://dop1brqbdoh5o" path="res://cards/card types/attack_scissors.tres" id="2_tckcs"]
+[ext_resource type="Resource" uid="uid://csofjnrpt3fa8" path="res://cards/card types/attack_rock.tres" id="3_it7fi"]
+[ext_resource type="Resource" uid="uid://brp7nucfo0vkj" path="res://cards/card types/attack_paper.tres" id="4_se0a0"]
+
+[resource]
+script = ExtResource("2_h5whe")
+cards = Array[ExtResource("1_pmpbs")]([ExtResource("2_tckcs"), ExtResource("3_it7fi"), ExtResource("4_se0a0"), ExtResource("4_se0a0"), ExtResource("3_it7fi"), ExtResource("2_tckcs"), ExtResource("4_se0a0"), ExtResource("3_it7fi")])

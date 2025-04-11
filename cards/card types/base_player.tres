@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharStats" load_steps=3 format=3 uid="uid://ddulsd2ddfhj0"]
+
+[ext_resource type="Script" uid="uid://pttxtewsoqsj" path="res://scripts/resources/char_stats.gd" id="1_kkq4p"]
+[ext_resource type="Resource" uid="uid://y8vo4yx4yfl6" path="res://cards/card types/starting_deck.tres" id="2_f1u2q"]
+
+[resource]
+script = ExtResource("1_kkq4p")
+starting_deck = ExtResource("2_f1u2q")
+cards_per_turn = 3
+max_energy = 3
+metadata/_custom_type_script = "uid://pttxtewsoqsj"

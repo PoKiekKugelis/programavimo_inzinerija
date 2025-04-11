@@ -17,12 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Inventory="*res://scripts/inventory.gd"
-SaveFiles="*res://saves/save_files.gd"
-SaveSystem="*res://saves/save_system.gd"
-GlobalHealth="*res://scripts/global_health.gd"
-Events="*res://scripts/events.gd"
-Money="*res://scripts/money.gd"
+Inventory="*res://scripts/global/inventory.gd"
+SaveFiles="*res://saves/scripts/save_files.gd"
+SaveSystem="*res://saves/scripts/save_system.gd"
+GlobalHealth="*res://scripts/global/global_health.gd"
+Events="*res://scripts/global/events.gd"
+Money="*res://scripts/node resources/money.gd"
 
 [dotnet]
 
@@ -31,7 +31,12 @@ project/assembly_name="programavimo_inzinerija_project"
 [file_customization]
 
 folder_colors={
+"res://cards/": "orange",
 "res://combat/": "red",
+"res://enemies/": "teal",
+"res://hub/": "green",
+"res://inventory/": "blue",
+"res://player/": "purple",
 "res://saves/": "yellow"
 }
 

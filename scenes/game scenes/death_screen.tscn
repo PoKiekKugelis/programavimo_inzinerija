@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://iu1v1rjnbbpr"]
+
+[ext_resource type="Script" uid="uid://dqutn3mluufy7" path="res://scripts/game scenes/death_screen.gd" id="1_uyutr"]
+
+[node name="DeathScreen" type="Node"]
+script = ExtResource("1_uyutr")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="Restart" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.565
+anchor_right = 0.5
+anchor_bottom = 0.565
+offset_left = -103.0
+offset_top = -14.12
+offset_right = 103.0
+offset_bottom = 67.88
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+
+[node name="MainMenu" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.819
+anchor_right = 0.5
+anchor_bottom = 0.819
+offset_left = -140.0
+offset_top = -59.712
+offset_right = 140.0
+offset_bottom = 22.288
+theme_override_font_sizes/font_size = 50
+text = "Main Menu"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -324.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 150
+text = "You Died"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 227
+uppercase = true
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_quit_pressed"]

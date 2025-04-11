@@ -1,0 +1,226 @@
+[gd_scene load_steps=19 format=3 uid="uid://bu2vdqgi3rdj3"]
+
+[ext_resource type="Script" uid="uid://dw7any0ncdcql" path="res://combat/scripts/combat_screen.gd" id="1_j1dph"]
+[ext_resource type="Resource" uid="uid://ddulsd2ddfhj0" path="res://cards/card types/base_player.tres" id="2_0mv3p"]
+[ext_resource type="Script" uid="uid://c0t20rpm5gr0w" path="res://player/player_handler.gd" id="3_wstb0"]
+[ext_resource type="Texture2D" uid="uid://bdo6vka1dwfy4" path="res://combat/assets/Background.jpg" id="4_3ud5g"]
+[ext_resource type="Script" uid="uid://dqnokw4175aui" path="res://combat/scripts/battle_ui.gd" id="5_74ld3"]
+[ext_resource type="Script" uid="uid://beblpw1345hni" path="res://combat/scripts/hand.gd" id="6_leoy8"]
+[ext_resource type="Script" uid="uid://eaq6dcmsf2pp" path="res://combat/scripts/action_tooltip.gd" id="7_jmuop"]
+[ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/node resources/health_bar.tscn" id="8_guoki"]
+[ext_resource type="Script" uid="uid://c118vejxqqnw2" path="res://enemies/scripts/enemy_health_bar.gd" id="9_6s6ut"]
+[ext_resource type="PackedScene" uid="uid://2a7p6gpyerqx" path="res://combat/scenes/energy_ui.tscn" id="10_e1m4k"]
+[ext_resource type="PackedScene" uid="uid://bhucwpx8dw1e6" path="res://cards/scenes/card_deck_open.tscn" id="11_orwjd"]
+[ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="12_6rfo5"]
+[ext_resource type="Shader" uid="uid://dn521yloucwqc" path="res://combat/transition.gdshader" id="13_jy65p"]
+[ext_resource type="Texture2D" uid="uid://py2u3rw43m37" path="res://combat/assets/transistion_1.png" id="14_b1phy"]
+[ext_resource type="Script" uid="uid://dt5jcaofsgi4n" path="res://combat/scripts/transition.gd" id="15_iy0uh"]
+[ext_resource type="PackedScene" uid="uid://b4cycf46t3wmq" path="res://cards/scenes/card_deck.tscn" id="16_fqr1a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frkk8"]
+size = Vector2(1152.5, 379.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77608"]
+shader = ExtResource("13_jy65p")
+shader_parameter/fill = -0.1
+
+[node name="CombatScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j1dph")
+char_stats = ExtResource("2_0mv3p")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(576, 324)
+
+[node name="CardDropArea" type="Area2D" parent="."]
+process_mode = 3
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
+process_mode = 3
+light_mask = 1023
+visibility_layer = 1023
+position = Vector2(575.75, 189.25)
+shape = SubResource("RectangleShape2D_frkk8")
+
+[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
+script = ExtResource("3_wstb0")
+hand = NodePath("../BattleUI/Hand")
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("4_3ud5g")
+expand_mode = 1
+
+[node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+process_mode = 3
+visible = false
+script = ExtResource("5_74ld3")
+
+[node name="Hand" type="HBoxContainer" parent="BattleUI"]
+process_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -230.0
+offset_right = 300.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("6_leoy8")
+
+[node name="ActionText" type="Label" parent="BattleUI"]
+offset_left = 307.0
+offset_top = 78.0
+offset_right = 846.0
+offset_bottom = 248.0
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionTooltip" type="Label" parent="BattleUI"]
+offset_left = 363.0
+offset_top = 403.0
+offset_right = 798.0
+offset_bottom = 474.0
+script = ExtResource("7_jmuop")
+
+[node name="TurnIndicator" type="Label" parent="BattleUI"]
+offset_left = 86.0
+offset_top = 571.0
+offset_right = 365.0
+offset_bottom = 660.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerHealth" parent="BattleUI" instance=ExtResource("8_guoki")]
+offset_left = 10.0
+offset_top = 14.0
+offset_right = 10.0
+offset_bottom = 14.0
+scale = Vector2(2, 2)
+
+[node name="EnemyHealth" parent="BattleUI" instance=ExtResource("8_guoki")]
+offset_left = 949.0
+offset_top = 14.0
+offset_right = 949.0
+offset_bottom = 14.0
+scale = Vector2(2, 2)
+script = ExtResource("9_6s6ut")
+
+[node name="EndTurnButton" type="Button" parent="BattleUI"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -75.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "End turn"
+
+[node name="EnergyUI" parent="BattleUI" instance=ExtResource("10_e1m4k")]
+offset_left = 36.0
+offset_top = -212.0
+offset_right = 96.0
+offset_bottom = -152.0
+scale = Vector2(1.2, 1.2)
+
+[node name="DrawButton" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("11_orwjd")]
+unique_name_in_owner = true
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = -145.0
+offset_right = 83.0
+offset_bottom = -45.0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("12_6rfo5")
+counter = NodePath("Counter")
+
+[node name="Counter" type="Label" parent="BattleUI/DrawButton"]
+layout_mode = 0
+offset_left = -14.2857
+offset_top = 55.7143
+offset_right = 25.7143
+offset_bottom = 88.7143
+theme_override_font_sizes/font_size = 32
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="DiscardButton" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("11_orwjd")]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -178.0
+offset_top = -145.0
+offset_right = -128.0
+offset_bottom = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+theme = ExtResource("12_6rfo5")
+counter = NodePath("Counter")
+
+[node name="Counter" type="Label" parent="BattleUI/DiscardButton"]
+layout_mode = 0
+offset_left = -14.2857
+offset_top = 55.7143
+offset_right = 25.7143
+offset_bottom = 88.7143
+theme_override_font_sizes/font_size = 32
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Choice" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 779.0
+offset_top = 326.0
+offset_right = 1061.0
+offset_bottom = 488.0
+theme = ExtResource("12_6rfo5")
+theme_override_font_sizes/font_size = 50
+text = "test"
+
+[node name="Transition" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Transition" type="TextureRect" parent="Transition"]
+material = SubResource("ShaderMaterial_77608")
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("14_b1phy")
+script = ExtResource("15_iy0uh")
+
+[node name="CardDeckViews" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 2
+
+[node name="DrawDeckView" parent="CardDeckViews" instance=ExtResource("16_fqr1a")]
+unique_name_in_owner = true
+visible = false
+
+[node name="DiscardDeckView" parent="CardDeckViews" instance=ExtResource("16_fqr1a")]
+unique_name_in_owner = true
+visible = false
