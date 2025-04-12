@@ -51,6 +51,8 @@ func set_health(value: int):
 		
 		# check for death
 		if health <= 0:
+			if get_parent().is_in_group("Player"):
+				Events.player_died.emit()
 			health_depleted.emit()
 
 # gets current health value

@@ -33,10 +33,10 @@ project/assembly_name="programavimo_inzinerija_project"
 folder_colors={
 "res://cards/": "orange",
 "res://combat/": "red",
-"res://enemies/": "teal",
+"res://enemies/": "purple",
 "res://hub/": "green",
 "res://inventory/": "blue",
-"res://player/": "purple",
+"res://player/": "pink",
 "res://saves/": "yellow"
 }
 

@@ -29,8 +29,6 @@ func load_data():
 	get_child(2).get_child(0).health = SaveSystem.load_game().get("Health", get_child(2).get_child(0).max_health)
 	
 func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
-	
-	
 	emit_signal("in_combat_status_changed")
 	$PauseScreenView/PauseScreen.z_index = 10
 	#pauze dabar bus virs combat scenos (tik vizualiai, migtukus galima su keyboard valdyt)

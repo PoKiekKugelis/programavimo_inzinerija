@@ -1,8 +1,10 @@
-extends Node2D
+extends Node
+
+@onready var button: Button = $Button
 
 func _ready() -> void:
 	# Connect button signal
-	$Continue.pressed.connect(_on_button_pressed)
+	button.pressed.connect(_on_button_pressed)
 
 func _on_button_pressed() -> void:
 	# Return to the main game

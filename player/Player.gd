@@ -174,5 +174,5 @@ func handle_direction_tap(direction: int) -> void:
 func _on_hurt_box_enemy_touched(enemy: CharacterBody2D) -> void:
 	enter_combat.emit(enemy)
 	
-func _on_health_health_depleted() -> void:
+func _on_player_health_depleted() -> void:
 	get_tree().change_scene_to_file("res://scenes/death_screen.tscn")

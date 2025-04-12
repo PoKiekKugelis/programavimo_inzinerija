@@ -6,8 +6,8 @@ func _ready() -> void:
 
 
 func _on_restart_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	get_tree().change_scene_to_file("res://scenes/game scenes/game.tscn")
 
 
 func _on_main_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/game scenes/main_menu.tscn")

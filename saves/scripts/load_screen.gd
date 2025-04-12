@@ -21,7 +21,7 @@ func _on_file_2_pressed() -> void:
 	SaveFiles.path = save_file_2
 	emit_signal("button_pressed")
 	await get_tree().create_timer(2).timeout
-	var target_scene = SaveSystem.load_game().get("Location", "res://hub/scenes/hub.tscn")
+	var target_scene = SaveSystem.load_game().get("Location", "res://scenes/game scenes/game.tscn")
 	get_tree().change_scene_to_file(target_scene)
 	
 func _on_file_3_pressed() -> void:

@@ -7,5 +7,5 @@
 script = ExtResource("1_kkq4p")
 starting_deck = ExtResource("2_f1u2q")
 cards_per_turn = 3
-max_energy = 3
+max_energy = 2
 metadata/_custom_type_script = "uid://pttxtewsoqsj"
