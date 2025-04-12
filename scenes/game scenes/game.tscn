@@ -44,17 +44,14 @@ unique_name_in_owner = true
 position = Vector2(-86, -89)
 stats = ExtResource("6_ssvqc")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2.5, 2.5)
-
 [node name="HealthBar" parent="Player" instance=ExtResource("8_khsen")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = -217.0
-offset_top = -107.0
+offset_top = -111.0
 offset_right = -122.0
-offset_bottom = -94.0
+offset_bottom = -98.0
 grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
@@ -64,9 +61,9 @@ anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = -217.0
-offset_top = -92.0
+offset_top = -96.0
 offset_right = -122.0
-offset_bottom = -79.0
+offset_bottom = -83.0
 grow_horizontal = 1
 grow_vertical = 1
 character = NodePath("..")
@@ -75,13 +72,12 @@ metadata/_edit_use_anchors_ = true
 [node name="DeckButton" parent="Player" node_paths=PackedStringArray("counter") instance=ExtResource("14_ir15t")]
 unique_name_in_owner = true
 offset_left = 181.0
-offset_top = -123.0
+offset_top = -129.0
 offset_right = 231.0
-offset_bottom = -23.0
+offset_bottom = -29.0
 scale = Vector2(0.7, 0.7)
 theme = ExtResource("15_ca42v")
 counter = NodePath("Counter")
-metadata/_edit_use_anchors_ = true
 
 [node name="Counter" type="Label" parent="Player/DeckButton"]
 layout_mode = 0
@@ -95,15 +91,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Money" type="Label" parent="Player"]
 offset_left = 186.0
-offset_top = -61.0
+offset_top = -62.0
 offset_right = 226.0
-offset_bottom = -44.0
+offset_bottom = -45.0
 theme = ExtResource("15_ca42v")
 text = "123"
 script = ExtResource("11_1kice")
 
 [node name="Coin" type="Sprite2D" parent="Player"]
-position = Vector2(170, -51)
+position = Vector2(170, -52)
 scale = Vector2(0.0468749, 0.0468749)
 texture = ExtResource("12_5newe")
 

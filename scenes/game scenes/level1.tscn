@@ -151,10 +151,6 @@ layer_1/name = "Background"
 [node name="Player" parent="." instance=ExtResource("5_ru4tf")]
 position = Vector2(40, 132)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -30)
-zoom = Vector2(2.5, 2.5)
-
 [node name="HealthBar" parent="Player" instance=ExtResource("6_i8kv5")]
 anchors_preset = 0
 anchor_right = 0.0

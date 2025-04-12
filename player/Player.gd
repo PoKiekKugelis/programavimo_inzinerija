@@ -6,12 +6,14 @@ class_name Player
 @onready var inventory_ui = $Inventory_UI
 @onready var stamina: Stamina = $Stamina
 @onready var movement_timer: Timer = $MovementTimer
+
 const RUNNING_SPEED = 160.0
 const SPEED = 80.0
 const JUMP_VELOCITY = -400.0
 const DASH_SPEED = 350.0
 const DASH_DISTANCE = 80.0  # Distance to dash
 const GRAVITY = 980  # Gravity constant
+
 var can_dash: bool = true
 var is_dashing: bool = false
 var dash_direction: int = 0

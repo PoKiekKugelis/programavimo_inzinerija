@@ -49,7 +49,7 @@ func _on_player_health_depleted() -> void:
 	get_tree().change_scene_to_file("res://scenes/game scenes/death_screen.tscn")
 	queue_free()
 
-func _on_enemy_death() -> void: # Added those two lines. Crashes if you close the game and go to main menu
+func _on_enemy_death() -> void: # Added those two lines. Crashes if you close the game and go to main menu but works otherwise
 	if enemy_handler.get_child_count() == 0: # Added enemy_handler logic to check if any enmies are still alive
 		battle_ui.show_action_text("Enemy defeated!", Color.GREEN)
 		await get_tree().create_timer(1.5).timeout
