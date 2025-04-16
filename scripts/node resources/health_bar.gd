@@ -18,8 +18,12 @@ func setup_health_bar(health) -> void:
 	max_value = health.max_health
 	value = health.health
 	
+	if health.health_changed.is_connected(_update_bar):
+		health.health_changed.disconnect(_update_bar)
 	# connect to health change signals
 	health.health_changed.connect(_update_bar)
+	if GlobalHealth.health_instance_set.is_connected(setup_health_bar):
+		GlobalHealth.health_instance_set.disconnect(setup_health_bar)
 	
 	# clean up signal connection if we used the waiting approach
 	if GlobalHealth.health_instance_set.is_connected(setup_health_bar):

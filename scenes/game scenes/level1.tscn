@@ -149,7 +149,7 @@ layer_0/tile_data = PackedInt32Array(-3211283, 262144, 2, -3145747, 262144, 2, -
 layer_1/name = "Background"
 
 [node name="Player" parent="." instance=ExtResource("5_ru4tf")]
-position = Vector2(40, 132)
+position = Vector2(1466, -45)
 
 [node name="HealthBar" parent="Player" instance=ExtResource("6_i8kv5")]
 anchors_preset = 0
@@ -213,10 +213,6 @@ texture = ExtResource("13_4niyd")
 [node name="Finish" parent="." instance=ExtResource("2_6sh32")]
 position = Vector2(1871, -16)
 target_level = ExtResource("3_dxn3v")
-
-[node name="TestEnemy" parent="." instance=ExtResource("3_ejswk")]
-position = Vector2(1543, -12)
-scale = Vector2(2, 2)
 
 [node name="SpikeEnemy" parent="." instance=ExtResource("4_bbk5w")]
 position = Vector2(301, 159)
@@ -335,6 +331,10 @@ shape = SubResource("CircleShape2D_msy1c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoulderRollingTrigger"]
 position = Vector2(529, 98)
 shape = SubResource("RectangleShape2D_mq0oc")
+
+[node name="TestEnemy" parent="." instance=ExtResource("3_ejswk")]
+position = Vector2(1534, -10)
+scale = Vector2(2, 2)
 
 [connection signal="body_entered" from="PressurePlate/Area2D" to="PressurePlate" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PressurePlate/Area2D" to="PressurePlate" method="_on_area_2d_body_exited"]

@@ -16,7 +16,7 @@ signal player_action_performed(message: String, color: Color)
 
 func _ready() -> void:
 	# Parent scene yra paused, bet šitos scenos physics (veikia signalai) yra active. Ez vienos eilutės fixas
-	PhysicsServer2D.set_active(true)
+	PhysicsServer2D.call_deferred("set_active", true)
 	# Initialize combat screen setup
 	add_to_group("combat_screen")
 	enemy.reparent(enemy_handler)

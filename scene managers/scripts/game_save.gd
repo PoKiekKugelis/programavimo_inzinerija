@@ -8,7 +8,7 @@ const RUN:= preload("res://scene managers/scenes/run.tscn")#pasirinkus save'ą g
 @onready var current_view: Node = $CurrentView
 
 #globalūs kintamieji
-#inventory Dar į inventorių dėti tik permanent items pvz resursus, nes jis global? ateities problema
+#inventory Dar į inventorių dėti tik permanent items pvz resursus, nes jis global? ateities problema. Gal reikės jį pakeisti iš global ir čia sukurti 2 inventorius
 #money irgi global tai iš vis dzin
 #resources kažkokie
 var health: Health = Health.new()
@@ -27,16 +27,23 @@ func _ready() -> void:
 	start_game()
 
 func start_game() -> void:
-	on_hub_entered()#čia save states kažkur įeina galvočiau, nes nebūtina, kad visada startintų su HUB
+	on_hub_entered()#čia save states kažkur įeina galvočiau, nes nebūtina, kad visada startintų su HUB bet I digress, nieko neišmanau apie saves
 	setup_event_connections()
 
-func initialize_health_stamina() -> void:
+func initialize_health_stamina() -> void:# Kiekvieną kartą pradeda su starting hp ir stamina
 	stamina.max_stamina = starting_stamina_value
 	stamina.stamina = starting_stamina_value
 	health.set_max_health(starting_health_value)
 	health.set_health(starting_health_value)
 
-func change_view(scene: PackedScene) -> Node:
+func add_node_resources() -> void:# Vaikams health ir stamina duodu tėvą. To reikia, nes kitaip prisidarys daugybė orphans
+	# ir reikės juos atskirai trinti. Nes kai baigiasi run, jis išsitrina (Hub pakeičia jo vietą) ir taip visus
+	# vaikus ištrina. Jei tie health ir stamina yra orphans, jie lieka amžinai ir kitą run'ą pradėsi su tokiu hp
+	# kokiu pradėjai paskutinį run'ą
+	self.add_child(health)
+	self.add_child(stamina)
+
+func change_view(scene: PackedScene) -> Node:# Keičia CurrentView vaiką į duotą ir ištrina praeitą
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 	var new_view = scene.instantiate()
@@ -45,34 +52,38 @@ func change_view(scene: PackedScene) -> Node:
 
 func setup_event_connections() -> void:
 	#čia visi signalai go crazy .connect() vietoj change_scene_to_file beveik visur išskyrus aukščiausią lygį
+	# Sujungia signalus, kuriuos galima bet kur bet kada iškviesti, kai nori 
+	# pakeisti į tam tikrą sceną. Preload viršuj sceną, tada Events sukuri signalą, jei ta scena dar neturi signalo 
+	# arba reikia, kad eitų į tą pačią sceną ir šiuo momentu skirtumo nėra, bet ateity bus (restart_at_hub ir run_ended)
 	Events.start_run.connect(on_run_entered)
 	Events.restart_at_hub.connect(on_hub_entered)
 	Events.run_ended.connect(on_hub_entered)
 
-func on_hub_entered() -> void:
+func on_hub_entered() -> void:# Hub scena pridedama kaip dabartinis vaizdas
 	var hub_scene: Hub = change_view(HUB) as Hub
 	hub_scene.char_stats = character
 	hub_scene.player.stats = character
 	change_player_health_stamina(hub_scene)
 
 func on_run_entered() -> void:# Run scena pakeičiama kaip dabartinis vaizdas su praeita buvusia (hub)
-	var run_scene: Run = change_view(RUN) as Run#durnas dalykas, nes Run scena viską pirmiau padaro ir tik tada šitas 3 eilutes įvykdo aka run scena be health ir stamina ir character reišmių važiuoja toliau
+	var run_scene: Run = change_view(RUN) as Run# Durnas dalykas, nes Run scena viską pirmiau padaro ir tik tada šitas 2
+	# eilutes įvykdo aka run scena be health ir stamina reišmių važiuoja toliau
 	run_scene.character = character
 	change_scene_health_stamina(run_scene)
-	Events.updated_run_variables.emit()#Todėl perdavus duomenis iš karto be signalo viskas būtų 0. Čia palaukiu, kol run scena turi visus duomenis apie health ir stamina ir tada juos priskiria game scenai
+	Events.updated_run_variables.emit()# Todėl perdavus duomenis iš karto be signalo viskas būtų 0. Čia palaukiu, 
+	# kol run scena turi visus duomenis apie health ir stamina ir tada juos priskiria game/level1 scenai
 
-func change_player_health_stamina(scene) -> void:# for the nodes which have players aka hub and all the levels
+func change_player_health_stamina(scene) -> void:# for the nodes which have players aka hub
+	# Ιš GameSavo'o priskiria būtent hp ir stamina į scenos player
 	scene.player.health.set_max_health(health.max_health)
 	scene.player.health.set_health(health.health)
 	scene.player.stamina.max_stamina = stamina.max_stamina
 	scene.player.stamina.stamina = stamina.stamina
 
 func change_scene_health_stamina(scene) -> void:# For the Run node
+	# Ιš GameSavo'o priskiria būtent hp ir stamina į sceną. Šiuo atveju tai naudoja tik run.
+	# Šito gali reikėti ir run script'e, kad galėtų perduoti run'o metu gautus permanent upgrades
 	scene.health.set_max_health(health.max_health)
 	scene.health.set_health(health.health)
 	scene.stamina.max_stamina = stamina.max_stamina
 	scene.stamina.stamina = stamina.stamina
-
-func add_node_resources() -> void:
-	self.add_child(health)
-	self.add_child(stamina)

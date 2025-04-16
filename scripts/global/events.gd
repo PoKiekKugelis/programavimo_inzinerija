@@ -17,6 +17,7 @@ signal player_died
 signal enemy_action_completed(enemy: TestEnemy)
 signal enemy_turn_ended
 signal in_combat_status_changed
+signal enter_combat(enemy: CharacterBody2D) 
 
 #GameManger stuff
 signal start_run

@@ -1,6 +1,5 @@
 extends Node
 
-signal quit_while_in_combat
 ## Gets all UIs, during which game should not be able to be paused
 @onready var UnpauseableUIs = get_tree().get_nodes_in_group("UnpausableUserInterfaces")
 var can_unpause = true
@@ -20,13 +19,12 @@ func _quit_to_menu():
 	_resume()
 	#problema ateiciai
 	if Events.in_combat:
-		emit_signal("quit_while_in_combat")
+		get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/game scenes/main_menu.tscn")
 	
 func _input(event: InputEvent) -> void:
 	if(Input.is_action_just_pressed("ui_pause") and (!get_tree().paused or (Events.in_combat and !$".".visible) and !checkUI())):
 		_pause()
-		print(Events.in_combat)
 	elif (Input.is_action_just_pressed("ui_pause") and get_tree().paused and !checkUI()):
 		_resume()
 		

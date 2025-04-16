@@ -9,6 +9,9 @@ func _ready() -> void:
 func setup_stamina_bar():
 	max_value = stamina.max_stamina
 	value = stamina.stamina
+	
+	if stamina.stamina_changed.is_connected(_update_bar):
+		stamina.stamina_changed.disconnect(_update_bar)
 	stamina.stamina_changed.connect(_update_bar)
 
 func _update_bar() -> void:

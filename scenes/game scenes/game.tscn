@@ -175,5 +175,3 @@ z_index = 20
 y_sort_enabled = true
 
 [connection signal="body_entered" from="Finish" to="Player" method="_on_finish_body_entered"]
-[connection signal="enter_combat" from="Player" to="." method="_on_player_enter_combat"]
-[connection signal="quit_while_in_combat" from="PauseScreenView/PauseScreen" to="." method="_on_pause_screen_quit_while_in_combat"]

@@ -29,8 +29,6 @@ var last_tap_time: float = 0
 var double_tap_threshold: float = 0.25  # time window for double tap in seconds
 var just_released: bool = true  # track if key was just released
 
-signal enter_combat(enemy: CharacterBody2D)
-
 func _ready() -> void:
 	Inventory.set_player_reference(self)#set this node as player node so inventory knows
 #Nustato energiją, kortų kiekį ir t.t.
@@ -172,12 +170,7 @@ func handle_direction_tap(direction: int) -> void:
 		# record this tap for potential double tap detection
 		last_tap_direction = direction
 		last_tap_time = current_time
-	
-#signalas gautas is zaidejo hurtbox, ir siunciamas per pati player i pagrindine scena
-#signalas su savim nesasi prieso node, kad zinotu pries ka kovoja
-func _on_hurt_box_enemy_touched(enemy: CharacterBody2D) -> void:
-	enter_combat.emit(enemy)
-	
+
 func _on_health_health_depleted() -> void:
 	if Events.in_combat:
 		Events.player_died_in_combat.emit()

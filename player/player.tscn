@@ -156,6 +156,5 @@ zoom = Vector2(2.5, 2.5)
 script = ExtResource("8_rgyib")
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
-[connection signal="enemy_touched" from="HurtBox" to="." method="_on_hurt_box_enemy_touched"]
 [connection signal="received_damage" from="HurtBox" to="." method="_on_hurt_box_received_damage"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
