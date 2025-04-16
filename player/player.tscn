@@ -113,6 +113,9 @@ max_health = 5
 
 [node name="Stamina" type="Node" parent="."]
 script = ExtResource("3_xxutp")
+max_stamina = 50.0
+stamina = 50.0
+metadata/_custom_type_script = "uid://blpiq2qfwwrbl"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur7pv")

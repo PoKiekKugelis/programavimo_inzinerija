@@ -3,8 +3,8 @@ extends Node
 
 signal stamina_changed  
 
-@export var stamina: float = 50.0
-@export var max_stamina: float = 50.0
+@export var max_stamina: float
+@export var stamina: float = max_stamina
 @export var drain_rate: float = 8.0  
 @export var recharge_rate: float = 5.0 
 

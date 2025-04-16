@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var deck_button: CardDeckOpen = %DeckButton
 @onready var deck_view: CardDeckView = $CardDeckView/DeckView
+@onready var player: Player = $Player
+
+@export var char_stats: CharStats
 
 func _ready() -> void:
 	load_data()

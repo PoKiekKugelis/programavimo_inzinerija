@@ -101,7 +101,7 @@ radius = 7.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mq0oc"]
 size = Vector2(65, 6)
 
-[node name="Node2D" type="Node2D"]
+[node name="Level1" type="Node2D"]
 script = ExtResource("1_mvsps")
 
 [node name="Background" type="Node2D" parent="."]
@@ -163,7 +163,7 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="StaminaBar" parent="Player" node_paths=PackedStringArray("character") instance=ExtResource("7_dxn3v")]
+[node name="StaminaBar" parent="Player" instance=ExtResource("7_dxn3v")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -173,7 +173,6 @@ offset_right = -122.0
 offset_bottom = -104.0
 grow_horizontal = 1
 grow_vertical = 1
-character = NodePath("..")
 metadata/_edit_use_anchors_ = true
 
 [node name="DeckButton" parent="Player" node_paths=PackedStringArray("counter") instance=ExtResource("8_14jow")]

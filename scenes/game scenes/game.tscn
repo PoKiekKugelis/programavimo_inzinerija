@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dtkw7x4hdoyt2"]
+[gd_scene load_steps=22 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
 [ext_resource type="Script" uid="uid://cao01gpotabl2" path="res://scripts/game scenes/game.gd" id="1_kvpfn"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bsdelvdiesf0o" path="res://inventory/scenes/inventory_item.tscn" id="3_b0nof"]
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="3_psmk7"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="4_j6hfo"]
-[ext_resource type="Resource" uid="uid://ddulsd2ddfhj0" path="res://cards/card types/base_player.tres" id="6_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://bhod10c0fj1bp" path="res://scenes/signs and menus/finish.tscn" id="6_twexu"]
 [ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://enemies/scenes/enemy.tscn" id="7_lph38"]
 [ext_resource type="PackedScene" uid="uid://b18lmeyce53di" path="res://scenes/game scenes/level1.tscn" id="7_rysoc"]
@@ -42,7 +41,6 @@ target_level = ExtResource("7_rysoc")
 [node name="Player" parent="." instance=ExtResource("2_dspdp")]
 unique_name_in_owner = true
 position = Vector2(-86, -89)
-stats = ExtResource("6_ssvqc")
 
 [node name="HealthBar" parent="Player" instance=ExtResource("8_khsen")]
 anchors_preset = 0
@@ -56,7 +54,7 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="StaminaBar" parent="Player" node_paths=PackedStringArray("character") instance=ExtResource("10_rq0lr")]
+[node name="StaminaBar" parent="Player" instance=ExtResource("10_rq0lr")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -66,7 +64,6 @@ offset_right = -122.0
 offset_bottom = -83.0
 grow_horizontal = 1
 grow_vertical = 1
-character = NodePath("..")
 metadata/_edit_use_anchors_ = true
 
 [node name="DeckButton" parent="Player" node_paths=PackedStringArray("counter") instance=ExtResource("14_ir15t")]
@@ -177,7 +174,6 @@ clip_children = 1
 z_index = 20
 y_sort_enabled = true
 
-[connection signal="in_combat_status_changed" from="." to="PauseScreenView/PauseScreen" method="_on_game_in_combat_status_changed"]
 [connection signal="body_entered" from="Finish" to="Player" method="_on_finish_body_entered"]
 [connection signal="enter_combat" from="Player" to="." method="_on_player_enter_combat"]
 [connection signal="quit_while_in_combat" from="PauseScreenView/PauseScreen" to="." method="_on_pause_screen_quit_while_in_combat"]

@@ -1,10 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://befh57cg3tm24"]
+[gd_scene load_steps=20 format=3 uid="uid://befh57cg3tm24"]
 
 [ext_resource type="Script" uid="uid://qw3n3dhsjip2" path="res://enemies/scripts/enemy.gd" id="1_6cc7r"]
 [ext_resource type="Texture2D" uid="uid://ci6oaqoi4u4xy" path="res://assets/sprites/animation_test.png" id="1_evtl2"]
 [ext_resource type="Script" uid="uid://ct28a5ovxts7" path="res://scripts/node resources/health.gd" id="2_7qkrd"]
 [ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="3_ec5fr"]
 [ext_resource type="Script" uid="uid://b25ntns06y3kc" path="res://enemies/scripts/hurtbox.gd" id="3_fjv6h"]
+[ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/node resources/health_bar.tscn" id="6_6edcp"]
+[ext_resource type="Script" uid="uid://c118vejxqqnw2" path="res://enemies/scripts/enemy_health_bar.gd" id="7_ontt5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17fi2"]
 size = Vector2(20, 30.0752)
@@ -90,6 +92,7 @@ metadata/_edit_group_ = true
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_7qkrd")
+max_health = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.485, 0.665)
@@ -118,5 +121,15 @@ script = ExtResource("3_fjv6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_5gm37")
+
+[node name="HealthBar" parent="." instance=ExtResource("6_6edcp")]
+visible = false
+offset_left = -16.0
+offset_top = -35.0
+offset_right = 79.0
+offset_bottom = -22.0
+scale = Vector2(0.33, 0.33)
+script = ExtResource("7_ontt5")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

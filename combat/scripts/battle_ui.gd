@@ -24,7 +24,10 @@ enum TurnState { PLAYER_TURN, ENEMY_TURN }
 
 # current turn state
 var current_turn: TurnState = TurnState.PLAYER_TURN
+
 func _ready() -> void:
+	#disable button so first turn you don't draw more than once
+	end_turn_button.disabled = true
 	Events.player_hand_drawn.connect(on_player_hand_drawn)# connect the signal to the function
 	# connect the buttons to the functions
 	end_turn_button.pressed.connect(on_end_turn_button_pressed)

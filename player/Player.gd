@@ -1,11 +1,13 @@
 extends CharacterBody2D
 class_name Player
-@onready var animated_sprite = $AnimatedSprite2D
+
 @export var save_path: String
 @export var stats: CharStats : set = set_character_stats
-@onready var inventory_ui = $Inventory_UI
+
+@onready var health: Health = $Health
 @onready var stamina: Stamina = $Stamina
 @onready var movement_timer: Timer = $MovementTimer
+@onready var animated_sprite = $AnimatedSprite2D
 
 const RUNNING_SPEED = 160.0
 const SPEED = 80.0
@@ -20,6 +22,7 @@ var dash_direction: int = 0
 var dash_start_position: Vector2 = Vector2.ZERO
 var CAN_MOVE: bool = true
 
+
 # variables for double tap detection
 var last_tap_direction: int = 0
 var last_tap_time: float = 0
@@ -30,7 +33,6 @@ signal enter_combat(enemy: CharacterBody2D)
 
 func _ready() -> void:
 	Inventory.set_player_reference(self)#set this node as player node so inventory knows
-
 #Nustato energiją, kortų kiekį ir t.t.
 func set_character_stats(value: CharStats) -> void:
 	stats = value
@@ -176,5 +178,8 @@ func handle_direction_tap(direction: int) -> void:
 func _on_hurt_box_enemy_touched(enemy: CharacterBody2D) -> void:
 	enter_combat.emit(enemy)
 	
-func _on_player_health_depleted() -> void:
-	get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+func _on_health_health_depleted() -> void:
+	if Events.in_combat:
+		Events.player_died_in_combat.emit()
+		return
+	Events.player_died.emit()

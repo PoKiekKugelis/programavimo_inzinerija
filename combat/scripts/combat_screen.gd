@@ -1,5 +1,6 @@
 extends Control
 class_name CombatScreen
+
 signal player_action_performed(message: String, color: Color)
 
 # exported references for easy assignment in editor
@@ -14,43 +15,36 @@ signal player_action_performed(message: String, color: Color)
 @onready var enemy_handler: EnemyHandler = $EnemyHandler
 
 func _ready() -> void:
-	#Parent scene yra paused, bet šitos scenos physics (veikia signalai) yra active. Ez vienos eilutės fixas
+	# Parent scene yra paused, bet šitos scenos physics (veikia signalai) yra active. Ez vienos eilutės fixas
 	PhysicsServer2D.set_active(true)
-	# initialize combat screen setup
+	# Initialize combat screen setup
 	add_to_group("combat_screen")
-	enemy_handler.add_child(enemy)
 	enemy.reparent(enemy_handler)
-	#connect signals
+	# Connect signals
 	Events.player_turn_ended.connect(player_handler.end_turn) # End turn function
 	Events.player_hand_discarded.connect(player_handler.start_turn) # Start turn function
-	Events.player_died.connect(_on_player_health_depleted) # Player death function
-	#enemy_handler.child_order_changed.connect(_on_enemy_death) # enemy death function
-	#add character stats such as energy, how many cards to draw and etc
-	var new_stats: CharStats = char_stats.create_instance()
-	battle_ui.char_stats = new_stats
+	Events.player_died_in_combat.connect(_on_player_death) # Player death function
+	enemy_handler.child_order_changed.connect(_on_enemy_death) # enemy death function
+	# Provide BattleUI the character stats
+	battle_ui.char_stats = char_stats
 	# Turn off physics (not falling) and process function
 	enemy.set_physics_process(false)
 	enemy.set_process(false)
-	#timer for the transition
-	await get_tree().create_timer(1.5).timeout
-	#Change camera and prepare entities for combat
-	$Camera2D.make_current()
+	await get_tree().create_timer(1.5).timeout# Timer for the transition
+	$Camera2D.make_current()# Change camera and prepare entities for combat
 	load_entities()
-	#Timer for visible drawing cards
-	await get_tree().create_timer(1.5).timeout
-	player_handler.start_battle(new_stats)# Send the stats info everywhere and start drawing
+	await get_tree().create_timer(1.5).timeout# Timer for visible drawing cards
+	player_handler.start_battle(char_stats)# Send the stats info everywhere and start drawing
 	battle_ui.initialize_card_deck_ui()# Initialize the draw and discard piles
-	# start with player's turn
-	battle_ui.start_player_turn()
+	battle_ui.start_player_turn()# Start with player's turn
 
-func _on_player_health_depleted() -> void:
-	$BattleUI.visible = false
+func _on_player_death() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/game scenes/death_screen.tscn")
+	Events.player_died.emit()
 	queue_free()
 
-func _on_enemy_death() -> void: # Added those two lines. Crashes if you close the game and go to main menu but works otherwise
-	if enemy_handler.get_child_count() == 0: # Added enemy_handler logic to check if any enmies are still alive
+func _on_enemy_death() -> void: # Added those two lines
+	if enemy_handler.get_child_count() == 0 and is_inside_tree(): # Added enemy_handler logic to check if any enmies are still alive
 		battle_ui.show_action_text("Enemy defeated!", Color.GREEN)
 		await get_tree().create_timer(1.5).timeout
 		var victory_screen = preload("res://combat/scenes/victory_screen.tscn").instantiate()
@@ -80,5 +74,11 @@ func set_transformations():
 	# make enemy face left
 	var anim_sprite = enemy.get_node("AnimatedSprite2D")
 	anim_sprite.flip_h = true
+	show_enemy_health()
 	# setup enemy animation
 	anim_sprite.play("idle")
+
+func show_enemy_health():
+	for enemy in $EnemyHandler.get_children():
+		var health_bar = enemy.get_node("HealthBar")
+		health_bar.visible = true

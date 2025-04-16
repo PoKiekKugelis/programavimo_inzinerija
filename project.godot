@@ -37,7 +37,8 @@ folder_colors={
 "res://hub/": "green",
 "res://inventory/": "blue",
 "res://player/": "pink",
-"res://saves/": "yellow"
+"res://saves/": "yellow",
+"res://scene managers/": "teal"
 }
 
 [global_group]

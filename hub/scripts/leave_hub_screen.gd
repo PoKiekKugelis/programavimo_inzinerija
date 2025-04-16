@@ -1,13 +1,17 @@
 extends Control
 
+@export var run_startup: RunStartup
+
 func _on_no_pressed() -> void:
 	get_tree().paused = false
 	$".".visible = false
 
-
 func _on_yes_pressed() -> void:
+	var game_save: GameSave = get_tree().root.get_child(-1)
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/game scenes/game.tscn")
+	run_startup.type = RunStartup.Type.NEW_RUN
+	run_startup.character_setup = game_save.character
+	Events.start_run.emit()
 
 func _input(event: InputEvent) -> void:
 	if $".".visible and event.is_action_pressed("ui_cancel"):

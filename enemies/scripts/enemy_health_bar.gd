@@ -1,7 +1,7 @@
 extends TextureProgressBar
 
 func _ready() -> void:
-	var enemy = get_tree().get_first_node_in_group("enemy")
+	var enemy = owner
 	var enemy_health = enemy.get_node("Health")
 	
 	setup_health_bar(enemy_health)

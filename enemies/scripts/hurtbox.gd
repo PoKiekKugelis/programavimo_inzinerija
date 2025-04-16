@@ -8,8 +8,6 @@ signal received_damage(damage: int)
 signal enemy_touched(enemy: CharacterBody2D) 
 
 @export var health: Health
-
-
 func _ready():
 	connect("area_entered", _on_area_entered)
 

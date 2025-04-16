@@ -9,7 +9,8 @@ func _ready() -> void:
 func _on_button_pressed() -> void:
 	# Return to the main game
 	get_tree().paused = false
-	queue_free()
+	Events.in_combat_status_changed.emit()
+	get_parent().get_parent().queue_free()
 	
 	# Emit a signal that the parent can connect to
 	# You'll need to define this signal at the top of the script

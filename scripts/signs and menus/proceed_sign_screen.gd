@@ -9,9 +9,10 @@ func _input(event: InputEvent) -> void:
 
 func _on_go_to_hub_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://hub/scenes/hub.tscn")
+	Events.run_ended.emit()
 
 
 func _on_proceed_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/game scenes/level1.tscn")
+	Events.changing_level.emit()
+	Events.run_continues.emit()

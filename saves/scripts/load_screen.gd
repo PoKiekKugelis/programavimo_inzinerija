@@ -14,21 +14,21 @@ func _on_file_1_pressed() -> void:
 	SaveFiles.path = save_file_1
 	emit_signal("button_pressed")
 	await get_tree().create_timer(2).timeout
-	var target_scene = SaveSystem.load_game().get("Location", "res://hub/scenes/hub.tscn")
+	var target_scene = SaveSystem.load_game().get("Location", "res://scene managers/scenes/game_save.tscn")
 	get_tree().change_scene_to_file(target_scene)
 
 func _on_file_2_pressed() -> void:
 	SaveFiles.path = save_file_2
 	emit_signal("button_pressed")
 	await get_tree().create_timer(2).timeout
-	var target_scene = SaveSystem.load_game().get("Location", "res://scenes/game scenes/game.tscn")
+	var target_scene = SaveSystem.load_game().get("Location", "res://scene managers/scenes/game_save.tscn")
 	get_tree().change_scene_to_file(target_scene)
 	
 func _on_file_3_pressed() -> void:
 	SaveFiles.path = save_file_3
 	emit_signal("button_pressed")
 	await get_tree().create_timer(2).timeout
-	var target_scene = SaveSystem.load_game().get("Location", "res://hub/scenes/hub.tscn")
+	var target_scene = SaveSystem.load_game().get("Location", "res://scene managers/scenes/game_save.tscn")
 	get_tree().change_scene_to_file(target_scene)
 	
 func _on_back_pressed() -> void:

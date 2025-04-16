@@ -7,7 +7,7 @@ signal health_changed(diff: int)      # emitted when current health changes
 signal health_depleted                # emitted when health reaches 0
 
 # configuration variables
-@export var max_health: int = 10      # maximum health value
+@export var max_health: int     # maximum health value
 @export var immortality: bool = false : set = set_immortality, get = get_immortality
 @onready var health: int = max_health : set = set_health, get = get_health  # current health
 
@@ -51,8 +51,6 @@ func set_health(value: int):
 		
 		# check for death
 		if health <= 0:
-			if get_parent().is_in_group("Player"):
-				Events.player_died.emit()
 			health_depleted.emit()
 
 # gets current health value

@@ -18,7 +18,7 @@ light_mode = 1
 shader = ExtResource("4_wvt8u")
 shader_parameter/fill = -0.1
 
-[node name="Control" type="Control"]
+[node name="LoadScreen" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15

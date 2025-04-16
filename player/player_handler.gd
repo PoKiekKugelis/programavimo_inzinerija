@@ -36,7 +36,6 @@ func draw_cards(amount: int) -> void:
 	for i in range(amount):
 		tween.tween_callback(draw_card)
 		tween.tween_interval(HAND_DRAW_INTERVAL)
-	
 	tween.finished.connect(
 		func(): Events.player_hand_drawn.emit()
 	)
