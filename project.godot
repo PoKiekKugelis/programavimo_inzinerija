@@ -24,6 +24,10 @@ GlobalHealth="*res://scripts/global/global_health.gd"
 Events="*res://scripts/global/events.gd"
 Money="*res://scripts/node resources/money.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="programavimo_inzinerija_project"
