@@ -1,6 +1,10 @@
 class_name Health
 extends Node
 
+# variable and signal for the shield card
+var shield: int = 0
+signal shield_changed
+
 # signals for health changes
 signal max_health_changed(diff: int)  # emitted when max health changes
 signal health_changed(diff: int)      # emitted when current health changes  
@@ -53,6 +57,19 @@ func set_health(value: int):
 		if health <= 0:
 			health_depleted.emit()
 
+# handles full and partial shield use, then applies leftover damage.
+func receive_damage(amount: int):
+	if shield > 0:
+		if amount <= shield:
+			shield -= amount
+			shield_changed.emit()
+			return
+		else:
+			amount -= shield
+			shield = 0
+			shield_changed.emit()
+	set_health(health - amount)
+
 # gets current health value
 func get_health():
 	return health
@@ -82,3 +99,12 @@ func set_temporary_immortality(time: float):
 # gets current immortality state
 func get_immortality() -> bool:
 	return immortality
+
+# emit signals for shield card updates
+func apply_shield(amount: int):
+	shield = amount
+	shield_changed.emit()
+
+func clear_shield():
+	shield = 0
+	shield_changed.emit()

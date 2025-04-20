@@ -81,7 +81,8 @@ func play_enemy_turn():
 	if choice == 0:
 		# deal damage
 		var player_health = GlobalHealth.get_health_instance()
-		player_health.set_health(player_health.health - 2)
+		#player_health.set_health(player_health.health - 2)
+		player_health.receive_damage(2)
 		show_action_text("Enemy dealt 2 damage!", Color.RED)
 	elif choice == 1:
 		# heal self
