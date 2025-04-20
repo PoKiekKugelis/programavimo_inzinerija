@@ -3,7 +3,8 @@ extends Node
 
 func _ready() -> void:
 	SaveSystem.delete_data()
-	Events.in_combat_status_changed
+	if Events.in_combat:
+		Events.in_combat_status_changed.emit()
 
 
 func _on_restart_pressed() -> void:

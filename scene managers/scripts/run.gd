@@ -6,7 +6,8 @@ const LEVEL_SCENE:= preload("res://scenes/game scenes/game.tscn")
 const LEVEL_SCENE2:= preload("res://scenes/game scenes/level1.tscn")
 const COMBAT_SCENE:= preload("res://combat/scenes/combat_screen.tscn")
 const RUN_COMPLETE:= preload("res://scenes/game scenes/level_complete.tscn")
-const PLAYER_DEATH:= preload("res://scenes/game scenes/death_screen.tscn")#numirus nebe change current scene, o per signals atsiųsti čia, kad pakeistų sceną
+const PLAYER_DEATH:= preload("res://scenes/game scenes/death_screen.tscn")#numirus nebe change current scene, 
+# o per signals atsiųsti čia, kad pakeistų sceną
 
 @export var run_startup: RunStartup# Čia saugo character duomenis ir ar New run ar continued. Leave_hub_screen naudojama
 # Galimai nelabai reikalinga. Čia buvo mano first attempt at perkelti duomenis, bet supratau, kad nodes negalima
@@ -15,7 +16,7 @@ const PLAYER_DEATH:= preload("res://scenes/game scenes/death_screen.tscn")#numir
 
 @onready var current_view: Node = $CurrentView# Kadangi turim nodes resursus, kad jie nebūtų orphans reikia juos į
 # medį pridėti - tėvą duoti. Tai dabartinę sceną pridedu ant šito node, kad galėčiau tikrinti, kad tik vienas node 
-# pridėtas būtų keitimo metu.
+# pridėtas keitimo metu.
 
 #kintamieji run'ui, čia daugiau bus arba į vieną character viskas sudėta
 var character : CharStats
@@ -102,14 +103,15 @@ func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	var playerSprite = level_scene.get_node("Player/AnimatedSprite2D").duplicate()
 	var combat_enemy = enemy.duplicate() # the whole enemy is taken instead of the sprite
 	combat_instance.enemy = combat_enemy
+	combat_instance.player = playerSprite
 	combat_instance.char_stats = level_scene.char_stats
+	playerSprite.add_to_group("combat_player")
 	combat_instance.add_child(playerSprite) # add player character to combat
 	combat_instance.add_child(combat_enemy) # add enemy instance to combat (using duplicated version)
-	combat_instance.player = playerSprite
-	#instance = combat_instance
+	
 	get_tree().paused = true
+	#get_node("CurrentView").get_child(0).process_mode = Node.PROCESS_MODE_DISABLED# temporary
 	current_view.call_deferred("add_child",combat_instance)
-	#current_view.add_child(combat_instance)
 
 func _on_game_in_combat_status_changed() -> void:
 	Events.in_combat = !Events.in_combat

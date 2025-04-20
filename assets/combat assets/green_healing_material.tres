@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://crfc43mck4cq4"]
+
+[ext_resource type="Shader" uid="uid://boyxeckra2sve" path="res://assets/combat assets/green_healing_shader.gdshader" id="1_qrhsr"]
+
+[resource]
+shader = ExtResource("1_qrhsr")
+shader_parameter/fade_speed = 0.3

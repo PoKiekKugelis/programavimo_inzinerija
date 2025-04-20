@@ -1,19 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://bv2b50rofjqc4"]
 
-[ext_resource type="Texture2D" uid="uid://dhemlqk7btb7k" path="res://assets/sprites/HealthBar_Empty.png" id="1_oor01"]
-[ext_resource type="Texture2D" uid="uid://c07pdqbfxhauk" path="res://assets/sprites/HealthBar_Outline.png" id="2_q6xxe"]
+[ext_resource type="Texture2D" uid="uid://d34icac6vsh6p" path="res://assets/sprites/version A/hp sprites/health bar 3.png" id="1_qujnw"]
+[ext_resource type="Texture2D" uid="uid://cxwujehjxcvii" path="res://assets/sprites/version A/hp sprites/health bar 1.png" id="2_gnmyr"]
 [ext_resource type="Script" uid="uid://d28xhb1w0owss" path="res://scripts/node resources/health_bar.gd" id="2_v86s0"]
-[ext_resource type="Texture2D" uid="uid://b5tknsket7dil" path="res://assets/sprites/HealthBar_Fill.png" id="3_e8xyq"]
+[ext_resource type="Texture2D" uid="uid://mthgp715yo4" path="res://assets/sprites/version A/hp sprites/health bar 2.png" id="3_dhkdd"]
 
 [node name="HealthBar" type="TextureProgressBar"]
 anchors_preset = -1
-anchor_right = 0.086
-anchor_bottom = 0.023
-offset_right = -0.0720062
-offset_bottom = 0.0959988
+anchor_right = 0.0555556
+anchor_bottom = 0.0246914
 grow_horizontal = 2
 grow_vertical = 2
-texture_under = ExtResource("1_oor01")
-texture_over = ExtResource("2_q6xxe")
-texture_progress = ExtResource("3_e8xyq")
+max_value = 21.0
+texture_under = ExtResource("1_qujnw")
+texture_over = ExtResource("2_gnmyr")
+texture_progress = ExtResource("3_dhkdd")
+texture_progress_offset = Vector2(18, 0)
 script = ExtResource("2_v86s0")
+metadata/_edit_use_anchors_ = true

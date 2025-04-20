@@ -58,6 +58,9 @@ offset_bottom = 648.0
 texture = ExtResource("4_3ud5g")
 expand_mode = 1
 
+[node name="EnemyHandler" type="Node2D" parent="."]
+script = ExtResource("3_j1dph")
+
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 process_mode = 3
 visible = false
@@ -78,12 +81,13 @@ grow_vertical = 0
 alignment = 1
 script = ExtResource("6_leoy8")
 
-[node name="ActionText" type="Label" parent="BattleUI"]
+[node name="ActionText" type="RichTextLabel" parent="BattleUI"]
 offset_left = 307.0
 offset_top = 78.0
 offset_right = 846.0
 offset_bottom = 248.0
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -97,10 +101,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayerHealth" parent="BattleUI" instance=ExtResource("8_guoki")]
-offset_left = 10.0
-offset_top = 14.0
-offset_right = 10.0
-offset_bottom = 14.0
+offset_left = 241.0
+offset_top = 360.0
+offset_right = 241.0
+offset_bottom = 360.0
 scale = Vector2(2, 2)
 
 [node name="EndTurnButton" type="Button" parent="BattleUI"]
@@ -173,19 +177,6 @@ offset_bottom = 88.7143
 theme_override_font_sizes/font_size = 32
 text = "0"
 metadata/_edit_use_anchors_ = true
-
-[node name="Choice" type="Label" parent="BattleUI"]
-visible = false
-offset_left = 779.0
-offset_top = 326.0
-offset_right = 1061.0
-offset_bottom = 488.0
-theme = ExtResource("12_6rfo5")
-theme_override_font_sizes/font_size = 50
-text = "test"
-
-[node name="EnemyHandler" type="Node2D" parent="."]
-script = ExtResource("3_j1dph")
 
 [node name="Transition" type="CanvasLayer" parent="."]
 layer = 2

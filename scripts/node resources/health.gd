@@ -11,6 +11,9 @@ signal health_depleted                # emitted when health reaches 0
 @export var immortality: bool = false : set = set_immortality, get = get_immortality
 @onready var health: int = max_health : set = set_health, get = get_health  # current health
 
+const WHITE_SPRITE_MATERIAL := preload("res://assets/combat assets/white_sprite_material.tres")
+const GREEN_HEALING_MATERIAL := preload("res://assets/combat assets/green_healing_material.tres")
+
 # timer for temporary immortality
 var immortality_timer: Timer = null
 
@@ -48,10 +51,51 @@ func set_health(value: int):
 		var difference = clamped_value - health
 		health = clamped_value
 		health_changed.emit(difference)
-		
-		# check for death
-		if health <= 0:
-			health_depleted.emit()
+		if Events.in_combat and difference < 0:# A shaking animation when damage taken
+			take_damage_animation()
+		if Events.in_combat and difference > 0:# A shaking animation when damage taken
+			heal_animation()
+
+func take_damage_animation() -> void:
+	var to_shake = owner
+	if to_shake is Player:
+		to_shake = get_tree().get_first_node_in_group("combat_player")
+	if to_shake is TestEnemy:
+		to_shake = get_parent().get_node("AnimatedSprite2D")
+	
+	to_shake.material = WHITE_SPRITE_MATERIAL
+	
+	var tween := create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_callback(Shaker.shake.bind(to_shake,12,0.15))
+	tween.tween_interval(0.17)
+	
+	tween.finished.connect(func():
+		to_shake.material = null
+		if health <= 0: health_depleted.emit()# check for death
+		)
+
+func heal_animation() -> void:
+	var to_heal = owner
+	if to_heal is Player:
+		to_heal = get_tree().get_first_node_in_group("combat_player")
+	if to_heal is TestEnemy:
+		to_heal = get_parent().get_node("AnimatedSprite2D")
+	
+	to_heal.material = GREEN_HEALING_MATERIAL
+	
+	var tween := create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.tween_property(to_heal, "material:shader_parameter/fade_speed", -1.0, 0.3)
+	tween.tween_property(to_heal, "material:shader_parameter/fade_speed", -0.3, 0.3)
+	
+	tween.finished.connect(func():
+		to_heal.material = null
+		if health <= 0: health_depleted.emit()# check for death
+		)
+
+func heal(value) -> void:
+	health += value
 
 # gets current health value
 func get_health():

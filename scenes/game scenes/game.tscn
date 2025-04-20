@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dtkw7x4hdoyt2"]
+[gd_scene load_steps=23 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
 [ext_resource type="Script" uid="uid://cao01gpotabl2" path="res://scripts/game scenes/game.gd" id="1_kvpfn"]
@@ -17,6 +17,7 @@
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="12_kvuet"]
 [ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://inventory/scenes/inventory_ui.tscn" id="13_trtic"]
 [ext_resource type="PackedScene" uid="uid://bhucwpx8dw1e6" path="res://cards/scenes/card_deck_open.tscn" id="14_ir15t"]
+[ext_resource type="Resource" uid="uid://p53ixt6x2i8g" path="res://enemies/test_enemy/test_enemy.tres" id="15_btp2w"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="15_ca42v"]
 [ext_resource type="PackedScene" uid="uid://b4cycf46t3wmq" path="res://cards/scenes/card_deck.tscn" id="16_ca42v"]
 [ext_resource type="PackedScene" uid="uid://cvbf4h8xu6bjk" path="res://scenes/signs and menus/proceed_sign.tscn" id="21_37s47"]
@@ -52,7 +53,6 @@ offset_right = -122.0
 offset_bottom = -98.0
 grow_horizontal = 1
 grow_vertical = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="StaminaBar" parent="Player" instance=ExtResource("10_rq0lr")]
 anchors_preset = 0
@@ -100,6 +100,11 @@ position = Vector2(170, -52)
 scale = Vector2(0.0468749, 0.0468749)
 texture = ExtResource("12_5newe")
 
+[node name="TestEnemy" parent="." instance=ExtResource("7_lph38")]
+position = Vector2(84, -4)
+scale = Vector2(2, 2)
+stats = ExtResource("15_btp2w")
+
 [node name="Inventory_Item" parent="." instance=ExtResource("3_b0nof")]
 position = Vector2(-146, 11)
 item_type = "test type"
@@ -113,10 +118,6 @@ item_type = "test1"
 item_name = "a"
 item_texture = ExtResource("4_j6hfo")
 item_effect = "test3"
-
-[node name="TestEnemy" parent="." instance=ExtResource("7_lph38")]
-position = Vector2(84, -4)
-scale = Vector2(2, 2)
 
 [node name="SpikeEnemy" parent="." instance=ExtResource("9_k0taf")]
 position = Vector2(-15, 31)

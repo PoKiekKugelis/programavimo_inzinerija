@@ -15,7 +15,6 @@ enum TurnState { PLAYER_TURN, ENEMY_TURN }
 @onready var discard_button: CardDeckOpen = %DiscardButton
 @onready var draw_deck_view: CardDeckView = %DrawDeckView
 @onready var discard_deck_view: CardDeckView = %DiscardDeckView
-@onready var choice: int
 @onready var action_text = $ActionText
 @onready var combat_screen: CombatScreen = $".."
 # animation helpers
@@ -57,13 +56,11 @@ func on_player_hand_drawn() -> void:
 
 func on_end_turn_button_pressed() -> void:
 	end_turn_button.disabled = true
-	if current_turn == TurnState.PLAYER_TURN:
-		start_enemy_turn()
+	start_enemy_turn()
 	Events.player_turn_ended.emit()
 
 # starts player's turn
 func start_player_turn():
-	display_action() #displays enemy's action
 	current_turn = TurnState.PLAYER_TURN
 	turn_indicator.text = "PLAYER'S TURN"
 	turn_indicator.modulate = Color.GREEN
@@ -73,35 +70,12 @@ func start_enemy_turn():
 	current_turn = TurnState.ENEMY_TURN
 	turn_indicator.text = "ENEMY'S TURN"
 	turn_indicator.modulate = Color.RED
-	await get_tree().create_timer(1.0).timeout
-	play_enemy_turn()# enemy performs 2 random actions
-	start_player_turn()# return to player's turn
-
-func play_enemy_turn():
-	if choice == 0:
-		# deal damage
-		var player_health = GlobalHealth.get_health_instance()
-		player_health.set_health(player_health.health - 2)
-		show_action_text("Enemy dealt 2 damage!", Color.RED)
-	elif choice == 1:
-		# heal self
-		var enemy_health = enemy.get_node("Health")
-		enemy_health.set_health(enemy_health.health + 2)
-		show_action_text("Enemy healed 2 HP!", Color.GREEN)
-		
-		await get_tree().create_timer(0.5).timeout
 
 func display_action():
-	choice = randi() % 2
-	$Choice.visible = true
-	if choice == 0:
-		# deal damage
-		$Choice.text = "Attack: 2 HP"
-		$Choice.add_theme_color_override("font_color", Color(1,0,0,1))
-	elif choice == 1:
-		# heal self
-		$Choice.text = "Heal: 2 HP"
-		$Choice.add_theme_color_override("font_color", Color(0,1,0,1))
+	var choice = enemy.get_node("Choice")
+	choice.visible = true
+	enemy = combat_screen.enemy # Update the enemy so its current_action updates
+	choice.text = enemy.current_action.intent # Shows intent (See enemies/test_enemy/test_attack_action.gd)
 
 # displays combat action text with fade effect
 func show_action_text(message: String, color: Color = Color.WHITE):
