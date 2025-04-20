@@ -75,6 +75,11 @@ func start_enemy_turn():
 	turn_indicator.modulate = Color.RED
 	await get_tree().create_timer(1.0).timeout
 	play_enemy_turn()# enemy performs 2 random actions
+	
+	# after enemy finishes their actions, clear the shield
+	var player_health = GlobalHealth.get_health_instance()
+	player_health.clear_shield()
+	
 	start_player_turn()# return to player's turn
 
 func play_enemy_turn():
