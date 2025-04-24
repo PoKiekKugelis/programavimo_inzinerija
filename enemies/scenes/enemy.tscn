@@ -9,49 +9,46 @@
 [ext_resource type="Script" uid="uid://c118vejxqqnw2" path="res://enemies/scripts/enemy_health_bar.gd" id="7_ontt5"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="8_ontt5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_17fi2"]
-size = Vector2(20, 30.0752)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kv82q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ontt5"]
 atlas = ExtResource("1_evtl2")
-region = Rect2(0, 48, 32, 48)
+region = Rect2(2, 49, 32, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rxq4u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yselg"]
 atlas = ExtResource("1_evtl2")
-region = Rect2(32, 48, 32, 48)
+region = Rect2(34, 49, 32, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j8yyb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdit5"]
 atlas = ExtResource("1_evtl2")
-region = Rect2(0, 0, 32, 48)
+region = Rect2(0, 0, 32, 34)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_82h8q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rcda"]
 atlas = ExtResource("1_evtl2")
-region = Rect2(32, 0, 32, 48)
+region = Rect2(32, 0, 32, 34)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfg6e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4l7e"]
 atlas = ExtResource("1_evtl2")
-region = Rect2(64, 0, 32, 48)
+region = Rect2(64, 0, 32, 34)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gfj4y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a5xv"]
 atlas = ExtResource("1_evtl2")
-region = Rect2(96, 0, 32, 48)
+region = Rect2(96, 0, 32, 34)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qengu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3o1q"]
 atlas = ExtResource("1_evtl2")
-region = Rect2(128, 0, 32, 48)
+region = Rect2(128, 0, 32, 34)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b4d4f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpf3q"]
 atlas = ExtResource("1_evtl2")
-region = Rect2(160, 0, 32, 48)
+region = Rect2(160, 0, 32, 34)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aeyof"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kv82q")
+"texture": SubResource("AtlasTexture_ontt5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rxq4u")
+"texture": SubResource("AtlasTexture_yselg")
 }],
 "loop": true,
 "name": &"idle",
@@ -59,33 +56,36 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j8yyb")
+"texture": SubResource("AtlasTexture_gdit5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_82h8q")
+"texture": SubResource("AtlasTexture_7rcda")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vfg6e")
+"texture": SubResource("AtlasTexture_w4l7e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gfj4y")
+"texture": SubResource("AtlasTexture_8a5xv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qengu")
+"texture": SubResource("AtlasTexture_f3o1q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b4d4f")
+"texture": SubResource("AtlasTexture_lpf3q")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17fi2"]
+size = Vector2(23.7113, 47.3684)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mtvt"]
-size = Vector2(10, 20)
+size = Vector2(13, 32.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gm37"]
-size = Vector2(10, 20)
+size = Vector2(14, 32.5)
 
 [node name="TestEnemy" type="CharacterBody2D"]
 script = ExtResource("1_6cc7r")
@@ -95,15 +95,16 @@ metadata/_edit_group_ = true
 script = ExtResource("2_7qkrd")
 max_health = 10
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_aeyof")
+animation = &"idle"
+frame_progress = 0.999121
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 0.75)
 scale = Vector2(0.485, 0.665)
 shape = SubResource("RectangleShape2D_17fi2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 4)
-scale = Vector2(0.6, 0.6)
-sprite_frames = SubResource("SpriteFrames_aeyof")
-animation = &"walk"
 
 [node name="DirectionTimer" type="Timer" parent="."]
 autostart = true
@@ -115,29 +116,32 @@ script = ExtResource("3_ec5fr")
 damage = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-0.5, 0.25)
 shape = SubResource("RectangleShape2D_5mtvt")
 
 [node name="HurtBox" type="Area2D" parent="."]
 script = ExtResource("3_fjv6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_5gm37")
 
 [node name="HealthBar" parent="." instance=ExtResource("6_6edcp")]
 visible = false
-offset_left = -11.0
-offset_top = -17.0
-offset_right = 84.0
-offset_bottom = -1.0
+offset_left = -9.0
+offset_top = -23.0
+offset_right = 55.0
+offset_bottom = -7.0
 scale = Vector2(0.33, 0.33)
 script = ExtResource("7_ontt5")
+metadata/_edit_use_anchors_ = true
 
 [node name="Choice" type="RichTextLabel" parent="."]
 visible = false
 offset_left = -45.0
-offset_top = -29.0
+offset_top = -34.0
 offset_right = 237.0
-offset_bottom = 133.0
+offset_bottom = 128.0
 scale = Vector2(0.33, 0.33)
 theme = ExtResource("8_ontt5")
 theme_override_font_sizes/normal_font_size = 28

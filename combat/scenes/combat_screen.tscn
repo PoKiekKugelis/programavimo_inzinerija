@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://bu2vdqgi3rdj3"]
 
 [ext_resource type="Script" uid="uid://dw7any0ncdcql" path="res://combat/scripts/combat_screen.gd" id="1_j1dph"]
+[ext_resource type="Texture2D" uid="uid://bilttm4spyklq" path="res://assets/sprites/combat_background.png" id="3_i41gl"]
 [ext_resource type="Script" uid="uid://63dvaqtalwj5" path="res://enemies/scripts/enemy_handler.gd" id="3_j1dph"]
 [ext_resource type="Script" uid="uid://c0t20rpm5gr0w" path="res://player/player_handler.gd" id="3_wstb0"]
-[ext_resource type="Texture2D" uid="uid://bdo6vka1dwfy4" path="res://combat/assets/Background.jpg" id="4_3ud5g"]
 [ext_resource type="Script" uid="uid://dqnokw4175aui" path="res://combat/scripts/battle_ui.gd" id="5_74ld3"]
 [ext_resource type="Script" uid="uid://beblpw1345hni" path="res://combat/scripts/hand.gd" id="6_leoy8"]
 [ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/node resources/health_bar.tscn" id="8_guoki"]
@@ -55,7 +55,7 @@ visible = false
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("4_3ud5g")
+texture = ExtResource("3_i41gl")
 expand_mode = 1
 
 [node name="EnemyHandler" type="Node2D" parent="."]
@@ -101,10 +101,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayerHealth" parent="BattleUI" instance=ExtResource("8_guoki")]
-offset_left = 241.0
-offset_top = 360.0
-offset_right = 241.0
-offset_bottom = 360.0
+anchor_left = 0.209201
+anchor_top = 0.555556
+anchor_right = 0.320313
+anchor_bottom = 0.604938
+offset_top = -70.0003
+offset_right = -64.0001
+offset_bottom = -85.9998
 scale = Vector2(2, 2)
 
 [node name="EndTurnButton" type="Button" parent="BattleUI"]

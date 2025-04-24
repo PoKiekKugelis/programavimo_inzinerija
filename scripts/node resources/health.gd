@@ -55,6 +55,8 @@ func set_health(value: int):
 			take_damage_animation()
 		if Events.in_combat and difference > 0:# A shaking animation when damage taken
 			heal_animation()
+		if !Events.in_combat:
+			if health <= 0: health_depleted.emit()# check for death
 
 func take_damage_animation() -> void:
 	var to_shake = owner

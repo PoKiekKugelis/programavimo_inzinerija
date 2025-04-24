@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ccrgslptfvujl"]
+[gd_scene load_steps=23 format=3 uid="uid://ccrgslptfvujl"]
 
 [ext_resource type="Script" uid="uid://dmfk2y87ehpk0" path="res://player/Player.gd" id="1_sse7a"]
 [ext_resource type="Script" uid="uid://blpiq2qfwwrbl" path="res://scripts/node resources/stamina.gd" id="3_xxutp"]
@@ -98,13 +98,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ceyrs"]
-size = Vector2(20, 32)
+size = Vector2(12, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yoc62"]
-size = Vector2(22.5, 34.5)
+size = Vector2(14, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgyib"]
+size = Vector2(14, 32)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(-1, -16)
 script = ExtResource("1_sse7a")
 
 [node name="Health" type="Node" parent="."]
@@ -119,8 +121,9 @@ metadata/_custom_type_script = "uid://blpiq2qfwwrbl"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ur7pv")
-animation = &"walk"
+animation = &"jump"
 autoplay = "walk"
+frame_progress = 0.585678
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -145,7 +148,7 @@ health = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-47, -3)
-shape = SubResource("RectangleShape2D_yoc62")
+shape = SubResource("RectangleShape2D_rgyib")
 
 [node name="MovementTimer" type="Timer" parent="."]
 wait_time = 0.1

@@ -11,7 +11,7 @@ func perform_action() -> void:
 		return
 	var tween := create_tween().set_trans(Tween.TRANS_QUINT)
 	var start := enemy.global_position
-	var end := Vector2(400, 450)
+	var end := Vector2(400, 400)
 	var damage_effect := DamageEffect.new()
 	var target_array: Array[Node] = [target]
 	damage_effect.amount = damage

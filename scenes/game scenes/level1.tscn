@@ -151,7 +151,7 @@ layer_1/name = "Background"
 
 [node name="TestEnemy" parent="." instance=ExtResource("3_ejswk")]
 position = Vector2(1534, -10)
-scale = Vector2(2, 2)
+scale = Vector2(1.2, 1.2)
 stats = ExtResource("29_st8wb")
 
 [node name="Player" parent="." instance=ExtResource("5_ru4tf")]

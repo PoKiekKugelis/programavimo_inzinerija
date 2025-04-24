@@ -49,8 +49,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = -217.0
 offset_top = -111.0
-offset_right = -122.0
-offset_bottom = -98.0
+offset_right = -153.0
+offset_bottom = -95.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -102,7 +102,7 @@ texture = ExtResource("12_5newe")
 
 [node name="TestEnemy" parent="." instance=ExtResource("7_lph38")]
 position = Vector2(84, -4)
-scale = Vector2(2, 2)
+scale = Vector2(1.2, 1.2)
 stats = ExtResource("15_btp2w")
 
 [node name="Inventory_Item" parent="." instance=ExtResource("3_b0nof")]

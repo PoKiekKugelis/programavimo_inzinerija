@@ -74,10 +74,10 @@ func load_entities():
 
 # positions and scales combat sprites
 func set_transformations():
-	player.position = Vector2(300, 450)
-	enemy.position = Vector2(900, 500)
-	player.scale = Vector2(3,3)
-	enemy.scale = Vector2(6, 6)
+	player.position = Vector2(300, 400)
+	enemy.position = Vector2(900, 400)
+	player.scale = Vector2(5,5)
+	enemy.scale = Vector2(5,5)
 	# make player face right and enemy face left
 	var anim_sprite = enemy.get_node("AnimatedSprite2D")
 	anim_sprite.flip_h = true
