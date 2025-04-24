@@ -1,20 +1,21 @@
-[gd_scene load_steps=23 format=4 uid="uid://bmqhwxmmqnn87"]
+[gd_scene load_steps=24 format=4 uid="uid://bmqhwxmmqnn87"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_qssp3"]
 [ext_resource type="Script" uid="uid://duqq4yinrkjbt" path="res://hub/scripts/hub.gd" id="1_s6eg2"]
-[ext_resource type="Texture2D" uid="uid://5q6w17gcbqgl" path="res://assets/sprites/StoneTent.png" id="2_7wvbm"]
+[ext_resource type="Texture2D" uid="uid://bjng2drght1vb" path="res://assets/sprites/StoneTent.png" id="2_7wvbm"]
 [ext_resource type="Script" uid="uid://dwqhx0j3k5vv" path="res://hub/scripts/RockNPC.gd" id="3_7wvbm"]
 [ext_resource type="PackedScene" uid="uid://ccrgslptfvujl" path="res://player/player.tscn" id="4_7wvbm"]
 [ext_resource type="PackedScene" uid="uid://bbqlak1r4oxq8" path="res://hub/scenes/leave_hub_screen.tscn" id="4_glsmu"]
 [ext_resource type="Resource" uid="uid://cuqocu3pfv2p" path="res://scene managers/scripts/run_startup.tres" id="4_n2tod"]
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="5_bfqb0"]
-[ext_resource type="Texture2D" uid="uid://krghf45pc6i" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
-[ext_resource type="Texture2D" uid="uid://psg3v514y8it" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
+[ext_resource type="Texture2D" uid="uid://cu78w3kw560rd" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
+[ext_resource type="Texture2D" uid="uid://dsujbt6wcckt7" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="9_lcd1r"]
 [ext_resource type="Script" uid="uid://bbefa02tsh80b" path="res://scripts/node resources/money_label.gd" id="10_glsmu"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="10_phvbg"]
 [ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://inventory/scenes/inventory_ui.tscn" id="10_s6eg2"]
-[ext_resource type="Texture2D" uid="uid://bcp55v43iu5gh" path="res://assets/sprites/sign.png" id="12_s6eg2"]
+[ext_resource type="Texture2D" uid="uid://d0kl7j5xpc30i" path="res://assets/sprites/sign.png" id="12_s6eg2"]
+[ext_resource type="Texture2D" uid="uid://dbbf2r2e2vgla" path="res://assets/sprites/coin.png" id="13_eti5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wvbm"]
 size = Vector2(20, 222)
@@ -178,9 +179,9 @@ text = "123"
 script = ExtResource("10_glsmu")
 
 [node name="Coin" type="Sprite2D" parent="Player"]
-position = Vector2(168, -110)
-scale = Vector2(0.0468749, 0.0468749)
-texture = ExtResource("7_441x5")
+position = Vector2(174, -112)
+scale = Vector2(0.429688, 0.429688)
+texture = ExtResource("13_eti5x")
 
 [node name="Inventory_UI" type="CanvasLayer" parent="." groups=["UnpausableUserInterfaces"]]
 process_mode = 3

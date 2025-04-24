@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dmfk2y87ehpk0" path="res://player/Player.gd" id="1_sse7a"]
 [ext_resource type="Script" uid="uid://blpiq2qfwwrbl" path="res://scripts/node resources/stamina.gd" id="3_xxutp"]
-[ext_resource type="Texture2D" uid="uid://b15n3fwwfvy28" path="res://assets/sprites/main_character_animation1.png" id="4_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://btfncrs5p7j2j" path="res://assets/sprites/main_character_animation1.png" id="4_tuyoq"]
 [ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="5_cmeds"]
-[ext_resource type="Texture2D" uid="uid://cd77h16s1dtht" path="res://assets/sprites/main_character_animation2.png" id="5_fjrip"]
+[ext_resource type="Texture2D" uid="uid://brs4cq6xam4na" path="res://assets/sprites/main_character_animation2.png" id="5_fjrip"]
 [ext_resource type="Script" uid="uid://b25ntns06y3kc" path="res://enemies/scripts/hurtbox.gd" id="6_lsjhy"]
 [ext_resource type="Script" uid="uid://ct28a5ovxts7" path="res://scripts/node resources/health.gd" id="7_dmkbe"]
 [ext_resource type="Script" uid="uid://jn5855mvfk1t" path="res://player/camera_2d.gd" id="8_rgyib"]

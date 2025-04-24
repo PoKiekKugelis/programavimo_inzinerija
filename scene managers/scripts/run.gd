@@ -8,6 +8,13 @@ const COMBAT_SCENE:= preload("res://combat/scenes/combat_screen.tscn")
 const RUN_COMPLETE:= preload("res://scenes/game scenes/level_complete.tscn")
 const PLAYER_DEATH:= preload("res://scenes/game scenes/death_screen.tscn")#numirus nebe change current scene, o per signals atsiųsti čia, kad pakeistų sceną
 
+# Jeigu turesim kazkada daugiau lygiu, tai manau gerai butu juos i masyva det, ir tada einant i kita
+# lygi tiesiog indexa didint -Velyvis
+# Stations sudejau i masyva kad galeciau random 1 paimt
+const STATIONS:= [preload("res://scenes/game scenes/stations/mine_station.tscn"),
+				preload("res://scenes/game scenes/stations/scrapyard_station.tscn"),
+				preload("res://scenes/game scenes/stations/tree_station.tscn")]
+
 @export var run_startup: RunStartup# Čia saugo character duomenis ir ar New run ar continued. Leave_hub_screen naudojama
 # Galimai nelabai reikalinga. Čia buvo mano first attempt at perkelti duomenis, bet supratau, kad nodes negalima
 # per resursą (run_startup) perkelti. Todėl galvojau keisti Health ir Stamina į resources, bet tas truputį cringe,
@@ -25,6 +32,10 @@ var stamina: Stamina = Stamina.new()
 
 var level_scene# čia lygį dabartinį saugau kaip mazgą (pvz. Game sceną visą).
 # Pasibaigus level'iui iš šito būtent kintamojo perrimu visą player info ir run'ui atiduodu update_run metode.
+
+var visited_station: bool = false
+# kolkas, kol su pinigais gali patekt i station,
+# naudojamas bool, kad nesoftlockint saves station
 
 func _ready() -> void:
 	add_node_resources()
@@ -61,7 +72,9 @@ func setup_event_connections() -> void:# Sujungia signalus, kuriuos galima bet k
 	Events.run_won.connect(change_view.bind(RUN_COMPLETE))
 	Events.player_died.connect(change_view.bind(PLAYER_DEATH))
 	Events.updated_run_variables.connect(update_player.bind(level_scene))
-	Events.changing_level.connect(update_run.bind(level_scene))
+	Events.changing_level.connect(func(): update_run(level_scene))
+	# Turint daugiau nei viena lygi, bind neveikia, "free'inus" level_scene, argumentas vistiek
+	# islieka kaip "previously freed", todel pakeiciau i func(): -Velyvis
 	Events.run_continues.connect(on_level_entered)
 	Events.enter_combat.connect(_on_player_enter_combat)
 	Events.in_combat_status_changed.connect(_on_game_in_combat_status_changed)# combat ended signal
@@ -71,7 +84,18 @@ func on_first_level_entered() -> void:# Būtų vienas on_level_entered, bet pirm
 	level_scene = change_view(LEVEL_SCENE)
 
 func on_level_entered() -> void:# Antrą ir visus kitus jau važiuojam iš karto update_player
-	level_scene = change_view(LEVEL_SCENE2)
+	# Kol turim 2 lygius, tai tik vienoj vietoj gali but station, tai jokio previous level
+	# kintamojo nereikia
+	var roll = randi() % 10 # 1/10 sansas gauti station
+	# Jeigu isridena 0, tai keicia lygi, i random station
+	# Testavimui: kai pinigai 37, irgi pakeis scena
+	# Papildomas bool, kol su pinigais galima patekt i station (softlock prevention) 
+	# Taigi turint 37 pinigus, visada bus bent viena karta
+	if (roll == 0 or (Money.get_money() == 37 and !visited_station)):
+		visited_station = true
+		level_scene = change_view(STATIONS[randi() % 3])
+	else:
+		level_scene = change_view(LEVEL_SCENE2)
 	update_player(level_scene)
 
 func update_player(scene) -> void:# Ιš run'o priskiria duomenis į scenos player

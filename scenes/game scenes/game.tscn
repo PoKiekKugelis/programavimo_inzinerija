@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/traps/spike.tscn" id="9_k0taf"]
 [ext_resource type="PackedScene" uid="uid://v37iwosey6gf" path="res://scenes/node resources/stamina_bar.tscn" id="10_rq0lr"]
 [ext_resource type="Script" uid="uid://bbefa02tsh80b" path="res://scripts/node resources/money_label.gd" id="11_1kice"]
-[ext_resource type="Texture2D" uid="uid://psg3v514y8it" path="res://assets/sprites/PlaceHolder.png" id="12_5newe"]
+[ext_resource type="Texture2D" uid="uid://dbbf2r2e2vgla" path="res://assets/sprites/coin.png" id="11_xfxt6"]
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="12_kvuet"]
 [ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://inventory/scenes/inventory_ui.tscn" id="13_trtic"]
 [ext_resource type="PackedScene" uid="uid://bhucwpx8dw1e6" path="res://cards/scenes/card_deck_open.tscn" id="14_ir15t"]
@@ -96,9 +96,9 @@ text = "123"
 script = ExtResource("11_1kice")
 
 [node name="Coin" type="Sprite2D" parent="Player"]
-position = Vector2(170, -52)
-scale = Vector2(0.0468749, 0.0468749)
-texture = ExtResource("12_5newe")
+position = Vector2(174, -55)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_xfxt6")
 
 [node name="Inventory_Item" parent="." instance=ExtResource("3_b0nof")]
 position = Vector2(-146, 11)
