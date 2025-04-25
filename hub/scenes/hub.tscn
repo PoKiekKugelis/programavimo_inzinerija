@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bmqhwxmmqnn87"]
+[gd_scene load_steps=18 format=4 uid="uid://bmqhwxmmqnn87"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_qssp3"]
 [ext_resource type="Script" uid="uid://duqq4yinrkjbt" path="res://hub/scripts/hub.gd" id="1_s6eg2"]
@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="5_bfqb0"]
 [ext_resource type="Texture2D" uid="uid://dka7a8qdmdjj3" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
 [ext_resource type="Texture2D" uid="uid://bosdu64vbyt2l" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
-[ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="9_lcd1r"]
-[ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://inventory/scenes/inventory_ui.tscn" id="10_s6eg2"]
 [ext_resource type="Texture2D" uid="uid://cpgkvgdqc76gi" path="res://assets/sprites/sign.png" id="12_s6eg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wvbm"]
@@ -161,37 +159,6 @@ texture = ExtResource("7_441x5")
 position = Vector2(1218, 168)
 scale = Vector2(0.078125, 0.0703125)
 texture = ExtResource("7_441x5")
-
-[node name="Inventory_UI" type="CanvasLayer" parent="." groups=["UnpausableUserInterfaces"]]
-process_mode = 3
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="Inventory_UI"]
-anchors_preset = -1
-anchor_left = 0.0659722
-anchor_top = 0.114198
-anchor_right = 0.934028
-anchor_bottom = 0.885802
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0705882, 0.203922, 0.337255, 1)
-
-[node name="Label" type="Label" parent="Inventory_UI/ColorRect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -148.5
-offset_top = 40.0
-offset_right = 148.5
-offset_bottom = 101.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("9_lcd1r")
-theme_override_font_sizes/font_size = 60
-text = "Inventory"
-
-[node name="Inventory_UI" parent="Inventory_UI/ColorRect" instance=ExtResource("10_s6eg2")]
-layout_mode = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(287, 125)
