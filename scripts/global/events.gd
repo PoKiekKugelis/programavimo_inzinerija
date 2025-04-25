@@ -19,7 +19,7 @@ signal enemy_turn_ended
 signal in_combat_status_changed
 signal enter_combat(enemy: CharacterBody2D) 
 
-#GameManger stuff
+#GameManager stuff
 signal start_run
 signal restart_at_hub
 signal run_won

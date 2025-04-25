@@ -1,22 +1,17 @@
 extends Node2D
-class_name LevelScene
 
-@onready var deck_button: CardDeckOpen = %DeckButton
-@onready var deck_view: CardDeckView = $CardDeckView/DeckView
-@onready var camera: Camera2D = $Player/Camera2D
 @onready var player: Player = %Player
 @export var player_spawn_position: Vector2 = Vector2(140, 170)
 
-#@export var char_stats: CharStats
-
-# skull emoji 💀
 func _ready() -> void:
+	add_player()
+	load_data()
+
+func add_player() -> void:
 	var player_instance = preload("res://player/player.tscn").instantiate()
 	add_child(player_instance)
 	player = player_instance
 	player.global_position = player_spawn_position
-	load_data()
-	#player.stats = char_stats
 
 #idk su _ready tik 1 pirma karta suveikia
 func _enter_tree() -> void:

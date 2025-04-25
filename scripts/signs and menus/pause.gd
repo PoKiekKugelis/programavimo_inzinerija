@@ -20,6 +20,7 @@ func _quit_to_menu():
 	#problema ateiciai
 	if Events.in_combat:
 		get_tree().paused = false
+		Events.in_combat_status_changed.emit()
 	get_tree().change_scene_to_file("res://scenes/game scenes/main_menu.tscn")
 	
 func _input(event: InputEvent) -> void:

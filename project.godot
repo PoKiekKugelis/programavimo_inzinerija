@@ -23,7 +23,6 @@ SaveSystem="*res://saves/scripts/save_system.gd"
 GlobalHealth="*res://scripts/global/global_health.gd"
 Events="*res://scripts/global/events.gd"
 Money="*res://scripts/node resources/money.gd"
-PlayerManager="*res://scripts/global/player_manager.gd"
 
 [display]
 

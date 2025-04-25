@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbqlak1r4oxq8"]
+[gd_scene load_steps=4 format=3 uid="uid://bbqlak1r4oxq8"]
 
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="1_c8mn2"]
 [ext_resource type="Script" uid="uid://bsnhkgoxx7vwa" path="res://hub/scripts/leave_hub_screen.gd" id="1_rx4xv"]
+[ext_resource type="Resource" uid="uid://cuqocu3pfv2p" path="res://scene managers/scripts/run_startup.tres" id="2_iui7n"]
 
 [node name="LeaveHubScreen" type="Control" groups=["UnpausableUserInterfaces"]]
 process_mode = 3
@@ -12,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rx4xv")
+run_startup = ExtResource("2_iui7n")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.641934, 0.641934, 0.641934, 1)

@@ -1,15 +1,14 @@
-[gd_scene load_steps=18 format=4 uid="uid://bmqhwxmmqnn87"]
+[gd_scene load_steps=17 format=4 uid="uid://bmqhwxmmqnn87"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_qssp3"]
 [ext_resource type="Script" uid="uid://duqq4yinrkjbt" path="res://hub/scripts/hub.gd" id="1_s6eg2"]
-[ext_resource type="Texture2D" uid="uid://cfscc28xykfwu" path="res://assets/sprites/StoneTent.png" id="2_7wvbm"]
+[ext_resource type="Texture2D" uid="uid://5q6w17gcbqgl" path="res://assets/sprites/StoneTent.png" id="2_7wvbm"]
 [ext_resource type="Script" uid="uid://dwqhx0j3k5vv" path="res://hub/scripts/RockNPC.gd" id="3_7wvbm"]
 [ext_resource type="PackedScene" uid="uid://bbqlak1r4oxq8" path="res://hub/scenes/leave_hub_screen.tscn" id="4_glsmu"]
-[ext_resource type="Resource" uid="uid://cuqocu3pfv2p" path="res://scene managers/scripts/run_startup.tres" id="4_n2tod"]
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="5_bfqb0"]
-[ext_resource type="Texture2D" uid="uid://dka7a8qdmdjj3" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
-[ext_resource type="Texture2D" uid="uid://bosdu64vbyt2l" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
-[ext_resource type="Texture2D" uid="uid://cpgkvgdqc76gi" path="res://assets/sprites/sign.png" id="12_s6eg2"]
+[ext_resource type="Texture2D" uid="uid://krghf45pc6i" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
+[ext_resource type="Texture2D" uid="uid://psg3v514y8it" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
+[ext_resource type="Texture2D" uid="uid://bcp55v43iu5gh" path="res://assets/sprites/sign.png" id="12_s6eg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wvbm"]
 size = Vector2(20, 222)
@@ -92,7 +91,6 @@ shape = SubResource("RectangleShape2D_7wvbm")
 
 [node name="LeaveHubScreen" parent="LeaveHubView" instance=ExtResource("4_glsmu")]
 visible = false
-run_startup = ExtResource("4_n2tod")
 
 [node name="PauseScreenView" type="CanvasLayer" parent="."]
 

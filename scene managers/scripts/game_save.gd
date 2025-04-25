@@ -61,8 +61,7 @@ func setup_event_connections() -> void:
 
 func on_hub_entered() -> void:# Hub scena pridedama kaip dabartinis vaizdas
 	var hub_scene: Hub = change_view(HUB) as Hub
-	hub_scene.char_stats = character
-	hub_scene.player.stats = character
+	hub_scene.player.char_stats = character
 	change_player_health_stamina(hub_scene)
 
 func on_run_entered() -> void:# Run scena pakeičiama kaip dabartinis vaizdas su praeita buvusia (hub)
@@ -79,11 +78,12 @@ func change_player_health_stamina(scene) -> void:# for the nodes which have play
 	scene.player.health.set_health(health.health)
 	scene.player.stamina.max_stamina = stamina.max_stamina
 	scene.player.stamina.stamina = stamina.stamina
+	scene.player.connect_deck()
 
-func change_scene_health_stamina(scene) -> void:# For the Run node
+func change_scene_health_stamina(run) -> void:# For the Run node
 	# Ιš GameSavo'o priskiria būtent hp ir stamina į sceną. Šiuo atveju tai naudoja tik run.
 	# Šito gali reikėti ir run script'e, kad galėtų perduoti run'o metu gautus permanent upgrades
-	scene.health.set_max_health(health.max_health)
-	scene.health.set_health(health.health)
-	scene.stamina.max_stamina = stamina.max_stamina
-	scene.stamina.stamina = stamina.stamina
+	run.health.set_max_health(health.max_health)
+	run.health.set_health(health.health)
+	run.stamina.max_stamina = stamina.max_stamina
+	run.stamina.stamina = stamina.stamina
