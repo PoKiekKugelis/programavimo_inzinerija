@@ -23,55 +23,61 @@ func _ready() -> void:
 	
 func mine_station():
 	$"../Resource".item_type = "Resource"
-	$"../Resource".item_name = "Pebble"
-	$"../Resource".item_texture = load("res://assets/sprites/mine_station.png")
-	$"../Resource".item_effect = "Can be turned to rock"
+	$"../Resource".item_name = "Rock shard"
+	$"../Resource".item_texture = load("res://assets/sprites/Shard.png")
+	$"../Resource".item_effect = "Can be turned to Rock"
 	resource = "Rock"
 	print(resource)
 	
 func tree_station():
 	$"../Resource".item_type = "Resource"
 	$"../Resource".item_name = "Piece of Wood"
-	$"../Resource".item_texture = load("res://assets/sprites/mine_station.png")
-	$"../Resource".item_effect = "Can be turned to paper"
+	$"../Resource".item_texture = load("res://assets/sprites/Wood.png")
+	$"../Resource".item_effect = "Can be turned to Paper"
 	resource = "Wood"
 	print(resource)
 
 func scrapyard_station():
 	$"../Resource".item_type = "Resource" 
 	$"../Resource".item_name = "Rusted scrap"
-	$"../Resource".item_texture = load("res://assets/sprites/mine_station.png")
-	$"../Resource".item_effect = "Can be turned to metal"
+	$"../Resource".item_texture = load("res://assets/sprites/Scrap.png")
+	$"../Resource".item_effect = "Can be turned to Metal"
 	resource = "Scrap"
 	print(resource)
 	
 func gather_resource():
+	$"Panel/Indicator".text = "+1 " + $"../Resource".item_name
 	gathering_status = true
 	stop_signal = false
 	$Panel/Label.text = "Gathering..."
 	for i in (len(range(10)) - gathered % 10):
-		$"../Timer".start()	#1 sekundes timeris
+		$"../Timer".start() #1 sekundes timeris
 		await $"../Timer".timeout
 		if(stop_signal):
 			stop_gather()
 			return
 		var item = $"../Resource".duplicate() #reikia duplikato, nes item kode, jis nusizudo kai buna paimtas
 		add_child(item)
-		gathered +=1
+		gathered += 1
+		depletion_chance += 1
 		item.pickup_item()
 		print("Item added: ", resource)
+		text_animation()
+		check_depletion()
 		
-	depletion_chance += 15
+	depletion_chance += 5 #po 10 items, papildomi 5%, kad butu 15
+	check_depletion()
+	if(!depleted):
+		gather_resource() # omg rekursija 😱, visai kaip algorai (apskaiciuokit sito metodo sudetinguma)
+
+func check_depletion():
 	var roll = randi() % 100 + 1
-	print("Depletion chance: ", depletion_chance)
 	if(depletion_chance >= roll):
 		station_depleted()
-	else:
-		gather_resource() # omg rekursija 😱, visai kaip algorai (apskaiciuokit sito metodo sudetinguma)
-		
+
 func stop_gather():
 	gathering_status = false
-	$Panel/Label.text = "Press \"E\" to gather"
+	$Panel/Label.text = "Resource has\ndepleted" if depleted else "Press \"E\" to gather"
 	
 func station_depleted():
 	$Panel/Label.visible = true
@@ -93,6 +99,28 @@ func _input(event: InputEvent) -> void:
 	if !depleted:
 		if(player_in_range and Input.is_action_just_pressed("pick_up") and !gathering_status):
 			gather_resource()
+			stop_signal = false
 		elif(player_in_range and Input.is_action_just_pressed("pick_up") and gathering_status):
 			stop_signal = true
 			stop_gather()
+
+func text_animation():
+	var duplicate = $"Panel/Indicator".duplicate()
+	$Panel.add_child(duplicate)
+	duplicate.visible = true
+	duplicate.position = $"Panel/Indicator".position
+	var new_position = Vector2(duplicate.position[0], duplicate.position[1] - 20)
+	var tween = get_tree().create_tween()
+	#tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS) #kad pauzes metu butu animacija
+	tween.tween_property(duplicate, "position", new_position, 0.9)
+	
+	tween.tween_property(duplicate, "modulate:a", 0, 0.7)
+	
+	await tween.finished
+	tween.kill()
+	duplicate.queue_free()
+	
+	
+	
+	
+	

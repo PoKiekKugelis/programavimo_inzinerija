@@ -42,6 +42,7 @@ scale = Vector2(0.368164, 0.211914)
 texture = ExtResource("3_lva2x")
 
 [node name="Panel" type="Panel" parent="Station"]
+visible = false
 offset_left = -81.0
 offset_top = -64.0
 offset_right = 82.0
@@ -54,6 +55,18 @@ offset_top = 14.0
 offset_right = 153.0
 offset_bottom = 62.0
 text = "Press \"E\" to gather"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Indicator" type="Label" parent="Station/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 9.0
+offset_top = 62.0
+offset_right = 153.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 8
+text = "+1 Resource"
 horizontal_alignment = 1
 vertical_alignment = 1
 

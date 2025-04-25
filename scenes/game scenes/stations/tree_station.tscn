@@ -58,6 +58,18 @@ text = "Press \"E\" to gather"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Indicator" type="Label" parent="Station/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 9.0
+offset_top = 62.0
+offset_right = 153.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 8
+text = "+1 Resource"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Area2D" type="Area2D" parent="Station"]
 position = Vector2(0, 46)
 
