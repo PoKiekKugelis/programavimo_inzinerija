@@ -2,6 +2,7 @@ extends Resource
 class_name CharStats
 
 signal stats_changed
+
 @export var starting_deck: CardDeck
 @export var cards_per_turn: int
 @export var max_energy: int

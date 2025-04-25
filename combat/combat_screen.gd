@@ -8,7 +8,7 @@ enum TurnState { PLAYER_TURN, ENEMY_TURN }
 @export var enemy: CharacterBody2D
 @export var char_stats: CharStats
 
-@onready var player_health = GlobalHealth.get_health_instance()
+var player_health = GlobalHealth.get_health_instance()
 
 # element references
 @onready var end_turn_button = $BattleUI/EndTurnButton
@@ -17,7 +17,6 @@ enum TurnState { PLAYER_TURN, ENEMY_TURN }
 @onready var player_handler: PlayerHandler = $PlayerHandler as PlayerHandler
 @onready var battle_ui: BattleUI = $BattleUI as BattleUI
 #@onready var player_stats: Player = %Player
-
 
 # animation helpers
 @onready var text_tween = create_tween()
@@ -113,29 +112,7 @@ func _ready() -> void:
 	battle_ui.initialize_card_deck_ui()
 	# start with player's turn
 	start_player_turn()
-	
-	if player_health.has_signal("health_depleted"):
-		player_health.connect("health_depleted", Callable(self, "_on_health_health_depleted"))
-	
-	#if enemy_health.has_signal("health_depleted"):
-	#	enemy_health.connect("health_depleted", Callable(self, "_on_enemy_death"))
 
-
-#func _on_enemy_death() -> void:
-#	end_turn_button.disabled = true
-#	show_action_text("Enemy defeated!", Color.GREEN)
-#	await get_tree().create_timer(1.5).timeout
-#	var victory_screen = preload("res://scenes/victory_screen.tscn").instantiate()
-#	add_child(victory_screen)
-#	if victory_screen.has_signal("continue_game"):
-#		victory_screen.connect("continue_game", Callable(self, "_on_continue_after_victory"))
-	
-
-#func _on_continue_after_victory() -> void:
-#	# clean up combat scene
-#	$BattleUI.visible = false
-#	get_tree().paused = false
-#	queue_free()
 
 # shows tooltip text above button
 func _show_tooltip(text: String, button: Button):
@@ -147,12 +124,19 @@ func _show_tooltip(text: String, button: Button):
 func _hide_tooltip():
 	$BattleUI/ActionTooltip.visible = false
 
-func _on_health_health_depleted() -> void:
-	$BattleUI.visible = false
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
-	queue_free()
- 
+# TODO: implement a working death screen when players dies
+func _on_player_death() -> void:
+	if player_health.get_health() < 0:
+		await get_tree().create_timer(2.0).timeout 
+		get_tree().paused = true
+		var death_screen = preload("res://scenes/death_screen.tscn").instantiate()
+		get_tree().root.add_child(death_screen)
+		$BattleUI.visible = false
+
+
+# TODO: needs to show a victory screen or something when the enemy is dead
+func _on_enemy_death():
+	pass
 
 # displays combat action text with fade effect
 func show_action_text(message: String, color: Color = Color.WHITE):
