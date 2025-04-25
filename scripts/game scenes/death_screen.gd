@@ -6,7 +6,6 @@ func _ready() -> void:
 	Events.in_combat_status_changed
 
 
-
 func _on_restart_pressed() -> void:
 	Events.restart_at_hub.emit()
 
