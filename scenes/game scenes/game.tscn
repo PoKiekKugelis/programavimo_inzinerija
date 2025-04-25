@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bhod10c0fj1bp" path="res://scenes/finish.tscn" id="6_twexu"]
 [ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://scenes/enemy.tscn" id="7_lph38"]
 [ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/health_bar.tscn" id="8_khsen"]
-[ext_resource type="PackedScene" uid="uid://b18lmeyce53di" path="res://scenes/level1.tscn" id="7_rysoc"]
 [ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/spike.tscn" id="9_k0taf"]
+[ext_resource type="PackedScene" uid="uid://b18lmeyce53di" path="res://scenes/level1.tscn" id="7_rysoc"]
 [ext_resource type="PackedScene" uid="uid://v37iwosey6gf" path="res://scenes/stamina_bar.tscn" id="10_rq0lr"]
 [ext_resource type="Script" uid="uid://bbefa02tsh80b" path="res://scenes/money_label.gd" id="11_1kice"]
 [ext_resource type="Texture2D" uid="uid://v52chu1vffhn" path="res://assets/sprites/PlaceHolder.png" id="12_5newe"]
@@ -97,9 +97,9 @@ text = "123"
 script = ExtResource("11_1kice")
 
 [node name="Coin" type="Sprite2D" parent="Player"]
-position = Vector2(170, -52)
-scale = Vector2(0.0468749, 0.0468749)
-texture = ExtResource("12_5newe")
+position = Vector2(174, -55)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_xfxt6")
 
 [node name="Inventory_Item" parent="." instance=ExtResource("3_b0nof")]
 position = Vector2(-146, 11)
