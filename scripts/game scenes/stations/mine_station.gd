@@ -1,25 +1,30 @@
 extends Node2D
 
+
 @onready var deck_button: CardDeckOpen = %DeckButton
 @onready var deck_view: CardDeckView = $CardDeckView/DeckView
-@onready var player: Player = $Player
+@onready var camera: Camera2D = $Player/Camera2D
+@onready var player: Player = %Player
+@export var player_spawn_position: Vector2 = Vector2(400, 470)
 
-@export var char_stats: CharStats
+#@export var char_stats: CharStats
 
+# skull emoji 💀
 func _ready() -> void:
+	var player_instance = preload("res://player/player.tscn").instantiate()
+	add_child(player_instance)
+	player = player_instance
+	player.global_position = player_spawn_position
 	load_data()
-	$Player/Camera2D.make_current()
-	connect_deck()
-	var health_node = $Player/Health
-	GlobalHealth.set_health_instance(health_node) # connect the health, so the visual of the health bar is full and goes down when taking damage
+	#player.stats = char_stats
 
-#tikisuo sita 1 eilute yra visiem suprantama
+
+func _enter_tree() -> void:
+	load_data()
+
+# loads player data from the save system
 func load_data():
-	get_child(2).get_child(0).health = SaveSystem.load_game().get("Health", get_child(2).get_child(0).max_health)
-
-
-func connect_deck():
-	deck_button.card_deck = preload("res://cards/card types/starting_deck.tres")#prijungia pradinę kaladę, kad žinotu kiek kortų turi
-	deck_view.card_deck = preload("res://cards/card types/starting_deck.tres")#prijungia kaladę, kad žinotų, kokias kortas rodyti
-	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))#prijungia kaip mygtuką, bet reikės
-	#pridėti, kad hover pakeistų spalvą truputį ar kažką, kad aiškiau būtų
+	var player = find_child("Player", true, false)
+	# if we found a Player node AND it has a Health child node set player's health from saved data with fallback to max health
+	if player and player.has_node("Health"):
+		player.health.set_health(SaveSystem.load_game().get("Health", player.health.max_health))

@@ -3,11 +3,16 @@ class_name Player
 
 @export var save_path: String
 @export var stats: CharStats : set = set_character_stats
+@export var char_stats: CharStats = preload("res://player/base_player.tres")
 
 @onready var health: Health = $Health
 @onready var stamina: Stamina = $Stamina
 @onready var movement_timer: Timer = $MovementTimer
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var deck_button: CardDeckOpen = %DeckButton
+@onready var deck_view: CardDeckView = $CardDeckView/DeckView
+
+
 
 const RUNNING_SPEED = 160.0
 const SPEED = 80.0
@@ -30,10 +35,25 @@ var double_tap_threshold: float = 0.25  # time window for double tap in seconds
 var just_released: bool = true  # track if key was just released
 
 func _ready() -> void:
+	PlayerManager.register_player(self)
 	Inventory.set_player_reference(self)#set this node as player node so inventory knows
-#Nustato energiją, kortų kiekį ir t.t.
+	stats = char_stats
+	connect_deck()
+	if $Health:
+		GlobalHealth.set_health_instance(health)
+	else:
+		push_error("Health node not found in Player scene!")
+	$PlayerUI/HealthBar.setup_health_bar(health)
+	$PlayerUI/StaminaBar.setup_stamina_bar()
+	
+	
+
+
+
 func set_character_stats(value: CharStats) -> void:
 	stats = value
+	
+
 
 #deals knockback to the player when hit
 func _on_hurt_box_received_damage(damage: int) -> void:
@@ -176,3 +196,10 @@ func _on_health_health_depleted() -> void:
 		Events.player_died_in_combat.emit()
 		return
 	Events.player_died.emit()
+	
+	
+func connect_deck():
+	deck_button.card_deck = preload("res://cards/card types/starting_deck.tres")#prijungia pradinę kaladę, kad žinotu kiek kortų turi
+	deck_view.card_deck = preload("res://cards/card types/starting_deck.tres")#prijungia kaladę, kad žinotų, kokias kortas rodyti
+	deck_button.pressed.connect(deck_view.show_current_view.bind("Deck"))#prijungia kaip mygtuką
+	#bet reikės pridėti, kad hover pakeistų spalvą truputį ar kažką, kad aiškiau būtų

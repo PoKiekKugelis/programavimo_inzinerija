@@ -51,6 +51,7 @@ func _ready() -> void:
 func start_run() -> void:
 	on_first_level_entered()
 	setup_event_connections()
+	sync_player_reference()
 
 func add_node_resources() -> void:# Vaikams health ir stamina duodu tėvą. To reikia, nes kitaip prisidarys daugybė orphans
 	# ir reikės juos atskirai trinti. Nes kai baigiasi run, jis išsitrina (Hub pakeičia jo vietą) ir taip visus
@@ -63,6 +64,10 @@ func change_view(scene: PackedScene) -> Node:# Keičia CurrentView vaiką į duo
 	if current_view.get_child_count() > 0:
 		current_view.get_child(0).queue_free()
 	var new_view = scene.instantiate()
+	
+	if PlayerManager.player:
+		new_view.add_child(PlayerManager.player)
+		
 	current_view.add_child(new_view)
 	return new_view
 
@@ -97,27 +102,52 @@ func on_level_entered() -> void:# Antrą ir visus kitus jau važiuojam iš karto
 	else:
 		level_scene = change_view(LEVEL_SCENE2)
 	update_player(level_scene)
+	update_run(level_scene)
 
-func update_player(scene) -> void:# Ιš run'o priskiria duomenis į scenos player
-	scene.char_stats = character
-	scene.player.stats = character
-	change_player_health_stamina(scene)
-	scene.get_node("Player/HealthBar").setup_health_bar(scene.player.health)
-	scene.get_node("Player/StaminaBar").setup_stamina_bar()
+#func update_player(scene) -> void:# Ιš run'o priskiria duomenis į scenos player
+#	#scene.char_stats = character
+#	#scene.player.stats = character
+#	change_player_health_stamina(scene)
+#	scene.get_node("Player/HealthBar").setup_health_bar(scene.player.health)
+#	scene.get_node("Player/StaminaBar").setup_stamina_bar()
+
+# synchronizes player's health and stamina with the ui elements in the scene
+func update_player(scene) -> void:
+	var player = PlayerManager.player
+	# updates health values and links healthbar UI if available
+	if player and player.health and health:
+		player.health.set_max_health(health.max_health)
+		player.health.set_health(health.health)
+		if scene.has_node("Player/PlayerUI/HealthBar"):
+			scene.get_node("Player/PlayerUI/HealthBar").setup_health_bar(player.health)
+	# updates stamina values and links staminabar UI if available
+	if player and player.stamina and stamina:
+		player.stamina.max_stamina = stamina.max_stamina
+		player.stamina.stamina = stamina.stamina
+		if scene.has_node("Player/PlayerUI/StaminaBar"):
+			scene.get_node("Player/PlayerUI/StaminaBar").setup_stamina_bar()
+		
+
+	
+
 
 func update_run(scene) -> void:# Ιš scenos player priskiria duomenis į run'ą 
-	character = scene.char_stats
+	#character = scene.char_stats
 	health.set_max_health(scene.player.health.max_health)
 	health.set_health(scene.player.health.health)
 	stamina.max_stamina = scene.player.stamina.max_stamina
 	stamina.stamina = scene.player.stamina.stamina
 
 func change_player_health_stamina(scene) -> void:# for the nodes which have players aka game/level1
+	
 	# Ιš run'o priskiria būtent hp ir stamina į scenos player
-	scene.player.health.set_max_health(health.max_health)
-	scene.player.health.set_health(health.health)
-	scene.player.stamina.max_stamina = stamina.max_stamina
-	scene.player.stamina.stamina = stamina.stamina
+	if scene.player and scene.player.health and health:
+		scene.player.health.set_max_health(health.max_health)
+		scene.player.health.set_health(health.health)
+	if scene.player and scene.player.stamina and stamina:
+		scene.player.stamina.max_stamina = stamina.max_stamina
+		scene.player.stamina.stamina = stamina.stamina
+
 
 func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	Events.in_combat_status_changed.emit()#naudojamas pause screen, kad neisjungtu pauzes esant in combat
@@ -126,7 +156,7 @@ func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	var playerSprite = level_scene.get_node("Player/AnimatedSprite2D").duplicate()
 	var combat_enemy = enemy.duplicate() # the whole enemy is taken instead of the sprite
 	combat_instance.enemy = combat_enemy
-	combat_instance.char_stats = level_scene.char_stats
+	combat_instance.char_stats = level_scene.get_node("Player").char_stats
 	combat_instance.add_child(playerSprite) # add player character to combat
 	combat_instance.add_child(combat_enemy) # add enemy instance to combat (using duplicated version)
 	combat_instance.player = playerSprite
@@ -134,6 +164,15 @@ func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	get_tree().paused = true
 	current_view.call_deferred("add_child",combat_instance)
 	#current_view.add_child(combat_instance)
+	
 
 func _on_game_in_combat_status_changed() -> void:
 	Events.in_combat = !Events.in_combat
+	if level_scene:
+		var player_ui = level_scene.get_node("Player/PlayerUI")
+		if player_ui:
+			player_ui.visible = !Events.in_combat
+
+func sync_player_reference() -> void:
+	if PlayerManager.player:
+		PlayerManager.player.char_stats = character

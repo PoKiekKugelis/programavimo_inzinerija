@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="1_qfpx7"]
 [ext_resource type="Script" uid="uid://n0l34q4mbnx3" path="res://combat/scripts/energy_ui.gd" id="2_exwys"]
-[ext_resource type="Texture2D" uid="uid://c2mgobpl60w57" path="res://assets/sprites/energy_bar_slay_the_spire.png" id="3_ef73v"]
+[ext_resource type="Texture2D" uid="uid://clief53qh3lsr" path="res://assets/sprites/energy_bar_slay_the_spire.png" id="3_ef73v"]
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="4_ef73v"]
 
 [node name="EnergyUI" type="Panel"]
