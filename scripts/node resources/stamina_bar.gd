@@ -1,6 +1,6 @@
 extends TextureProgressBar
 
-@onready var stamina: Stamina = owner.get_node("Player/Stamina")  
+@onready var stamina: Stamina = owner.get_parent().get_node("Player/Stamina")  
 
 
 func _ready() -> void:

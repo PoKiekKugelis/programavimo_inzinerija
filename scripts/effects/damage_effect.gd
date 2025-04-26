@@ -9,7 +9,7 @@ func execute(targets: Array[Node]) -> void:
 			continue
 		if target is TestEnemy or target is Player:
 			var enemy_health = target.get_node("Health")
-			enemy_health.set_health(enemy_health.health - amount)
+			enemy_health.receive_damage(amount)
 
 func heal(targets: Array[Node]) -> void:
 	for target in targets:

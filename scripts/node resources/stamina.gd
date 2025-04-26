@@ -21,6 +21,7 @@ func _process(delta):
 		stamina = max(stamina, 0)  
 		emit_signal("stamina_changed")  
 
+
 	
 	elif stamina < max_stamina && !Input.is_action_pressed("ui_sprint") || Input.is_action_pressed("ui_sprint") && !is_moving:
 		stamina += recharge_rate * delta

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ShieldCard" load_steps=3 format=3 uid="uid://yjq7jwh40as0"]
+
+[ext_resource type="Script" uid="uid://cva6rqcmcr3av" path="res://cards/scripts/shield_card.gd" id="1_ecwla"]
+[ext_resource type="Texture2D" uid="uid://32ixlvv01yja" path="res://assets/Cards/CardTemplateColor.png" id="1_qymjn"]
+
+[resource]
+script = ExtResource("1_ecwla")
+shield_amount = 5
+id = "shield_up"
+type = 2
+target = 0
+cost = 1
+icon = ExtResource("1_qymjn")
+tooltip_text = "absorb 5HP damage"
+metadata/_custom_type_script = "uid://cva6rqcmcr3av"

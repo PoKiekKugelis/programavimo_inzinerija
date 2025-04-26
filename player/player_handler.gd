@@ -19,6 +19,7 @@ func start_battle(char_stats: CharStats) -> void:
 	start_turn()
 
 func start_turn() -> void:
+	GlobalHealth.get_health_instance().clear_shield()
 	character.reset_energy()
 	draw_cards(character.cards_per_turn)
 

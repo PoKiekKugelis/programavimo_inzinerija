@@ -1,25 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://dtkw7x4hdoyt2"]
+[gd_scene load_steps=13 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
 [ext_resource type="Script" uid="uid://cao01gpotabl2" path="res://scripts/game scenes/game.gd" id="1_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://ccrgslptfvujl" path="res://player/player.tscn" id="2_dspdp"]
 [ext_resource type="PackedScene" uid="uid://bsdelvdiesf0o" path="res://inventory/scenes/inventory_item.tscn" id="3_b0nof"]
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="3_psmk7"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="4_j6hfo"]
 [ext_resource type="PackedScene" uid="uid://bhod10c0fj1bp" path="res://scenes/signs and menus/finish.tscn" id="6_twexu"]
-[ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://enemies/scenes/enemy.tscn" id="7_lph38"]
 [ext_resource type="PackedScene" uid="uid://b18lmeyce53di" path="res://scenes/game scenes/level1.tscn" id="7_rysoc"]
-[ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/node resources/health_bar.tscn" id="8_khsen"]
 [ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/traps/spike.tscn" id="9_k0taf"]
-[ext_resource type="PackedScene" uid="uid://v37iwosey6gf" path="res://scenes/node resources/stamina_bar.tscn" id="10_rq0lr"]
-[ext_resource type="Script" uid="uid://bbefa02tsh80b" path="res://scripts/node resources/money_label.gd" id="11_1kice"]
-[ext_resource type="Texture2D" uid="uid://psg3v514y8it" path="res://assets/sprites/PlaceHolder.png" id="12_5newe"]
-[ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="12_kvuet"]
-[ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://inventory/scenes/inventory_ui.tscn" id="13_trtic"]
-[ext_resource type="PackedScene" uid="uid://bhucwpx8dw1e6" path="res://cards/scenes/card_deck_open.tscn" id="14_ir15t"]
-[ext_resource type="Resource" uid="uid://p53ixt6x2i8g" path="res://enemies/test_enemy/test_enemy.tres" id="15_btp2w"]
-[ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="15_ca42v"]
-[ext_resource type="PackedScene" uid="uid://b4cycf46t3wmq" path="res://cards/scenes/card_deck.tscn" id="16_ca42v"]
+[ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://enemies/scenes/enemy.tscn" id="11_ekyhk"]
+[ext_resource type="Resource" uid="uid://p53ixt6x2i8g" path="res://enemies/test_enemy/test_enemy.tres" id="12_rrbdo"]
 [ext_resource type="PackedScene" uid="uid://cvbf4h8xu6bjk" path="res://scenes/signs and menus/proceed_sign.tscn" id="21_37s47"]
 [ext_resource type="PackedScene" uid="uid://ck134hita7gdt" path="res://scenes/signs and menus/proceed_sign_screen.tscn" id="22_bt5mj"]
 
@@ -38,72 +28,6 @@ layer_1/tile_data = PackedInt32Array(262136, 196608, 1, 262137, 262144, 2, 26213
 [node name="Finish" parent="." instance=ExtResource("6_twexu")]
 position = Vector2(279, -144)
 target_level = ExtResource("7_rysoc")
-
-[node name="Player" parent="." instance=ExtResource("2_dspdp")]
-unique_name_in_owner = true
-position = Vector2(-86, -89)
-
-[node name="HealthBar" parent="Player" instance=ExtResource("8_khsen")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -217.0
-offset_top = -111.0
-offset_right = -153.0
-offset_bottom = -95.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="StaminaBar" parent="Player" instance=ExtResource("10_rq0lr")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -217.0
-offset_top = -96.0
-offset_right = -122.0
-offset_bottom = -83.0
-grow_horizontal = 1
-grow_vertical = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="DeckButton" parent="Player" node_paths=PackedStringArray("counter") instance=ExtResource("14_ir15t")]
-unique_name_in_owner = true
-offset_left = 181.0
-offset_top = -129.0
-offset_right = 231.0
-offset_bottom = -29.0
-scale = Vector2(0.7, 0.7)
-theme = ExtResource("15_ca42v")
-counter = NodePath("Counter")
-
-[node name="Counter" type="Label" parent="Player/DeckButton"]
-layout_mode = 0
-offset_left = -14.2857
-offset_top = 55.7143
-offset_right = 25.7143
-offset_bottom = 88.7143
-theme_override_font_sizes/font_size = 32
-text = "99"
-metadata/_edit_use_anchors_ = true
-
-[node name="Money" type="Label" parent="Player"]
-offset_left = 186.0
-offset_top = -62.0
-offset_right = 226.0
-offset_bottom = -45.0
-theme = ExtResource("15_ca42v")
-text = "123"
-script = ExtResource("11_1kice")
-
-[node name="Coin" type="Sprite2D" parent="Player"]
-position = Vector2(170, -52)
-scale = Vector2(0.0468749, 0.0468749)
-texture = ExtResource("12_5newe")
-
-[node name="TestEnemy" parent="." instance=ExtResource("7_lph38")]
-position = Vector2(84, -4)
-scale = Vector2(1.2, 1.2)
-stats = ExtResource("15_btp2w")
 
 [node name="Inventory_Item" parent="." instance=ExtResource("3_b0nof")]
 position = Vector2(-146, 11)
@@ -125,42 +49,6 @@ position = Vector2(-15, 31)
 [node name="proceed_sign" parent="." instance=ExtResource("21_37s47")]
 position = Vector2(199, 20)
 
-[node name="Inventory_UI" type="CanvasLayer" parent="." groups=["UnpausableUserInterfaces"]]
-process_mode = 3
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="Inventory_UI"]
-anchors_preset = -1
-anchor_left = 0.0659722
-anchor_top = 0.114198
-anchor_right = 0.934028
-anchor_bottom = 0.885802
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0705882, 0.203922, 0.337255, 1)
-
-[node name="Label" type="Label" parent="Inventory_UI/ColorRect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -148.5
-offset_top = 40.0
-offset_right = 148.5
-offset_bottom = 101.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("12_kvuet")
-theme_override_font_sizes/font_size = 60
-text = "Inventory"
-
-[node name="Inventory_UI" parent="Inventory_UI/ColorRect" instance=ExtResource("13_trtic")]
-layout_mode = 1
-
-[node name="CardDeckView" type="CanvasLayer" parent="."]
-
-[node name="DeckView" parent="CardDeckView" instance=ExtResource("16_ca42v")]
-visible = false
-
 [node name="proceed_sign_view" type="CanvasLayer" parent="."]
 
 [node name="proceed_sign_screen" parent="proceed_sign_view" instance=ExtResource("22_bt5mj")]
@@ -175,4 +63,7 @@ clip_children = 1
 z_index = 20
 y_sort_enabled = true
 
-[connection signal="body_entered" from="Finish" to="Player" method="_on_finish_body_entered"]
+[node name="TestEnemy" parent="." instance=ExtResource("11_ekyhk")]
+position = Vector2(67, 3)
+scale = Vector2(1.2, 1.2)
+stats = ExtResource("12_rrbdo")

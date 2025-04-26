@@ -8,7 +8,7 @@ func _on_no_pressed() -> void:
 
 func _on_yes_pressed() -> void:
 	get_tree().paused = false
-	sync_character()
+	#sync_character()
 	Events.start_run.emit()
 
 func _input(event: InputEvent) -> void:
@@ -16,7 +16,7 @@ func _input(event: InputEvent) -> void:
 		get_tree().paused = false
 		$".".visible = false
 
-func sync_character() -> void:
-	var game_save: GameSave = get_tree().root.get_child(-1)
-	run_startup.type = RunStartup.Type.NEW_RUN
-	run_startup.character_setup = game_save.character
+#func sync_character() -> void:
+	#var game_save: GameSave = get_tree().root.get_child(-1)
+	#run_startup.type = RunStartup.Type.NEW_RUN
+	#run_startup.character_setup = game_save.character
