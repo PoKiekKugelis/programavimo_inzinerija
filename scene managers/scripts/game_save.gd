@@ -64,13 +64,11 @@ func on_hub_entered() -> void:# Hub scena pridedama kaip dabartinis vaizdas
 	hub_scene.player.char_stats = character
 	change_player_health_stamina(hub_scene)
 
-func on_run_entered() -> void:# Run scena pakeičiama kaip dabartinis vaizdas su praeita buvusia (hub)
-	var run_scene: Run = change_view(RUN) as Run# Durnas dalykas, nes Run scena viską pirmiau padaro ir tik tada šitas 2
-	# eilutes įvykdo aka run scena be health ir stamina reišmių važiuoja toliau
+func on_run_entered() -> void:# Run scena pakeičiama kaip dabartinis vaizdas vietoj praeitos (hub)
+	var run_scene: Run = change_view(RUN) as Run
 	run_scene.character = character
 	change_scene_health_stamina(run_scene)
-	Events.updated_run_variables.emit()# Todėl perdavus duomenis iš karto be signalo viskas būtų 0. Čia palaukiu, 
-	# kol run scena turi visus duomenis apie health ir stamina ir tada juos priskiria game/level1 scenai
+	run_scene.start_run()
 
 func change_player_health_stamina(scene) -> void:# for the nodes which have players aka hub
 	# Ιš GameSavo'o priskiria būtent hp ir stamina į scenos player

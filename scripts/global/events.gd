@@ -25,5 +25,4 @@ signal restart_at_hub
 signal run_won
 signal run_ended
 signal run_continues
-signal updated_run_variables
 signal changing_level
