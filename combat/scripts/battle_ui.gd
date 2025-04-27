@@ -46,6 +46,8 @@ func initialize_card_deck_ui() -> void:
 	draw_deck_view.card_deck = char_stats.draw_deck
 	discard_button.card_deck = char_stats.discard
 	discard_deck_view.card_deck = char_stats.discard
+	draw_button.texture_normal = preload("res://.godot/imported/GremEX_draw_deck.png-2f6e53a4712e4c50473b6908776d559c.ctex")
+	discard_button.texture_normal = preload("res://.godot/imported/GremEX_discard_deck.png-0f462030adac1c2fa26cfab52389458d.ctex")
 
 func set_char_stats(value: CharStats) -> void:
 	char_stats = value
