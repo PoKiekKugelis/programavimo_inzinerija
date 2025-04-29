@@ -15,7 +15,7 @@ func set_empty():#Sets the inventory slot as empty
 	
 func set_item(new_item):#Sets the inventory slot as taken
 	item = new_item
-	icon.texture = item["texture"]
+	icon.texture = load(item["texture"])
 	quantity.text = str(item["quantity"])
 	item_name.text = str(item["name"])
 	item_type.text = str(item["type"])

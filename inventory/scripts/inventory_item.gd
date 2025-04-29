@@ -21,12 +21,13 @@ func _process(delta):
 	if player_in_range and Input.is_action_just_pressed('pick_up'):#picks up the item by pressing "E"
 		pickup_item()
 
+# Neblogai butu turet konstruktoriu sitam dalykui, bet tingiu daryt, o ateity turbut nereikes -Velyvis
 func pickup_item():
 	var item = {#Creates an item with all this info
 		"quantity" : 1,
 		"type" : item_type,
 		"name" : item_name,
-		"texture" : item_texture,
+		"texture" : item_texture.resource_path,
 		"effect" : item_effect,
 		"scene_path" : scene_path
 	}

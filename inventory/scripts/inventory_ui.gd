@@ -7,6 +7,9 @@ extends Control
 func _ready() -> void:
 	Inventory.inventory_updated.connect(_on_inventory_updated)#Doesn't call the function but simply connects to the signal in Inventory
 	_on_inventory_updated()#"Fills" the inventory with empty slots
+	$"../Label".text = "Inventory"
+	if(owner.get_parent().name == "Hub"):
+		$"../Label".text = "Stockpile"
 
 func _on_inventory_updated():#"Fills" the inventory with slots
 	clear_grid_container()
@@ -26,7 +29,7 @@ func clear_grid_container():#Clears the grid so the game starts with it empty
 
 func _input(event):#inventory UI opens by pressing "I"
 	#Buvau vel grazines konfliktavima su pause_screen, tai pridejau 2 papildomus checks
-	if event.is_action_pressed("ui_inventory") and (!get_tree().paused or inventory_ui.visible):
+	if event.is_action_pressed("ui_inventory") and (!get_tree().paused or inventory_ui.visible):	
 		inventory_ui.visible = !inventory_ui.visible
 		get_tree().paused = !get_tree().paused
 	if event.is_action_pressed("ui_cancel") and inventory_ui.visible:
