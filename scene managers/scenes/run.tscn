@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ds5k36jvsqqvw"]
+[gd_scene load_steps=2 format=3 uid="uid://ds5k36jvsqqvw"]
 
 [ext_resource type="Script" uid="uid://3867bnn6ww8d" path="res://scene managers/scripts/run.gd" id="1_hcvm1"]
-[ext_resource type="Resource" uid="uid://cuqocu3pfv2p" path="res://scene managers/scripts/run_startup.tres" id="2_mrl5g"]
 
 [node name="Run" type="Node"]
 script = ExtResource("1_hcvm1")
-run_startup = ExtResource("2_mrl5g")
 
 [node name="CurrentView" type="Node" parent="."]

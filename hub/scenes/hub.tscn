@@ -2,13 +2,13 @@
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_qssp3"]
 [ext_resource type="Script" uid="uid://duqq4yinrkjbt" path="res://hub/scripts/hub.gd" id="1_s6eg2"]
-[ext_resource type="Texture2D" uid="uid://5q6w17gcbqgl" path="res://assets/sprites/StoneTent.png" id="2_7wvbm"]
+[ext_resource type="Texture2D" uid="uid://cyusjixl6v63b" path="res://assets/sprites/StoneTent.png" id="2_7wvbm"]
 [ext_resource type="Script" uid="uid://dwqhx0j3k5vv" path="res://hub/scripts/RockNPC.gd" id="3_7wvbm"]
 [ext_resource type="PackedScene" uid="uid://bbqlak1r4oxq8" path="res://hub/scenes/leave_hub_screen.tscn" id="4_glsmu"]
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="5_bfqb0"]
-[ext_resource type="Texture2D" uid="uid://krghf45pc6i" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
-[ext_resource type="Texture2D" uid="uid://psg3v514y8it" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
-[ext_resource type="Texture2D" uid="uid://bcp55v43iu5gh" path="res://assets/sprites/sign.png" id="12_s6eg2"]
+[ext_resource type="Texture2D" uid="uid://bbul1u3s2jvps" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
+[ext_resource type="Texture2D" uid="uid://dt37qllafcu6s" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
+[ext_resource type="Texture2D" uid="uid://bbatrjbvbl11u" path="res://assets/sprites/sign.png" id="12_s6eg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wvbm"]
 size = Vector2(20, 222)
@@ -91,6 +91,7 @@ shape = SubResource("RectangleShape2D_7wvbm")
 
 [node name="LeaveHubScreen" parent="LeaveHubView" instance=ExtResource("4_glsmu")]
 visible = false
+focus_mode = 0
 
 [node name="PauseScreenView" type="CanvasLayer" parent="."]
 

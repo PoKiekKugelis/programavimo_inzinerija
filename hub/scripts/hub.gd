@@ -8,6 +8,8 @@ var player: Player
 func _ready():
 	add_player()
 
+
+
 func add_player() -> void:
 	var player_instance = preload("res://player/player.tscn").instantiate()
 	add_child(player_instance)
@@ -17,6 +19,9 @@ func add_player() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	$LeaveHubView/LeaveHubScreen.visible = true
 	get_tree().paused = true
+	
+	var no_button = $LeaveHubView/LeaveHubScreen/HBoxContainer/No
+	no_button.call_deferred("grab_focus")
 
 
 func _on_add_pressed() -> void:
