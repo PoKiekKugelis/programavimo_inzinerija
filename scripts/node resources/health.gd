@@ -108,3 +108,6 @@ func apply_shield(amount: int):
 func clear_shield():
 	shield = 0
 	shield_changed.emit()
+
+func apply_heal(amount: int):
+	set_health(health + amount)

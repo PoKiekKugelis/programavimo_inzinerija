@@ -1,22 +1,22 @@
 extends Node
 
 @export var file_path: String 	# Save failo kelias
+@onready var inventory = []
 
 #sukuria dict su dalykais kuriu reikia
-func save(current_scene, health):	
-	#inventorius ateities problema (turbut rytojaus)
+func _save():	
 	var save_dict = {
-		"Location": current_scene,
-		"Health": health
+		"Inventory": inventory,
+		"Money": Money.get_money()
 	}
 	return save_dict
 	
-#uhh, uhm uhhh, erm, paduodi scena ir zaideja, ir issaugo i faila
-func save_game(current_scene: String, player: CharacterBody2D) -> void:
+# SUkuria json stringa su inventorium ir pinigais, struktura virsuj
+func save_game():
 	file_path = SaveFiles.path
 	var save_game = FileAccess.open(file_path, FileAccess.WRITE)
-	var health = player.get_child(0).health
-	var json_string = JSON.stringify(save(current_scene, health))
+	stringify_inventory()
+	var json_string = JSON.stringify(_save())
 	save_game.store_line(json_string)
 	save_game.close()
 
@@ -25,20 +25,46 @@ func save_game(current_scene: String, player: CharacterBody2D) -> void:
 # nuejus i game.tscn, arba level1.tscn matysit kaip zaidejui tiesiog priskiriu "Health"
 func load_game() -> Dictionary:
 	file_path = SaveFiles.path
-	var save_data: Dictionary = {}
+	#var save_data: Dictionary = {}
 	if !FileAccess.file_exists(file_path):
 		return {}
 
-	var save_game = FileAccess.open(file_path, FileAccess.READ)
+	var fd = FileAccess.open(file_path, FileAccess.READ)
+	var json_string = fd.get_as_text()
+	fd.close()
 	
-	while save_game.get_position() < save_game.get_length():
-		var json_string = save_game.get_line()
-		var json = JSON.new()
-		var parsed = json.parse(json_string)
-		save_data = json.get_data()
+	var save_data = JSON.parse_string(json_string)
+	if (save_data != null):
+		Money.subtract_money(Money.get_money())
+		
+		if (save_data.has("Inventory")):
+			var items = save_data["Inventory"]
+			for data in items:
+				Inventory.add_item(_dict_to_item(data))
+		
+		if (save_data.has("Money")):
+			Money.add_money(save_data["Money"])
+
+		print(save_data)
+		return save_data
+	return {}
+
+# Pavercia inventoriu i stringu masyva
+func stringify_inventory():
+	inventory.clear() # Kad neduplikuotu ant virsaus
+	for slot in range(Inventory.get_used_slots()):
+		inventory.append(Inventory.get_item_slot(slot))
 	
-	save_game.close()
-	return save_data
+func _dict_to_item(data):
+	var item = {
+		"quantity" : data["quantity"] as int,
+		"type" : data["type"],
+		"name" : data["name"],
+		"texture" : data["texture"],
+		"effect" : data["effect"],
+		"scene_path" : data["scene_path"]
+	}
+	return item
 
 # Atidarant faila rasymui, jis yra overwrite'inimas, tai sitaip istrynt galima
 func delete_data():

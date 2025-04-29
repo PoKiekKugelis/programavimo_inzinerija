@@ -21,6 +21,31 @@ func add_item(item):#Adds an item to the array
 			return true
 	return false
 
+# Grazina uzimtu slots kieki (item kieki)
+# Tingiu tikrint as inventory.size() grazina uzimtus slots ar visada visus 21
+func get_used_slots(): 
+	var i = 0
+	while(inventory[i] != null):
+		i+=1;
+	return i
+
+# Sukonstruoja item'a su visa infromacija pagal inventoriaus slot'o indexa
+func get_item_slot(slot):
+	var item = {
+	"quantity" : inventory[slot]["quantity"] as int,
+	"type" : inventory[slot]["type"],
+	"name" : inventory[slot]["name"],
+	"texture" : inventory[slot]["texture"],
+	"effect" : inventory[slot]["effect"],
+	"scene_path" : inventory[slot]["scene_path"]
+	}
+	return item
+	
+# Spekit ka daro
+func clear():
+	inventory = []
+	inventory.resize(21)
+
 func remove_item():
 	inventory_updated.emit()#TODO later
 
