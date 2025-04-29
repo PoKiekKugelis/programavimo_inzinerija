@@ -24,15 +24,11 @@ func _quit_to_menu():
 	get_tree().change_scene_to_file("res://scenes/game scenes/main_menu.tscn")
 	
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_pause"):
-		if Events.in_combat:
-			# Jei vyksta kova, ignoruoti pauzės mygtuką
-			return
-		
-		if !get_tree().paused and !checkUI():
-			_pause()
-		elif get_tree().paused and !checkUI():
-			_resume()
+	if(Input.is_action_just_pressed("ui_pause") and (!get_tree().paused or (Events.in_combat and !$".".visible) and !checkUI())):
+		_pause()
+	elif (Input.is_action_just_pressed("ui_pause") and get_tree().paused and !checkUI()):
+		_resume()
+	
 	#Pauzes metu, kai fokusuojama ant Resume, dabar paspaudus "left" fokusavimas
 	# bus perduodamas "Quit to Menu" mygtukui
 	if $VBoxContainer/Resume.has_focus() == true and Input.is_action_just_pressed("ui_left"):
