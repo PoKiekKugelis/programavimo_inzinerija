@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ShieldCard" load_steps=3 format=3 uid="uid://yjq7jwh40as0"]
 
 [ext_resource type="Script" uid="uid://cva6rqcmcr3av" path="res://cards/scripts/shield_card.gd" id="1_ecwla"]
-[ext_resource type="Texture2D" uid="uid://32ixlvv01yja" path="res://assets/Cards/CardTemplateColor.png" id="1_qymjn"]
+[ext_resource type="Texture2D" uid="uid://ju372qwjlth5" path="res://assets/Cards/shield_card_2.png" id="1_qymjn"]
 
 [resource]
 script = ExtResource("1_ecwla")

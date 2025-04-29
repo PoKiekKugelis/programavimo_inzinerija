@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://fa7nmgjpv5l6"]
 
 [ext_resource type="Script" uid="uid://ccs00bgac7fhv" path="res://cards/scripts/card_ui.gd" id="1_uj0tt"]
-[ext_resource type="Texture2D" uid="uid://32ixlvv01yja" path="res://assets/Cards/CardTemplateColor.png" id="2_yrhyq"]
+[ext_resource type="Texture2D" uid="uid://dh01xy2ibu66s" path="res://assets/Cards/template_card_2.png" id="2_uj0tt"]
 [ext_resource type="Script" uid="uid://cqqnfqih7s1a7" path="res://cards/scripts/card_state_machine.gd" id="3_vxtg5"]
 [ext_resource type="Script" uid="uid://ch0teiuvp4h1g" path="res://cards/card states/card_base_state.gd" id="4_e4wjq"]
 [ext_resource type="Script" uid="uid://62vsvsqaq674" path="res://cards/card states/card_clicked_state.gd" id="5_kkkcn"]
@@ -12,7 +12,7 @@
 bg_color = Color(0.701961, 0.701961, 0.701961, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5x102"]
-size = Vector2(121.429, 183)
+size = Vector2(125, 183)
 
 [node name="CardUI" type="Control"]
 process_mode = 3
@@ -41,15 +41,15 @@ offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_yrhyq")
+texture = ExtResource("2_uj0tt")
 
 [node name="Panel" type="Panel" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.77
-anchor_top = 0.17
-anchor_right = 0.92
-anchor_bottom = 0.245
+anchor_left = 0.807143
+anchor_top = 0.171429
+anchor_right = 0.957143
+anchor_bottom = 0.246429
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e1hm3")
@@ -79,7 +79,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetect"]
 process_mode = 3
-position = Vector2(70.2857, 138.5)
+position = Vector2(68.5001, 138.5)
 shape = SubResource("RectangleShape2D_5x102")
 
 [node name="State" type="Label" parent="."]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://dop1brqbdoh5o"]
 
-[ext_resource type="Texture2D" uid="uid://bb5o7pftdmjqu" path="res://assets/Cards/CardTemplateScissor.png" id="1_q2bh2"]
+[ext_resource type="Texture2D" uid="uid://dtdfvnev6ij2t" path="res://assets/Cards/scissors_card_2.png" id="1_f0s1d"]
 [ext_resource type="Script" uid="uid://cdx2o5ly4cbe0" path="res://cards/card types/attack_scissors.gd" id="2_q2bh2"]
 
 [resource]
@@ -8,7 +8,7 @@ script = ExtResource("2_q2bh2")
 id = ""
 type = 0
 target = 2
-cost = 0
-icon = ExtResource("1_q2bh2")
-tooltip_text = "Get scissored"
+cost = 2
+icon = ExtResource("1_f0s1d")
+tooltip_text = "deal 3 damage"
 metadata/_custom_type_script = "uid://d1ramoosw62pd"

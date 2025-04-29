@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://csofjnrpt3fa8"]
 
-[ext_resource type="Texture2D" uid="uid://veel70mhljxe" path="res://assets/Cards/CardTemplateRock.png" id="1_bl2ge"]
+[ext_resource type="Texture2D" uid="uid://be28gw6xs3mrg" path="res://assets/Cards/rock_card_2.png" id="1_56748"]
 [ext_resource type="Script" uid="uid://grb7bcpbuuad" path="res://cards/card types/attack_rock.gd" id="2_bl2ge"]
 
 [resource]
@@ -9,6 +9,6 @@ id = "attack_rock"
 type = 0
 target = 2
 cost = 1
-icon = ExtResource("1_bl2ge")
-tooltip_text = "get rocked"
+icon = ExtResource("1_56748")
+tooltip_text = "deal 2 damage"
 metadata/_custom_type_script = "uid://d1ramoosw62pd"

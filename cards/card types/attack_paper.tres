@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://brp7nucfo0vkj"]
 
-[ext_resource type="Texture2D" uid="uid://5d71lefj5ebi" path="res://assets/Cards/CardTemplatePaper.png" id="1_finnp"]
+[ext_resource type="Texture2D" uid="uid://bjr4raxqrlrs2" path="res://assets/Cards/paper_card_2.png" id="1_w2e0g"]
 [ext_resource type="Script" uid="uid://qqlwrd6iwss8" path="res://cards/card types/attack_paper.gd" id="2_finnp"]
 
 [resource]
@@ -8,7 +8,7 @@ script = ExtResource("2_finnp")
 id = "attack_paper"
 type = 0
 target = 2
-cost = 1
-icon = ExtResource("1_finnp")
-tooltip_text = "get papered"
+cost = 0
+icon = ExtResource("1_w2e0g")
+tooltip_text = "deal 1 damage"
 metadata/_custom_type_script = "uid://d1ramoosw62pd"
