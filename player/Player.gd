@@ -25,7 +25,7 @@ var is_dashing: bool = false
 var dash_direction: int = 0
 var dash_start_position: Vector2 = Vector2.ZERO
 var CAN_MOVE: bool = true
-
+var jumped: bool = false
 
 # variables for double tap detection
 var last_tap_direction: int = 0
@@ -73,39 +73,15 @@ func start_dash_cooldown() -> void:
 	can_dash = true
 
 func _physics_process(delta: float) -> void:
-	
-	# handle dashing
-	if is_dashing:
-		# check if we have reached the dash distance or have hit a wall
-		if abs(position.x - dash_start_position.x) >= DASH_DISTANCE or is_on_wall():
-			end_dash()
-		else:
-			velocity.x = DASH_SPEED * dash_direction
-			#oOnly suspend gravity if on ground, or briefly when starting a dash
-			if is_on_floor() or abs(position.x - dash_start_position.x) < 20:
-				velocity.y = 0
-			else:
-				# apply reduced gravity during air dash
-				velocity.y += GRAVITY * delta * 0.5
-				
-			var collision = move_and_slide()
-			
-			# end dash if we hit a wall
-			if is_on_wall():
-				end_dash()
-				
-			if collision:
-				return  # still in dash, but handled collision
-			
-			return  # skip the rest of the physics process during dash
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
-		
-	# Handle jump.
+		# Handle jump.
 	if Input.is_action_pressed("ui_jump") and is_on_floor() and CAN_MOVE == true:
 		velocity.y = JUMP_VELOCITY
-		
+	
+	
+	
 	# Get direction from input
 	var direction := Input.get_axis("left", "right")
 	
@@ -127,7 +103,36 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = false
 	elif direction < 0:
 		animated_sprite.flip_h = true
-	
+	# handle dashing
+	if is_dashing:
+		# check if we have reached the dash distance or have hit a wall
+		if abs(position.x - dash_start_position.x) >= DASH_DISTANCE or is_on_wall():
+			end_dash()
+			
+		else:
+			velocity.x = DASH_SPEED * dash_direction
+			
+			if Input.is_action_pressed("ui_jump") and is_on_floor():
+				jumped = true
+			
+			
+			# apply reduced gravity during air dash
+			if not is_on_floor() && abs(position.x - dash_start_position.x) > 75 && jumped == false:
+				velocity.y += GRAVITY * delta * 0.5
+				
+			
+			var collision = move_and_slide()
+			
+			# end dash if we hit a wall
+			if is_on_wall():
+				end_dash()
+				
+			if collision:
+				return  # still in dash, but handled collision
+			
+			return  # skip the rest of the physics process during dash
+		
+		
 	# animacijos:DDDDDDDDDDDDDDDDDDDDDDDDDDDD
 	if is_on_floor():
 		if direction == 0:
@@ -152,6 +157,7 @@ func _physics_process(delta: float) -> void:
 # helper function to cleanly end the dash state
 func end_dash() -> void:
 	is_dashing = false
+	jumped = false;
 	# if in air, restore gravity effects immediately
 	if not is_on_floor():
 		velocity.y += GRAVITY * 0.016  # apply a small gravity impulse
