@@ -25,6 +25,7 @@ func _ready() -> void:
 	# Turn off physics (not falling) and process function
 	enemy.set_physics_process(false)
 	enemy.set_process(false)
+	battle_ui.add_card_sprites()
 	await get_tree().create_timer(1.5).timeout# Timer for the transition
 	$Camera2D.make_current()# Change camera and prepare entities for combat
 	load_entities() # Setup enemies and player to look proper

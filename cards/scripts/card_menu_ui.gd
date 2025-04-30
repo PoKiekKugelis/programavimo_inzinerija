@@ -7,7 +7,7 @@ signal tooltip_requested(card: Card)
 @export var card: Card : set = set_card
 @onready var texture: TextureRect = $Visuals/TextureRect
 @onready var panel: Panel = $Visuals/TextureRect/Panel
-@onready var cost: Label = $Visuals/TextureRect/Panel/Cost
+@onready var cost: Label = $Visuals/TextureRect/Cost
 
 func set_card(value: Card) -> void:
 	if not is_node_ready():

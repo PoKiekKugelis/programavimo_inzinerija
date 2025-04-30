@@ -1,22 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://cq3w6suapqurq"]
+[gd_scene load_steps=5 format=3 uid="uid://cq3w6suapqurq"]
 
-[ext_resource type="Texture2D" uid="uid://32ixlvv01yja" path="res://assets/Cards/CardTemplateColor.png" id="1_4f3bd"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="1_msetm"]
 [ext_resource type="Script" uid="uid://dmm70wi1jv6dw" path="res://cards/scripts/card_menu_ui.gd" id="1_pptp5"]
 [ext_resource type="Resource" uid="uid://cy7n1mny6vxbj" path="res://cards/card types/attack.tres" id="2_oc6st"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0nfe"]
-bg_color = Color(0.701961, 0.701961, 0.701961, 1)
+[ext_resource type="Texture2D" uid="uid://bsrjo51m8ftxc" path="res://assets/Cards/template_card_2.png" id="4_nkkmg"]
 
 [node name="CardMenuUI" type="CenterContainer"]
-offset_right = 200.0
-offset_bottom = 400.0
+offset_right = 188.0
+offset_bottom = 264.0
 size_flags_horizontal = 3
 script = ExtResource("1_pptp5")
 card = ExtResource("2_oc6st")
 
 [node name="Visuals" type="Control" parent="."]
-custom_minimum_size = Vector2(200, 400)
+custom_minimum_size = Vector2(188, 264)
 layout_mode = 2
 theme = ExtResource("1_msetm")
 
@@ -27,43 +24,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -200.0
-offset_right = 100.0
-offset_bottom = 200.0
+offset_left = -94.0
+offset_top = -132.0
+offset_right = 94.0
+offset_bottom = 132.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_4f3bd")
+texture = ExtResource("4_nkkmg")
 
-[node name="Panel" type="Panel" parent="Visuals/TextureRect"]
+[node name="Cost" type="Label" parent="Visuals/TextureRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 154.0
-offset_top = 68.0
-offset_right = -16.0
-offset_bottom = -302.0
+anchors_preset = -1
+anchor_left = 0.771277
+anchor_top = -0.0189394
+anchor_right = 1.07128
+anchor_bottom = 0.140561
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_j0nfe")
-
-[node name="Cost" type="Label" parent="Visuals/TextureRect/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -38.5
-offset_top = -16.5
-offset_right = 38.5
-offset_bottom = 16.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 31
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.533333, 0.431373, 0.415686, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 28
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="gui_input" from="Visuals" to="." method="_on_visuals_gui_input"]
