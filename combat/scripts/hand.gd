@@ -3,12 +3,6 @@ class_name Hand
 
 @export var char_stats: CharStats
 @onready var card_ui := preload("res://cards/scenes/card_ui.tscn")
-var cards_played_this_turn = 0
-func _ready() -> void:
-	Events.card_played.connect(on_card_played)
-
-func on_card_played() -> void:
-	cards_played_this_turn += 1
 
 func discard_card(card: CardUI) -> void:
 	card.queue_free()

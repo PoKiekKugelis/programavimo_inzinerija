@@ -1,21 +1,24 @@
 extends CharacterBody2D
-
 class_name TestEnemy
 
-const speed = 20 # movement speed
-var is_enemy_chase: bool = false  # for later inplementation
-# probably wont need this but ok
 @onready var health: Health = $Health
+@onready var health_bar: TextureProgressBar = $HealthBar
+@onready var choice: RichTextLabel = $Choice
 
+@export var stats: EnemyStats
+
+const speed = 20 # movement speed
+const gravity = 900
+var is_enemy_chase: bool = false  # for later inplementation
 var dead: bool = false #For later inplementation
 var taking_damage: bool = false #For later inplementation
 var damage_to_deal = 20 
 var is_dealing_damage: bool = false
-
 var dir: Vector2
 var dir_prev: Vector2
-const gravity = 900
 var is_roaming: bool = true #if true then moves around randomly. if false currently does nothing
+var enemy_action_picker: EnemyActionPicker
+var current_action: EnemyAction
 
 func _ready() -> void:
 	add_to_group("enemy")
@@ -29,7 +32,6 @@ func _process(delta):
 	move(delta)
 	handle_animation()
 	move_and_slide()
-	
 
 func move(delta):
 	if !dead:
@@ -61,3 +63,24 @@ func _on_direction_timer_timeout() -> void: # randomly chooses walking time and 
 func choose(array): # randomizes array and returns first
 	array.shuffle()
 	return array.front()
+
+func setup_ai() -> void:
+	if enemy_action_picker:
+		enemy_action_picker.queue_free()
+	var new_action_picker: EnemyActionPicker = stats.ai.instantiate()
+	add_child(new_action_picker)
+	enemy_action_picker = new_action_picker
+	enemy_action_picker.enemy = self
+
+func update_action() -> void:
+	if not current_action:
+		current_action = enemy_action_picker.get_action()
+		return
+	var new_conditional_action := enemy_action_picker.get_first_conditional_action()
+	if new_conditional_action and current_action != new_conditional_action:
+		current_action = new_conditional_action
+
+func do_turn() -> void:
+	if not current_action:
+		return
+	current_action.perform_action()

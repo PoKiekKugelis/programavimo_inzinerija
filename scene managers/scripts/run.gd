@@ -4,7 +4,8 @@ class_name Run
 #apsirašyti  visas scenas, kurias inicializuos run mazgas
 const COMBAT_SCENE:= preload("res://combat/scenes/combat_screen.tscn")
 const RUN_COMPLETE:= preload("res://scenes/game scenes/level_complete.tscn")
-const PLAYER_DEATH:= preload("res://scenes/game scenes/death_screen.tscn")#numirus nebe change current scene, o per signals atsiųsti čia, kad pakeistų sceną
+const PLAYER_DEATH:= preload("res://scenes/game scenes/death_screen.tscn")#numirus nebe change current scene, 
+# o per signals atsiųsti čia, kad pakeistų sceną
 
 # Pakeičiau į masyvą
 const LEVEL_SCENES:= [preload("res://scenes/game scenes/game.tscn"),
@@ -16,7 +17,7 @@ const STATIONS:= [preload("res://scenes/game scenes/stations/mine_station.tscn")
 
 @onready var current_view: Node = $CurrentView# Kadangi turim nodes resursus, kad jie nebūtų orphans reikia juos į
 # medį pridėti - tėvą duoti. Tai dabartinę sceną pridedu ant šito node, kad galėčiau tikrinti, kad tik vienas node 
-# pridėtas būtų keitimo metu.
+# pridėtas keitimo metu.
 
 #kintamieji run'ui, čia daugiau bus arba į vieną character viskas sudėta
 var character : CharStats
@@ -112,9 +113,11 @@ func _on_player_enter_combat(enemy: CharacterBody2D) -> void:
 	level_scene.get_node("PauseScreenView/PauseScreen").z_index = 10
 	var combat_instance = COMBAT_SCENE.instantiate()
 	var playerSprite = level_scene.get_node("Player/AnimatedSprite2D").duplicate()
+	playerSprite.add_to_group("combat_player")
 	var combat_enemy = enemy.duplicate() # the whole enemy is taken instead of the sprite
 	combat_instance.enemy = combat_enemy
-	combat_instance.char_stats = level_scene.get_node("Player").char_stats
+	combat_instance.player = playerSprite
+	combat_instance.char_stats = level_scene.player.char_stats
 	combat_instance.add_child(playerSprite) # add player character to combat
 	combat_instance.add_child(combat_enemy) # add enemy instance to combat (using duplicated version)
 	combat_instance.player = playerSprite

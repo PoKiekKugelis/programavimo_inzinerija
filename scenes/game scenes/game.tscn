@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtkw7x4hdoyt2"]
+[gd_scene load_steps=13 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
 [ext_resource type="Script" uid="uid://cao01gpotabl2" path="res://scripts/game scenes/game.gd" id="1_kvpfn"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="3_psmk7"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="4_j6hfo"]
 [ext_resource type="PackedScene" uid="uid://bhod10c0fj1bp" path="res://scenes/signs and menus/finish.tscn" id="6_twexu"]
-[ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://enemies/scenes/enemy.tscn" id="7_lph38"]
 [ext_resource type="PackedScene" uid="uid://b18lmeyce53di" path="res://scenes/game scenes/level1.tscn" id="7_rysoc"]
 [ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/traps/spike.tscn" id="9_k0taf"]
+[ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://enemies/scenes/enemy.tscn" id="11_ekyhk"]
+[ext_resource type="Resource" uid="uid://p53ixt6x2i8g" path="res://enemies/test_enemy/test_enemy.tres" id="12_rrbdo"]
 [ext_resource type="PackedScene" uid="uid://cvbf4h8xu6bjk" path="res://scenes/signs and menus/proceed_sign.tscn" id="21_37s47"]
 [ext_resource type="PackedScene" uid="uid://ck134hita7gdt" path="res://scenes/signs and menus/proceed_sign_screen.tscn" id="22_bt5mj"]
 
@@ -42,10 +43,6 @@ item_name = "a"
 item_texture = ExtResource("4_j6hfo")
 item_effect = "test3"
 
-[node name="TestEnemy" parent="." instance=ExtResource("7_lph38")]
-position = Vector2(84, -4)
-scale = Vector2(2, 2)
-
 [node name="SpikeEnemy" parent="." instance=ExtResource("9_k0taf")]
 position = Vector2(-15, 31)
 
@@ -65,3 +62,8 @@ visible = false
 clip_children = 1
 z_index = 20
 y_sort_enabled = true
+
+[node name="TestEnemy" parent="." instance=ExtResource("11_ekyhk")]
+position = Vector2(67, 3)
+scale = Vector2(1.2, 1.2)
+stats = ExtResource("12_rrbdo")

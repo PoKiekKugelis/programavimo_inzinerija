@@ -6,7 +6,8 @@ func _ready() -> void:
 	Money.subtract_money(Money.get_money() - 30) # Turbut reiketu padaryt startig money metoda
 	Events.in_combat_status_changed.emit()
 	SaveSystem.delete_data()
-	
+	if Events.in_combat:
+		Events.in_combat_status_changed.emit()
 
 func _on_restart_pressed() -> void:
 	Events.restart_at_hub.emit()
