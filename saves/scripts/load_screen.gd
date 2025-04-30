@@ -27,6 +27,7 @@ func _on_file_2_pressed() -> void:
 	# Uzkomentuota kol neturim mid run saves
 	#var target_scene = SaveSystem.load_game().get("Location", "res://scene managers/scenes/game_save.tscn")
 	var target_scene = "res://scene managers/scenes/game_save.tscn"
+	get_tree().change_scene_to_file(target_scene)
 	
 func _on_file_3_pressed() -> void:
 	SaveFiles.path = save_file_3
@@ -35,6 +36,7 @@ func _on_file_3_pressed() -> void:
 	# Uzkomentuota kol neturim mid run saves
 	#var target_scene = SaveSystem.load_game().get("Location", "res://scene managers/scenes/game_save.tscn")
 	var target_scene = "res://scene managers/scenes/game_save.tscn"
+	get_tree().change_scene_to_file(target_scene)
 	
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/game scenes/main_menu.tscn")

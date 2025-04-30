@@ -60,7 +60,6 @@ expand_mode = 1
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 process_mode = 3
-visible = false
 script = ExtResource("5_74ld3")
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
@@ -118,9 +117,9 @@ text = "End turn"
 
 [node name="EnergyUI" parent="BattleUI" instance=ExtResource("10_e1m4k")]
 offset_left = 36.0
-offset_top = -212.0
+offset_top = -235.0
 offset_right = 96.0
-offset_bottom = -152.0
+offset_bottom = -175.0
 scale = Vector2(1.2, 1.2)
 
 [node name="DrawButton" parent="BattleUI" node_paths=PackedStringArray("counter") instance=ExtResource("11_orwjd")]

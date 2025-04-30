@@ -4,8 +4,6 @@ func enter() -> void:
 	var ui_layer = get_tree().get_first_node_in_group("ui_layer")
 	if ui_layer:
 		card_ui.reparent(ui_layer)
-	
-	card_ui.state.text = "DRAGGING"
 
 func on_input(event: InputEvent) -> void:
 	var mouse_motion := event is InputEventMouseMotion

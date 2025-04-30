@@ -77,6 +77,7 @@ func set_transformations():
 	show_enemy_health()
 	# setup enemy animation
 	anim_sprite.play("idle")
+	player.play("idle")
 
 func show_enemy_health():
 	for enemy in $EnemyHandler.get_children():
