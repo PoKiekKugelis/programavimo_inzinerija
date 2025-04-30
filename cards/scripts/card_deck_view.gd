@@ -26,11 +26,14 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		if card_tooltip_popup.visible:
 			card_tooltip_popup.hide_tooltip()
+			get_viewport().set_input_as_handled()
 		elif card_deck_view.visible and get_parent().get_parent().name == "CombatScreen": 
 			hide()
+			get_viewport().set_input_as_handled()
 		elif card_deck_view.visible: 
 			get_tree().paused = false
 			hide()
+			get_viewport().set_input_as_handled()
 
 func show_current_view(new_title: String, randomized: bool = false) -> void:
 	for card: Node in cards.get_children():

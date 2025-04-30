@@ -29,3 +29,7 @@ func _on_item_button_mouse_entered() -> void:
 func _on_item_button_mouse_exited() -> void:
 	if item != null:
 		item_tooltip.visible = false
+
+func hub_color(OuterColor) -> void:
+	if(owner.get_parent().name == "Hub"):
+		$OuterBorder.color = OuterColor

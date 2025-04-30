@@ -8,8 +8,6 @@ var player: Player
 func _ready():
 	add_player()
 
-
-
 func add_player() -> void:
 	var player_instance = preload("res://player/player.tscn").instantiate()
 	add_child(player_instance)

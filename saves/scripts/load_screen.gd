@@ -81,6 +81,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready():
+	Inventory.clear()
 	if using_controller:
 		_update_focus_modes(using_controller)
 		

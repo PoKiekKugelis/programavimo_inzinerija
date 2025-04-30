@@ -4,8 +4,9 @@ extends Node
 func _ready() -> void:
 	Inventory.clear()
 	Money.subtract_money(Money.get_money() - 30) # Turbut reiketu padaryt startig money metoda
+	Events.in_combat_status_changed.emit()
 	SaveSystem.delete_data()
-	Events.in_combat_status_changed
+	
 
 func _on_restart_pressed() -> void:
 	Events.restart_at_hub.emit()
