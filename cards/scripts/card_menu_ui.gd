@@ -6,7 +6,6 @@ signal tooltip_requested(card: Card)
 #const BASE_STYLEBOX := preload()
 @export var card: Card : set = set_card
 @onready var texture: TextureRect = $Visuals/TextureRect
-@onready var panel: Panel = $Visuals/TextureRect/Panel
 @onready var cost: Label = $Visuals/TextureRect/Cost
 
 func set_card(value: Card) -> void:

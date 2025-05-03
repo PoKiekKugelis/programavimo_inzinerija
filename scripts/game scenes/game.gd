@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var player: Player = %Player
+@onready var player: Player
 @export var player_spawn_position: Vector2 = Vector2(140, 170)
 
 func _ready() -> void:

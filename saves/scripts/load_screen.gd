@@ -14,7 +14,7 @@ signal button_pressed
 func _on_file_1_pressed() -> void:
 	SaveFiles.path = save_file_1
 	emit_signal("button_pressed")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1.1).timeout
 	# Uzkomentuota kol neturim mid run saves
 	#var target_scene = SaveSystem.load_game().get("Location", "res://scene managers/scenes/game_save.tscn")
 	var target_scene = "res://scene managers/scenes/game_save.tscn"
@@ -23,7 +23,7 @@ func _on_file_1_pressed() -> void:
 func _on_file_2_pressed() -> void:
 	SaveFiles.path = save_file_2
 	emit_signal("button_pressed")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1.1).timeout
 	# Uzkomentuota kol neturim mid run saves
 	#var target_scene = SaveSystem.load_game().get("Location", "res://scene managers/scenes/game_save.tscn")
 	var target_scene = "res://scene managers/scenes/game_save.tscn"
@@ -32,7 +32,7 @@ func _on_file_2_pressed() -> void:
 func _on_file_3_pressed() -> void:
 	SaveFiles.path = save_file_3
 	emit_signal("button_pressed")
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1.1).timeout
 	# Uzkomentuota kol neturim mid run saves
 	#var target_scene = SaveSystem.load_game().get("Location", "res://scene managers/scenes/game_save.tscn")
 	var target_scene = "res://scene managers/scenes/game_save.tscn"

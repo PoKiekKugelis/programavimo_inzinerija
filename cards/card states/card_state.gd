@@ -8,7 +8,7 @@ signal transition_requested(from: CardState, to: State)
 @export var state: State
 
 var  card_ui: CardUI
-
+var is_tweening : bool = false
 
 func enter() -> void:
 	pass

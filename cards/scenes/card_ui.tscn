@@ -10,14 +10,14 @@
 [ext_resource type="Script" uid="uid://4unwo0j06wo5" path="res://cards/card states/card_released_state.gd" id="7_f0nnd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5x102"]
-size = Vector2(125, 183)
+size = Vector2(135, 193)
 
 [node name="CardUI" type="Control"]
 process_mode = 3
-custom_minimum_size = Vector2(164.5, 231)
+custom_minimum_size = Vector2(141, 198)
 layout_mode = 3
-anchor_right = 0.142795
-anchor_bottom = 0.356481
+anchor_right = 0.122396
+anchor_bottom = 0.305556
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_yrhyq")
@@ -31,10 +31,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -82.25
-offset_top = -115.5
-offset_right = 82.25
-offset_bottom = 115.5
+offset_left = -70.5
+offset_top = -99.0
+offset_right = 70.5
+offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -61,13 +61,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="DropPointDetect" type="Area2D" parent="."]
 process_mode = 3
-visible = false
 collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetect"]
 process_mode = 3
-position = Vector2(68.5001, 138.5)
+position = Vector2(70.5, 100.5)
 shape = SubResource("RectangleShape2D_5x102")
 
 [node name="CardStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

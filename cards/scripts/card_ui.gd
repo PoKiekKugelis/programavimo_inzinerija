@@ -5,10 +5,8 @@ signal reparent_requested(which_card_ui: CardUI)
 
 @export var card: Card : set = set_card
 @export var char_stats: CharStats : set = set_char_stats
-
 @onready var texture_rect: TextureRect = $TextureRect
 @onready var cost: Label = $TextureRect/Cost
-@onready var state: Label = $State
 @onready var drop_point_detect: Area2D = $DropPointDetect
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var targets: Array[Node] = []
@@ -17,6 +15,8 @@ var original_index := 0
 var playable := true : set = set_playable
 var disabled := false
 var parent: Control
+const SIZE := Vector2(141, 198)
+var original_position: Vector2
 
 func set_card(value: Card) -> void:
 	if not is_node_ready():
@@ -46,6 +46,7 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	card_state_machine.on_mouse_exited()
+
 
 func _on_drop_point_detect_area_entered(area: Area2D) -> void:
 	if not targets.has(area):

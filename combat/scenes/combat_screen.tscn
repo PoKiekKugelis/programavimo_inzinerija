@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bu2vdqgi3rdj3"]
+[gd_scene load_steps=19 format=3 uid="uid://bu2vdqgi3rdj3"]
 
 [ext_resource type="Script" uid="uid://dw7any0ncdcql" path="res://combat/scripts/combat_screen.gd" id="1_j1dph"]
 [ext_resource type="Texture2D" uid="uid://bilttm4spyklq" path="res://assets/sprites/combat_background.png" id="3_i41gl"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://c0t20rpm5gr0w" path="res://player/player_handler.gd" id="3_wstb0"]
 [ext_resource type="Script" uid="uid://dqnokw4175aui" path="res://combat/scripts/battle_ui.gd" id="5_74ld3"]
 [ext_resource type="Script" uid="uid://beblpw1345hni" path="res://combat/scripts/hand.gd" id="6_leoy8"]
+[ext_resource type="Curve" uid="uid://dtskme7prx4g5" path="res://cards/hand_y_curve.tres" id="7_j1dph"]
+[ext_resource type="Curve" uid="uid://dwkwcluylhkq0" path="res://cards/hand_rotation_curve.tres" id="8_0mv3p"]
 [ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/node resources/health_bar.tscn" id="8_guoki"]
 [ext_resource type="PackedScene" uid="uid://2a7p6gpyerqx" path="res://combat/scenes/energy_ui.tscn" id="10_e1m4k"]
 [ext_resource type="PackedScene" uid="uid://bhucwpx8dw1e6" path="res://cards/scenes/card_deck_open.tscn" id="11_orwjd"]
@@ -63,10 +65,9 @@ script = ExtResource("3_j1dph")
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 process_mode = 3
-visible = false
 script = ExtResource("5_74ld3")
 
-[node name="Hand" type="HBoxContainer" parent="BattleUI"]
+[node name="Hand" type="Container" parent="BattleUI"]
 process_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -74,13 +75,14 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -300.0
-offset_top = -230.0
+offset_top = -198.0
 offset_right = 300.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 10
-alignment = 1
 script = ExtResource("6_leoy8")
+hand_curve = ExtResource("7_j1dph")
+rotation_curve = ExtResource("8_0mv3p")
 
 [node name="ActionText" type="RichTextLabel" parent="BattleUI"]
 offset_left = 307.0
@@ -206,3 +208,5 @@ visible = false
 
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 layer = 3
+
+[connection signal="child_order_changed" from="BattleUI/Hand" to="BattleUI/Hand" method="_on_child_order_changed"]
