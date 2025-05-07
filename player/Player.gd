@@ -11,6 +11,12 @@ class_name Player
 @onready var deck_button: CardDeckOpen = %DeckButton
 @onready var deck_view: CardDeckView = $CardDeckView/DeckView
 
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
+@onready var dash_sound: AudioStreamPlayer2D = $DashSound
+@onready var landing_sound: AudioStreamPlayer2D = $LandingSound
+@onready var walking_sound: AudioStreamPlayer2D = $WalkingSound
+@onready var sprinting_sound: AudioStreamPlayer2D = $SprintingSound
+
 
 
 const RUNNING_SPEED = 160.0
@@ -26,6 +32,7 @@ var dash_direction: int = 0
 var dash_start_position: Vector2 = Vector2.ZERO
 var CAN_MOVE: bool = true
 var jumped: bool = false
+var running: bool = false
 
 # variables for double tap detection
 var last_tap_direction: int = 0
@@ -68,20 +75,22 @@ func _on_movement_timer_timeout() -> void:
 	CAN_MOVE = true
 
 func start_dash_cooldown() -> void:
+	dash_sound.play()
 	can_dash = false
 	await get_tree().create_timer(1.0).timeout  # 1 second cooldown
 	can_dash = true
-
+ 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+		landing_sound.play()
 		# Handle jump.
 	if Input.is_action_pressed("ui_jump") and is_on_floor() and CAN_MOVE == true:
 		velocity.y = JUMP_VELOCITY
-	
-	
-	
+		jump_sound.play()
+
+
 	# Get direction from input
 	var direction := Input.get_axis("left", "right")
 	
@@ -90,6 +99,21 @@ func _physics_process(delta: float) -> void:
 		handle_direction_tap(-1)
 	elif Input.is_action_just_pressed("right"):
 		handle_direction_tap(1)
+	
+	if is_on_floor() and CAN_MOVE and direction != 0 and running == true:
+		if not sprinting_sound.playing:
+			sprinting_sound.play()
+	else:
+		if sprinting_sound.playing:
+			sprinting_sound.stop()
+	
+	
+	if is_on_floor() and CAN_MOVE and direction != 0 and running == false:
+		if not walking_sound.playing:
+			walking_sound.play()
+	else:
+		if walking_sound.playing:
+			walking_sound.stop()
 	
 	# Reset when no movement keys are pressed
 	if direction == 0:
@@ -105,6 +129,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = true
 	# handle dashing
 	if is_dashing:
+		
 		# check if we have reached the dash distance or have hit a wall
 		if abs(position.x - dash_start_position.x) >= DASH_DISTANCE or is_on_wall():
 			end_dash()
@@ -139,14 +164,18 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("idle")
 		else:
 			animated_sprite.play("walk")
+			
+			
 	else:
 		animated_sprite.play("jump")
 	
 	if direction != 0 && CAN_MOVE == true:
 		stamina.set_is_moving(true)  
 		if Input.is_action_pressed("ui_sprint") && stamina.stamina > 0:
+			running = true
 			velocity.x = direction * RUNNING_SPEED
 		else:
+			running = false
 			velocity.x = direction * SPEED
 	else:
 		stamina.set_is_moving(false)  
@@ -190,6 +219,7 @@ func _on_health_health_depleted() -> void:
 		Events.player_died_in_combat.emit()
 		return
 	Events.player_died.emit()
+
 
 func connect_deck():
 	if char_stats:

@@ -1,5 +1,10 @@
 extends Node
 
+@onready var complete_sound: AudioStreamPlayer2D = $CompleteSound
+
+
+func _ready() -> void:
+	complete_sound.play()
 
 func _on_return_pressed():
 	Events.restart_at_hub.emit()

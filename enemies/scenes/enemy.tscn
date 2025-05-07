@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://befh57cg3tm24"]
+[gd_scene load_steps=22 format=3 uid="uid://befh57cg3tm24"]
 
 [ext_resource type="Script" uid="uid://qw3n3dhsjip2" path="res://enemies/scripts/enemy.gd" id="1_6cc7r"]
 [ext_resource type="Texture2D" uid="uid://ci6oaqoi4u4xy" path="res://assets/sprites/animation_test.png" id="1_evtl2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/node resources/health_bar.tscn" id="6_6edcp"]
 [ext_resource type="Script" uid="uid://c118vejxqqnw2" path="res://enemies/scripts/enemy_health_bar.gd" id="7_ontt5"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="8_ontt5"]
+[ext_resource type="AudioStream" uid="uid://bf2tofdh11wdl" path="res://assets/sounds/zapsplat_multimedia_game_sound_8_bit_blip_impact_thud_112028.mp3" id="9_yselg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ontt5"]
 atlas = ExtResource("1_evtl2")
@@ -148,5 +149,8 @@ theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "test"
 horizontal_alignment = 1
+
+[node name="ImpactSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_yselg")
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

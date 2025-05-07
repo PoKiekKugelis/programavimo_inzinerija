@@ -15,6 +15,11 @@ signal health_depleted                # emitted when health reaches 0
 @export var immortality: bool = false : set = set_immortality, get = get_immortality
 @onready var health: int = max_health : set = set_health, get = get_health  # current health
 
+@onready var healing_sound: AudioStreamPlayer2D = $"../HealingSound"
+@onready var impact_sound: AudioStreamPlayer2D = $"../ImpactSound"
+@onready var hit_sound: AudioStreamPlayer2D = $"../HitSound"
+@onready var death_sound: AudioStreamPlayer2D = $"../DeathSound"
+
 const WHITE_SPRITE_MATERIAL := preload("res://assets/combat assets/white_sprite_material.tres")
 const GREEN_HEALING_MATERIAL := preload("res://assets/combat assets/green_healing_material.tres")
 
@@ -42,6 +47,7 @@ func get_max_health() -> int:
 
 # sets current health with validation
 func set_health(value: int):
+	
 	# block damage if immortal
 	if value < health and immortality:
 		print("Damage blocked due to immortality!")
@@ -55,12 +61,32 @@ func set_health(value: int):
 		var difference = clamped_value - health
 		health = clamped_value
 		health_changed.emit(difference)
+		if difference <= -1:
+			play_player_hit_sound()
 		if Events.in_combat and difference < 0:# A shaking animation when damage taken
 			take_damage_animation()
+			play_player_hit_sound()
+			play_enemy_hit_sound()
 		if Events.in_combat and difference > 0:# A shaking animation when damage taken
 			heal_animation()
 		if !Events.in_combat:
 			if health <= 0: health_depleted.emit()# check for death
+			
+			
+			
+	
+
+func play_enemy_hit_sound() -> void:
+	var who = owner
+	if who is TestEnemy:
+		impact_sound.play()
+
+func play_player_hit_sound() -> void:
+	var who = owner
+	if who is Player:
+		if !hit_sound.playing:
+			hit_sound.play()
+
 
 func take_damage_animation() -> void:
 	var to_shake = owner
@@ -157,3 +183,5 @@ func clear_shield():
 
 func apply_heal(amount: int):
 	set_health(health + amount)
+	if amount > 0 and healing_sound != null:
+		healing_sound.play()

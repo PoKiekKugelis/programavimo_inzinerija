@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0w4ydxbru5yp"]
 
-[ext_resource type="Script" uid="uid://cqmhgr6q2apnr" path="res://enemies/scripts/enemy_action_picker.gd" id="1_6o3nf"]
-[ext_resource type="Script" uid="uid://cd6mj35wbwk2v" path="res://enemies/test_enemy/test_attack_action.gd" id="2_jduqw"]
-[ext_resource type="Script" uid="uid://bkd7focvr0dk1" path="res://enemies/test_enemy/test_heal_action.gd" id="3_dq4yr"]
+[ext_resource type="Script" uid="uid://hnji6gutx8gm" path="res://enemies/scripts/enemy_action_picker.gd" id="1_6o3nf"]
+[ext_resource type="Script" uid="uid://nov4erd8abfc" path="res://enemies/test_enemy/test_attack_action.gd" id="2_jduqw"]
+[ext_resource type="Script" uid="uid://bbfvdi1r2troq" path="res://enemies/test_enemy/test_heal_action.gd" id="3_dq4yr"]
 
 [node name="TestEnemyAI" type="Node"]
 script = ExtResource("1_6o3nf")

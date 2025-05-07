@@ -1,12 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://b18lmeyce53di"]
+[gd_scene load_steps=31 format=3 uid="uid://b18lmeyce53di"]
 
 [ext_resource type="Script" uid="uid://cxfn3gy46q7mc" path="res://scripts/game scenes/level_1.gd" id="1_mvsps"]
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ru4tf"]
 [ext_resource type="PackedScene" uid="uid://bhod10c0fj1bp" path="res://scenes/signs and menus/finish.tscn" id="2_6sh32"]
-[ext_resource type="Texture2D" uid="uid://ckpt636hl1yy7" path="res://assets/sprites/version A/Layers/parallax-demon-woods-bg_green.png" id="2_uxon3"]
+[ext_resource type="Texture2D" uid="uid://ypf8b6pnlfax" path="res://assets/sprites/version A/Layers/parallax-demon-woods-bg_green.png" id="2_uxon3"]
 [ext_resource type="Texture2D" uid="uid://b80fq4us4006d" path="res://assets/sprites/version A/Layers/parallax-demon-woods-mid-trees.png" id="3_3w4mx"]
 [ext_resource type="PackedScene" uid="uid://dcdwepyn36yoq" path="res://scenes/game scenes/level_complete.tscn" id="3_dxn3v"]
-[ext_resource type="Texture2D" uid="uid://de7jmllw4aa3m" path="res://assets/sprites/version A/Layers/parallax-demon-woods-far-trees_green.png" id="3_uxon3"]
+[ext_resource type="Texture2D" uid="uid://c45m6siqjq2bn" path="res://assets/sprites/version A/Layers/parallax-demon-woods-far-trees_green.png" id="3_uxon3"]
 [ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/traps/spike.tscn" id="4_bbk5w"]
 [ext_resource type="Texture2D" uid="uid://ce1f3ikpaavfk" path="res://assets/sprites/version A/Layers/parallax-demon-woods-close-trees.png" id="4_u068y"]
 [ext_resource type="PackedScene" uid="uid://bsdelvdiesf0o" path="res://inventory/scenes/inventory_item.tscn" id="10_jvkml"]
@@ -14,10 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="15_phfsf"]
 [ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://enemies/scenes/enemy.tscn" id="18_uq3iu"]
 [ext_resource type="Resource" uid="uid://p53ixt6x2i8g" path="res://enemies/test_enemy/test_enemy.tres" id="19_q2gm6"]
+[ext_resource type="AudioStream" uid="uid://blb0ae1b32gyc" path="res://assets/sounds/zapsplat_household_light_switch_wall_click_005_99296.mp3" id="20_q2gm6"]
 [ext_resource type="Script" uid="uid://civwctchpf0ul" path="res://scripts/traps/pressure_plate.gd" id="22_ai3nx"]
-[ext_resource type="Texture2D" uid="uid://dl8lh0omdp6mq" path="res://assets/sprites/pressure_plate_2.png" id="23_phfsf"]
+[ext_resource type="Texture2D" uid="uid://dohj8jatmcgfw" path="res://assets/sprites/pressure_plate_2.png" id="23_phfsf"]
 [ext_resource type="Script" uid="uid://l7ifdvyhkw5p" path="res://scripts/traps/boulder.gd" id="24_mq0oc"]
-[ext_resource type="Texture2D" uid="uid://dw4ua0uupqkla" path="res://assets/sprites/boulder.png" id="24_phfsf"]
+[ext_resource type="Texture2D" uid="uid://daerdo7p5wnk" path="res://assets/sprites/boulder.png" id="24_phfsf"]
 [ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="26_msy1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3oqy1"]
@@ -229,6 +230,10 @@ shape = SubResource("RectangleShape2D_mq0oc")
 position = Vector2(1553, -13)
 scale = Vector2(1.2, 1.2)
 stats = ExtResource("19_q2gm6")
+
+[node name="PressurePlateSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_q2gm6")
+volume_db = -10.0
 
 [connection signal="body_entered" from="PressurePlate/Area2D" to="PressurePlate" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PressurePlate/Area2D" to="PressurePlate" method="_on_area_2d_body_exited"]

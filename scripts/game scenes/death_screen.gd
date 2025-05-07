@@ -1,7 +1,10 @@
 extends Node
 
+@onready var death_sound: AudioStreamPlayer2D = $DeathSound
+
 
 func _ready() -> void:
+	death_sound.play()
 	Inventory.clear()
 	Money.subtract_money(Money.get_money() - 30) # Turbut reiketu padaryt startig money metoda
 	Events.in_combat_status_changed.emit()

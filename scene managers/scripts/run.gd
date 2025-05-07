@@ -15,6 +15,7 @@ const STATIONS:= [preload("res://scenes/game scenes/stations/mine_station.tscn")
 				preload("res://scenes/game scenes/stations/scrapyard_station.tscn"),
 				preload("res://scenes/game scenes/stations/tree_station.tscn")]
 
+
 @onready var current_view: Node = $CurrentView# Kadangi turim nodes resursus, kad jie nebūtų orphans reikia juos į
 # medį pridėti - tėvą duoti. Tai dabartinę sceną pridedu ant šito node, kad galėčiau tikrinti, kad tik vienas node 
 # pridėtas keitimo metu.

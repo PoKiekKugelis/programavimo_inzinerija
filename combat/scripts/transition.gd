@@ -1,5 +1,7 @@
 extends TextureRect
 
+@onready var entering_combat_sound: AudioStreamPlayer2D = $"../../EnteringCombatSound"
+
 func _ready() -> void:
 	_transition()
 	
@@ -16,6 +18,8 @@ func _ready() -> void:
 	
 
 func _transition():	
+	if !entering_combat_sound.playing:
+		entering_combat_sound.play()
 	var tween = get_tree().create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS) #kad pauzes metu butu animacija
 	tween.tween_property(self, "material:shader_parameter/fill", 1, 1.0).set_trans(Tween.TRANS_EXPO)

@@ -14,6 +14,9 @@ signal player_action_performed(message: String, color: Color)
 @onready var player_health = GlobalHealth.get_health_instance()
 @onready var enemy_handler: EnemyHandler = $EnemyHandler
 
+@onready var death_sound: AudioStreamPlayer2D = $DeathSound
+@onready var victory_sound: AudioStreamPlayer2D = $VictorySound
+
 func _ready() -> void:
 	enemy.setup_ai()
 	# Tree is still paused but the area_entered signal needs to stay active, therefore PhysicsServer2D is set to active
@@ -53,9 +56,12 @@ func _on_player_death() -> void:
 
 func _on_enemy_death() -> void: # Added those two lines
 	if enemy_handler.get_child_count() == 0 and is_inside_tree(): # Added enemy_handler logic to check if any enemies are still alive
+		death_sound.play()
 		battle_ui.show_action_text("Enemy defeated!", Color.GREEN)
 		await get_tree().create_timer(1.5).timeout
 		var victory_screen = preload("res://combat/scenes/victory_screen.tscn").instantiate()
+		if !victory_sound.playing:
+			victory_sound.play()
 		get_node("GameOverScreen").add_child(victory_screen) # Added the victory screen to a CanvasLayer
 		if victory_screen.has_signal("continue_game"):
 			victory_screen.connect("continue_game", Callable(self, "_on_continue_after_victory"))

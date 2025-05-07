@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://iu1v1rjnbbpr"]
+[gd_scene load_steps=3 format=3 uid="uid://iu1v1rjnbbpr"]
 
 [ext_resource type="Script" uid="uid://dqutn3mluufy7" path="res://scripts/game scenes/death_screen.gd" id="1_uyutr"]
+[ext_resource type="AudioStream" uid="uid://u0ew8ut6bxu0" path="res://assets/sounds/zapsplat_multimedia_game_sound_cute_harp_warm_lose_life_114210.mp3" id="2_uw5l8"]
 
 [node name="DeathScreen" type="Node"]
 script = ExtResource("1_uyutr")
@@ -49,6 +50,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 227
 uppercase = true
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("2_uw5l8")
+volume_db = -10.0
 
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

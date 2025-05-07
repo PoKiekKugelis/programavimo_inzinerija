@@ -2,9 +2,11 @@ extends Node2D
 
 # animation player reference for pressure plate visuals
 @onready var animation_player: AnimationPlayer = $AnimationPlayer as AnimationPlayer
+@onready var pressure_plate_sound: AudioStreamPlayer2D = $"../PressurePlateSound"
 
 # path to the linked boulder in the scene
 @export var boulder_path: NodePath  
+
 
 # reference to the actual boulder instance
 var boulder: Boulder = null
@@ -20,7 +22,7 @@ func _ready() -> void:
 # triggered when a body enters the pressure plate area
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	animation_player.play("Disable")  # play depress animation
-	
+	pressure_plate_sound.play()
 	# only activate if player stepped on it and boulder exists
 	if body is Player and boulder != null:
 		boulder.activate()  # make the boulder fall
@@ -28,4 +30,5 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 # triggered when body leaves the pressure plate area
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	animation_player.play("Enable")  # play reset animation
+	pressure_plate_sound.play()
 	# boulder remains active after leaving
