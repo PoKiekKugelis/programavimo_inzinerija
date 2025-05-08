@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bv2b50rofjqc4"]
 
-[ext_resource type="Texture2D" uid="uid://br6tkeipcp8wf" path="res://assets/sprites/version A/hp sprites/health bar 3.png" id="1_qujnw"]
-[ext_resource type="Texture2D" uid="uid://b1b3rn3ybjtye" path="res://assets/sprites/version A/hp sprites/health bar 1.png" id="2_gnmyr"]
+[ext_resource type="Texture2D" uid="uid://bqeh0xbjb0711" path="res://assets/sprites/version A/hp sprites/health bar 3.png" id="1_qujnw"]
+[ext_resource type="Texture2D" uid="uid://da3xwm1pm66k1" path="res://assets/sprites/version A/hp sprites/health bar 1.png" id="2_gnmyr"]
 [ext_resource type="Script" uid="uid://d28xhb1w0owss" path="res://scripts/node resources/health_bar.gd" id="2_v86s0"]
-[ext_resource type="Texture2D" uid="uid://baqx0lrp6f44d" path="res://assets/sprites/version A/hp sprites/health bar 2.png" id="3_dhkdd"]
+[ext_resource type="Texture2D" uid="uid://hphmt4sqbwho" path="res://assets/sprites/version A/hp sprites/health bar 2.png" id="3_dhkdd"]
 
 [node name="HealthBar" type="TextureProgressBar"]
 anchors_preset = -1

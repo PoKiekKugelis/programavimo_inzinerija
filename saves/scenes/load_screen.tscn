@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://veel70mhljxe" path="res://assets/Cards/CardTemplateRock.png" id="3_t4s8f"]
 [ext_resource type="Texture2D" uid="uid://5d71lefj5ebi" path="res://assets/Cards/CardTemplatePaper.png" id="4_wk2in"]
 [ext_resource type="Shader" uid="uid://dn521yloucwqc" path="res://combat/transition.gdshader" id="4_wvt8u"]
-[ext_resource type="Texture2D" uid="uid://py2u3rw43m37" path="res://combat/assets/transistion_1.png" id="5_ghqf1"]
 [ext_resource type="Script" uid="uid://compt40rdgudv" path="res://saves/scripts/loading.gd" id="6_t4s8f"]
 [ext_resource type="Texture2D" uid="uid://bolbxpilc7fm" path="res://assets/sprites/TrashCan.png" id="6_wk2in"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="7_wk2in"]
+[ext_resource type="Texture2D" uid="uid://c86no1056oe5t" path="res://combat/assets/transitions/12.png" id="8_r32af"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j22as"]
 light_mode = 1
@@ -235,7 +235,7 @@ visible = false
 material = SubResource("ShaderMaterial_xu433")
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("5_ghqf1")
+texture = ExtResource("8_r32af")
 script = ExtResource("6_t4s8f")
 
 [node name="Label" type="Label" parent="Loading"]
