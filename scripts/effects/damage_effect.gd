@@ -17,4 +17,4 @@ func heal(targets: Array[Node]) -> void:
 			continue
 		if target is TestEnemy or target is Player:
 			var enemy_health = target.get_node("Health")
-			enemy_health.heal(amount)
+			enemy_health.apply_heal(amount)

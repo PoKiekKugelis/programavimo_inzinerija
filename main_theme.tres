@@ -6,4 +6,5 @@
 
 [resource]
 default_font = ExtResource("1_f40b4")
+default_font_size = 14
 Panel/styles/panel = SubResource("StyleBoxFlat_470mv")

@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ck134hita7gdt" path="res://scenes/signs and menus/proceed_sign_screen.tscn" id="22_bt5mj"]
 
 [node name="Game" type="Node2D"]
+z_index = -1
 position = Vector2(336, 192)
 script = ExtResource("1_kvpfn")
 

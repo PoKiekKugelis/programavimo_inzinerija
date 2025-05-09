@@ -76,10 +76,9 @@ func start_enemy_turn():
 	turn_indicator.modulate = Color.RED
 
 func display_action():
-	var choice = enemy.get_node("Choice")
-	choice.visible = true
+	var intent = enemy.get_node("IntentUI")
+	intent.visible = true
 	enemy = combat_screen.enemy # Update the enemy so its current_action updates
-	choice.text = enemy.current_action.intent # Shows intent (See enemies/test_enemy/test_attack_action.gd)
 
 # displays combat action text with fade effect
 func show_action_text(message: String, color: Color = Color.WHITE):

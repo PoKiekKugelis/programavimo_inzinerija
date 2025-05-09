@@ -3,7 +3,8 @@ class_name TestEnemy
 
 @onready var health: Health = $Health
 @onready var health_bar: TextureProgressBar = $HealthBar
-@onready var choice: RichTextLabel = $Choice
+@onready var intent_ui: IntentUI = $IntentUI
+
 
 @export var stats: EnemyStats
 
@@ -18,7 +19,7 @@ var dir: Vector2
 var dir_prev: Vector2
 var is_roaming: bool = true #if true then moves around randomly. if false currently does nothing
 var enemy_action_picker: EnemyActionPicker
-var current_action: EnemyAction
+var current_action: EnemyAction : set = set_current_action
 
 func _ready() -> void:
 	add_to_group("enemy")
@@ -84,3 +85,8 @@ func do_turn() -> void:
 	if not current_action:
 		return
 	current_action.perform_action()
+
+func set_current_action(value) -> void:
+	current_action = value
+	if current_action:
+		intent_ui.update_intent(current_action.intent)

@@ -3,7 +3,6 @@ extends EnemyAction
 @export var damage := 2
 
 func _init() -> void:
-	intent = "[color=red]Damage: %d[/color]" % damage
 	message = "[color=red]Enemy dealt %d damage[/color]" % damage
 
 func perform_action() -> void:
@@ -16,7 +15,7 @@ func perform_action() -> void:
 	var target_array: Array[Node] = [target]
 	damage_effect.amount = damage
 	
-	enemy.choice.visible = false
+	enemy.intent_ui.visible = false
 	enemy.health_bar.visible = false
 	tween.tween_property(enemy, "global_position", end, 0.4)
 	tween.tween_callback(damage_effect.execute.bind(target_array))
@@ -26,7 +25,7 @@ func perform_action() -> void:
 	tween.finished.connect(
 		func(): 
 			Events.enemy_action_completed.emit(enemy)
-			enemy.choice.visible = true
+			enemy.intent_ui.visible = true
 			enemy.health_bar.visible = true
 	)
 	

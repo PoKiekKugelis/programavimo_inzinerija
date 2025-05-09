@@ -3,7 +3,7 @@ extends Node
 
 # variable and signal for the shield card
 var shield: int = 0
-signal shield_changed
+signal shield_changed(diff: int) 
 
 # signals for health changes
 signal max_health_changed(diff: int)  # emitted when max health changes
@@ -65,16 +65,10 @@ func set_health(value: int):
 			play_player_hit_sound()
 		if Events.in_combat and difference < 0:# A shaking animation when damage taken
 			take_damage_animation()
-			play_player_hit_sound()
-			play_enemy_hit_sound()
 		if Events.in_combat and difference > 0:# A shaking animation when damage taken
 			heal_animation()
 		if !Events.in_combat:
 			if health <= 0: health_depleted.emit()# check for death
-			
-			
-			
-	
 
 func play_enemy_hit_sound() -> void:
 	var who = owner
@@ -126,11 +120,10 @@ func heal_animation() -> void:
 		if health <= 0: health_depleted.emit()# check for death
 		)
 
-func heal(value) -> void:
-	health += value
-
 # handles full and partial shield use, then applies leftover damage.
 func receive_damage(amount: int):
+	play_player_hit_sound()
+	play_enemy_hit_sound()
 	if shield > 0:
 		if amount <= shield:
 			shield -= amount
@@ -183,5 +176,6 @@ func clear_shield():
 
 func apply_heal(amount: int):
 	set_health(health + amount)
+	print(healing_sound)
 	if amount > 0 and healing_sound != null:
 		healing_sound.play()

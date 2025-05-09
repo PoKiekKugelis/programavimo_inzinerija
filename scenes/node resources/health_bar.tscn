@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv2b50rofjqc4"]
+[gd_scene load_steps=7 format=3 uid="uid://bv2b50rofjqc4"]
 
-[ext_resource type="Texture2D" uid="uid://bqeh0xbjb0711" path="res://assets/sprites/version A/hp sprites/health bar 3.png" id="1_qujnw"]
-[ext_resource type="Texture2D" uid="uid://da3xwm1pm66k1" path="res://assets/sprites/version A/hp sprites/health bar 1.png" id="2_gnmyr"]
+[ext_resource type="Texture2D" uid="uid://d34icac6vsh6p" path="res://assets/sprites/version A/hp sprites/health bar 3.png" id="1_qujnw"]
+[ext_resource type="Texture2D" uid="uid://cxwujehjxcvii" path="res://assets/sprites/version A/hp sprites/health bar 1.png" id="2_gnmyr"]
 [ext_resource type="Script" uid="uid://d28xhb1w0owss" path="res://scripts/node resources/health_bar.gd" id="2_v86s0"]
-[ext_resource type="Texture2D" uid="uid://hphmt4sqbwho" path="res://assets/sprites/version A/hp sprites/health bar 2.png" id="3_dhkdd"]
+[ext_resource type="Texture2D" uid="uid://mthgp715yo4" path="res://assets/sprites/version A/hp sprites/health bar 2.png" id="3_dhkdd"]
+[ext_resource type="Texture2D" uid="uid://b5b8g07vs4wyv" path="res://assets/sprites/version A/hp sprites/health bar shield 1.png" id="5_dhkdd"]
+[ext_resource type="Texture2D" uid="uid://cgcv4v0okmtiw" path="res://assets/sprites/version A/hp sprites/health bar shield 2.png" id="6_tvwr2"]
 
 [node name="HealthBar" type="TextureProgressBar"]
 anchors_preset = -1
@@ -14,8 +16,25 @@ grow_vertical = 2
 max_value = 10.0
 step = 0.01
 value = 3.0
-texture_under = ExtResource("1_qujnw")
 texture_over = ExtResource("2_gnmyr")
 texture_progress = ExtResource("3_dhkdd")
 texture_progress_offset = Vector2(18, 0)
 script = ExtResource("2_v86s0")
+
+[node name="ShieldBar" type="TextureProgressBar" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 16.0
+max_value = 10.0
+step = 0.01
+texture_under = ExtResource("1_qujnw")
+texture_progress = ExtResource("6_tvwr2")
+texture_progress_offset = Vector2(18, 0)
+
+[node name="ShieldHead" type="TextureProgressBar" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_over = ExtResource("5_dhkdd")

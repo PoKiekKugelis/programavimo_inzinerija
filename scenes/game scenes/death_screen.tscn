@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://iu1v1rjnbbpr"]
 
 [ext_resource type="Script" uid="uid://dqutn3mluufy7" path="res://scripts/game scenes/death_screen.gd" id="1_uyutr"]
-[ext_resource type="AudioStream" uid="uid://u0ew8ut6bxu0" path="res://assets/sounds/zapsplat_multimedia_game_sound_cute_harp_warm_lose_life_114210.mp3" id="2_uw5l8"]
+[ext_resource type="AudioStream" uid="uid://c727sstgyo8qd" path="res://assets/sounds/zapsplat_multimedia_game_sound_cute_harp_warm_lose_life_114210.mp3" id="2_uw5l8"]
 
 [node name="DeathScreen" type="Node"]
 script = ExtResource("1_uyutr")

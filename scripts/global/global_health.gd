@@ -2,7 +2,7 @@ extends Node
 
 signal health_instance_set(health_instance)
 
-var player_health = null
+var player_health : Health
 
 # get the health value
 func get_health_instance():
