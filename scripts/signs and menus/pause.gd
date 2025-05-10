@@ -52,3 +52,8 @@ func _on_quit_menu_pressed() -> void:
 	
 func _on_quit_desktop_pressed() -> void:
 	get_tree().quit()
+
+func _on_settings_pressed() -> void:
+	$".".visible = false
+	get_tree().paused = true
+	$"../SettingsScreen".visible = true

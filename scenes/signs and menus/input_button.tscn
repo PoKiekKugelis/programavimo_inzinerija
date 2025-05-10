@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://btnqaujcdlswh"]
+
+[ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="1_g7l5x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eb7wm"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47jsk"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_y2j1o"]
+
+[node name="InputButton" type="Button"]
+custom_minimum_size = Vector2(0, 18)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+focus_mode = 0
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_eb7wm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_eb7wm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_47jsk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_g7l5x")
+
+[node name="LabelAction" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_y2j1o")
+text = "action name"
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LabelInput" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_y2j1o")
+text = "input name"
+vertical_alignment = 1

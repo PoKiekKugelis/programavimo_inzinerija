@@ -1,15 +1,16 @@
-[gd_scene load_steps=18 format=4 uid="uid://bmqhwxmmqnn87"]
+[gd_scene load_steps=19 format=4 uid="uid://bmqhwxmmqnn87"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_qssp3"]
 [ext_resource type="Script" uid="uid://duqq4yinrkjbt" path="res://hub/scripts/hub.gd" id="1_s6eg2"]
-[ext_resource type="Texture2D" uid="uid://bjng2drght1vb" path="res://assets/sprites/StoneTent.png" id="2_7wvbm"]
+[ext_resource type="Texture2D" uid="uid://cyusjixl6v63b" path="res://assets/sprites/StoneTent.png" id="2_7wvbm"]
 [ext_resource type="Script" uid="uid://dwqhx0j3k5vv" path="res://hub/scripts/RockNPC.gd" id="3_7wvbm"]
 [ext_resource type="PackedScene" uid="uid://bbqlak1r4oxq8" path="res://hub/scenes/leave_hub_screen.tscn" id="4_glsmu"]
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="5_bfqb0"]
-[ext_resource type="Texture2D" uid="uid://cu78w3kw560rd" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
-[ext_resource type="Texture2D" uid="uid://dsujbt6wcckt7" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
-[ext_resource type="PackedScene" uid="uid://djo7ykvws1gy2" path="res://scenes/signs and menus/material_conversion.tscn" id="10_x3hp0"]
-[ext_resource type="Texture2D" uid="uid://d0kl7j5xpc30i" path="res://assets/sprites/sign.png" id="12_s6eg2"]
+[ext_resource type="PackedScene" uid="uid://baxsig0ds3i82" path="res://scenes/signs and menus/settings_screen.tscn" id="5_x3hp0"]
+[ext_resource type="Texture2D" uid="uid://bbul1u3s2jvps" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
+[ext_resource type="PackedScene" uid="uid://1ef0qace5vhk" path="res://scenes/signs and menus/input_settings_screen.tscn" id="6_npc2q"]
+[ext_resource type="Texture2D" uid="uid://dt37qllafcu6s" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
+[ext_resource type="Texture2D" uid="uid://bbatrjbvbl11u" path="res://assets/sprites/sign.png" id="12_s6eg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wvbm"]
 size = Vector2(20, 222)
@@ -101,6 +102,12 @@ visible = false
 clip_children = 1
 z_index = 20
 y_sort_enabled = true
+
+[node name="SettingsScreen" parent="PauseScreenView" instance=ExtResource("5_x3hp0")]
+visible = false
+
+[node name="InputSettingsScreen" parent="PauseScreenView" instance=ExtResource("6_npc2q")]
+visible = false
 
 [node name="+1" type="Button" parent="."]
 offset_left = 132.0

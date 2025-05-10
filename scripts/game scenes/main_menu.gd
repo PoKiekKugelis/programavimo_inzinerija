@@ -12,3 +12,9 @@ func _on_start_pressed():
 
 func _on_quit_pressed():
 	get_tree().quit() #Simply closes the game 
+
+
+func _on_settings_pressed() -> void:
+	$MenuBackGroundDarkener.visible = false
+	get_tree().paused = true
+	$"SettingsScreen".visible = true

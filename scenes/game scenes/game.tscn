@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dtkw7x4hdoyt2"]
+[gd_scene load_steps=15 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
 [ext_resource type="Script" uid="uid://cao01gpotabl2" path="res://scripts/game scenes/game.gd" id="1_kvpfn"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://b18lmeyce53di" path="res://scenes/game scenes/level1.tscn" id="7_rysoc"]
 [ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/traps/spike.tscn" id="9_k0taf"]
 [ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://enemies/scenes/enemy.tscn" id="11_ekyhk"]
+[ext_resource type="PackedScene" uid="uid://baxsig0ds3i82" path="res://scenes/signs and menus/settings_screen.tscn" id="11_rrbdo"]
+[ext_resource type="PackedScene" uid="uid://1ef0qace5vhk" path="res://scenes/signs and menus/input_settings_screen.tscn" id="12_mw4bw"]
 [ext_resource type="Resource" uid="uid://p53ixt6x2i8g" path="res://enemies/test_enemy/test_enemy.tres" id="12_rrbdo"]
 [ext_resource type="PackedScene" uid="uid://cvbf4h8xu6bjk" path="res://scenes/signs and menus/proceed_sign.tscn" id="21_37s47"]
 [ext_resource type="PackedScene" uid="uid://ck134hita7gdt" path="res://scenes/signs and menus/proceed_sign_screen.tscn" id="22_bt5mj"]
@@ -63,6 +65,12 @@ visible = false
 clip_children = 1
 z_index = 20
 y_sort_enabled = true
+
+[node name="SettingsScreen" parent="PauseScreenView" instance=ExtResource("11_rrbdo")]
+visible = false
+
+[node name="InputSettingsScreen" parent="PauseScreenView" instance=ExtResource("12_mw4bw")]
+visible = false
 
 [node name="TestEnemy" parent="." instance=ExtResource("11_ekyhk")]
 position = Vector2(67, 3)

@@ -24,11 +24,16 @@ GlobalHealth="*res://scripts/global/global_health.gd"
 Events="*res://scripts/global/events.gd"
 Money="*res://scripts/node resources/money.gd"
 Shaker="*res://scripts/global/shaker.gd"
+<<<<<<< Updated upstream
 Items="*res://scripts/global/items.gd"
+=======
+Settings="*res://scripts/global/settings.gd"
+>>>>>>> Stashed changes
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/size/mode=1
+window/stretch/mode="viewport"
 
 [dotnet]
 
