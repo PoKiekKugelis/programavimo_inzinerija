@@ -35,6 +35,7 @@ texture_progress_offset = Vector2(18, 0)
 [node name="ShieldHead" type="TextureProgressBar" parent="."]
 z_index = -1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 64.0
+offset_bottom = 16.0
+mouse_filter = 2
 texture_over = ExtResource("5_dhkdd")
