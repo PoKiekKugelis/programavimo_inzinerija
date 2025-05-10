@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bmqhwxmmqnn87"]
+[gd_scene load_steps=18 format=4 uid="uid://bmqhwxmmqnn87"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_qssp3"]
 [ext_resource type="Script" uid="uid://duqq4yinrkjbt" path="res://hub/scripts/hub.gd" id="1_s6eg2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="5_bfqb0"]
 [ext_resource type="Texture2D" uid="uid://cu78w3kw560rd" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
 [ext_resource type="Texture2D" uid="uid://dsujbt6wcckt7" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
+[ext_resource type="PackedScene" uid="uid://djo7ykvws1gy2" path="res://scenes/signs and menus/material_conversion.tscn" id="10_x3hp0"]
 [ext_resource type="Texture2D" uid="uid://d0kl7j5xpc30i" path="res://assets/sprites/sign.png" id="12_s6eg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wvbm"]
@@ -170,6 +171,13 @@ shape = SubResource("RectangleShape2D_phvbg")
 position = Vector2(1372, 192)
 scale = Vector2(1.41053, 1.41053)
 texture = ExtResource("12_s6eg2")
+
+[node name="ConversionUI" parent="." instance=ExtResource("10_x3hp0")]
+offset_left = 376.0
+offset_top = 24.0
+offset_right = 376.0
+offset_bottom = 24.0
+scale = Vector2(0.442522, 0.442522)
 
 [connection signal="pressed" from="+1" to="." method="_on_add_pressed"]
 [connection signal="pressed" from="-1" to="." method="_on_subtract_pressed"]

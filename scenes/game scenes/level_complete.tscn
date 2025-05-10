@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://24ei02ofnv3i" path="res://scripts/game scenes/level_complete.gd" id="1_h65wq"]
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="2_xvcb8"]
-[ext_resource type="AudioStream" uid="uid://cj44iuf3ltl4s" path="res://assets/sounds/zapsplat_multimedia_game_sound_harp_roll_trumpet_fanfare_fireworks_110723.mp3" id="3_7crx8"]
+[ext_resource type="AudioStream" uid="uid://cb8cst2d0su3" path="res://assets/sounds/zapsplat_multimedia_game_sound_harp_roll_trumpet_fanfare_fireworks_110723.mp3" id="3_7crx8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6skyk"]
 light_mode = 1
