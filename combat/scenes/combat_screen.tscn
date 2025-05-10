@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bu2vdqgi3rdj3"]
 
 [ext_resource type="Script" uid="uid://dw7any0ncdcql" path="res://combat/scripts/combat_screen.gd" id="1_j1dph"]
-[ext_resource type="Texture2D" uid="uid://cd63n3i8p2xpx" path="res://assets/sprites/combat_background.png" id="3_i41gl"]
+[ext_resource type="Texture2D" uid="uid://bilttm4spyklq" path="res://assets/sprites/combat_background.png" id="3_i41gl"]
 [ext_resource type="Script" uid="uid://63dvaqtalwj5" path="res://enemies/scripts/enemy_handler.gd" id="3_j1dph"]
 [ext_resource type="Script" uid="uid://c0t20rpm5gr0w" path="res://player/player_handler.gd" id="3_wstb0"]
 [ext_resource type="Script" uid="uid://dqnokw4175aui" path="res://combat/scripts/battle_ui.gd" id="5_74ld3"]
@@ -15,9 +15,9 @@
 [ext_resource type="Shader" uid="uid://dn521yloucwqc" path="res://combat/transition.gdshader" id="13_jy65p"]
 [ext_resource type="Script" uid="uid://dt5jcaofsgi4n" path="res://combat/scripts/transition.gd" id="15_iy0uh"]
 [ext_resource type="PackedScene" uid="uid://b4cycf46t3wmq" path="res://cards/scenes/card_deck.tscn" id="16_fqr1a"]
-[ext_resource type="AudioStream" uid="uid://cb6ovgthprl5a" path="res://assets/sounds/zapsplat_multimedia_game_sound_retro_arcade_lo_fi_die_death_lose_life_warble_107580.mp3" id="17_0mv3p"]
-[ext_resource type="AudioStream" uid="uid://xr1bpeq4c8m" path="res://assets/sounds/entering_combat.mp3" id="18_wstb0"]
-[ext_resource type="AudioStream" uid="uid://ba4oxa7hhwywv" path="res://assets/sounds/zapsplat_multimedia_game_sound_cute_harp_warm_positive_finish_success_003_114215.mp3" id="19_3ud5g"]
+[ext_resource type="AudioStream" uid="uid://bxvjhsq6my1hd" path="res://assets/sounds/zapsplat_multimedia_game_sound_retro_arcade_lo_fi_die_death_lose_life_warble_107580.mp3" id="17_0mv3p"]
+[ext_resource type="AudioStream" uid="uid://bud1lqihkpvdi" path="res://assets/sounds/entering_combat.mp3" id="18_wstb0"]
+[ext_resource type="AudioStream" uid="uid://bdixf5hfreb7m" path="res://assets/sounds/zapsplat_multimedia_game_sound_cute_harp_warm_positive_finish_success_003_114215.mp3" id="19_3ud5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frkk8"]
 size = Vector2(1152.5, 379.5)

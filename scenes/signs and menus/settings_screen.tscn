@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://baxsig0ds3i82"]
 
-[ext_resource type="Script" uid="uid://cmjgvaj8aesyy" path="res://scripts/game scenes/settings.gd" id="1_ommfl"]
+[ext_resource type="Script" uid="uid://d1eisx4olfqf0" path="res://scripts/game scenes/settings.gd" id="1_ommfl"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="2_4ndl6"]
 
 [node name="SettingsScreen" type="Control" groups=["UnpausableUserInterfaces"]]

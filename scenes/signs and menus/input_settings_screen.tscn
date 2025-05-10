@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://1ef0qace5vhk"]
 
-[ext_resource type="Script" uid="uid://cdriq04ei41me" path="res://scripts/signs and menus/input_settings_screen.gd" id="1_tlw16"]
+[ext_resource type="Script" uid="uid://blh2ennbqmkqv" path="res://scripts/signs and menus/input_settings_screen.gd" id="1_tlw16"]
 [ext_resource type="PackedScene" uid="uid://btnqaujcdlswh" path="res://scenes/signs and menus/input_button.tscn" id="2_356c8"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="3_356c8"]
 
