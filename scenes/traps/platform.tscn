@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://bj1lwgdmca61w"]
+
+[ext_resource type="Script" uid="uid://ch7ukw1ts6exv" path="res://scripts/traps and platforms/platform.gd" id="1_wqq7n"]
+[ext_resource type="Texture2D" uid="uid://bir4epmhbywhe" path="res://assets/tileset/TrapmoorTileset_v03.png" id="2_wuibo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trjn6"]
+atlas = ExtResource("2_wuibo")
+region = Rect2(32.0311, 80.0649, 47.3167, 8.76234)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxon3"]
+size = Vector2(46, 8)
+
+[sub_resource type="Animation" id="Animation_vj7ae"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jkaad"]
+resource_name = "move"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.03333, 6.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(200, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ppdj0"]
+_data = {
+&"RESET": SubResource("Animation_vj7ae"),
+&"move": SubResource("Animation_jkaad")
+}
+
+[node name="Platform" type="AnimatableBody2D"]
+script = ExtResource("1_wqq7n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(519.5, -147)
+texture = SubResource("AtlasTexture_trjn6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(519.5, -147)
+shape = SubResource("RectangleShape2D_uxon3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ppdj0")
+}

@@ -181,6 +181,7 @@ scale = Vector2(1.41053, 1.41053)
 texture = ExtResource("12_s6eg2")
 
 [node name="ConversionUI" parent="." instance=ExtResource("10_x3hp0")]
+visible = false
 offset_left = 376.0
 offset_top = 24.0
 offset_right = 376.0
