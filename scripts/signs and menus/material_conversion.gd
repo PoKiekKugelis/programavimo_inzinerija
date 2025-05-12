@@ -1,7 +1,7 @@
 extends Control
 
 # Pradiniai resursu skaiciai, kad butu galima disablint migtukus (>)
-@onready 	var resourceQuantities = [Inventory.get_item_quantity("Pebble"),
+@onready var resourceQuantities = [Inventory.get_item_quantity("Pebble"),
 	Inventory.get_item_quantity("Piece of Wood") ,Inventory.get_item_quantity("Rusted scrap")]
 
 func _ready() -> void:
@@ -77,7 +77,6 @@ func _on_metal_increase_pressed() -> void:
 		
 	$MetalButtons/MetalNumber/Number.text = str(int($MetalButtons/MetalNumber/Number.text) + 1)
 
-
 ## Pagalbines funkcijos, kurios palaiko tvarka
 func _update_inventory(materialQuantities):
 	if( materialQuantities[0] > 0):
@@ -86,11 +85,11 @@ func _update_inventory(materialQuantities):
 		Inventory.add_item(Items.paper(materialQuantities[1]))
 	if( materialQuantities[2] > 0):
 		Inventory.add_item(Items.metal(materialQuantities[2]))
-		
+	
 	Inventory.remove_item("Pebble", materialQuantities[0]*3)
 	Inventory.remove_item("Piece of Wood", materialQuantities[1]*3)
 	Inventory.remove_item("Rusted scrap", materialQuantities[2]*3)
-	
+
 func _update_labels():
 	$RockLabels/Material/Number.text = "(" + str(Inventory.get_item_quantity("Rock")) + ")"
 	$RockLabels/Resource/Number.text = "(" + str(Inventory.get_item_quantity("Pebble")) + ")"
@@ -98,15 +97,16 @@ func _update_labels():
 	$PaperLabels/Resource/Number.text = "(" + str(Inventory.get_item_quantity("Piece of Wood")) + ")"
 	$MetalLabels/Material/Number.text = "(" + str(Inventory.get_item_quantity("Metal")) + ")"
 	$MetalLabels/Resource/Number.text = "(" + str(Inventory.get_item_quantity("Rusted scrap")) + ")"
-	
+
 func _update_buttons():
-	if resourceQuantities[0] < 3:
-		$RockButtons/RockIncrease.disabled = true
-	if resourceQuantities[1] < 3:
-		$PaperButtons/PaperIncrease.disabled = true
-	if resourceQuantities[2] < 3:
-		$MetalButtons/MetalIncrease.disabled = true
-	pass
+	if resourceQuantities[0] < 3: $RockButtons/RockIncrease.disabled = true
+	else: $RockButtons/RockIncrease.disabled = false
+	
+	if resourceQuantities[1] < 3: $PaperButtons/PaperIncrease.disabled = true
+	else: $PaperButtons/PaperIncrease.disabled = false
+	
+	if resourceQuantities[2] < 3: $MetalButtons/MetalIncrease.disabled = true
+	else: $MetalButtons/MetalIncrease.disabled = false
 
 # Grazina i pradine busena
 func _reset():
@@ -116,3 +116,9 @@ func _reset():
 	$RockButtons/RockDecrease.disabled = true
 	$PaperButtons/PaperDecrease.disabled = true
 	$MetalButtons/MetalDecrease.disabled = true
+
+func _on_visibility_changed() -> void:
+	_reset()
+	resourceQuantities = [Inventory.get_item_quantity("Pebble"),
+	Inventory.get_item_quantity("Piece of Wood"), Inventory.get_item_quantity("Rusted scrap")]
+	_update_buttons()

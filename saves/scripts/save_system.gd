@@ -45,7 +45,7 @@ func load_game() -> Dictionary:
 		if (save_data.has("Money")):
 			Money.add_money(save_data["Money"])
 
-		print(save_data)
+		#print(save_data)
 		return save_data
 	return {}
 

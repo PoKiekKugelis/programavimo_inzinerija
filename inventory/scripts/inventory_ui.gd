@@ -35,3 +35,4 @@ func _input(event):#inventory UI opens by pressing "I"
 	if event.is_action_pressed("ui_cancel") and inventory_ui.visible:
 		inventory_ui.visible = false
 		get_tree().paused = false
+		get_viewport().set_input_as_handled()

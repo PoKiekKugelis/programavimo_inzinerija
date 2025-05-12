@@ -34,7 +34,6 @@ scale = Vector2(1.21261, 1.21464)
 texture = ExtResource("4_2d4c6")
 
 [node name="Panel" type="Panel" parent="Station"]
-visible = false
 offset_left = -81.0
 offset_top = -64.0
 offset_right = 82.0

@@ -8,7 +8,7 @@ func rock(amount: int):
 		"type" : "Material",
 		"name" : "Rock Shard",
 		"texture" : "res://assets/sprites/Shard2.png",
-		"effect" : "Used fro rock based upgrades/cards",
+		"effect" : "Used for rock based upgrades/cards",
 		"scene_path" : "res://scenes/inventory_item.tscn"
 	}
 	

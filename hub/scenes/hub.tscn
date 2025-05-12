@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bmqhwxmmqnn87"]
+[gd_scene load_steps=22 format=4 uid="uid://bmqhwxmmqnn87"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_qssp3"]
 [ext_resource type="Script" uid="uid://duqq4yinrkjbt" path="res://hub/scripts/hub.gd" id="1_s6eg2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dsujbt6wcckt7" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
 [ext_resource type="PackedScene" uid="uid://djo7ykvws1gy2" path="res://scenes/signs and menus/material_conversion.tscn" id="10_x3hp0"]
 [ext_resource type="Texture2D" uid="uid://d0kl7j5xpc30i" path="res://assets/sprites/sign.png" id="12_s6eg2"]
+[ext_resource type="Script" uid="uid://b1x0ymxq2s0n1" path="res://hub/scripts/workbench.gd" id="13_knpcs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wvbm"]
 size = Vector2(20, 222)
@@ -54,6 +55,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_phvbg"]
 size = Vector2(80, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h5ev"]
+size = Vector2(170, 26)
 
 [node name="Hub" type="Node2D"]
 script = ExtResource("1_s6eg2")
@@ -180,14 +184,66 @@ position = Vector2(1372, 192)
 scale = Vector2(1.41053, 1.41053)
 texture = ExtResource("12_s6eg2")
 
-[node name="ConversionUI" parent="." instance=ExtResource("10_x3hp0")]
+[node name="Workbench" type="Node2D" parent="."]
+position = Vector2(600, 192)
+script = ExtResource("13_knpcs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Workbench"]
+position = Vector2(5.99997, 5.99999)
+scale = Vector2(0.124105, 0.039488)
+texture = ExtResource("7_441x5")
+
+[node name="Panel" type="Panel" parent="Workbench"]
 visible = false
-offset_left = 376.0
-offset_top = 24.0
-offset_right = 376.0
-offset_bottom = 24.0
+offset_left = -21.0
+offset_top = -32.0
+offset_right = 138.0
+offset_bottom = 43.0
+scale = Vector2(0.345967, 0.345967)
+
+[node name="Label" type="Label" parent="Workbench/Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 14.0
+offset_right = 153.0
+offset_bottom = 62.0
+text = "Press \"E\" to enter
+Conversion menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Indicator" type="Label" parent="Workbench/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 9.0
+offset_top = 62.0
+offset_right = 153.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 8
+text = "+1 Resource"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Workbench"]
+visible = false
+position = Vector2(0, 6)
+scale = Vector2(0.342071, 0.676033)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Workbench/Area2D"]
+position = Vector2(17.5402, 1.04904e-05)
+shape = SubResource("RectangleShape2D_2h5ev")
+
+[node name="ConversionUI" parent="Workbench" instance=ExtResource("10_x3hp0")]
+visible = false
+z_index = 999
+offset_left = -851.0
+offset_top = -315.0
+offset_right = -851.0
+offset_bottom = -315.0
 scale = Vector2(0.442522, 0.442522)
 
 [connection signal="pressed" from="+1" to="." method="_on_add_pressed"]
 [connection signal="pressed" from="-1" to="." method="_on_subtract_pressed"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Workbench/Area2D" to="Workbench" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Workbench/Area2D" to="Workbench" method="_on_area_2d_body_exited"]

@@ -6,11 +6,8 @@
 [node name="ConversionUI" type="Control"]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchor_right = 6.145
+size_flags_horizontal = 4
 script = ExtResource("1_x4af0")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -18,17 +15,17 @@ color = Color(0.643137, 0.643137, 0.643137, 1)
 
 [node name="MainPanel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 48.0
-offset_right = 896.0
-offset_bottom = 512.0
+offset_left = -320.0
+offset_top = -232.0
+offset_right = 320.0
+offset_bottom = 232.0
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 520.0
-offset_top = 64.0
-offset_right = 629.0
-offset_bottom = 113.0
+offset_left = -56.0
+offset_top = -216.0
+offset_right = 53.0
+offset_bottom = -167.0
 theme = ExtResource("1_cpkd5")
 theme_override_font_sizes/font_size = 19
 text = "Conversion
@@ -38,10 +35,10 @@ vertical_alignment = 1
 
 [node name="RockButtons" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 656.0
-offset_top = 128.0
-offset_right = 824.0
-offset_bottom = 168.0
+offset_left = 80.0
+offset_top = -152.0
+offset_right = 248.0
+offset_bottom = -112.0
 
 [node name="RockDecrease" type="Button" parent="RockButtons"]
 layout_mode = 2
@@ -80,10 +77,10 @@ text = "  >  "
 
 [node name="PaperButtons" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 656.0
-offset_top = 256.0
-offset_right = 824.0
-offset_bottom = 296.0
+offset_left = 80.0
+offset_top = -24.0
+offset_right = 248.0
+offset_bottom = 16.0
 
 [node name="PaperDecrease" type="Button" parent="PaperButtons"]
 layout_mode = 2
@@ -122,10 +119,10 @@ text = "  >  "
 
 [node name="MetalButtons" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 656.0
-offset_top = 384.0
-offset_right = 824.0
-offset_bottom = 424.0
+offset_left = 80.0
+offset_top = 104.0
+offset_right = 248.0
+offset_bottom = 144.0
 
 [node name="MetalDecrease" type="Button" parent="MetalButtons"]
 layout_mode = 2
@@ -164,10 +161,10 @@ text = "  >  "
 
 [node name="RockLabels" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 320.0
-offset_top = 120.0
-offset_right = 488.0
-offset_bottom = 182.0
+offset_left = -256.0
+offset_top = -160.0
+offset_right = -88.0
+offset_bottom = -94.0
 
 [node name="Material" type="HBoxContainer" parent="RockLabels"]
 layout_mode = 2
@@ -206,10 +203,10 @@ horizontal_alignment = 1
 
 [node name="PaperLabels" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 320.0
-offset_top = 248.0
-offset_right = 488.0
-offset_bottom = 310.0
+offset_left = -256.0
+offset_top = -32.0
+offset_right = -74.0
+offset_bottom = 34.0
 
 [node name="Material" type="HBoxContainer" parent="PaperLabels"]
 layout_mode = 2
@@ -247,10 +244,10 @@ horizontal_alignment = 1
 
 [node name="MetalLabels" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 320.0
-offset_top = 376.0
-offset_right = 488.0
-offset_bottom = 438.0
+offset_left = -256.0
+offset_top = 96.0
+offset_right = -84.0
+offset_bottom = 162.0
 
 [node name="Material" type="HBoxContainer" parent="MetalLabels"]
 layout_mode = 2
@@ -288,14 +285,15 @@ horizontal_alignment = 1
 
 [node name="Convert" type="Button" parent="."]
 layout_mode = 0
-offset_left = 528.0
-offset_top = 448.0
-offset_right = 590.0
-offset_bottom = 471.0
+offset_left = -48.0
+offset_top = 168.0
+offset_right = 14.0
+offset_bottom = 191.0
 scale = Vector2(1.54431, 1.54431)
 theme = ExtResource("1_cpkd5")
 text = "Convert"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="RockButtons/RockDecrease" to="." method="_on_rock_decrease_pressed"]
 [connection signal="pressed" from="RockButtons/RockIncrease" to="." method="_on_rock_increase_pressed"]
 [connection signal="pressed" from="PaperButtons/PaperDecrease" to="." method="_on_paper_decrease_pressed"]
