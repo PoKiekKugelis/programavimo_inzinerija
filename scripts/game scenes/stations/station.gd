@@ -23,10 +23,10 @@ func _ready() -> void:
 	
 func mine_station():
 	$"../Resource".item_type = "Resource"
-	$"../Resource".item_name = "Rock shard"
-	$"../Resource".item_texture = load("res://assets/sprites/Shard.png")
-	$"../Resource".item_effect = "Can be turned to Rock"
-	resource = "Rock"
+	$"../Resource".item_name = "Pebble"
+	$"../Resource".item_texture = load("res://assets/sprites/Pebble.png")
+	$"../Resource".item_effect = "Can be turned to Rock shards"
+	resource = "Pebble"
 	print(resource)
 	
 func tree_station():
@@ -118,9 +118,4 @@ func text_animation():
 	
 	await tween.finished
 	tween.kill()
-	duplicate.queue_free()
-	
-	
-	
-	
-	
+	duplicate.queue_free() 

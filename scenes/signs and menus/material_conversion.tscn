@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cw35ldggvjr7" path="res://scripts/signs and menus/material_conversion.gd" id="1_x4af0"]
 
 [node name="ConversionUI" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,6 +79,7 @@ theme_override_font_sizes/font_size = 23
 text = "  >  "
 
 [node name="PaperButtons" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 656.0
 offset_top = 256.0
 offset_right = 824.0
@@ -119,6 +121,7 @@ theme_override_font_sizes/font_size = 23
 text = "  >  "
 
 [node name="MetalButtons" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 656.0
 offset_top = 384.0
 offset_right = 824.0
@@ -202,6 +205,7 @@ text = "(0)"
 horizontal_alignment = 1
 
 [node name="PaperLabels" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 320.0
 offset_top = 248.0
 offset_right = 488.0
@@ -242,6 +246,7 @@ text = "(0)"
 horizontal_alignment = 1
 
 [node name="MetalLabels" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 320.0
 offset_top = 376.0
 offset_right = 488.0

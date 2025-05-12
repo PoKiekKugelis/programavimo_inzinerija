@@ -15,7 +15,9 @@ func subtract_money(amount: int):
 		return
 	money -= amount
 	money_changed.emit(money)
-	
-#naudoju viena karta, kai label pirma karta atsiranda
+
 func get_money() -> int:
 	return money
+	
+func set_money(amount: int):
+	money = amount

@@ -1,7 +1,7 @@
 extends Control
 
 # Pradiniai resursu skaiciai, kad butu galima disablint migtukus (>)
-@onready 	var resourceQuantities = [Inventory.get_item_quantity("Rock shard"),
+@onready 	var resourceQuantities = [Inventory.get_item_quantity("Pebble"),
 	Inventory.get_item_quantity("Piece of Wood") ,Inventory.get_item_quantity("Rusted scrap")]
 
 func _ready() -> void:
@@ -15,17 +15,17 @@ func _ready() -> void:
 	_update_labels()
 	_update_buttons()
 
-func _on_convert_pressed() -> void:	
+func _on_convert_pressed() -> void:
 	# Kiek materials norim gaut
 	var materialQuantities = [int($RockButtons/RockNumber/Number.text), int($PaperButtons/PaperNumber/Number.text),
 	int($MetalButtons/MetalNumber/Number.text)]
 	
 	# Paupdatina inventory
 	_update_inventory(materialQuantities)
-
+	
 	# Kiek resursu liko
-	resourceQuantities = [Inventory.get_item_quantity("Rock shard"),
-	Inventory.get_item_quantity("Piece of Wood") ,Inventory.get_item_quantity("Rusted scrap")]
+	resourceQuantities = [Inventory.get_item_quantity("Pebble"),
+	Inventory.get_item_quantity("Piece of Wood"), Inventory.get_item_quantity("Rusted scrap")]
 	
 	# Paupdationa labels ir buttons
 	_update_labels()
@@ -57,10 +57,8 @@ func _on_paper_decrease_pressed() -> void:
 
 func _on_paper_increase_pressed() -> void:
 	$PaperButtons/PaperDecrease.disabled = false
-	if resourceQuantities[1] <= 3 * (int($PaperButtons/PaperNumber/Number.text) + 2):
+	if resourceQuantities[1] < 3 * (int($PaperButtons/PaperNumber/Number.text) + 2):
 		$PaperButtons/PaperIncrease.disabled = true
-		
-	print(3 * (int($PaperButtons/PaperNumber/Number.text) + 1))
 		
 	$PaperButtons/PaperNumber/Number.text = str(int($PaperButtons/PaperNumber/Number.text) + 1)
 
@@ -74,8 +72,8 @@ func _on_metal_decrease_pressed() -> void:
 
 func _on_metal_increase_pressed() -> void:
 	$MetalButtons/MetalDecrease.disabled = false
-	if resourceQuantities[2] <= 3 * (int($MetalButtons/MetalNumber/Number.text) + 1):
-		$MetalButtons/MetalDecrease.disabled = true
+	if resourceQuantities[2] < 3 * (int($MetalButtons/MetalNumber/Number.text) + 2):
+		$MetalButtons/MetalIncrease.disabled = true
 		
 	$MetalButtons/MetalNumber/Number.text = str(int($MetalButtons/MetalNumber/Number.text) + 1)
 
@@ -89,13 +87,13 @@ func _update_inventory(materialQuantities):
 	if( materialQuantities[2] > 0):
 		Inventory.add_item(Items.metal(materialQuantities[2]))
 		
-	Inventory.remove_item("Rock shard", materialQuantities[0]*3)
+	Inventory.remove_item("Pebble", materialQuantities[0]*3)
 	Inventory.remove_item("Piece of Wood", materialQuantities[1]*3)
 	Inventory.remove_item("Rusted scrap", materialQuantities[2]*3)
-
+	
 func _update_labels():
 	$RockLabels/Material/Number.text = "(" + str(Inventory.get_item_quantity("Rock")) + ")"
-	$RockLabels/Resource/Number.text = "(" + str(Inventory.get_item_quantity("Rock shard")) + ")"
+	$RockLabels/Resource/Number.text = "(" + str(Inventory.get_item_quantity("Pebble")) + ")"
 	$PaperLabels/Material/Number.text = "(" + str(Inventory.get_item_quantity("Paper")) + ")"
 	$PaperLabels/Resource/Number.text = "(" + str(Inventory.get_item_quantity("Piece of Wood")) + ")"
 	$MetalLabels/Material/Number.text = "(" + str(Inventory.get_item_quantity("Metal")) + ")"

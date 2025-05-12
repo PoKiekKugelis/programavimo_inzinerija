@@ -1,15 +1,47 @@
-[gd_scene load_steps=13 format=4 uid="uid://dex06pkyl4mi4"]
+[gd_scene load_steps=17 format=4 uid="uid://dex06pkyl4mi4"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_76c2s"]
 [ext_resource type="Script" uid="uid://dwe81jj0l7is8" path="res://scripts/game scenes/stations/scrapyard_station.gd" id="1_fp8hf"]
 [ext_resource type="PackedScene" uid="uid://kt6baw6aw6n3" path="res://scenes/game scenes/stations/station.tscn" id="2_u5mak"]
-[ext_resource type="Texture2D" uid="uid://cjhd2irlcygrt" path="res://assets/sprites/mine_station.png" id="3_fp8hf"]
+[ext_resource type="Texture2D" uid="uid://cmoqwag56hi3f" path="res://assets/sprites/Scrapyard-Sheet.png" id="4_wdvte"]
 [ext_resource type="PackedScene" uid="uid://baxsig0ds3i82" path="res://scenes/signs and menus/settings_screen.tscn" id="8_wdvte"]
 [ext_resource type="PackedScene" uid="uid://1ef0qace5vhk" path="res://scenes/signs and menus/input_settings_screen.tscn" id="9_u5mak"]
 [ext_resource type="PackedScene" uid="uid://cvbf4h8xu6bjk" path="res://scenes/signs and menus/proceed_sign.tscn" id="11_dyy8l"]
 [ext_resource type="PackedScene" uid="uid://ck134hita7gdt" path="res://scenes/signs and menus/proceed_sign_screen.tscn" id="16_ktnnj"]
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="17_je2cv"]
 [ext_resource type="PackedScene" uid="uid://bsdelvdiesf0o" path="res://inventory/scenes/inventory_item.tscn" id="18_5j7nk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5mak"]
+atlas = ExtResource("4_wdvte")
+region = Rect2(512, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp8hf"]
+atlas = ExtResource("4_wdvte")
+region = Rect2(256, 0, 256, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyy8l"]
+atlas = ExtResource("4_wdvte")
+region = Rect2(0, 0, 256, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jhuc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5mak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp8hf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5mak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyy8l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5j7nk"]
 size = Vector2(170, 26)
@@ -28,10 +60,11 @@ tile_set = ExtResource("1_76c2s")
 position = Vector2(520, 442)
 Type = "Scrap"
 
-[node name="Sprite2D" type="Sprite2D" parent="Station"]
-position = Vector2(7.62939e-06, 7.62939e-06)
-scale = Vector2(0.368164, 0.211914)
-texture = ExtResource("3_fp8hf")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Station"]
+position = Vector2(-36, 2)
+scale = Vector2(1.67969, 1.67969)
+sprite_frames = SubResource("SpriteFrames_jhuc5")
+frame_progress = 0.74229
 
 [node name="Panel" type="Panel" parent="Station"]
 visible = false

@@ -63,8 +63,6 @@ func clear():
 # 2 argumentai, pirmas yra item name, o antras yra kiek to item norim panaikint
 # -1 reiskia panaikint ta item pilnai is inventory
 func remove_item(name: String, amount: int):
-	inventory_updated.emit()#TODO later 	signalai ne mano dalykas
-	
 	var item = get_item_by_name(name)
 	var slot = -1
 	for i in range(inventory.size()): 	#surandam slot su tokiu paciu item name
@@ -77,6 +75,8 @@ func remove_item(name: String, amount: int):
 			inventory.append(null)		# todel reikia nauja null pridet
 		elif (amount != -1):
 			inventory[slot]["quantity"] -= amount
+	
+	inventory_updated.emit()
 	
 func set_player_reference(player):
 	player_node = player#Initializes the player node for easier access
