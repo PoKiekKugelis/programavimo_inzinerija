@@ -90,7 +90,7 @@ func set_transformations():
 	enemy.scale = Vector2(5,5)
 	# make player face right and enemy face left
 	var anim_sprite = enemy.get_node("AnimatedSprite2D")
-	anim_sprite.flip_h = true
+	anim_sprite.flip_h = false
 	player.flip_h = false
 	# setup player and enemy animations
 	anim_sprite.play("idle")

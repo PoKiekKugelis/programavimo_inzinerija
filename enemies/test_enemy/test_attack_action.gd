@@ -8,6 +8,9 @@ func _init() -> void:
 func perform_action() -> void:
 	if not enemy or not target:
 		return
+	var anim_sprite = enemy.get_node("AnimatedSprite2D") as AnimatedSprite2D
+	anim_sprite.sprite_frames.set_animation_loop("attack", false)
+	anim_sprite.play("attack")
 	var tween := create_tween().set_trans(Tween.TRANS_QUINT)
 	var start := enemy.global_position
 	var end := Vector2(400, 400)
@@ -24,8 +27,10 @@ func perform_action() -> void:
 	
 	tween.finished.connect(
 		func(): 
-			Events.enemy_action_completed.emit(enemy)
+			anim_sprite.play("idle")
+			#Events.enemy_action_completed.emit(enemy)
 			enemy.intent_ui.visible = true
 			enemy.health_bar.visible = true
+			Events.enemy_action_completed.emit(enemy)
 	)
 	
