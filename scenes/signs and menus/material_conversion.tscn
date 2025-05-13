@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://djo7ykvws1gy2"]
 
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="1_cpkd5"]
-[ext_resource type="Script" uid="uid://cw35ldggvjr7" path="res://scripts/signs and menus/material_conversion.gd" id="1_x4af0"]
+[ext_resource type="Script" uid="uid://cv5l8s1x88ssa" path="res://scripts/signs and menus/material_conversion.gd" id="1_x4af0"]
 
 [node name="ConversionUI" type="Control"]
 process_mode = 3

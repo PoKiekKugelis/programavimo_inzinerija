@@ -1,24 +1,15 @@
-<<<<<<< HEAD
-[gd_scene load_steps=42 format=3 uid="uid://befh57cg3tm24"]
-=======
-[gd_scene load_steps=25 format=3 uid="uid://befh57cg3tm24"]
->>>>>>> origin/main
+[gd_scene load_steps=43 format=3 uid="uid://befh57cg3tm24"]
 
 [ext_resource type="Script" uid="uid://qw3n3dhsjip2" path="res://enemies/scripts/enemy.gd" id="1_6cc7r"]
 [ext_resource type="Script" uid="uid://ct28a5ovxts7" path="res://scripts/node resources/health.gd" id="2_7qkrd"]
-[ext_resource type="Texture2D" uid="uid://byy2u24o8fulv" path="res://assets/sprites/version A/Aseprite/GremEX_gremlin_fight.png" id="3_7rcda"]
+[ext_resource type="Texture2D" uid="uid://del1eadiaquki" path="res://assets/sprites/version A/Aseprite/GremEX_gremlin_fight.png" id="3_7rcda"]
 [ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="3_ec5fr"]
 [ext_resource type="Script" uid="uid://b25ntns06y3kc" path="res://enemies/scripts/hurtbox.gd" id="3_fjv6h"]
 [ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/node resources/health_bar.tscn" id="6_6edcp"]
 [ext_resource type="Script" uid="uid://c118vejxqqnw2" path="res://enemies/scripts/enemy_health_bar.gd" id="7_ontt5"]
-<<<<<<< HEAD
-[ext_resource type="AudioStream" uid="uid://vwsatgwc0squ" path="res://assets/sounds/zapsplat_multimedia_game_sound_8_bit_blip_impact_thud_112028.mp3" id="9_yselg"]
-[ext_resource type="AudioStream" uid="uid://d0x4bibh0mhk6" path="res://assets/sounds/healing_sound.mp3" id="11_7rcda"]
-=======
-[ext_resource type="AudioStream" uid="uid://d15j8366n15k6" path="res://assets/sounds/zapsplat_multimedia_game_sound_8_bit_blip_impact_thud_112028.mp3" id="9_yselg"]
-[ext_resource type="AudioStream" uid="uid://dc5hxp858thuy" path="res://assets/sounds/healing_sound.mp3" id="11_7rcda"]
-[ext_resource type="Texture2D" uid="uid://drs3fgxgfc4ro" path="res://assets/sprites/light.png" id="12_8a5xv"]
->>>>>>> origin/main
+[ext_resource type="AudioStream" uid="uid://dedodydllvjso" path="res://assets/sounds/zapsplat_multimedia_game_sound_8_bit_blip_impact_thud_112028.mp3" id="9_yselg"]
+[ext_resource type="AudioStream" uid="uid://k0h2p23vlcpu" path="res://assets/sounds/healing_sound.mp3" id="11_7rcda"]
+[ext_resource type="Texture2D" uid="uid://b1wru62jdsxj0" path="res://assets/sprites/light.png" id="12_8a5xv"]
 [ext_resource type="PackedScene" uid="uid://uix6maw3nd86" path="res://combat/scenes/intent_ui.tscn" id="12_w4l7e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3o1q"]
