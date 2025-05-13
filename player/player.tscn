@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ccrgslptfvujl"]
+[gd_scene load_steps=41 format=3 uid="uid://ccrgslptfvujl"]
 
 [ext_resource type="Script" uid="uid://dmfk2y87ehpk0" path="res://player/Player.gd" id="1_sse7a"]
 [ext_resource type="Script" uid="uid://blpiq2qfwwrbl" path="res://scripts/node resources/stamina.gd" id="3_xxutp"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://dc5hxp858thuy" path="res://assets/sounds/healing_sound.mp3" id="23_s7qer"]
 [ext_resource type="AudioStream" uid="uid://bh8onrps8n274" path="res://assets/sounds/player_hit_sound.mp3" id="24_g4c7l"]
 [ext_resource type="AudioStream" uid="uid://bwixl4urbryrp" path="res://assets/sounds/zapsplat_multimedia_game_sound_cute_harp_warm_lose_life_114210.mp3" id="25_knn7v"]
+[ext_resource type="Texture2D" uid="uid://drs3fgxgfc4ro" path="res://assets/sprites/light.png" id="26_7pqkx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
 atlas = ExtResource("4_tuyoq")
@@ -302,6 +303,11 @@ volume_db = -5.0
 process_mode = 3
 stream = ExtResource("25_knn7v")
 volume_db = -5.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.6
+texture = ExtResource("26_7pqkx")
+texture_scale = 0.6
 
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="received_damage" from="HurtBox" to="." method="_on_hurt_box_received_damage"]

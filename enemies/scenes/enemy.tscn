@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://befh57cg3tm24"]
+[gd_scene load_steps=25 format=3 uid="uid://befh57cg3tm24"]
 
 [ext_resource type="Script" uid="uid://qw3n3dhsjip2" path="res://enemies/scripts/enemy.gd" id="1_6cc7r"]
 [ext_resource type="Texture2D" uid="uid://ci6oaqoi4u4xy" path="res://assets/sprites/animation_test.png" id="1_evtl2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c118vejxqqnw2" path="res://enemies/scripts/enemy_health_bar.gd" id="7_ontt5"]
 [ext_resource type="AudioStream" uid="uid://d15j8366n15k6" path="res://assets/sounds/zapsplat_multimedia_game_sound_8_bit_blip_impact_thud_112028.mp3" id="9_yselg"]
 [ext_resource type="AudioStream" uid="uid://dc5hxp858thuy" path="res://assets/sounds/healing_sound.mp3" id="11_7rcda"]
+[ext_resource type="Texture2D" uid="uid://drs3fgxgfc4ro" path="res://assets/sprites/light.png" id="12_8a5xv"]
 [ext_resource type="PackedScene" uid="uid://uix6maw3nd86" path="res://combat/scenes/intent_ui.tscn" id="12_w4l7e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gjt2i"]
@@ -154,5 +155,10 @@ offset_top = -35.0
 offset_right = 27.0
 offset_bottom = -18.0
 scale = Vector2(0.7, 0.7)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.6
+texture = ExtResource("12_8a5xv")
+texture_scale = 0.5
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

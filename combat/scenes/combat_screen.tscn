@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bu2vdqgi3rdj3"]
+[gd_scene load_steps=22 format=3 uid="uid://bu2vdqgi3rdj3"]
 
 [ext_resource type="Script" uid="uid://dw7any0ncdcql" path="res://combat/scripts/combat_screen.gd" id="1_j1dph"]
 [ext_resource type="Texture2D" uid="uid://fxi47ewnelhd" path="res://assets/sprites/combat_background.png" id="3_i41gl"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://2a7p6gpyerqx" path="res://combat/scenes/energy_ui.tscn" id="10_e1m4k"]
 [ext_resource type="PackedScene" uid="uid://bhucwpx8dw1e6" path="res://cards/scenes/card_deck_open.tscn" id="11_orwjd"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="12_6rfo5"]
+[ext_resource type="Texture2D" uid="uid://drs3fgxgfc4ro" path="res://assets/sprites/light.png" id="13_3ud5g"]
 [ext_resource type="Shader" uid="uid://dn521yloucwqc" path="res://combat/transition.gdshader" id="13_jy65p"]
 [ext_resource type="Script" uid="uid://dt5jcaofsgi4n" path="res://combat/scripts/transition.gd" id="15_iy0uh"]
 [ext_resource type="PackedScene" uid="uid://b4cycf46t3wmq" path="res://cards/scenes/card_deck.tscn" id="16_fqr1a"]
@@ -205,6 +206,12 @@ offset_right = 154.0
 offset_bottom = 53.0
 theme = ExtResource("12_6rfo5")
 theme_override_font_sizes/font_size = 40
+
+[node name="PointLight2D" type="PointLight2D" parent="BattleUI"]
+position = Vector2(305, 419)
+energy = 0.6
+texture = ExtResource("13_3ud5g")
+texture_scale = 2.0
 
 [node name="Transition" type="CanvasLayer" parent="."]
 layer = 2

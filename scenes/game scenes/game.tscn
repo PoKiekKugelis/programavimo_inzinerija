@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtkw7x4hdoyt2"]
+[gd_scene load_steps=17 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
 [ext_resource type="Script" uid="uid://cao01gpotabl2" path="res://scripts/game scenes/game.gd" id="1_kvpfn"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://baxsig0ds3i82" path="res://scenes/signs and menus/settings_screen.tscn" id="11_rrbdo"]
 [ext_resource type="PackedScene" uid="uid://1ef0qace5vhk" path="res://scenes/signs and menus/input_settings_screen.tscn" id="12_mw4bw"]
 [ext_resource type="Resource" uid="uid://p53ixt6x2i8g" path="res://enemies/test_enemy/test_enemy.tres" id="12_rrbdo"]
+[ext_resource type="Texture2D" uid="uid://drs3fgxgfc4ro" path="res://assets/sprites/light.png" id="16_3qofe"]
 [ext_resource type="PackedScene" uid="uid://cvbf4h8xu6bjk" path="res://scenes/signs and menus/proceed_sign.tscn" id="21_37s47"]
 [ext_resource type="PackedScene" uid="uid://ck134hita7gdt" path="res://scenes/signs and menus/proceed_sign_screen.tscn" id="22_bt5mj"]
 
@@ -80,3 +81,18 @@ visible = false
 position = Vector2(67, 3)
 scale = Vector2(1.2, 1.2)
 stats = ExtResource("12_rrbdo")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.304801, 0.300968, 0.51321, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-104, -41)
+color = Color(1, 0.819608, 0.337255, 1)
+texture = ExtResource("16_3qofe")
+texture_scale = 0.6
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(121, -41)
+color = Color(1, 0.819608, 0.337255, 1)
+texture = ExtResource("16_3qofe")
+texture_scale = 0.6

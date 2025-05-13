@@ -147,5 +147,8 @@ item_type = "Item Type"
 item_name = "Item Name"
 item_effect = "Item Effect"
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.295669, 0.289446, 0.52144, 1)
+
 [connection signal="body_entered" from="Station/Area2D" to="Station" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Station/Area2D" to="Station" method="_on_area_2d_body_exited"]
