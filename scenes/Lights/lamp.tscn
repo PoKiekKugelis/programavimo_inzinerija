@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://lmekykqp8eu5"]
+
+[ext_resource type="Texture2D" uid="uid://d02q7k3lymr5h" path="res://assets/sprites/lamp_on_a_stick.png" id="1_4rkoi"]
+[ext_resource type="Texture2D" uid="uid://drs3fgxgfc4ro" path="res://assets/sprites/light.png" id="2_bs6v8"]
+
+[node name="lamp" type="Sprite2D"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_4rkoi")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -16.6667)
+color = Color(1, 0.819608, 0.337255, 1)
+energy = 0.7
+texture = ExtResource("2_bs6v8")
+texture_scale = 0.8

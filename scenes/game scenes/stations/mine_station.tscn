@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kx8vygak8s3d" path="res://scripts/game scenes/stations/mine_station.gd" id="1_8muvj"]
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_th1w8"]
-[ext_resource type="Texture2D" uid="uid://31qrm4ater51" path="res://assets/sprites/RockStation.png" id="4_2d4c6"]
+[ext_resource type="Texture2D" uid="uid://bcdrxt6mhkve8" path="res://assets/sprites/RockStation.png" id="4_2d4c6"]
 [ext_resource type="PackedScene" uid="uid://baxsig0ds3i82" path="res://scenes/signs and menus/settings_screen.tscn" id="8_2d4c6"]
 [ext_resource type="PackedScene" uid="uid://cvbf4h8xu6bjk" path="res://scenes/signs and menus/proceed_sign.tscn" id="9_34ril"]
 [ext_resource type="PackedScene" uid="uid://1ef0qace5vhk" path="res://scenes/signs and menus/input_settings_screen.tscn" id="9_lva2x"]
@@ -112,6 +112,9 @@ position = Vector2(-207, -16)
 item_type = "Item Type"
 item_name = "Item Name"
 item_effect = "Item Effect"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.295669, 0.289446, 0.52144, 1)
 
 [connection signal="body_entered" from="Station/Area2D" to="Station" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Station/Area2D" to="Station" method="_on_area_2d_body_exited"]

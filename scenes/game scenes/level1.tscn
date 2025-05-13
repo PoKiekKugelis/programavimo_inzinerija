@@ -528,6 +528,9 @@ position = Vector2(1024, -190)
 [node name="chest4" parent="." instance=ExtResource("32_ah5mp")]
 position = Vector2(3053, 79)
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.173246, 0.302385, 0.379142, 1)
+
 [connection signal="body_entered" from="PressurePlate/Area2D" to="PressurePlate" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="PressurePlate/Area2D" to="PressurePlate" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="BoulderRollingTrigger" to="Boulder" method="_on_boulder_rolling_trigger_body_entered"]

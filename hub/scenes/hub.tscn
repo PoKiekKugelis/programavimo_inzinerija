@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bmqhwxmmqnn87"]
+[gd_scene load_steps=23 format=4 uid="uid://bmqhwxmmqnn87"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_qssp3"]
 [ext_resource type="Script" uid="uid://duqq4yinrkjbt" path="res://hub/scripts/hub.gd" id="1_s6eg2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://djo7ykvws1gy2" path="res://scenes/signs and menus/material_conversion.tscn" id="10_x3hp0"]
 [ext_resource type="Texture2D" uid="uid://cbh1n8q1kpk78" path="res://assets/sprites/sign.png" id="12_s6eg2"]
 [ext_resource type="Script" uid="uid://bcbb4gygd7v3g" path="res://hub/scripts/workbench.gd" id="13_knpcs"]
+[ext_resource type="PackedScene" uid="uid://lmekykqp8eu5" path="res://scenes/Lights/lamp.tscn" id="14_2h5ev"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wvbm"]
 size = Vector2(20, 222)
@@ -241,6 +242,24 @@ offset_top = -315.0
 offset_right = -851.0
 offset_bottom = -315.0
 scale = Vector2(0.442522, 0.442522)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.295669, 0.289446, 0.52144, 1)
+
+[node name="lamp" parent="." instance=ExtResource("14_2h5ev")]
+position = Vector2(1305, 172)
+
+[node name="lamp2" parent="." instance=ExtResource("14_2h5ev")]
+position = Vector2(1033, 172)
+
+[node name="lamp3" parent="." instance=ExtResource("14_2h5ev")]
+position = Vector2(748, 172)
+
+[node name="lamp4" parent="." instance=ExtResource("14_2h5ev")]
+position = Vector2(472, 172)
+
+[node name="lamp5" parent="." instance=ExtResource("14_2h5ev")]
+position = Vector2(211, 172)
 
 [connection signal="pressed" from="+1" to="." method="_on_add_pressed"]
 [connection signal="pressed" from="-1" to="." method="_on_subtract_pressed"]

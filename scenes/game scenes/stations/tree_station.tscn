@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_5mhej"]
 [ext_resource type="Script" uid="uid://c2ub47n7pf70k" path="res://scripts/game scenes/stations/tree_station.gd" id="1_isocl"]
 [ext_resource type="PackedScene" uid="uid://kt6baw6aw6n3" path="res://scenes/game scenes/stations/station.tscn" id="2_eorhl"]
-[ext_resource type="Texture2D" uid="uid://b2fbyg4nawfvl" path="res://assets/sprites/FallenTree-Sheet.png" id="4_yn225"]
+[ext_resource type="Texture2D" uid="uid://72u210dr78mv" path="res://assets/sprites/FallenTree-Sheet.png" id="4_yn225"]
 [ext_resource type="PackedScene" uid="uid://baxsig0ds3i82" path="res://scenes/signs and menus/settings_screen.tscn" id="8_yn225"]
 [ext_resource type="PackedScene" uid="uid://1ef0qace5vhk" path="res://scenes/signs and menus/input_settings_screen.tscn" id="9_eorhl"]
 [ext_resource type="PackedScene" uid="uid://cvbf4h8xu6bjk" path="res://scenes/signs and menus/proceed_sign.tscn" id="11_4mk25"]
@@ -146,6 +146,9 @@ position = Vector2(-207, -16)
 item_type = "Item Type"
 item_name = "Item Name"
 item_effect = "Item Effect"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.295669, 0.289446, 0.52144, 1)
 
 [connection signal="body_entered" from="Station/Area2D" to="Station" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Station/Area2D" to="Station" method="_on_area_2d_body_exited"]
