@@ -17,6 +17,8 @@ signal player_action_performed(message: String, color: Color)
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
 @onready var victory_sound: AudioStreamPlayer2D = $VictorySound
 
+@onready var turn_counter: int = 1
+
 func _ready() -> void:
 	enemy.setup_ai()
 	# Tree is still paused but the area_entered signal needs to stay active, therefore PhysicsServer2D is set to active
@@ -48,6 +50,7 @@ func start_battle() -> void:# Starts the battle, for continued turn logic see on
 	battle_ui.initialize_card_deck_ui()# Initialize the draw and discard piles
 	battle_ui.start_player_turn()# Start alternating between turns for display
 	battle_ui.display_action()# Display enemy intended action
+	$BattleUI/Turn/TurnCounter.text=str(turn_counter)
 
 func _on_player_death() -> void:
 	get_tree().paused = false
@@ -105,3 +108,5 @@ func on_enemy_turn_ended() -> void:
 	player_handler.start_turn()
 	enemy_handler.reset_enemy_actions()
 	battle_ui.display_action()#Display the intent
+	turn_counter+=1
+	$BattleUI/Turn/TurnCounter.text=str(turn_counter)
