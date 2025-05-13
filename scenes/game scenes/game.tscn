@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dtkw7x4hdoyt2"]
+[gd_scene load_steps=16 format=3 uid="uid://dtkw7x4hdoyt2"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_ag3fv"]
 [ext_resource type="Script" uid="uid://cao01gpotabl2" path="res://scripts/game scenes/game.gd" id="1_kvpfn"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bhod10c0fj1bp" path="res://scenes/signs and menus/finish.tscn" id="6_twexu"]
 [ext_resource type="PackedScene" uid="uid://b18lmeyce53di" path="res://scenes/game scenes/level1.tscn" id="7_rysoc"]
 [ext_resource type="PackedScene" uid="uid://dwocfaxnwkosl" path="res://scenes/traps/spike.tscn" id="9_k0taf"]
+[ext_resource type="PackedScene" uid="uid://cr1dg57402xa6" path="res://scenes/loot chest/chest.tscn" id="9_ndp6l"]
 [ext_resource type="PackedScene" uid="uid://befh57cg3tm24" path="res://enemies/scenes/enemy.tscn" id="11_ekyhk"]
 [ext_resource type="PackedScene" uid="uid://baxsig0ds3i82" path="res://scenes/signs and menus/settings_screen.tscn" id="11_rrbdo"]
 [ext_resource type="PackedScene" uid="uid://1ef0qace5vhk" path="res://scenes/signs and menus/input_settings_screen.tscn" id="12_mw4bw"]
@@ -51,6 +52,9 @@ position = Vector2(-15, 31)
 
 [node name="proceed_sign" parent="." instance=ExtResource("21_37s47")]
 position = Vector2(199, 20)
+
+[node name="chest" parent="." instance=ExtResource("9_ndp6l")]
+position = Vector2(149, 18)
 
 [node name="proceed_sign_view" type="CanvasLayer" parent="."]
 

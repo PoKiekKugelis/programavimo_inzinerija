@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_76c2s"]
 [ext_resource type="Script" uid="uid://dwe81jj0l7is8" path="res://scripts/game scenes/stations/scrapyard_station.gd" id="1_fp8hf"]
 [ext_resource type="PackedScene" uid="uid://kt6baw6aw6n3" path="res://scenes/game scenes/stations/station.tscn" id="2_u5mak"]
-[ext_resource type="Texture2D" uid="uid://cmoqwag56hi3f" path="res://assets/sprites/Scrapyard-Sheet.png" id="4_wdvte"]
+[ext_resource type="Texture2D" uid="uid://66ovynxke50l" path="res://assets/sprites/Scrapyard-Sheet.png" id="4_wdvte"]
 [ext_resource type="PackedScene" uid="uid://baxsig0ds3i82" path="res://scenes/signs and menus/settings_screen.tscn" id="8_wdvte"]
 [ext_resource type="PackedScene" uid="uid://1ef0qace5vhk" path="res://scenes/signs and menus/input_settings_screen.tscn" id="9_u5mak"]
 [ext_resource type="PackedScene" uid="uid://cvbf4h8xu6bjk" path="res://scenes/signs and menus/proceed_sign.tscn" id="11_dyy8l"]
