@@ -1,18 +1,20 @@
-[gd_scene load_steps=23 format=4 uid="uid://bmqhwxmmqnn87"]
+[gd_scene load_steps=25 format=4 uid="uid://bmqhwxmmqnn87"]
 
 [ext_resource type="TileSet" uid="uid://t0wnjvlc72lf" path="res://assets/tileset/TrapmoorTileset_v03.tres" id="1_qssp3"]
 [ext_resource type="Script" uid="uid://duqq4yinrkjbt" path="res://hub/scripts/hub.gd" id="1_s6eg2"]
-[ext_resource type="Texture2D" uid="uid://5q6w17gcbqgl" path="res://assets/sprites/StoneTent.png" id="2_7wvbm"]
+[ext_resource type="Texture2D" uid="uid://bjng2drght1vb" path="res://assets/sprites/StoneTent.png" id="2_7wvbm"]
 [ext_resource type="Script" uid="uid://dwqhx0j3k5vv" path="res://hub/scripts/RockNPC.gd" id="3_7wvbm"]
 [ext_resource type="PackedScene" uid="uid://1ef0qace5vhk" path="res://scenes/signs and menus/input_settings_screen.tscn" id="4_67nrf"]
 [ext_resource type="PackedScene" uid="uid://bbqlak1r4oxq8" path="res://hub/scenes/leave_hub_screen.tscn" id="4_glsmu"]
 [ext_resource type="PackedScene" uid="uid://duelb2q8ha7hp" path="res://scenes/signs and menus/pause_screen.tscn" id="5_bfqb0"]
-[ext_resource type="Texture2D" uid="uid://krghf45pc6i" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
+[ext_resource type="Texture2D" uid="uid://cu78w3kw560rd" path="res://assets/sprites/Medis.png" id="6_3wyi3"]
 [ext_resource type="PackedScene" uid="uid://baxsig0ds3i82" path="res://scenes/signs and menus/settings_screen.tscn" id="6_knpcs"]
-[ext_resource type="Texture2D" uid="uid://psg3v514y8it" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
+[ext_resource type="Texture2D" uid="uid://dsujbt6wcckt7" path="res://assets/sprites/PlaceHolder.png" id="7_441x5"]
 [ext_resource type="PackedScene" uid="uid://djo7ykvws1gy2" path="res://scenes/signs and menus/material_conversion.tscn" id="10_x3hp0"]
-[ext_resource type="Texture2D" uid="uid://bcp55v43iu5gh" path="res://assets/sprites/sign.png" id="12_s6eg2"]
-[ext_resource type="Script" uid="uid://c3wbv83gxvscw" path="res://hub/scripts/workbench.gd" id="13_knpcs"]
+[ext_resource type="Texture2D" uid="uid://ckq6e852q8fe" path="res://assets/sprites/house1.png" id="11_eti5x"]
+[ext_resource type="Texture2D" uid="uid://bj23ixn7yvix3" path="res://assets/sprites/cart1.png" id="12_0u82r"]
+[ext_resource type="Texture2D" uid="uid://d0kl7j5xpc30i" path="res://assets/sprites/sign.png" id="12_s6eg2"]
+[ext_resource type="Script" uid="uid://b1x0ymxq2s0n1" path="res://hub/scripts/workbench.gd" id="13_knpcs"]
 [ext_resource type="PackedScene" uid="uid://lmekykqp8eu5" path="res://scenes/Lights/lamp.tscn" id="14_2h5ev"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wvbm"]
@@ -143,6 +145,7 @@ scale = Vector2(0.503906, 0.503906)
 texture = ExtResource("6_3wyi3")
 
 [node name="NPC" type="Sprite2D" parent="PaperFella"]
+visible = false
 position = Vector2(400, 75)
 rotation = -0.265442
 scale = Vector2(0.0580631, 0.0163798)
@@ -152,11 +155,12 @@ texture = ExtResource("7_441x5")
 scale = Vector2(0.948749, 0.352476)
 
 [node name="Sprite2D" type="Sprite2D" parent="ScissorFella"]
-position = Vector2(957.872, 381.752)
-scale = Vector2(0.272645, 0.804115)
-texture = ExtResource("7_441x5")
+position = Vector2(931.753, 283.707)
+scale = Vector2(0.561099, 1.65486)
+texture = ExtResource("11_eti5x")
 
 [node name="NPC" type="Sprite2D" parent="ScissorFella"]
+visible = false
 position = Vector2(996.049, 510.673)
 scale = Vector2(0.0634442, 0.256546)
 texture = ExtResource("7_441x5")
@@ -164,11 +168,12 @@ texture = ExtResource("7_441x5")
 [node name="ShopFella" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="ShopFella"]
-position = Vector2(1219, 151)
-scale = Vector2(0.248047, 0.225586)
-texture = ExtResource("7_441x5")
+position = Vector2(1207, 167)
+scale = Vector2(0.747388, 0.679711)
+texture = ExtResource("12_0u82r")
 
 [node name="NPC" type="Sprite2D" parent="ShopFella"]
+visible = false
 position = Vector2(1218, 168)
 scale = Vector2(0.078125, 0.0703125)
 texture = ExtResource("7_441x5")

@@ -90,8 +90,8 @@ func _update_inventory(materialQuantities):
 	Inventory.remove_item("Piece of Wood", materialQuantities[1]*3)
 	Inventory.remove_item("Rusted scrap", materialQuantities[2]*3)
 
-func _update_labels():
-	$RockLabels/Material/Number.text = "(" + str(Inventory.get_item_quantity("Rock")) + ")"
+func _update_labels(): 
+	$RockLabels/Material/Number.text = "(" + str(Inventory.get_item_quantity("Rock Shard")) + ")"
 	$RockLabels/Resource/Number.text = "(" + str(Inventory.get_item_quantity("Pebble")) + ")"
 	$PaperLabels/Material/Number.text = "(" + str(Inventory.get_item_quantity("Paper")) + ")"
 	$PaperLabels/Resource/Number.text = "(" + str(Inventory.get_item_quantity("Piece of Wood")) + ")"
