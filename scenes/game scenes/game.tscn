@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://baxsig0ds3i82" path="res://scenes/signs and menus/settings_screen.tscn" id="11_rrbdo"]
 [ext_resource type="PackedScene" uid="uid://1ef0qace5vhk" path="res://scenes/signs and menus/input_settings_screen.tscn" id="12_mw4bw"]
 [ext_resource type="Resource" uid="uid://p53ixt6x2i8g" path="res://enemies/test_enemy/test_enemy.tres" id="12_rrbdo"]
-[ext_resource type="Texture2D" uid="uid://chrx41fi15ul6" path="res://assets/sprites/light.png" id="16_3qofe"]
+[ext_resource type="Texture2D" uid="uid://b1wru62jdsxj0" path="res://assets/sprites/light.png" id="16_3qofe"]
 [ext_resource type="PackedScene" uid="uid://cvbf4h8xu6bjk" path="res://scenes/signs and menus/proceed_sign.tscn" id="21_37s47"]
 [ext_resource type="PackedScene" uid="uid://ck134hita7gdt" path="res://scenes/signs and menus/proceed_sign_screen.tscn" id="22_bt5mj"]
 

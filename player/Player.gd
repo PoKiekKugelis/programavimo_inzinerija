@@ -161,13 +161,13 @@ func _physics_process(delta: float) -> void:
 	# animacijos:DDDDDDDDDDDDDDDDDDDDDDDDDDDD
 	if is_on_floor():
 		if direction == 0:
-			animated_sprite.play("idle")
+			animated_sprite.play("idle_cat")
 		else:
-			animated_sprite.play("walk")
+			animated_sprite.play("walk_cat")
 			
 			
 	else:
-		animated_sprite.play("jump")
+		animated_sprite.play("jump_cat")
 	
 	if direction != 0 && CAN_MOVE == true:
 		stamina.set_is_moving(true)  

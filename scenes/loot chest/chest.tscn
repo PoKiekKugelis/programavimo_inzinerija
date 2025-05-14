@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://cr1dg57402xa6"]
 
-[ext_resource type="Texture2D" uid="uid://b2skfvupwj47e" path="res://assets/sprites/Chest_sprite_sheet.png" id="1_qi7b8"]
-[ext_resource type="Script" uid="uid://bqc556gw1lmy3" path="res://scripts/loot chest/chest.gd" id="2_ats7c"]
+[ext_resource type="Texture2D" uid="uid://bkhjyw2xl8n0i" path="res://assets/sprites/Chest_sprite_sheet.png" id="1_qi7b8"]
+[ext_resource type="Script" uid="uid://crur2bcu7w2bv" path="res://scripts/loot chest/chest.gd" id="2_ats7c"]
 [ext_resource type="PackedScene" uid="uid://bsdelvdiesf0o" path="res://inventory/scenes/inventory_item.tscn" id="3_ats7c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjuvq"]
