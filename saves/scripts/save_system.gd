@@ -4,18 +4,18 @@ extends Node
 @onready var inventory = []
 
 #sukuria dict su dalykais kuriu reikia
-func _save():	
+func _save():
 	var save_dict = {
 		"Inventory": inventory,
 		"Money": Money.get_money()
 	}
 	return save_dict
-	
+
 # SUkuria json stringa su inventorium ir pinigais, struktura virsuj
 func save_game():
 	file_path = SaveFiles.path
 	var save_game = FileAccess.open(file_path, FileAccess.WRITE)
-	stringify_inventory()
+	_update_inventory()
 	var json_string = JSON.stringify(_save())
 	save_game.store_line(json_string)
 	save_game.close()
@@ -25,36 +25,46 @@ func save_game():
 # nuejus i game.tscn, arba level1.tscn matysit kaip zaidejui tiesiog priskiriu "Health"
 func load_game() -> Dictionary:
 	file_path = SaveFiles.path
-	#var save_data: Dictionary = {}
+	Inventory.clear()
 	if !FileAccess.file_exists(file_path):
 		return {}
 
 	var fd = FileAccess.open(file_path, FileAccess.READ)
 	var json_string = fd.get_as_text()
 	fd.close()
-	
+
 	var save_data = JSON.parse_string(json_string)
 	if (save_data != null):
 		Money.subtract_money(Money.get_money())
-		
+
 		if (save_data.has("Inventory")):
 			var items = save_data["Inventory"]
 			for data in items:
 				Inventory.add_item(_dict_to_item(data))
-		
+				
+		_update_inventory()
 		if (save_data.has("Money")):
 			Money.add_money(save_data["Money"])
-
-		#print(save_data)
 		return save_data
 	return {}
 
-# Pavercia inventoriu i stringu masyva
-func stringify_inventory():
-	inventory.clear() # Kad neduplikuotu ant virsaus
+# Pa-update'a lokalu inventory, kuris yra rasomas i faila
+func _update_inventory():
 	for slot in range(Inventory.get_used_slots()):
-		inventory.append(Inventory.get_item_slot(slot))
-	
+		var item = Inventory.get_item_slot(slot)
+		if _add_item(item) == 0:
+			inventory.append(item)
+	pass
+
+# Grazina 1, kai buvo padidintas item'o quantity
+# Grazina 0, kai to item nera, ir ji reikia prideti
+func _add_item(new_item) -> int:
+	for item in inventory:
+		if item["name"] == new_item['name']:
+			item["quantity"] += new_item["quantity"]
+			return 1 
+	return 0
+
 func _dict_to_item(data):
 	var item = {
 		"quantity" : data["quantity"] as int,

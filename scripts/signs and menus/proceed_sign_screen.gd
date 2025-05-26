@@ -8,6 +8,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_go_to_hub_pressed() -> void:
+	SaveSystem.save_game()
 	get_tree().paused = false
 	Events.run_ended.emit()
 

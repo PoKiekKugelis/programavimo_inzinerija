@@ -60,10 +60,7 @@ func setup_event_connections() -> void:
 	Events.run_ended.connect(on_hub_entered)
 
 func on_hub_entered() -> void:# Hub scena pridedama kaip dabartinis vaizdas
-	# Minimalus hack'as: pirmiau uzloadini items ant dabartinio inventory, tada 
-	# juos abu jau sudetus, issaugau
 	SaveSystem.load_game()
-	SaveSystem.save_game()
 	var hub_scene: Hub = change_view(HUB) as Hub
 	hub_scene.player.char_stats = character
 	change_player_health_stamina(hub_scene)
