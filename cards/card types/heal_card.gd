@@ -3,6 +3,6 @@ class_name HealCard
 
 @export var heal_amount: int = 3
 
-func apply_effects(targets: Array[Node]) -> void:
+func apply_effects(targets: Array[Node], scene_context: Node) -> void:
 	var health = GlobalHealth.get_health_instance()
 	health.apply_heal(heal_amount)

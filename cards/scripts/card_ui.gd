@@ -59,7 +59,9 @@ func play() -> void:
 	if not card:
 		return
 	
-	card.play(targets, char_stats)
+	var combat_screen = get_tree().get_first_node_in_group("combat_screen") 
+	card.play(targets, char_stats, combat_screen)
+
 	queue_free()
 
 func set_playable(value: bool) -> void:

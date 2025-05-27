@@ -52,6 +52,12 @@ func start_battle() -> void:# Starts the battle, for continued turn logic see on
 	battle_ui.display_action()# Display enemy intended action
 	$BattleUI/Turn/TurnCounter.text=str(turn_counter)
 
+func play_player_animation(anim_name: String) -> void:
+	if not player: return
+	player.play(anim_name)
+	await player.animation_finished
+	player.play("idle")
+
 func _on_player_death() -> void:
 	get_tree().paused = false
 	Events.player_died.emit()
