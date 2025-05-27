@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d15sn3p157nau"]
+[gd_scene load_steps=3 format=3 uid="uid://d15sn3p157nau"]
 
 [ext_resource type="Script" uid="uid://dk7xmy1gswpvw" path="res://combat/scripts/victory_screen.gd" id="1_ujlt3"]
+[ext_resource type="Texture2D" uid="uid://d1w4ao0rh5klg" path="res://assets/sprites/coin.png" id="2_agwww"]
 
 [node name="VictoryScreen" type="Node"]
 script = ExtResource("1_ujlt3")
@@ -22,5 +23,20 @@ offset_right = 714.0
 offset_bottom = 273.0
 theme_override_font_sizes/font_size = 60
 text = "Victory!"
+
+[node name="RewardLabel" type="Label" parent="."]
+offset_left = 432.0
+offset_top = 281.0
+offset_right = 662.0
+offset_bottom = 363.0
+theme_override_font_sizes/font_size = 23
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coin" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(708, 323)
+scale = Vector2(2, 2)
+texture = ExtResource("2_agwww")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

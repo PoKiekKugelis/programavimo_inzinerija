@@ -1,10 +1,8 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bvcwux0exg1y0"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bvcwux0exg1y0"]
 
-[ext_resource type="Texture2D" uid="uid://dd44las7jmo5" path="res://assets/sprites/version A/buttons_gremEx.png" id="1_a2l2q"]
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="1_f40b4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_466ly"]
-atlas = ExtResource("1_a2l2q")
 region = Rect2(4, 3, 72, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a2l2q"]
@@ -19,7 +17,6 @@ texture_margin_right = 3.0
 texture_margin_bottom = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a2l2q"]
-atlas = ExtResource("1_a2l2q")
 region = Rect2(4, 31, 72, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0omi4"]
@@ -34,7 +31,6 @@ texture_margin_right = 3.0
 texture_margin_bottom = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58jnp"]
-atlas = ExtResource("1_a2l2q")
 region = Rect2(4, 3, 72, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_466ly"]
@@ -49,7 +45,6 @@ texture_margin_right = 3.0
 texture_margin_bottom = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0omi4"]
-atlas = ExtResource("1_a2l2q")
 region = Rect2(4, 60, 72, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_58jnp"]
