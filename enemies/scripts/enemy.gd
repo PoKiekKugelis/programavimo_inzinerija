@@ -24,7 +24,18 @@ var current_action: EnemyAction : set = set_current_action
 func _ready() -> void:
 	add_to_group("enemy")
 	health = $Health
-	health.health_depleted.connect(func(): queue_free())
+	health.health_depleted.connect(_on_death)
+
+func _on_death() -> void:
+	if dead:
+		return
+	dead = true
+	$AnimatedSprite2D.play("death")
+	$AnimatedSprite2D.animation_finished.connect(_on_death_animation_finished)
+
+func _on_death_animation_finished() -> void:
+	if $AnimatedSprite2D.animation == "death":
+		queue_free()
 
 func _process(delta):
 	if !is_on_floor(): #check is enemy is in the air
@@ -44,6 +55,8 @@ func move(delta):
 
 func handle_animation(): # chooses right animation orientation when changing walking directions
 	var anim_sprite = $AnimatedSprite2D
+	if dead:
+		return
 	if !dead and !taking_damage and !is_dealing_damage:
 		anim_sprite.play("walk")
 		if dir.x == -1:
