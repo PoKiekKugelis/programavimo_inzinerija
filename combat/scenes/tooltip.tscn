@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwq2nw3ne1ky8"]
+
+[ext_resource type="Texture2D" uid="uid://uby7ysw3sq4r" path="res://assets/sprites/version A/tooltip.png" id="1_0we8m"]
+[ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="1_dts6h"]
+[ext_resource type="Script" uid="uid://uf3ni1tsdl1e" path="res://combat/scripts/tooltip.gd" id="3_ihf1h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dts6h"]
+texture = ExtResource("1_0we8m")
+
+[node name="Tooltip" type="PanelContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -254.0
+offset_top = 59.0
+offset_right = 252.667
+offset_bottom = 219.0
+grow_horizontal = 2
+theme = ExtResource("1_dts6h")
+theme_override_styles/panel = SubResource("StyleBoxTexture_dts6h")
+script = ExtResource("3_ihf1h")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TooltipText" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]tooltip description
+tooltip description
+tooltip description"

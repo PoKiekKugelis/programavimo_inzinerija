@@ -5,6 +5,8 @@ var in_combat = false
 
 #card stuff
 signal card_played(card: Card)
+signal card_tooltip_requested(card: Card)
+signal tooltip_hide_requested
 
 #player stuff
 signal player_hand_drawn

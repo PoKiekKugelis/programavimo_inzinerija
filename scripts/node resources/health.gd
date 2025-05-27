@@ -63,10 +63,13 @@ func set_health(value: int):
 		health_changed.emit(difference)
 		if difference <= -1:
 			play_player_hit_sound()
-		if Events.in_combat and difference < 0:# A shaking animation when damage taken
-			take_damage_animation()
-		if Events.in_combat and difference > 0:# A shaking animation when damage taken
-			heal_animation()
+		if Events.in_combat:
+			if difference < 0:# A shaking animation when damage taken
+				take_damage_animation()
+			if difference > 0:# A shaking animation when damage taken
+				heal_animation()
+			var indicator = get_tree().get_first_node_in_group("combat_screen").get_node("BattleUI")
+			indicator.Indicator(owner, difference, true)
 		if !Events.in_combat:
 			if health <= 0: health_depleted.emit()# check for death
 
@@ -168,6 +171,8 @@ func get_immortality() -> bool:
 # emit signals for shield card updates
 func apply_shield(amount: int):
 	shield = amount
+	var indicator = get_tree().get_first_node_in_group("combat_screen").get_node("BattleUI")
+	indicator.Indicator(owner, amount, false)
 	shield_changed.emit()
 
 func clear_shield():

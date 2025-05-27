@@ -1,11 +1,11 @@
 extends Control
 
 @onready var item_tooltip: Control = $ItemTooltip
-@onready var item_name: Label = $ItemTooltip/TextureRect/ItemName
+@onready var item_name: Label = $ItemTooltip/HBoxContainer/TextureRect/ItemName
 @onready var icon: Sprite2D = $InnerBorder/ItemIcon
 @onready var quantity: Label = $InnerBorder/ItemQuantity
-@onready var item_type: Label = $ItemTooltip/TextureRect/ItemType
-@onready var item_effect: Label = $ItemTooltip/TextureRect/ItemEffect
+@onready var item_type: Label = $ItemTooltip/HBoxContainer/TextureRect/ItemType
+@onready var item_effect: Label = $ItemTooltip/HBoxContainer/TextureRect/ItemEffect
 
 var item = null
 

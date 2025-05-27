@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://djo7ykvws1gy2"]
 
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="1_cpkd5"]
-[ext_resource type="Script" uid="uid://cw35ldggvjr7" path="res://scripts/signs and menus/material_conversion.gd" id="1_x4af0"]
+[ext_resource type="Script" uid="uid://cv5l8s1x88ssa" path="res://scripts/signs and menus/material_conversion.gd" id="1_x4af0"]
 
 [node name="ConversionUI" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchor_right = 6.145
 size_flags_horizontal = 4
+theme = ExtResource("1_cpkd5")
 script = ExtResource("1_x4af0")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -39,16 +40,19 @@ offset_left = 80.0
 offset_top = -152.0
 offset_right = 248.0
 offset_bottom = -112.0
+theme = ExtResource("1_cpkd5")
 
 [node name="RockDecrease" type="Button" parent="RockButtons"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("1_cpkd5")
 theme_override_font_sizes/font_size = 23
 text = "  <  "
 
 [node name="RockNumber" type="Panel" parent="RockButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_cpkd5")
 
 [node name="Number" type="Label" parent="RockButtons/RockNumber"]
 layout_mode = 1
@@ -72,6 +76,7 @@ vertical_alignment = 1
 [node name="RockIncrease" type="Button" parent="RockButtons"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme = ExtResource("1_cpkd5")
 theme_override_font_sizes/font_size = 23
 text = "  >  "
 
@@ -81,16 +86,19 @@ offset_left = 80.0
 offset_top = -24.0
 offset_right = 248.0
 offset_bottom = 16.0
+theme = ExtResource("1_cpkd5")
 
 [node name="PaperDecrease" type="Button" parent="PaperButtons"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("1_cpkd5")
 theme_override_font_sizes/font_size = 23
 text = "  <  "
 
 [node name="PaperNumber" type="Panel" parent="PaperButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_cpkd5")
 
 [node name="Number" type="Label" parent="PaperButtons/PaperNumber"]
 layout_mode = 1
@@ -114,6 +122,7 @@ vertical_alignment = 1
 [node name="PaperIncrease" type="Button" parent="PaperButtons"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme = ExtResource("1_cpkd5")
 theme_override_font_sizes/font_size = 23
 text = "  >  "
 
@@ -123,16 +132,19 @@ offset_left = 80.0
 offset_top = 104.0
 offset_right = 248.0
 offset_bottom = 144.0
+theme = ExtResource("1_cpkd5")
 
 [node name="MetalDecrease" type="Button" parent="MetalButtons"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("1_cpkd5")
 theme_override_font_sizes/font_size = 23
 text = "  <  "
 
 [node name="MetalNumber" type="Panel" parent="MetalButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_cpkd5")
 
 [node name="Number" type="Label" parent="MetalButtons/MetalNumber"]
 layout_mode = 1
@@ -156,6 +168,7 @@ vertical_alignment = 1
 [node name="MetalIncrease" type="Button" parent="MetalButtons"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme = ExtResource("1_cpkd5")
 theme_override_font_sizes/font_size = 23
 text = "  >  "
 
@@ -165,9 +178,11 @@ offset_left = -256.0
 offset_top = -160.0
 offset_right = -88.0
 offset_bottom = -94.0
+theme = ExtResource("1_cpkd5")
 
 [node name="Material" type="HBoxContainer" parent="RockLabels"]
 layout_mode = 2
+theme = ExtResource("1_cpkd5")
 
 [node name="Name" type="Label" parent="RockLabels/Material"]
 layout_mode = 2
@@ -187,6 +202,7 @@ vertical_alignment = 1
 
 [node name="Resource" type="HBoxContainer" parent="RockLabels"]
 layout_mode = 2
+theme = ExtResource("1_cpkd5")
 
 [node name="Name" type="Label" parent="RockLabels/Resource"]
 layout_mode = 2
@@ -207,9 +223,11 @@ offset_left = -256.0
 offset_top = -32.0
 offset_right = -74.0
 offset_bottom = 34.0
+theme = ExtResource("1_cpkd5")
 
 [node name="Material" type="HBoxContainer" parent="PaperLabels"]
 layout_mode = 2
+theme = ExtResource("1_cpkd5")
 
 [node name="Name" type="Label" parent="PaperLabels/Material"]
 layout_mode = 2
@@ -228,6 +246,7 @@ vertical_alignment = 1
 
 [node name="Resource" type="HBoxContainer" parent="PaperLabels"]
 layout_mode = 2
+theme = ExtResource("1_cpkd5")
 
 [node name="Name" type="Label" parent="PaperLabels/Resource"]
 layout_mode = 2
@@ -248,9 +267,11 @@ offset_left = -256.0
 offset_top = 96.0
 offset_right = -84.0
 offset_bottom = 162.0
+theme = ExtResource("1_cpkd5")
 
 [node name="Material" type="HBoxContainer" parent="MetalLabels"]
 layout_mode = 2
+theme = ExtResource("1_cpkd5")
 
 [node name="Name" type="Label" parent="MetalLabels/Material"]
 layout_mode = 2
@@ -269,6 +290,7 @@ vertical_alignment = 1
 
 [node name="Resource" type="HBoxContainer" parent="MetalLabels"]
 layout_mode = 2
+theme = ExtResource("1_cpkd5")
 
 [node name="Name" type="Label" parent="MetalLabels/Resource"]
 layout_mode = 2

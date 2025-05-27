@@ -22,6 +22,10 @@ var config_path = "user://settings.cfg"
 var config = ConfigFile.new()
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	var texture = preload("res://assets/sprites/version A/1. Pointer.png")
+	var scaled = scale_cursor(texture, Vector2(2, 2))
+	Input.set_custom_mouse_cursor(scaled)
 	# this needs to be called before load_settings to ensure proper initialization
 	load_settings()
 	
@@ -131,6 +135,7 @@ func toggle_fullscreen(enable: bool):
 	fullscreen = enable
 	
 	if fullscreen:
+		await get_tree().process_frame
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
@@ -163,9 +168,6 @@ func _serialize_input_event(event):
 		data["pressed"] = event.pressed
 		data["double_click"] = event.double_click
 		data["factor"] = event.factor
-		
-	
-	
 	return data
 
 func _deserialize_input_event(data):
@@ -194,7 +196,15 @@ func _deserialize_input_event(data):
 			if data.has("pressed"): event.pressed = data["pressed"]
 			if data.has("double_click"): event.double_click = data["double_click"]
 			if data.has("factor"): event.factor = data["factor"]
-			
-	
-	
 	return event
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("F11"):
+		fullscreen = !fullscreen
+		toggle_fullscreen(fullscreen)
+
+func scale_cursor(original_texture: Texture2D, scale: Vector2) -> Texture2D:
+	var img := original_texture.get_image()
+	img.resize(img.get_width() * scale.x, img.get_height() * scale.y, Image.INTERPOLATE_NEAREST) # or BILINEAR
+	var new_texture = ImageTexture.create_from_image(img)
+	return new_texture

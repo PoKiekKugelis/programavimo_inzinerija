@@ -87,7 +87,6 @@ func _on_back_pressed() -> void:
 	if get_parent().name == "MainMenu":
 		$".".visible = false
 		get_tree().paused = false
-		$"../MenuBackGroundDarkener".visible = true
 	else:
 		$".".visible = false
 		get_parent().get_node("PauseScreen").visible = true

@@ -17,6 +17,9 @@ enum TurnState { PLAYER_TURN, ENEMY_TURN }
 @onready var discard_deck_view: CardDeckView = %DiscardDeckView
 @onready var action_text = $ActionText
 @onready var combat_screen: CombatScreen = $".."
+@onready var player_indicator: RichTextLabel = $PlayerIndicator
+@onready var enemy_indicator: RichTextLabel = $EnemyIndicator
+
 # animation helpers
 @onready var text_tween = create_tween()
 @onready var tooltip_tween = create_tween().set_parallel(true)
@@ -88,3 +91,23 @@ func show_action_text(message: String, color: Color = Color.WHITE):
 	text_tween = create_tween()
 	text_tween.tween_property(action_text, "modulate:a", 0.0, 1.0).set_delay(0.5)
 	text_tween.tween_callback(func(): action_text.text = "")
+
+func Indicator(target, damage : int, isdamage : bool):
+	var indicator
+	if target is TestEnemy: indicator = enemy_indicator.duplicate(); indicator.position = enemy_indicator.position
+	else: indicator = player_indicator.duplicate(); indicator.position = player_indicator.position
+	add_child(indicator)
+	if damage < 0 and isdamage:
+		indicator.text = "[color=red] %d" % abs(damage)
+	elif isdamage and damage > 0: indicator.text = "[color=green] %d" % damage
+	if !isdamage:
+		indicator.text = "[color=blue] %d" % damage
+	indicator.visible = true
+	var new_position = Vector2(indicator.position[0], indicator.position[1] - 20)
+	var tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	#tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS) #kad pauzes metu butu animacija
+	tween.tween_property(indicator, "position", new_position, 0.9)
+	tween.tween_property(indicator, "modulate:a", 0, 0.7)
+	await tween.finished
+	indicator.queue_free() 

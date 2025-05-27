@@ -1,5 +1,6 @@
 extends CardState
 
+
 func enter() -> void:
 	var ui_layer = get_tree().get_first_node_in_group("ui_layer")
 	card_ui.rotation_degrees = 0
@@ -15,6 +16,7 @@ func on_input(event: InputEvent) -> void:
 	if mouse_motion:
 		card_ui.global_position = card_ui.get_global_mouse_position() - card_ui.pivot_offset
 	if cancel:
+		get_tree().create_timer(0.01).timeout
 		transition_requested.emit(self, CardState.State.BASE)
 	elif confirm:
 		get_viewport().set_input_as_handled()

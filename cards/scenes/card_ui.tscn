@@ -1,13 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://fa7nmgjpv5l6"]
+[gd_scene load_steps=12 format=3 uid="uid://fa7nmgjpv5l6"]
 
 [ext_resource type="Script" uid="uid://ccs00bgac7fhv" path="res://cards/scripts/card_ui.gd" id="1_uj0tt"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="1_yrhyq"]
-[ext_resource type="Texture2D" uid="uid://depgvt6udom5t" path="res://assets/Cards/template_card_2.png" id="2_uj0tt"]
+[ext_resource type="Texture2D" uid="uid://bsrjo51m8ftxc" path="res://assets/Cards/template_card_2.png" id="2_uj0tt"]
+[ext_resource type="Shader" uid="uid://ckcmmf7jdt6rb" path="res://cards/card_ui.gdshader" id="3_e4wjq"]
 [ext_resource type="Script" uid="uid://cqqnfqih7s1a7" path="res://cards/scripts/card_state_machine.gd" id="3_vxtg5"]
 [ext_resource type="Script" uid="uid://ch0teiuvp4h1g" path="res://cards/card states/card_base_state.gd" id="4_e4wjq"]
 [ext_resource type="Script" uid="uid://62vsvsqaq674" path="res://cards/card states/card_clicked_state.gd" id="5_kkkcn"]
 [ext_resource type="Script" uid="uid://doffdfqqepprk" path="res://cards/card states/card_dragging_state.gd" id="6_gl2wu"]
 [ext_resource type="Script" uid="uid://4unwo0j06wo5" path="res://cards/card states/card_released_state.gd" id="7_f0nnd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kkkcn"]
+shader = ExtResource("3_e4wjq")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5x102"]
 size = Vector2(135, 193)
@@ -25,6 +31,7 @@ script = ExtResource("1_uj0tt")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_kkkcn")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -66,6 +73,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetect"]
 process_mode = 3
+visible = false
 position = Vector2(70.5, 100.5)
 shape = SubResource("RectangleShape2D_5x102")
 

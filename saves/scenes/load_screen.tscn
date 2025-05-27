@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://compt40rdgudv" path="res://saves/scripts/loading.gd" id="6_t4s8f"]
 [ext_resource type="Texture2D" uid="uid://bolbxpilc7fm" path="res://assets/sprites/TrashCan.png" id="6_wk2in"]
 [ext_resource type="Texture2D" uid="uid://baunnldtvgpp0" path="res://icon.svg" id="7_wk2in"]
-[ext_resource type="Texture2D" uid="uid://cm8bhnxk2lre1" path="res://combat/assets/transitions/12.png" id="8_r32af"]
+[ext_resource type="Texture2D" uid="uid://c2toi02gn1rxh" path="res://combat/assets/transitions/12.png" id="8_r32af"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j22as"]
 light_mode = 1
