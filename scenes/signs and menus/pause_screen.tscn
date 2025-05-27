@@ -65,6 +65,12 @@ size_flags_vertical = 0
 theme = ExtResource("2_qeunj")
 text = "Settings"
 
+[node name="QuitMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_qeunj")
+text = "Quit to Main Menu"
+
 [node name="QuitDesktop" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
@@ -73,13 +79,7 @@ size_flags_stretch_ratio = 0.0
 theme = ExtResource("2_qeunj")
 text = "Quit to Desktop"
 
-[node name="QuitMenu" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("2_qeunj")
-text = "Quit to Main Menu"
-
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitDesktop" to="." method="_on_quit_desktop_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitMenu" to="." method="_on_quit_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitDesktop" to="." method="_on_quit_desktop_pressed"]

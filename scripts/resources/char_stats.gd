@@ -28,4 +28,10 @@ func create_instance() -> Resource:
 	instance.deck = instance.starting_deck.duplicate()
 	instance.draw_deck = CardDeck.new()
 	instance.discard = CardDeck.new()
+	
+	# krc jeigu dabar ten deckas tuscias tai pasiemu starting, 
+	# cia viskas 100 kartu sunkiau nei su inventorium
+	if (SaveSystem.deck == []):
+		SaveSystem.deck = instance.starting_deck.duplicate()
+	
 	return instance

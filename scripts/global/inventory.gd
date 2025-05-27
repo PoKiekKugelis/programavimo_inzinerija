@@ -78,5 +78,14 @@ func remove_item(name: String, amount: int):
 	
 	inventory_updated.emit()
 	
+# Grazina inventoriaus kopija, be tusciu null reiksmiu
+func get_inventory():
+	var inv = []
+	for i in range(inventory.size()):
+		if inventory[i] != null:
+			inv.append(inventory[i])
+	return inv
+	
+	
 func set_player_reference(player):
 	player_node = player#Initializes the player node for easier access

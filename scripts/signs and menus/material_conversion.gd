@@ -30,6 +30,7 @@ func _on_convert_pressed() -> void:
 	# Paupdationa labels ir buttons
 	_update_labels()
 	_reset()
+	SaveSystem.save_game_in_hub()
 
 ### Label'iu handle'inimas su rodykliu paspaudimais
 ## Rock

@@ -2,11 +2,14 @@ extends Node
 
 @export var file_path: String 	# Save failo kelias
 @onready var inventory = []
+@onready var deck = []
+var deck_string = []
 
 #sukuria dict su dalykais kuriu reikia
 func _save():
 	var save_dict = {
 		"Inventory": inventory,
+		"Deck" : deck_string,
 		"Money": Money.get_money()
 	}
 	return save_dict
@@ -16,7 +19,19 @@ func save_game():
 	file_path = SaveFiles.path
 	var save_game = FileAccess.open(file_path, FileAccess.WRITE)
 	_update_inventory()
-	var json_string = JSON.stringify(_save())
+	_stringify_deck()
+	var json_string = JSON.stringify(_save(), "\t")
+	save_game.store_line(json_string)
+	save_game.close()
+
+# Veikia kaip paprastas save_game(), taciau neduplikuoja viso inventoriaus
+# Buvo galima tiesiog paziuret kokioj scenoj dabar esam, bet eh
+func save_game_in_hub():
+	file_path = SaveFiles.path
+	var save_game = FileAccess.open(file_path, FileAccess.WRITE)
+	inventory = Inventory.get_inventory()
+	_stringify_deck()
+	var json_string = JSON.stringify(_save(), "\t")
 	save_game.store_line(json_string)
 	save_game.close()
 
@@ -41,8 +56,10 @@ func load_game() -> Dictionary:
 			var items = save_data["Inventory"]
 			for data in items:
 				Inventory.add_item(_dict_to_item(data))
-				
-		_update_inventory()
+		
+		if inventory == []:
+			_update_inventory() 
+			
 		if (save_data.has("Money")):
 			Money.add_money(save_data["Money"])
 		return save_data
@@ -75,6 +92,10 @@ func _dict_to_item(data):
 		"scene_path" : data["scene_path"]
 	}
 	return item
+
+func _stringify_deck():
+	for card in deck.cards:
+		deck_string.append(card.resource_path)
 
 # Atidarant faila rasymui, jis yra overwrite'inimas, tai sitaip istrynt galima
 func delete_data():
