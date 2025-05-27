@@ -31,7 +31,7 @@ func create_instance() -> Resource:
 	
 	# krc jeigu dabar ten deckas tuscias tai pasiemu starting, 
 	# cia viskas 100 kartu sunkiau nei su inventorium
-	if (SaveSystem.deck == []):
+	if (SaveSystem.deck != null or []):
 		SaveSystem.deck = instance.starting_deck.duplicate()
 	
 	return instance
