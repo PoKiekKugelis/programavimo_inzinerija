@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=12 format=3 uid="uid://bvcwux0exg1y0"]
 
-[ext_resource type="Texture2D" uid="uid://bf0hrlr661ana" path="res://assets/sprites/version A/buttons_gremEx.png" id="1_a2l2q"]
+[ext_resource type="Texture2D" uid="uid://cln40q7j682da" path="res://assets/sprites/version A/buttons_gremEx.png" id="1_a2l2q"]
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="1_f40b4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_466ly"]

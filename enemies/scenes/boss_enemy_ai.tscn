@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://dw67vl8gjcy7w"]
+
+[ext_resource type="Script" uid="uid://dxojmhquf3ai5" path="res://enemies/scripts/enemy_action_picker.gd" id="1_tkelc"]
+[ext_resource type="Script" uid="uid://dcr24m1ak5mh2" path="res://enemies/test_enemy/test_attack_action.gd" id="2_dh0nt"]
+[ext_resource type="Script" uid="uid://pwxescouamm2" path="res://scripts/resources/intent.gd" id="3_0df2i"]
+[ext_resource type="Texture2D" uid="uid://bitagihl4hq0p" path="res://assets/sprites/version A/attack intent.png" id="4_rpnp4"]
+[ext_resource type="Script" uid="uid://ci0sm6a868r1y" path="res://enemies/test_enemy/test_heal_action.gd" id="5_i4g8k"]
+[ext_resource type="Texture2D" uid="uid://vq6v2w86cun7" path="res://assets/sprites/version A/heal intent.png" id="6_bhd7r"]
+
+[sub_resource type="Resource" id="Resource_au5xc"]
+script = ExtResource("3_0df2i")
+number = "4"
+sprite = ExtResource("4_rpnp4")
+metadata/_custom_type_script = "uid://bd161k8jlam34"
+
+[sub_resource type="Resource" id="Resource_irv8j"]
+script = ExtResource("3_0df2i")
+number = "4"
+sprite = ExtResource("6_bhd7r")
+metadata/_custom_type_script = "uid://bd161k8jlam34"
+
+[node name="BossEnemyAI" type="Node"]
+script = ExtResource("1_tkelc")
+
+[node name="AttackAction" type="Node" parent="."]
+script = ExtResource("2_dh0nt")
+damage = 4
+intent = SubResource("Resource_au5xc")
+type = 1
+chance_weight = 7.0
+
+[node name="HealAction" type="Node" parent="."]
+script = ExtResource("5_i4g8k")
+heal = 4
+intent = SubResource("Resource_irv8j")
+type = 1
+chance_weight = 3.0

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyStats" load_steps=3 format=3 uid="uid://p53ixt6x2i8g"]
 
 [ext_resource type="PackedScene" uid="uid://d0w4ydxbru5yp" path="res://enemies/test_enemy/test_enemy_ai.tscn" id="1_7gles"]
-[ext_resource type="Script" uid="uid://dngex2vo36f6o" path="res://scripts/resources/enemy_stats.gd" id="1_crawr"]
+[ext_resource type="Script" uid="uid://rq0pap6ow41m" path="res://scripts/resources/enemy_stats.gd" id="1_crawr"]
 
 [resource]
 script = ExtResource("1_crawr")

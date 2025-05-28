@@ -4,6 +4,7 @@ class_name TestEnemy
 @onready var health: Health = $Health
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var intent_ui: IntentUI = $IntentUI
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
 @export var stats: EnemyStats

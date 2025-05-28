@@ -15,9 +15,9 @@ signal health_depleted                # emitted when health reaches 0
 @export var immortality: bool = false : set = set_immortality, get = get_immortality
 @onready var health: int = max_health : set = set_health, get = get_health  # current health
 
-@onready var healing_sound: AudioStreamPlayer2D = $"../HealingSound"
+@onready var healing_sound: AudioStreamPlayer = $"../HealingSound"
 @onready var impact_sound: AudioStreamPlayer2D = $"../ImpactSound"
-@onready var hit_sound: AudioStreamPlayer2D = $"../HitSound"
+@onready var hit_sound: AudioStreamPlayer = $"../HitSound"
 @onready var death_sound: AudioStreamPlayer2D = $"../DeathSound"
 
 const WHITE_SPRITE_MATERIAL := preload("res://assets/combat assets/white_sprite_material.tres")
@@ -47,7 +47,6 @@ func get_max_health() -> int:
 
 # sets current health with validation
 func set_health(value: int):
-	
 	# block damage if immortal
 	if value < health and immortality:
 		print("Damage blocked due to immortality!")
@@ -91,7 +90,8 @@ func take_damage_animation() -> void:
 		to_shake = get_tree().get_first_node_in_group("combat_player")
 	if to_shake is TestEnemy:
 		to_shake = get_parent().get_node("AnimatedSprite2D")
-	
+	if to_shake is BossEnemy:
+		to_shake = get_parent().get_node("AnimatedSprite2D")
 	to_shake.material = WHITE_SPRITE_MATERIAL
 	
 	var tween := create_tween()
@@ -103,6 +103,7 @@ func take_damage_animation() -> void:
 		to_shake.material = null
 		if health <= 0: health_depleted.emit()# check for death
 		)
+		
 
 func heal_animation() -> void:
 	var to_heal = owner

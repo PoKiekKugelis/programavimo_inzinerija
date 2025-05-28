@@ -66,7 +66,7 @@ func _on_player_death() -> void:
 func _on_enemy_death() -> void: # Added those two lines
 	if enemy_handler.get_child_count() == 0 and is_inside_tree(): # Added enemy_handler logic to check if any enemies are still alive
 		death_sound.play()
-		battle_ui.show_action_text("Enemy defeated!", Color.GREEN)
+		battle_ui.show_action_text("Enemy defeated!", Color.GOLD)
 		await get_tree().create_timer(1.5).timeout
 		var victory_screen = preload("res://combat/scenes/victory_screen.tscn").instantiate()
 		if !victory_sound.playing:
@@ -90,10 +90,16 @@ func load_entities():
 
 # positions and scales combat sprites
 func set_transformations():
+	if enemy is BossEnemy:
+		enemy.position = Vector2(700, 350)
+		enemy.scale = Vector2(5,5)
+	else:
+		enemy.position = Vector2(900, 400)
+		enemy.scale = Vector2(5,5)
+	
 	player.position = Vector2(300, 400)
-	enemy.position = Vector2(900, 400)
 	player.scale = Vector2(5,5)
-	enemy.scale = Vector2(5,5)
+	
 	# make player face right and enemy face left
 	var anim_sprite = enemy.get_node("AnimatedSprite2D")
 	anim_sprite.flip_h = false

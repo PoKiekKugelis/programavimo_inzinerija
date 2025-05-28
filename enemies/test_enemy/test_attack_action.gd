@@ -2,7 +2,7 @@ extends EnemyAction
 
 @export var damage := 2
 
-func _init() -> void:
+func _ready() -> void:
 	message = "[color=red]Enemy dealt %d damage[/color]" % damage
 
 func perform_action() -> void:
@@ -20,10 +20,15 @@ func perform_action() -> void:
 	
 	enemy.intent_ui.visible = false
 	enemy.health_bar.visible = false
-	tween.tween_property(enemy, "global_position", end, 0.4)
-	tween.tween_callback(damage_effect.execute.bind(target_array))
-	tween.tween_interval(0.25)
-	tween.tween_property(enemy, "global_position", start, 0.4)
+	if enemy is BossEnemy:
+		tween.tween_interval(1)
+		tween.tween_callback(damage_effect.execute.bind(target_array))
+		tween.tween_interval(0.7)
+	else:
+		tween.tween_property(enemy, "global_position", end, 0.4)
+		tween.tween_callback(damage_effect.execute.bind(target_array))
+		tween.tween_interval(0.25)
+		tween.tween_property(enemy, "global_position", start, 0.4)
 	
 	tween.finished.connect(
 		func(): 
