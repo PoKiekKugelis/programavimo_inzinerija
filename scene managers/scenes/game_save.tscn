@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://crhqs4lbcpl43"]
+[gd_scene load_steps=3 format=3 uid="uid://crhqs4lbcpl43"]
 
 [ext_resource type="Script" uid="uid://u4nfj0esoq7h" path="res://scene managers/scripts/game_save.gd" id="1_5k5ps"]
+[ext_resource type="AudioStream" uid="uid://u7v1bvqpuk4p" path="res://assets/sounds/Dainele.mp3" id="2_kkulv"]
 
 [node name="GameSave" type="Node"]
 script = ExtResource("1_5k5ps")
 
 [node name="CurrentView" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_kkulv")
+volume_db = -15.0
+autoplay = true

@@ -57,5 +57,5 @@ stream = ExtResource("2_uw5l8")
 volume_db = -10.0
 
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="MainMenu" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_quit_pressed"]
