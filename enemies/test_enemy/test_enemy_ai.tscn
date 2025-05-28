@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://d0w4ydxbru5yp"]
 
-[ext_resource type="Script" uid="uid://dxojmhquf3ai5" path="res://enemies/scripts/enemy_action_picker.gd" id="1_6o3nf"]
-[ext_resource type="Script" uid="uid://dcr24m1ak5mh2" path="res://enemies/test_enemy/test_attack_action.gd" id="2_jduqw"]
-[ext_resource type="Script" uid="uid://ci0sm6a868r1y" path="res://enemies/test_enemy/test_heal_action.gd" id="3_dq4yr"]
-[ext_resource type="Script" uid="uid://pwxescouamm2" path="res://scripts/resources/intent.gd" id="3_iyal6"]
-[ext_resource type="Texture2D" uid="uid://bitagihl4hq0p" path="res://assets/sprites/version A/attack intent.png" id="4_hvdff"]
-[ext_resource type="Texture2D" uid="uid://vq6v2w86cun7" path="res://assets/sprites/version A/heal intent.png" id="6_p8uk3"]
+[ext_resource type="Script" uid="uid://dm83n83xviptq" path="res://enemies/scripts/enemy_action_picker.gd" id="1_6o3nf"]
+[ext_resource type="Script" uid="uid://b45a5jrmwv6x5" path="res://enemies/test_enemy/test_attack_action.gd" id="2_jduqw"]
+[ext_resource type="Script" uid="uid://dhn4yl541l2xi" path="res://enemies/test_enemy/test_heal_action.gd" id="3_dq4yr"]
+[ext_resource type="Script" uid="uid://bd161k8jlam34" path="res://scripts/resources/intent.gd" id="3_iyal6"]
+[ext_resource type="Texture2D" uid="uid://bu5ygl3d6bcq" path="res://assets/sprites/version A/attack intent.png" id="4_hvdff"]
+[ext_resource type="Texture2D" uid="uid://oata6wa7ha2f" path="res://assets/sprites/version A/heal intent.png" id="6_p8uk3"]
 
 [sub_resource type="Resource" id="Resource_ip1tf"]
 script = ExtResource("3_iyal6")

@@ -1,37 +1,40 @@
-[gd_scene load_steps=127 format=3 uid="uid://ccrgslptfvujl"]
+[gd_scene load_steps=130 format=3 uid="uid://ccrgslptfvujl"]
 
 [ext_resource type="Script" uid="uid://dmfk2y87ehpk0" path="res://player/Player.gd" id="1_sse7a"]
 [ext_resource type="Script" uid="uid://blpiq2qfwwrbl" path="res://scripts/node resources/stamina.gd" id="3_xxutp"]
-[ext_resource type="Texture2D" uid="uid://fpo7nl331s01" path="res://assets/sprites/GremEX_main_character_DEAD_SPACE.png" id="4_7pqkx"]
+[ext_resource type="Texture2D" uid="uid://dqwyv3tmkp4qt" path="res://assets/sprites/GremEX_main_character_DEAD_SPACE.png" id="4_7pqkx"]
 [ext_resource type="Script" uid="uid://b2xavgnhnekor" path="res://scripts/hitbox.gd" id="5_cmeds"]
-[ext_resource type="Texture2D" uid="uid://cliqt5n0ujo0q" path="res://assets/sprites/GremEX_main_character_CAT_EARS.png" id="5_uw77l"]
-[ext_resource type="Texture2D" uid="uid://dris3txnkxfn2" path="res://assets/sprites/GremEX_main_character_STRAW_HAT.png" id="6_b8hi5"]
+[ext_resource type="Texture2D" uid="uid://clffh7fmqgow0" path="res://assets/sprites/GremEX_main_character_CAT_EARS.png" id="5_uw77l"]
+[ext_resource type="Texture2D" uid="uid://rai14jnqks85" path="res://assets/sprites/GremEX_main_character_STRAW_HAT.png" id="6_b8hi5"]
 [ext_resource type="Script" uid="uid://b25ntns06y3kc" path="res://enemies/scripts/hurtbox.gd" id="6_lsjhy"]
-[ext_resource type="Texture2D" uid="uid://dgdoe3cyocoiv" path="res://assets/sprites/GremEX_main_character_TOP_HAT.png" id="7_2uvqg"]
+[ext_resource type="Texture2D" uid="uid://br0pkvg41gjbv" path="res://assets/sprites/GremEX_main_character_TOP_HAT.png" id="7_2uvqg"]
 [ext_resource type="Script" uid="uid://ct28a5ovxts7" path="res://scripts/node resources/health.gd" id="7_dmkbe"]
-[ext_resource type="Texture2D" uid="uid://dyafkg64m53sk" path="res://assets/sprites/GremEX_main_character_VIKING_HELMET.png" id="8_1s1yo"]
+[ext_resource type="Texture2D" uid="uid://bkro5r2vjx18u" path="res://assets/sprites/GremEX_main_character_VIKING_HELMET.png" id="8_1s1yo"]
 [ext_resource type="Script" uid="uid://jn5855mvfk1t" path="res://player/camera_2d.gd" id="8_rgyib"]
 [ext_resource type="PackedScene" uid="uid://bv2b50rofjqc4" path="res://scenes/node resources/health_bar.tscn" id="9_2ieo8"]
-[ext_resource type="Texture2D" uid="uid://cpx5gr5x2ubew" path="res://assets/sprites/GremEX_main_character_WIZARD_HAT.png" id="9_5ejfk"]
-[ext_resource type="Texture2D" uid="uid://by7y6uvugrmke" path="res://assets/sprites/version A/Aseprite/GremEX_main_character_and_hats.png" id="10_2uvqg"]
+[ext_resource type="Texture2D" uid="uid://bwoam2uv2w3yh" path="res://assets/sprites/GremEX_main_character_WIZARD_HAT.png" id="9_5ejfk"]
+[ext_resource type="Texture2D" uid="uid://b701yscnkfkrq" path="res://assets/sprites/version A/Aseprite/GremEX_main_character_and_hats.png" id="10_2uvqg"]
 [ext_resource type="Theme" uid="uid://bvcwux0exg1y0" path="res://main_theme.tres" id="10_ebec5"]
 [ext_resource type="PackedScene" uid="uid://v37iwosey6gf" path="res://scenes/node resources/stamina_bar.tscn" id="10_yllr7"]
 [ext_resource type="Script" uid="uid://bbefa02tsh80b" path="res://scripts/node resources/money_label.gd" id="11_yllr7"]
-[ext_resource type="Texture2D" uid="uid://bgqc6b3swrj4c" path="res://assets/sprites/coin.png" id="12_ebec5"]
+[ext_resource type="Texture2D" uid="uid://cov8ss4du4obe" path="res://assets/sprites/coin.png" id="12_ebec5"]
 [ext_resource type="PackedScene" uid="uid://bhucwpx8dw1e6" path="res://cards/scenes/card_deck_open.tscn" id="14_kb6p2"]
 [ext_resource type="PackedScene" uid="uid://b4cycf46t3wmq" path="res://cards/scenes/card_deck.tscn" id="15_wodsf"]
+[ext_resource type="Texture2D" uid="uid://d34icac6vsh6p" path="res://assets/sprites/version A/hp sprites/health bar 3.png" id="16_q28gw"]
 [ext_resource type="FontFile" uid="uid://bi04iecmbt37l" path="res://assets/Fonts/ARCADECLASSIC.TTF" id="16_tqiix"]
 [ext_resource type="PackedScene" uid="uid://bjkwlxilwfgil" path="res://inventory/scenes/inventory_ui.tscn" id="17_e7oew"]
-[ext_resource type="AudioStream" uid="uid://b8n7ljlm1fgyl" path="res://assets/sounds/zapsplat_multimedia_game_sound_retro_basic_blip_jump_002_103879.mp3" id="18_e7oew"]
-[ext_resource type="AudioStream" uid="uid://yf8i4vmxvf1g" path="res://assets/sounds/zapsplat_cartoon_whoosh_swipe_fast_grab_dash_006_74747.mp3" id="19_c35mf"]
-[ext_resource type="Texture2D" uid="uid://4lqlvofq4s1p" path="res://assets/sprites/version A/inventory_gremEx.png" id="20_2uvqg"]
-[ext_resource type="AudioStream" uid="uid://hxwh1vklk06i" path="res://assets/sounds/zapsplat_foley_footstep_person_jump_and_land_on_grass_003_111379.mp3" id="20_65viv"]
-[ext_resource type="AudioStream" uid="uid://dc3xop6qy3rep" path="res://assets/sounds/zapsplat_foley_footstep_single_leather_shoe_concrete_very_gentle_003_100037.mp3" id="21_x7c3f"]
-[ext_resource type="AudioStream" uid="uid://owibhvkaqoed" path="res://assets/sounds/zapsplat_foley_footsteps_trainers_sneakers_leather_running_on_slightly_gravel_road_path_loop_97397.mp3" id="22_bjvpn"]
-[ext_resource type="AudioStream" uid="uid://cpl028mrndndn" path="res://assets/sounds/healing_sound.mp3" id="23_s7qer"]
-[ext_resource type="AudioStream" uid="uid://boirkqfsugtoi" path="res://assets/sounds/player_hit_sound.mp3" id="24_g4c7l"]
-[ext_resource type="AudioStream" uid="uid://bunfory3rl2j8" path="res://assets/sounds/zapsplat_multimedia_game_sound_cute_harp_warm_lose_life_114210.mp3" id="25_knn7v"]
-[ext_resource type="Texture2D" uid="uid://l5nr3diixe5m" path="res://assets/sprites/light.png" id="26_7pqkx"]
+[ext_resource type="Texture2D" uid="uid://clw200yplmqjn" path="res://assets/sprites/version A/hp sprites/stamina bar 1.png" id="17_ge24q"]
+[ext_resource type="AudioStream" uid="uid://bbb7bj8uiuft4" path="res://assets/sounds/zapsplat_multimedia_game_sound_retro_basic_blip_jump_002_103879.mp3" id="18_e7oew"]
+[ext_resource type="Texture2D" uid="uid://cbf0equonca3s" path="res://assets/sprites/version A/hp sprites/stamina bar 2.png" id="18_pnw6m"]
+[ext_resource type="AudioStream" uid="uid://oqw0jxcjrn6j" path="res://assets/sounds/zapsplat_cartoon_whoosh_swipe_fast_grab_dash_006_74747.mp3" id="19_c35mf"]
+[ext_resource type="Texture2D" uid="uid://3di8tbve46xt" path="res://assets/sprites/version A/inventory_gremEx.png" id="20_2uvqg"]
+[ext_resource type="AudioStream" uid="uid://b235iap78q1re" path="res://assets/sounds/zapsplat_foley_footstep_person_jump_and_land_on_grass_003_111379.mp3" id="20_65viv"]
+[ext_resource type="AudioStream" uid="uid://dhc2ljdsxuwmv" path="res://assets/sounds/zapsplat_foley_footstep_single_leather_shoe_concrete_very_gentle_003_100037.mp3" id="21_x7c3f"]
+[ext_resource type="AudioStream" uid="uid://b2c05x0755xiw" path="res://assets/sounds/zapsplat_foley_footsteps_trainers_sneakers_leather_running_on_slightly_gravel_road_path_loop_97397.mp3" id="22_bjvpn"]
+[ext_resource type="AudioStream" uid="uid://k0h2p23vlcpu" path="res://assets/sounds/healing_sound.mp3" id="23_s7qer"]
+[ext_resource type="AudioStream" uid="uid://drtxlbkgll5d2" path="res://assets/sounds/player_hit_sound.mp3" id="24_g4c7l"]
+[ext_resource type="AudioStream" uid="uid://c727sstgyo8qd" path="res://assets/sounds/zapsplat_multimedia_game_sound_cute_harp_warm_lose_life_114210.mp3" id="25_knn7v"]
+[ext_resource type="Texture2D" uid="uid://b1wru62jdsxj0" path="res://assets/sprites/light.png" id="26_7pqkx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rptt4"]
 atlas = ExtResource("4_7pqkx")
@@ -834,18 +837,24 @@ script = ExtResource("8_rgyib")
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="PlayerUI" instance=ExtResource("9_2ieo8")]
-offset_left = 25.0
-offset_top = 28.0
-offset_right = 20.928
-offset_bottom = 26.096
+offset_left = 23.0
+offset_top = 27.0
+offset_right = 22.9999
+offset_bottom = 27.0
 scale = Vector2(2.5, 2.5)
 
 [node name="StaminaBar" parent="PlayerUI" instance=ExtResource("10_yllr7")]
-offset_left = 27.0
-offset_top = 67.0
-offset_right = -1030.0
-offset_bottom = -568.0
+offset_left = 199.0
+offset_top = 27.0
+offset_right = -889.0
+offset_bottom = -605.0
 scale = Vector2(2.5, 2.5)
+max_value = 50.0
+value = 25.0
+texture_under = ExtResource("16_q28gw")
+texture_over = ExtResource("17_ge24q")
+texture_progress = ExtResource("18_pnw6m")
+texture_progress_offset = Vector2(18, 0)
 
 [node name="Coin" type="Sprite2D" parent="PlayerUI"]
 position = Vector2(900, 78)

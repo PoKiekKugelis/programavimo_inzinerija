@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d15sn3p157nau"]
 
 [ext_resource type="Script" uid="uid://dk7xmy1gswpvw" path="res://combat/scripts/victory_screen.gd" id="1_ujlt3"]
-[ext_resource type="Texture2D" uid="uid://d1w4ao0rh5klg" path="res://assets/sprites/coin.png" id="2_agwww"]
+[ext_resource type="Texture2D" uid="uid://cov8ss4du4obe" path="res://assets/sprites/coin.png" id="2_agwww"]
 
 [node name="VictoryScreen" type="Node"]
 script = ExtResource("1_ujlt3")
