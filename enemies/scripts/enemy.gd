@@ -14,7 +14,6 @@ const gravity = 900
 var is_enemy_chase: bool = false  # for later inplementation
 var dead: bool = false #For later inplementation
 var taking_damage: bool = false #For later inplementation
-var damage_to_deal = 20 
 var is_dealing_damage: bool = false
 var dir: Vector2
 var dir_prev: Vector2
@@ -28,15 +27,10 @@ func _ready() -> void:
 	health.health_depleted.connect(_on_death)
 
 func _on_death() -> void:
-	if dead:
-		return
 	dead = true
 	$AnimatedSprite2D.play("death")
-	$AnimatedSprite2D.animation_finished.connect(_on_death_animation_finished)
-
-func _on_death_animation_finished() -> void:
-	if $AnimatedSprite2D.animation == "death":
-		queue_free()
+	await $AnimatedSprite2D.animation_finished
+	queue_free()
 
 func _process(delta):
 	if !is_on_floor(): #check is enemy is in the air

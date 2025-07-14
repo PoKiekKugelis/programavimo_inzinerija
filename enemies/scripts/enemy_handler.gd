@@ -10,7 +10,6 @@ func reset_enemy_actions() -> void:
 		enemy.update_action()
 
 func start_turn() -> void:
-	
 	if get_child_count() == 0:
 		return
 	var first_enemy: TestEnemy = get_child(0) as TestEnemy

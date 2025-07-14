@@ -20,6 +20,7 @@ signal player_action_performed(message: String, color: Color)
 @onready var turn_counter: int = 1
 
 func _ready() -> void:
+	enemy_handler.visible = false
 	enemy.setup_ai()
 	# Tree is still paused but the area_entered signal needs to stay active, therefore PhysicsServer2D is set to active
 	PhysicsServer2D.call_deferred("set_active", true)
@@ -32,6 +33,7 @@ func _ready() -> void:
 	enemy.set_process(false)
 	battle_ui.add_card_sprites()
 	await get_tree().create_timer(1.5).timeout# Timer for the transition
+	enemy_handler.visible = true
 	$Camera2D.make_current()# Change camera and prepare entities for combat
 	load_entities() # Setup enemies and player to look proper
 	start_battle() # Start the battle

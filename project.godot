@@ -12,6 +12,7 @@ config_version=5
 
 config/name="programavimo_inzinerija_project"
 run/main_scene="uid://cvfspdpp6bvr5"
+run/print_header=false
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

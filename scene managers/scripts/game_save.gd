@@ -64,9 +64,6 @@ func on_hub_entered() -> void:# Hub scena pridedama kaip dabartinis vaizdas
 	var hub_scene: Hub = change_view(HUB) as Hub
 	hub_scene.player.char_stats = character
 	change_player_health_stamina(hub_scene)
-	
-	
-	
 
 func on_run_entered() -> void:# Run scena pakeičiama kaip dabartinis vaizdas vietoj praeitos (hub)
 	Inventory.clear() # Run pradedi su tusciu inventorium

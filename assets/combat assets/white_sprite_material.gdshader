@@ -5,7 +5,7 @@ uniform vec4 outline_color : source_color = vec4(1.0, 1.0, 1.0, 1.0); // white
 
 void fragment() {
     vec4 tex = texture(TEXTURE, UV);
-    
+
     // If the current pixel is transparent, check for nearby opaque pixels
     if (tex.a < 0.1) {
         float alpha_sum = 0.0;

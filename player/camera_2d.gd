@@ -1,7 +1,5 @@
 extends Camera2D
 
-@onready var camera: Camera2D = $"."
-
 var zoom_speed := 10.0
 var zoom_margin := 0.2
 var zoom_min := 2.0

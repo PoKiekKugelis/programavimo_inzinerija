@@ -182,6 +182,5 @@ func clear_shield():
 
 func apply_heal(amount: int):
 	set_health(health + amount)
-	print(healing_sound)
 	if amount > 0 and healing_sound != null:
 		healing_sound.play()

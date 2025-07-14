@@ -934,11 +934,11 @@ layout_mode = 1
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_e7oew")
-volume_db = -5.0
+volume_db = -12.0
 
 [node name="DashSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_c35mf")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="LandingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("20_65viv")
@@ -946,7 +946,7 @@ volume_db = -10.0
 
 [node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_x7c3f")
-volume_db = -5.0
+volume_db = -8.0
 parameters/looping = true
 
 [node name="SprintingSound" type="AudioStreamPlayer2D" parent="."]
@@ -957,17 +957,17 @@ parameters/looping = true
 [node name="HealingSound" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("23_s7qer")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("24_g4c7l")
-volume_db = -5.0
+volume_db = -15.0
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 stream = ExtResource("25_knn7v")
-volume_db = -5.0
+volume_db = -10.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.6

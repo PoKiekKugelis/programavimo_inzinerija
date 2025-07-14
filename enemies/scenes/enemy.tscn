@@ -285,11 +285,10 @@ max_health = 10
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_aeyof")
-animation = &"death"
-frame = 3
-frame_progress = 1.0
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.25, 0.75)
 scale = Vector2(0.485, 0.665)
 shape = SubResource("RectangleShape2D_17fi2")
@@ -298,6 +297,7 @@ shape = SubResource("RectangleShape2D_17fi2")
 autostart = true
 
 [node name="HitBox" type="Area2D" parent="." groups=["Enemy"]]
+visible = false
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("3_ec5fr")
@@ -308,6 +308,7 @@ position = Vector2(-0.5, 0.25)
 shape = SubResource("RectangleShape2D_5mtvt")
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 script = ExtResource("3_fjv6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -326,11 +327,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ImpactSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_yselg")
+volume_db = -8.0
 
 [node name="HealingSound" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("11_7rcda")
-volume_db = -5.0
+volume_db = -8.0
 
 [node name="IntentUI" parent="." instance=ExtResource("12_w4l7e")]
 visible = false
